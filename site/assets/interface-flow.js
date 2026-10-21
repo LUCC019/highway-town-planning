@@ -1,3 +1,4 @@
+import { mountOnlineReaderStatus, startOnlineReaderSync } from './online-reader-client.js?v=20261021-v1';
 const $ = s => document.querySelector(s);
 const esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // Snapshot mutable containers while sharing immutable screenshot strings.
@@ -49,6 +50,7 @@ function shell(){
   $('#viewport').before(readPanel);
   reading=createReadingView({state,escapeHtml:esc,showImage,editNode:focusNode,refreshCanvas:canvas,editor:{checkpoint,changed:dirty,refresh:render,readImage:readFlowImage,position:newPosition,toast}});
   bind();toolbar();render();
+  if(!state.readOnly){const online=document.createElement('span');$('.flow-top').append(online);mountOnlineReaderStatus(online);}
 }
 async function listSystems(){
   const result=await api('/api/flows/'+(state.readOnly?'published':'draft'));
@@ -99,7 +101,8 @@ async function publish(){
   if(!confirm('将「'+state.doc.name+'」的当前流程发布到阅读版？只发布这一个系统。'))return;
   if(state.dirty && !await save())return;
   state.busy=true;toolbar();
-  try{await api('/api/flows/draft/'+state.doc.id+'/publish',{method:'POST',body:JSON.stringify({baseRevision:state.revision})});toast('此系统已发布，阅读版刷新后可查看。');}
+  try{await api('/api/flows/draft/'+state.doc.id+'/publish',{method:'POST',headers:{'Content-Type':'application/json','X-Online-Publish-Batch':'1'},body:JSON.stringify({baseRevision:state.revision})});
+    try{await startOnlineReaderSync();toast('此系统已发布，正在同步在线阅读版。');}catch(e){toast('本地已发布，在线同步未启动；请点击重试同步。');}}
   catch(e){toast(e.message);}finally{state.busy=false;toolbar();}
 }
 function render(){renderSystems();reading?.render();canvas();inspector();toolbar();}

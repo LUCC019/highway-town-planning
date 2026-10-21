@@ -88,12 +88,20 @@ export function renderShopUiRulesCard(root, document, options = {}) {
 
   const expandedPopupKey = String(options.expandedPopupKey || "");
   const expandedNestedPopupKey = String(options.expandedNestedPopupKey || "");
+  const renderRuleLink = (link) => {
+    const href = String(link?.href || "");
+    const jump = /^#ui-screen-([a-zA-Z0-9-]+)(?:\?(.*))?$/.exec(href);
+    if (jump && visibleScreens.some((item) => item.id === jump[1])) {
+      const params = new URLSearchParams(jump[2] || "");
+      return `<button type="button" class="button shop-ui-reference-link" data-ui-screen-jump="${escapeHtml(jump[1])}" data-ui-rule-jump="${escapeHtml(params.get("rule") || "")}" data-ui-popup-jump="${escapeHtml(params.get("popup") || "")}" data-ui-nested-jump="${escapeHtml(params.get("nested") || "")}">${escapeHtml(link.label || "查看关联界面")} <span aria-hidden="true">→</span></button>`;
+    }
+    if (!/^(?:(?:talent-system\.html|detail\.html)\?|https:\/\/)/.test(href)) return "";
+    return `<a class="shop-ui-reference-link" href="${escapeHtml(href)}"${/^https:\/\//.test(href) ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(link.label || "查看关联界面")} <span aria-hidden="true">→</span></a>`;
+  };
   const ruleEntries = selectedRule.rules.map((entry, entryIndex) => {
     const popupKey = `${selectedRule.id}:${entryIndex}`;
     const popup = entry.popup && typeof entry.popup === "object" ? entry.popup : null;
     const popupExpanded = Boolean(popup) && expandedPopupKey === popupKey;
-    const linkHref = /^(?:talent-system\.html|detail\.html)\?/.test(String(entry.link?.href || "")) ? String(entry.link.href) : "";
-    const screenJumpId = document.id === "partner-system" ? /^#ui-screen-(roster|training)$/.exec(String(entry.link?.href || ""))?.[1] : null;
     const popupRules = popup?.rules?.map((popupRule, popupRuleIndex) => {
       const nestedPopupKey = `${popupKey}:${popupRuleIndex}`;
       const nestedPopup = popupRule.popup && typeof popupRule.popup === "object" ? popupRule.popup : null;
@@ -104,6 +112,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
           <div>
             ${["talent-system", "protagonists", "doll-house"].includes(document.id) ? `<span class="editor-popup-rule-number">${String(nestedRuleIndex + 1).padStart(2, "0")}</span>` : ""}<strong${editableAttributes(editable, "nested-popup-rule-label", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}" data-nested-rule-index="${nestedRuleIndex}" data-single-line`)}>${escapeHtml(nestedRule.label)}</strong>
             <p${editableAttributes(editable, "nested-popup-rule-text", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}" data-nested-rule-index="${nestedRuleIndex}"`)}>${escapeHtml(nestedRule.text)}</p>
+            ${renderRuleLink(nestedRule.link)}
           </div>
           ${editable ? `
             <div class="editor-popup-rule-actions" aria-label="调整二级弹窗规则">
@@ -121,7 +130,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
             ${editable && !nestedPopup ? `<button type="button" class="editor-popup-add" data-nested-popup-add data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}">＋ 关联弹窗</button>` : ""}
           </div>
           <p${editableAttributes(editable, "popup-rule-text", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}"`)}>${escapeHtml(popupRule.text)}</p>
-          ${/^(?:(?:talent-system\.html|detail\.html)\?|https:\/\/)/.test(String(popupRule.link?.href || "")) ? `<a class="shop-ui-reference-link" href="${escapeHtml(popupRule.link.href)}"${/^https:\/\//.test(popupRule.link.href) ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(popupRule.link.label || "查看关联界面")} <span aria-hidden="true">→</span></a>` : ""}
+          ${renderRuleLink(popupRule.link)}
         </div>
         ${editable ? `
           <div class="editor-popup-rule-actions" aria-label="调整弹窗规则">
@@ -167,8 +176,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
           ${editable && !popup ? `<button type="button" class="editor-popup-add" data-popup-add data-entry-index="${entryIndex}">＋ 关联弹窗</button>` : ""}
         </div>
         <p${editableAttributes(editable, "entry-text", `data-entry-index="${entryIndex}"`)}>${escapeHtml(entry.text)}</p>
-        ${linkHref ? `<a class="shop-ui-reference-link" href="${escapeHtml(linkHref)}">${escapeHtml(entry.link.label || "查看关联界面")} <span aria-hidden="true">→</span></a>` : ""}
-        ${screenJumpId ? `<button type="button" class="button shop-ui-reference-link" data-ui-screen-jump="${escapeHtml(screenJumpId)}">${escapeHtml(entry.link.label || "查看关联分页")} <span aria-hidden="true">→</span></button>` : ""}
+        ${renderRuleLink(entry.link)}
       </div>
       ${editable ? `
         <div class="editor-rule-entry-actions" aria-label="调整这条规则">
@@ -258,7 +266,17 @@ export function renderShopUiRulesCard(root, document, options = {}) {
     button.addEventListener("click", () => options.onSelectScreen?.(String(button.dataset.uiScreen)));
   });
   root.querySelectorAll("[data-ui-screen-jump]").forEach((button) => {
-    button.addEventListener("click", () => options.onSelectScreen?.(String(button.dataset.uiScreenJump)));
+    button.addEventListener("click", () => {
+      options.onSelectScreen?.(String(button.dataset.uiScreenJump), {
+        ruleId: Number(button.dataset.uiRuleJump) || undefined,
+        popupKey: button.dataset.uiPopupJump || "",
+        nestedPopupKey: button.dataset.uiNestedJump || "",
+      });
+      requestAnimationFrame(() => {
+        const target = root.querySelector("[data-nested-popup-expansion]") || root.querySelector("[data-popup-expansion]") || root.querySelector(".editor-rule-copy");
+        target?.scrollIntoView({ block: "nearest" });
+      });
+    });
   });
   root.querySelectorAll("[data-popup-toggle]").forEach((button) => {
     button.addEventListener("click", () => options.onTogglePopup?.(String(button.dataset.popupToggle)));

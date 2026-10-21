@@ -1,5 +1,6 @@
-import { renderShopUiRulesCard } from "./editor-view.js?v=20261021-popup-reference-v2";
+import { renderShopUiRulesCard } from "./editor-view.js?v=20261021-linked-navigation-v3";
 import { normalizeLegacyRetailHtml } from "./convenience-minigame-layout.js?v=20261012-v1";
+import { mountOnlineReaderStatus, startOnlineReaderSync, onlineReaderPage } from "./online-reader-client.js?v=20261021-v1";
 
 const app = document.querySelector("#full-editor-app");
 const mode = document.body.dataset.editorMode === "reader" ? "reader" : "edit";
@@ -16,6 +17,7 @@ const state = {
   undo: [],
   editBaseline: null,
   saving: false,
+  publishing: false,
   baseHtml: new Map(),
   collapsedGroups: new Set(JSON.parse(sessionStorage.getItem("full-editor-collapsed-groups") || "[]")),
   shopUi: {},
@@ -260,7 +262,8 @@ function updateToolbar() {
   status.dataset.state = dirty ? "dirty" : matchesFormal ? "formal" : "saved";
   const activeUi = activeShopUiState();
   document.querySelector("#full-undo-button").disabled = state.undo.length === 0 && (!activeUi || activeUi.undo.length === 0);
-  document.querySelector("#full-save-button").disabled = !dirty || state.saving;
+  document.querySelector("#full-save-button").disabled = !dirty || state.saving || state.publishing;
+  document.querySelector("#full-publish-button").disabled = state.publishing || state.saving;
 }
 
 function syncEmbeddedMotelUi() {
@@ -588,11 +591,12 @@ function renderInlineShopUi() {
     screenCategory: isMinigameUi ? "minigame" : "interface",
     expandedPopupKey: uiState.expandedPopupKey,
     expandedNestedPopupKey: uiState.expandedNestedPopupKey,
-    onSelectScreen(id) {
+    onSelectScreen(id, jump = {}) {
       uiState.selectedScreenId = id;
-      uiState.selectedId = Number(activeShopUiRules(source, uiState)?.[0]?.id || 1);
-      uiState.expandedPopupKey = "";
-      uiState.expandedNestedPopupKey = "";
+      const rules = activeShopUiRules(source, uiState) || [];
+      uiState.selectedId = Number(rules.find((rule) => Number(rule.id) === jump.ruleId)?.id || rules[0]?.id || 1);
+      uiState.expandedPopupKey = jump.popupKey || "";
+      uiState.expandedNestedPopupKey = jump.nestedPopupKey || "";
       renderInlineShopUi();
     },
     onSelect(id) {
@@ -799,7 +803,7 @@ function navigate(page, framePage = page) {
   document.querySelector("#full-current-title").textContent = state.currentTitle;
   document.querySelector("#full-frame-status").textContent = "正在载入页面…";
   if (mode === "edit") {
-    document.querySelector("#full-reader-link").href = `reader.html?page=${encodeURIComponent(framePage)}`;
+    document.querySelector("#full-reader-link").href = onlineReaderPage(framePage);
   }
   const isFlow = page === "flow.html";
   if (mode === "edit") {
@@ -907,6 +911,7 @@ function mountShell() {
     <dialog id="full-history-dialog" class="full-editor-dialog full-history-dialog"><div class="full-dialog-head"><div><p>VERSION HISTORY</p><h2>历史版本</h2></div><form method="dialog"><button type="submit" aria-label="关闭">×</button></form></div><div id="full-version-list" class="full-version-list"></div></dialog>`;
 
   document.querySelector("#planning-frame").addEventListener("load", prepareFrame);
+  if (mode === "edit") mountOnlineReaderStatus(document.querySelector(".full-page-bar > p"));
   document.querySelector("#full-page-search").addEventListener("input", (event) => renderCatalog(event.target.value));
 
   if (mode === "edit") {
@@ -998,31 +1003,44 @@ function mountShell() {
       }
     });
     document.querySelector("#full-publish-button").addEventListener("click", async () => {
+      if (state.publishing) return;
       if (!confirm("确定发布当前整份策划案吗？发布后阅读版会更新，并自动备份旧正式版。")) return;
+      state.publishing = true;
+      updateToolbar();
       try {
         syncEmbeddedMotelUi();
+        const submittedFull = clone(state.working);
+        const submittedUi = new Map(Object.entries(state.shopUi).map(([id,ui])=>[id,clone(ui.current)]));
+        const batchHeaders = {"Content-Type":"application/json","X-Online-Publish-Batch":"1"};
         const [fullResult, shopResults] = await Promise.all([
-          api("/api/full/publish", { method: "POST", body: JSON.stringify({ document: state.working }) }),
-          Promise.all(Object.entries(state.shopUi).filter(([,ui])=>!ui.embedded).map(([id, uiState]) => api("/api/shop-ui/publish", { method: "POST", body: JSON.stringify({ id, document: uiState.current }) }))),
+          api("/api/full/publish", { method: "POST", headers: batchHeaders, body: JSON.stringify({ document: submittedFull }) }),
+          Promise.all(Object.entries(state.shopUi).filter(([,ui])=>!ui.embedded).map(([id]) => api("/api/shop-ui/publish", { method: "POST", headers: batchHeaders, body: JSON.stringify({ id, document: submittedUi.get(id) }) }))),
         ]);
+        const unchanged = equal(state.working, submittedFull);
         state.formal = clone(fullResult.document);
-        state.working = clone(fullResult.document);
+        if (unchanged) state.working = clone(fullResult.document);
         state.savedDraft = clone(fullResult.document);
         state.versions = fullResult.versions;
-        Object.values(state.shopUi).filter(ui=>ui.embedded).forEach(ui=>{ui.formal=clone(ui.current);ui.savedDraft=clone(ui.current);ui.undo=[];});
+        Object.entries(state.shopUi).filter(([,ui])=>ui.embedded).forEach(([id,ui])=>{const sent=submittedUi.get(id);if(sent){ui.formal=clone(sent);ui.savedDraft=clone(sent);if(equal(ui.current,sent))ui.undo=[];}});
         shopResults.forEach((result) => {
           const uiState = state.shopUi[result.id];
           uiState.formal = clone(result.document);
-          uiState.current = clone(result.document);
+          const uiUnchanged = equal(uiState.current, submittedUi.get(result.id));
+          if (uiUnchanged) uiState.current = clone(result.document);
           uiState.savedDraft = clone(result.document);
           uiState.versions = result.versions;
-          uiState.undo = [];
+          if (uiUnchanged) uiState.undo = [];
+          if (result.revision) uiState.revision = result.revision;
         });
-        state.undo = [];
+        if (unchanged) state.undo = [];
         updateToolbar();
-        showToast("整份策划案发布成功，旧正式版已自动备份");
+        try { await startOnlineReaderSync(); showToast("本地已发布并备份，正在同步在线阅读版"); }
+        catch (error) { showIssues("本地已发布，在线同步未启动", [error.message, "可点击“重试同步”，无需重新发布草稿。"]); }
       } catch (error) {
         showIssues("发布前需要处理", error.issues?.length ? error.issues : [error.message]);
+      } finally {
+        state.publishing = false;
+        updateToolbar();
       }
     });
     document.addEventListener("keydown", (event) => {

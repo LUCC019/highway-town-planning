@@ -11,7 +11,7 @@
 <body>
   <div id="app"></div>
   <script type="module">
-    import { renderShopUiRulesCard } from "./assets/editor-view.js?v=20261021-popup-reference-v2";
+    import { renderShopUiRulesCard } from "./assets/editor-view.js?v=20261021-linked-navigation-v3";
     import { renderMotelPlanning, motelPlanningActions, installMotelPlanning, MOTEL_UI } from "./assets/motel-v02-doc.js?v=20261021-review-v3";
     import { GROUPS, getGroupModules, getModule } from "./assets/data.js?v=20261012-oil-minigame";
     import { renderRetailDocument } from "./assets/822-retail-doc.js?v=20261010-config-notes";
@@ -1128,7 +1128,7 @@
           let source; try { source=JSON.parse(marker.textContent); } catch { source=MOTEL_UI; }
           let screenId="main",selectedId=1,expandedPopupKey="",expandedNestedPopupKey="";
           const render=()=>renderShopUiRulesCard(document.querySelector("[data-shop-ui-rules]"), source, {editable:false,screenId,selectedId,expandedPopupKey,expandedNestedPopupKey,
-            onSelectScreen(id){screenId=id;selectedId=1;expandedPopupKey="";expandedNestedPopupKey="";render();},
+            onSelectScreen(id,jump={}){screenId=id;selectedId=jump.ruleId||1;expandedPopupKey=jump.popupKey||"";expandedNestedPopupKey=jump.nestedPopupKey||"";render();},
             onSelect(id){selectedId=id;expandedPopupKey="";expandedNestedPopupKey="";render();},
             onTogglePopup(key){expandedPopupKey=expandedPopupKey===key?"":key;render();},
             onToggleNestedPopup(key){expandedNestedPopupKey=expandedNestedPopupKey===key?"":key;render();}
@@ -1208,7 +1208,7 @@
               if (!miniScreen) return;
               let selectedId = Number(miniScreen.uiRules?.[0]?.id || 1), expandedPopupKey = "", expandedNestedPopupKey = "";
               const render = () => renderShopUiRulesCard(miniCard, source, {editable:false, screenId:miniScreen.id, screenCategory:"minigame", selectedId, expandedPopupKey, expandedNestedPopupKey,
-                onSelectScreen(id) { const next = source.uiScreens?.find((screen) => screen.id === id && screen.id.startsWith("minigame-")); if (!next) return; miniScreen = next; selectedId = Number(next.uiRules?.[0]?.id || 1); expandedPopupKey=""; expandedNestedPopupKey=""; render(); },
+                onSelectScreen(id,jump={}) { const next = source.uiScreens?.find((screen) => screen.id === id && screen.id.startsWith("minigame-")); if (!next) return; miniScreen = next; selectedId = Number(jump.ruleId || next.uiRules?.[0]?.id || 1); expandedPopupKey=jump.popupKey||""; expandedNestedPopupKey=jump.nestedPopupKey||""; render(); },
                 onSelect(id) { selectedId=id; expandedPopupKey=""; expandedNestedPopupKey=""; render(); },
                 onTogglePopup(key) { expandedPopupKey=expandedPopupKey===key?"":key; render(); },
                 onToggleNestedPopup(key) { expandedNestedPopupKey=expandedNestedPopupKey===key?"":key; render(); }
