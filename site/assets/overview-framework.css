@@ -1,0 +1,26 @@
+/* Scoped to the revised overview; story and detail pages retain their styles. */
+#setting .framework-notes,
+#hook .framework-notes { margin-top: 20px; }
+#roadmap .framework-phases,
+#roadmap .framework-shops {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 28px;
+}
+#roadmap .stage { min-width: 0; }
+#roadmap .stage::before { content: counter(stage, decimal-leading-zero); }
+#roadmap .stage h3 { font-size: 23px; }
+#roadmap .stage p { font-size: 20px; line-height: 1.8; }
+#roadmap .stage .unlock { font-size: 20px; font-weight: 400; line-height: 1.85; }
+#setting .framework-notes .sequence-row,
+#roadmap .framework-boundaries .sequence-row { font-size: 20px; line-height: 1.8; }
+#roadmap .framework-boundaries { margin-top: 0; }
+@media (max-width: 1100px) {
+  #roadmap .framework-phases,
+  #roadmap .framework-shops { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  #roadmap .framework-phases,
+  #roadmap .framework-shops { grid-template-columns: minmax(0, 1fr); }
+  #setting .framework-notes .sequence-row,
+  #roadmap .framework-boundaries .sequence-row { grid-template-columns: 1fr; gap: 4px; }
+}

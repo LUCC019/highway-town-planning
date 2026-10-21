@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <script src="static-reader.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>模块分类｜《破产双胞胎》包装策划案</title>
+  <meta name="description" content="《破产双胞胎》包装策划案模块分类" />
+  <link rel="stylesheet" href="assets/site.css?v=20260917-57" />
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import { GROUPS, getGroupModules } from "./assets/data.js?v=20260923-7";
+    import { escapeHtml, mount, pageShell, renderModuleCards } from "./assets/site.js?v=20260923-7";
+
+    const params = new URLSearchParams(location.search);
+    const groupId = params.get("group") || "shops";
+    const group = GROUPS[groupId];
+
+    if (!group) {
+      mount(pageShell({
+        activeGroup: "overview",
+        content: `<article class="surface"><div class="empty"><h1>没有找到这个分类</h1><p>该链接可能尚未建立。</p><a class="button light" href="index.html">返回总览</a></div></article>`,
+      }));
+    } else {
+      document.title = `${group.title}｜《破产双胞胎》包装策划案`;
+      const modules = getGroupModules(groupId);
+      const singlePageSections = modules.map((item, index) => {
+        const accents = ["var(--rust)", "var(--blue)", "var(--gold)", "var(--green)"];
+        if (item.id === "protagonists") {
+          const rules = (item.rules || []).map((entry) => `<li>${escapeHtml(entry)}</li>`).join("");
+          const background = (item.background || []).map((entry) => `<li>${escapeHtml(entry)}</li>`).join("");
+          const identityRanks = (item.identityRanks || []).map((rank, rankIndex) => `
+            <article class="identity-stage${rankIndex === 0 ? " is-initial" : ""}">
+              <div class="identity-stage-meta"><span>${escapeHtml(rank.step)}</span><b>${escapeHtml(rank.range)}</b></div>
+              <h4>${escapeHtml(rank.title)}</h4>
+              <em>${escapeHtml(rank.english)}</em>
+              <small>《赘婿》门槛：${escapeHtml(rank.source)}</small>
+            </article>`).join("");
+          const appearanceByRole = new Map((item.appearanceNeeds || []).map((need) => [need.role, need]));
+          const leads = (item.leads || []).map((lead) => {
+            const need = appearanceByRole.get(lead.role) || { summary: "", stages: [] };
+            return `
+              <article class="lead-card">
+                <div class="lead-head"><div><h3>${escapeHtml(lead.title)}</h3><p>${escapeHtml(lead.subtitle)}</p></div><span>${lead.role === "女主" ? "FEMALE LEAD" : "MALE LEAD"}</span></div>
+                <div class="lead-content">
+                  <div><h4>人物设定</h4><ul>${lead.setting.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul></div>
+                  <div class="lead-appearance-head"><h3>身份形象需求</h3><p>${escapeHtml(need.summary)}</p></div>
+                  <div class="lead-art-copy"><ul>${lead.art.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul></div>
+                  <div class="lead-cautions"><h4>面向欧美受众的设计注意</h4><ul>${(lead.avoid || []).map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul></div>
+                  <div class="lead-reference">
+                    <h4>形象参考｜${escapeHtml(lead.reference.title)}</h4>
+                    <div class="reference-images">${lead.reference.images.map((image) => `
+                      <figure><img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.caption)}" loading="lazy" /><figcaption>${escapeHtml(image.caption)}</figcaption></figure>`).join("")}
+                    </div>
+                  </div>
+                  <div class="lead-stage-wrap"><ol class="appearance-stage-list">${need.stages.map((stage, stageIndex) => `
+                    <li>
+                      <span>${String(stageIndex + 1).padStart(2, "0")}</span>
+                      <div><div class="appearance-stage-title"><b>${escapeHtml(stage.rank)}</b><small>${escapeHtml(stage.level)}</small></div><p>${escapeHtml(stage.detail)}</p></div>
+                    </li>`).join("")}</ol></div>
+                </div>
+              </article>`;
+          }).join("");
+          return `
+            <section class="content-section character-section protagonist-section" id="${item.id}" style="--accent:${accents[index % accents.length]}">
+              <div class="section-head">
+                <h2><span>${String(index + 1).padStart(2, "0")}</span>${escapeHtml(item.title)}</h2>
+                <p>《赘婿》对标：${escapeHtml(item.original)}</p>
+              </div>
+              <div class="protagonist-stack">
+                <article class="protagonist-card"><h3>规则设定</h3><ol>${rules}</ol></article>
+                <article class="protagonist-card"><h3>背景设定</h3><ol>${background}</ol></article>
+              </div>
+              <article class="identity-card">
+                <div class="identity-heading">
+                  <div><p>IDENTITY PROGRESSION</p><h3>身份等级与形象进化</h3></div>
+                  <span>初始形象 + 5 套进阶形象</span>
+                </div>
+                <p class="identity-rule">双胞胎共用一套身份等级，称号统一采用“XX双胞胎 / XX Twins”结构；关键大身份同步解锁男女主进阶形象，最后的商界与大亨阶段共用终阶主体并以配饰和表现强化。初始形象统一为深栗棕发与绿色眼睛，后续可改变发型和发色处理，但绿色瞳孔始终作为家族识别点保留。品阶数量与开放节奏沿用《赘婿》原版。</p>
+                <div class="identity-grid">${identityRanks}</div>
+              </article>
+              <div class="lead-grid">${leads}</div>
+            </section>`;
+        }
+        const positioning = (item.positioning || [item.packaging]).map((entry) => `<li>${escapeHtml(entry)}</li>`).join("");
+        return `
+          <section class="content-section character-section character-packaging-section" id="${item.id}" style="--accent:${accents[index % accents.length]}">
+            <div class="section-head character-packaging-head">
+              <h2><span>${String(index + 1).padStart(2, "0")}</span>${escapeHtml(item.title)}<small>${escapeHtml(item.english || "")}</small></h2>
+            </div>
+            <div class="character-packaging-copy"><h3>包装定位</h3><ol>${positioning}</ol></div>
+          </section>`;
+      }).join("");
+
+      const sceneOverview = groupId === "scenes" ? `
+        <section class="content-section scene-context-section">
+          <div class="section-head">
+            <h2>三类核心场景</h2>
+            <p>分别承接《赘婿》的城内、城郊与苏府</p>
+          </div>
+          <div class="scene-context-grid">
+            <article>
+              <span>《赘婿》城内</span>
+              <h3>小镇主场景</h3>
+              <p>采用俯视角（上帝视角），部分建筑使用掀顶式表现。</p>
+              <figure><img src="assets/references/scene-view-town.png" alt="小镇主场景俯视掀顶视角参考" loading="lazy" /></figure>
+            </article>
+            <article>
+              <span>《赘婿》城郊</span>
+              <h3>城市场景</h3>
+              <p>采用第三人称视角，建筑不掀顶，重点展现城市整体环境。</p>
+              <figure><img src="assets/references/scene-view-city.png" alt="城市场景第三人称视角参考" loading="lazy" /></figure>
+            </article>
+            <article>
+              <span>《赘婿》苏府</span>
+              <h3>主角主宅场景</h3>
+              <p>采用第一人称视角，进入汽车旅馆内部体验住宅空间。</p>
+              <figure><img src="assets/references/scene-view-home.png" alt="主角主宅第一人称室内视角参考" loading="lazy" /></figure>
+            </article>
+          </div>
+          <p class="scene-context-note">各场景的具体需求与设计分别收录在下方对应模块中。</p>
+        </section>` : "";
+
+      const shopFramework = groupId === "shops" ? `
+        <section class="content-section shop-framework-section">
+          <div class="section-head">
+            <h2>店铺类型说明</h2>
+            <p>类型决定通用流程分支，具体数量以最终店铺清单为准</p>
+          </div>
+          <div class="function-position-grid">
+            ${(group.storeTypes || []).map((entry, entryIndex) => `
+              <section><span>${String(entryIndex + 1).padStart(2, "0")} · ${escapeHtml(entry.quota)}</span><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.text)}</p></section>`).join("")}
+          </div>
+        </section>
+        <section class="content-section shop-system-rules-section">
+          <div class="section-head">
+            <h2>系统规则</h2>
+            <p>本章为全部经营商铺共用，单店只写包装和特殊机制</p>
+          </div>
+          <div class="shop-system-principle">
+            <strong>配置归属原则</strong>
+            <p>程序落地使用经营商铺系统的统一配置表，通过店铺 ID 区分各店数据。各店详情中的基础业务与拓展业务表，是同一批配置按店铺整理后的包装视图，不代表每家店各维护一套独立结构。</p>
+          </div>
+          <div class="shop-system-rule-grid">
+            ${(group.systemRules || []).map((entry, entryIndex) => `
+              <article>
+                <header><span>${String(entryIndex + 1).padStart(2, "0")}</span><h3>${escapeHtml(entry.title)}</h3></header>
+                <p>${escapeHtml(entry.summary)}</p>
+                <ol>${(entry.rules || []).map((rule) => `<li>${escapeHtml(rule)}</li>`).join("")}</ol>
+              </article>`).join("")}
+          </div>
+        </section>
+        <section class="content-section shop-config-section">
+          <div class="section-head">
+            <h2>配置表结构</h2>
+            <p>以下是字段设计稿，不包含未经确认的正式数值</p>
+          </div>
+          <div class="shop-config-notice">
+            <strong>一套通用表，多家店共用</strong>
+            <p>基础业务、拓展业务等配置均以 shop_id 关联具体店铺；单店页面负责展示业务名称、设备与美术包装，通用字段含义只在这里维护。</p>
+          </div>
+          <div class="shop-config-stack">
+            ${(group.configTables || []).map((table) => `
+              <article class="shop-config-card">
+                <header><h3>${escapeHtml(table.title)}</h3><p>${escapeHtml(table.description)}</p></header>
+                <div class="shop-config-table-scroll"><table>
+                  <thead><tr>${(table.columns || []).map((column) => `<th>${escapeHtml(column)}</th>`).join("")}</tr></thead>
+                  <tbody>${(table.rows || []).map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody>
+                </table></div>
+              </article>`).join("")}
+          </div>
+        </section>` : "";
+
+      const storyDirectory = groupId === "story" ? `
+        <nav class="story-directory" aria-label="剧情章节目录">
+          ${modules[0] ? `
+            <a class="story-overview-entry" href="detail.html?id=${modules[0].detailId || modules[0].id}">
+              <span>总览</span>
+              <strong>人物剧情主线</strong>
+              <small>完整章节链路与解锁节奏</small>
+              <b aria-hidden="true">→</b>
+            </a>` : ""}
+          <div class="story-chapter-list">
+            ${modules.slice(1).map((item) => `
+              <a href="detail.html?id=${item.detailId || item.id}" aria-label="查看${escapeHtml(item.title)}：${escapeHtml(item.chapterTitle || "章节详情")}">
+                <span>${escapeHtml(item.title)}</span>
+                <strong>${escapeHtml(item.chapterTitle || "章节详情")}</strong>
+              </a>`).join("")}
+          </div>
+        </nav>` : "";
+
+      const content = group.singlePage ? `
+        <article class="surface">
+          <header class="page-head">
+            <div class="page-navrow">
+              <button class="back-button" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='index.html'; }">← 返回</button>
+              <div class="breadcrumbs"><a href="index.html">总览</a><span>›</span><span>${escapeHtml(group.title)}</span></div>
+            </div>
+            <p class="eyebrow">${escapeHtml(group.kicker)}</p>
+            <h1>${escapeHtml(group.title)}</h1>
+            <p>${escapeHtml(group.summary)}</p>
+            <div class="page-meta"><span class="meta-chip">${modules.length} 个模块</span><span class="meta-chip">单页连续阅读</span></div>
+          </header>
+          ${singlePageSections}
+          <footer>当前位置：总览 / ${escapeHtml(group.title)}</footer>
+        </article>` : `
+        <article class="surface">
+          <header class="page-head">
+            <div class="page-navrow">
+              <button class="back-button" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='index.html'; }">← 返回</button>
+              <div class="breadcrumbs"><a href="index.html">总览</a><span>›</span><span>${escapeHtml(group.title)}</span></div>
+            </div>
+            <p class="eyebrow">${escapeHtml(group.kicker)}</p>
+            <h1>${escapeHtml(group.title)}</h1>
+            <p>${escapeHtml(group.summary)}</p>
+            <div class="page-meta"><span class="meta-chip">${modules.length} 个独立分页</span><span class="meta-chip">${groupId === "story" ? "按章节快速翻阅" : "点击卡片进入详情"}</span></div>
+          </header>
+          ${sceneOverview}
+          ${shopFramework}
+          <section class="content-section${groupId === "story" ? " story-directory-section" : ""}">
+            <div class="section-head"><h2>${groupId === "story" ? "章节目录" : "模块入口"}</h2><p>${escapeHtml(group.examples)}</p></div>
+            ${groupId === "story" ? storyDirectory : `<div class="module-grid">${renderModuleCards(groupId)}</div>`}
+          </section>
+          <footer>当前位置：总览 / ${escapeHtml(group.title)}</footer>
+        </article>`;
+      mount(pageShell({ activeGroup: groupId, content }));
+    }
+  </script>
+</body>
+</html>

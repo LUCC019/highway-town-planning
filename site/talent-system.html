@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <script src="static-reader.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>人才系统｜《破产双胞胎》策划案</title>
+  <link rel="stylesheet" href="assets/site.css?v=20260917-57" />
+  <link rel="stylesheet" href="assets/editor.css?v=20260928-5" />
+  <style>
+    .talent-page{max-width:1480px;margin:auto}.talent-nav,.talent-index{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}.talent-nav a,.talent-index a{font-size:13px;color:#24675c;background:#eff8f3;border:1px solid #cde3d8;border-radius:20px;padding:6px 11px;text-decoration:none}.talent-note{padding:16px 19px;background:#fff8e9;border:1px solid #e5cfa9;border-radius:12px;color:#694d28;line-height:1.65;margin:18px 0}.talent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.talent-card{border:1px solid #dbe7de;background:white;border-radius:14px;padding:18px 21px;line-height:1.7}.talent-card.wide{grid-column:1/-1}.talent-card h3{font-size:18px;color:#23564b;margin:0 0 8px}.talent-card p{margin:6px 0}.talent-card code{color:#1c6053;background:#eaf5ed;border-radius:3px;padding:1px 4px}.talent-card table{width:100%;border-collapse:collapse;font-size:14px}.talent-card th,.talent-card td{text-align:left;vertical-align:top;padding:8px;border-bottom:1px solid #e7ebe5}.talent-card th{color:#195c4c;background:#f4faf6}.talent-group{margin:36px 0 55px;scroll-margin-top:20px}.talent-group h3{font-size:22px;color:#244c40}.talent-screen{display:grid;grid-template-columns:minmax(250px,42%) minmax(0,1fr);gap:20px;background:white;border:1px solid #dce5de;border-radius:17px;padding:20px;margin:17px 0;scroll-margin-top:18px}.talent-screen:target{outline:3px solid #d4b27a}.talent-image{position:sticky;top:15px;background:#17312a;border-radius:11px;overflow:hidden}.talent-image img{display:block;width:100%;max-height:750px;object-fit:contain;cursor:zoom-in}.talent-image small{display:block;color:#d5e8dc;padding:9px 12px;line-height:1.5}.talent-rule-pane h4{font-size:20px;color:#204d40;margin:0 0 6px}.talent-rule-pane>p{margin:0 0 15px;color:#60796c;line-height:1.6}.talent-tag{display:inline-block;font-size:12px;background:#e7f5ee;padding:4px 8px;border-radius:6px;margin-right:7px;color:#237159}.talent-rule{border-top:1px solid #e6ece7;padding:11px 0}.talent-rule h4{font-size:15px;color:#245c4c;margin:0 0 4px}.talent-rule p{margin:0 0 7px;line-height:1.65;color:#3b5247}.talent-relation{display:inline-block;text-decoration:none;color:#905826;background:#fff4e6;border:1px solid #ecd0a8;border-radius:7px;padding:5px 9px;font-size:13px}.talent-lightbox{border:0;border-radius:12px;background:#15251e;padding:12px;max-width:96vw;max-height:96vh}.talent-lightbox::backdrop{background:rgba(0,0,0,.84)}.talent-lightbox img{display:block;max-width:100%;max-height:86vh;object-fit:contain}.talent-lightbox button{float:right;margin-bottom:7px;border:0;border-radius:6px;padding:6px 9px;cursor:pointer}.talent-muted{color:#6b7b70;font-size:13px}.talent-warning{color:#986536;font-size:12px}@media(max-width:900px){.talent-grid,.talent-screen{grid-template-columns:1fr}.talent-card.wide{grid-column:auto}.talent-image{position:static}}
+    /* 与其他系统分页一致：由公共 shell 决定宽度，人才页不另设版心。 */
+    .talent-page{width:100%;max-width:none;margin:0}
+    .talent-image img{max-height:1200px}
+    html{scroll-behavior:auto}
+    .talent-panel[hidden]{display:none!important}.talent-panel .talent-nav{padding:0 34px}.talent-panel>.talent-warning{display:block;padding:0 34px 20px}
+    .talent-nav button,.talent-index button{font:inherit;font-size:13px;color:#24675c;background:#eff8f3;border:1px solid #cde3d8;border-radius:20px;padding:6px 11px;cursor:pointer}.talent-nav button:hover,.talent-index button:hover,.talent-nav button[aria-current="page"],.talent-index button[aria-current="page"]{background:#d8eee3;border-color:#78b7a1;color:#155a48}.talent-group[hidden],.talent-screen[hidden]{display:none!important}.talent-relation{cursor:pointer;font:inherit;font-size:13px}.talent-group{margin-bottom:18px}
+    @media(max-width:600px){.talent-panel .talent-nav{padding:0 14px}}
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import { mount, pageShell } from "./assets/site.js?v=20260929-talent-nav";
+    import { renderShopUiRulesCard } from "./assets/editor-view.js?v=20261008-1";
+
+    const ruleNav = `<nav class="talent-nav" aria-label="系统规则目录"><button type="button" data-rule-target="system-rules">规则说明</button><button type="button" data-rule-target="config-map">配置表</button><button type="button" data-rule-target="terms">包装名词</button></nav>`;
+    const topActions = `<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='index.html'; }">← 返回</button><nav class="shop-page-tabs" aria-label="人才系统策划案分页"><button type="button" id="tab-rules" class="is-active" aria-pressed="true" data-talent-tab="rules">规则</button><button type="button" id="tab-ui" aria-pressed="false" data-talent-tab="ui">界面</button></nav>`;
+
+    const content = `
+      <article class="surface talent-page">
+        <header class="page-head">
+          <div class="page-navrow"><div class="breadcrumbs"><a href="index.html">总览</a><span>›</span><span>人才系统</span></div></div>
+          <p class="eyebrow">TALENT SYSTEM · 规则与界面</p>
+          <h1>人才系统</h1>
+          <p>基于《赘婿》门客系统，仅替换《破产双胞胎》的玩家可见包装。正文覆盖系统规则、配置映射、名词与 18 张界面参考图。</p>
+        </header>
+        <div class="talent-note"><strong>边界：</strong>只改显示称谓、角色素材、故事文案与界面设计；人物获取、等级、晋升、星级、技能、光环、皮肤、属性计算、ID、消耗及接口均沿用原包。截图中的旧词不作为最终命名依据。<br/><strong>待确认：</strong>原“百业”暂称“专长”；主题羁绊仅保留入口，时尚中心联动不在本页扩写。</div>
+        <div class="talent-panel" id="panel-rules" role="tabpanel" aria-labelledby="tab-rules">
+        ${ruleNav}
+        <section class="content-section" id="system-rules">
+          <div class="section-head"><h2><span>01</span>系统规则</h2></div>
+          <div class="talent-grid">
+            <article class="talent-card"><h3>定位与获取</h3><p>人才是角色收集与养成单位，原门客对象一对一映射为人才。人才贡献赚钱属性，并参与关卡与店铺已有的人才计算。</p><p>人才分未拥有、已拥有两种详情状态。未拥有时预览档案和获取途径；招募条件、资源消耗和跳转使用原 <code>PartnerCfg.GetType / GetParam / JumpId</code> 与关联配置。</p></article>
+            <article class="talent-card"><h3>升级与晋升</h3><p>逐级消耗人才阅历，按 <code>PartnerLevelCfg</code> 增长等级基础属性。达到 <code>PartnerBreakCfg.MaxLevel</code> 时升级入口切为“晋升”；晋升即原突破流程，按原阶段、材料、属性与等级上限生效。配置覆盖 1–1000 级、20 个晋升阶段。</p></article>
+            <article class="talent-card"><h3>进修、技能与专长</h3><p>进修即原升星流程。材料、星级限制、赚钱固定值/百分比效果取 <code>PartnerStarCfg</code>。技能与暂称“专长”的原百业技能，依原 <code>CommonSkillCfg / SkillUnlockCfg / SkillUpgradeCfg</code> 判定解锁、等级、消耗、效果。保留十连升级逻辑，材料不足按原提示/跳转。</p></article>
+            <article class="talent-card"><h3>光环、皮肤与资料</h3><p>光环按原皮肤、套装或关联条件激活。皮肤既可只换外观，也可有强化等级、重复皮肤消耗与服装光环。故事沿用原分段解锁和奖励结构；缘分展示关联伙伴及加成。主题羁绊的跨时尚中心规则暂不在本页定义。</p></article>
+            <article class="talent-card wide"><h3>属性计算与跨系统边界</h3><p>原属性链路可概括为：<code>floor((等级基础属性 + 晋升基础属性) × 天赋 × (1 + 百分比加成 / 10000) + 固定加成)</code>。这是原门客计算链的包装表述；具体叠加、例外与取整顺序以原运行逻辑为准，界面预览不得自行另算。关卡及店铺引用同一人才赚钱与潜力结果，不新增第二套数值。</p><p>人才类别 <strong>服、农、商、娱</strong> 映射原 <code>Profession 1/2/3/4</code>。店铺类别仍为<strong>生活、休闲、购物、娱乐</strong>，两套分类不能混用。</p></article>
+          </div>
+        </section>
+        <section class="content-section" id="config-map"><div class="section-head"><h2><span>02</span>原包配置映射</h2></div><article class="talent-card"><p>以下是数据归属，不是新配置表；同 ID、同字段、同值沿用。截图中的数字只是账号状态，不作为默认值。</p><table><thead><tr><th>原配置</th><th>数据职责</th><th>人才包装处理</th></tr></thead><tbody>
+          <tr><td><code>PartnerCfg</code></td><td>人才 ID、名字、故事、品质、类别、立绘、技能、潜力与获取途径；原表 51 名</td><td>保留结构和 ID；显示称谓、角色资源、故事文案换本项目内容</td></tr>
+          <tr><td><code>PartnerLevelCfg</code></td><td>经验与等级基础属性；1000 级</td><td>数值不变</td></tr>
+          <tr><td><code>PartnerBreakCfg</code></td><td>阶段、等级上限、属性与材料；20 条</td><td>原“突破”仅显示为“晋升”</td></tr>
+          <tr><td><code>PartnerStarCfg</code></td><td>进修材料、限制和赚钱效果；含 0 星共 26 条</td><td>保留进修流程与升星结果</td></tr>
+          <tr><td><code>PartnerAdvanceCfg</code></td><td>品质、潜力、技能替换与进阶状态</td><td>原条件保留；18 图未覆盖的入口不擅自设计</td></tr>
+          <tr><td><code>CommonSkillCfg</code>、<code>SkillUnlockCfg</code>、<code>SkillUpgradeCfg</code></td><td>技能类型、效果、解锁、升级与消耗</td><td>旧“百业”暂称“专长”；类型与技能 ID 不改</td></tr>
+          <tr><td><code>ItemCfg</code>、<code>AttributeCfg</code> 及相关系统表</td><td>材料道具、潜力、赚钱和跨系统属性来源</td><td>只同步已确认包装；道具 ID 和属性定义不改</td></tr>
+        </tbody></table></article></section>
+        <section class="content-section" id="terms"><div class="section-head"><h2><span>03</span>包装名词</h2></div><article class="talent-card"><table><thead><tr><th>原词</th><th>本项目写法</th><th>说明</th></tr></thead><tbody>
+          <tr><td>门客</td><td>人才</td><td>显示层替换，内部仍为 Partner</td></tr><tr><td>士 / 农 / 商 / 侠</td><td>服 / 农 / 商 / 娱</td><td>仅人才类别，单字；Profession 1/2/3/4 不改</td></tr><tr><td>突破 / 突破成功</td><td>晋升 / 晋升成功</td><td>底层突破流程不改</td></tr><tr><td>百业</td><td>专长（待确认）</td><td>Excel 明示漏定包装；暂占位</td></tr><tr><td>进修成功</td><td>升星成功</td><td>按 Excel 页面标注；“进修”按钮保留</td></tr><tr><td>红颜</td><td>伙伴</td><td>与已有关卡页称谓一致，缘分机制不变</td></tr><tr><td>升级、技能、天赋、光环、故事、缘分、皮肤、招募、潜力、赚钱</td><td>保留</td><td>合适通用名不硬改</td></tr><tr><td>店铺：生活 / 休闲 / 购物 / 娱乐</td><td>保留</td><td>独立于人才单字类别</td></tr>
+        </tbody></table></article></section>
+        </div>
+        <div class="talent-panel" id="panel-ui" role="tabpanel" aria-labelledby="tab-ui" hidden>
+        <section class="content-section" id="interface-rules">
+          <article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><div role="status">正在读取界面规则…</div></article>
+        </section>
+        <p class="talent-warning">来源：用户提供的《美术相关.xlsx》18 张截图与标注、《赘婿》原包配置和相关实现。未见截图的页面与跨系统细节不凭空补图。</p>
+        </div>
+      </article>`;
+
+    mount(pageShell({ activeGroup: "talent-system", content, topActions }));
+    const switchTab = (name, updateHash = true) => {
+      const selected = name === "ui" ? "ui" : "rules";
+      document.querySelectorAll("[data-talent-tab]").forEach(button => {
+        const active = button.dataset.talentTab === selected;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      document.querySelector("#panel-rules").hidden = selected !== "rules";
+      document.querySelector("#panel-ui").hidden = selected !== "ui";
+      if (updateHash) {
+        const nextUrl = new URL(location.href);
+        if (selected === "ui") nextUrl.searchParams.set("tab", "ui");
+        else nextUrl.searchParams.delete("tab");
+        nextUrl.hash = selected === "ui" ? "interface-rules" : "system-rules";
+        history.replaceState(null, "", nextUrl);
+      }
+      document.querySelector(".talent-page").scrollIntoView({ block: "start" });
+    };
+    document.querySelectorAll("[data-talent-tab]").forEach(button => button.addEventListener("click", () => switchTab(button.dataset.talentTab)));
+    document.querySelectorAll("[data-rule-target]").forEach(button => button.addEventListener("click", () => document.querySelector(`#${button.dataset.ruleTarget}`).scrollIntoView({ block: "start" })));
+    if (location.hash === "#interface-rules" || new URLSearchParams(location.search).get("tab") === "ui") switchTab("ui", false);
+    // 整案编辑器负责在 iframe 内渲染草稿或正式版；独立页面也通过只读接口取正式内容。
+    if (!window.frameElement) {
+      const card = document.querySelector("[data-shop-ui-rules]");
+      let uiDocument;
+      try {
+        const response = await fetch("api/shop-ui/formal", { cache: "no-store" });
+        if (!response.ok) throw new Error("界面规则读取失败");
+        const payload = await response.json();
+        uiDocument = payload.documents?.["talent-system"];
+        if (!uiDocument) throw new Error("人才系统的正式界面规则尚未发布");
+      } catch (error) {
+        card.innerHTML = `<h2>界面规则暂不可用</h2><p>${error.message === "人才系统的正式界面规则尚未发布"
+          ? error.message + "，请稍后刷新。"
+          : "读取正式界面规则失败，请检查阅读服务后刷新。"}</p>`;
+      }
+      if (uiDocument) {
+        const uiState = { screenId: "main", selectedId: 1, expandedPopupKey: "", expandedNestedPopupKey: "" };
+        const renderUi = () => {
+          try {
+            renderShopUiRulesCard(card, uiDocument, {
+              screenId: uiState.screenId,
+              selectedId: uiState.selectedId,
+              expandedPopupKey: uiState.expandedPopupKey,
+              expandedNestedPopupKey: uiState.expandedNestedPopupKey,
+              onSelectScreen(id) { uiState.screenId = id; uiState.selectedId = 1; uiState.expandedPopupKey = ""; uiState.expandedNestedPopupKey = ""; renderUi(); },
+              onSelect(id) { uiState.selectedId = id; uiState.expandedPopupKey = ""; uiState.expandedNestedPopupKey = ""; renderUi(); },
+              onTogglePopup(key) { uiState.expandedPopupKey = uiState.expandedPopupKey === key ? "" : key; uiState.expandedNestedPopupKey = ""; renderUi(); },
+              onToggleNestedPopup(key) { uiState.expandedNestedPopupKey = uiState.expandedNestedPopupKey === key ? "" : key; renderUi(); },
+            });
+          } catch {
+            card.innerHTML = "<h2>界面规则暂不可用</h2><p>人才系统的界面规则数据无法显示，请检查正式数据后刷新。</p>";
+          }
+        };
+        renderUi();
+      }
+    }
+  </script>
+</body>
+</html>

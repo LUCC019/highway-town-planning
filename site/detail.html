@@ -1,0 +1,1395 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <script src="static-reader.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>系统详情｜《破产双胞胎》包装策划案</title>
+  <meta name="description" content="《破产双胞胎》包装策划案系统详情" />
+  <link rel="stylesheet" href="assets/site.css?v=20261012-oil-minigame" />
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import { renderShopUiRulesCard } from "./assets/editor-view.js?v=20261021-popup-reference-v2";
+    import { renderMotelPlanning, motelPlanningActions, installMotelPlanning, MOTEL_UI } from "./assets/motel-v02-doc.js?v=20261021-review-v3";
+    import { GROUPS, getGroupModules, getModule } from "./assets/data.js?v=20261012-oil-minigame";
+    import { renderRetailDocument } from "./assets/822-retail-doc.js?v=20261010-config-notes";
+    import { renderOilMinigame } from "./assets/gas-oil-experience-planning.js?v=20261013-v6";
+    import { splitConvenienceDocument } from "./assets/convenience-minigame-layout.js?v=20261012-v1";
+    import { CHECKPOINT_EVENT_PAGES } from "./assets/checkpoint-events.js?v=20260929-6";
+    import { escapeHtml, mount, pageShell } from "./assets/site.js?v=20260923-7";
+
+    const id = new URLSearchParams(location.search).get("id");
+    const item = getModule(id);
+    let motelLoadFailed = false;
+    let motelPagePatches = {};
+    const motelEnabled = item?.id === "home" ? await (async () => {
+      let editing = false;
+      try { editing = window.parent !== window && window.parent.document.body.dataset.editorMode === "edit"; } catch {}
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 10000);
+      try {
+        const response = await fetch(editing ? "/api/full/state" : "/api/full/formal", {signal:controller.signal,cache:"no-store"});
+        if (!response.ok) throw new Error("旅馆版本读取失败");
+        const payload = await response.json();
+        const registry = editing ? payload.draft : payload.document;
+        motelPagePatches = registry?.pages?.["detail.html?id=home"] || {};
+        return registry?.pages?.["detail.html?id=home"]?.["[data-motel-design-ref]"] === "assets/motel-v02-doc.js";
+      } catch { motelLoadFailed = true; return false; }
+      finally { clearTimeout(timer); }
+    })() : false;
+    let oilDesignLoadFailed = false;
+    const oilLevelDesign = item?.id === "gas-station" ? await (async () => {
+      let editing = false;
+      try { editing = window.parent !== window && window.parent.document.body.dataset.editorMode === "edit"; } catch {}
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+      try {
+        const response = await fetch(editing ? "/api/full/state" : "/api/full/formal", {signal: controller.signal});
+        if (!response.ok) throw new Error("棋盘版本信息载入失败");
+        const state = await response.json();
+        const document = editing ? state.draft : state.document;
+        const ref = document?.pages?.["detail.html?id=gas-station"]?.["[data-oil-design-ref]"];
+        if (!ref) return undefined;
+        if (!["assets/gas-oil-levels-v2.js", "assets/gas-oil-levels-v3.js", "assets/gas-oil-levels-v4.js", "assets/gas-oil-levels-v5.js", "assets/gas-oil-levels-v6.js"].includes(ref)) throw new Error("未知棋盘版本");
+        let importTimeout;
+        try {
+          const resource = await Promise.race([
+            ref === "assets/gas-oil-levels-v6.js" ? import("./assets/gas-oil-levels-v6.js?v=20261013-v6") : ref === "assets/gas-oil-levels-v5.js" ? import("./assets/gas-oil-levels-v5.js?v=20261013-v5") : ref === "assets/gas-oil-levels-v4.js" ? import("./assets/gas-oil-levels-v4.js?v=20261013-v4") : ref === "assets/gas-oil-levels-v3.js" ? import("./assets/gas-oil-levels-v3.js?v=20261013-v3") : import("./assets/gas-oil-levels-v2.js?v=20261013-v2"),
+            new Promise((_, reject) => { importTimeout = setTimeout(() => reject(new Error("棋盘资源载入超时")), 10000); })
+          ]);
+          return resource.OIL_LEVEL_DESIGN;
+        } finally { clearTimeout(importTimeout); }
+      } catch {
+        oilDesignLoadFailed = true;
+        return undefined;
+      } finally { clearTimeout(timeout); }
+    })() : undefined;
+    let retailLoadFailed = false;
+    const retailMarkdown = item?.id === "convenience-store"
+      ? await (async () => {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000);
+        try {
+          const response = await fetch("assets/docs/822-convenience-rules.md?v=20261012-minigame-layout", { signal: controller.signal });
+          if (!response.ok) throw new Error("822便利店规则正文载入失败");
+          return await response.text();
+        } catch {
+          retailLoadFailed = true;
+          return "";
+        } finally {
+          clearTimeout(timeout);
+        }
+      })()
+      : "";
+    const businessLevelLabel = (value) => /^\d+$/.test(String(value)) ? `${escapeHtml(value)}级` : escapeHtml(value);
+    // 加油站正文随现有店铺数据同步载入，不增加异步资源依赖。
+    const gasStationMarkdown = item?.id === "gas-station" && item.planningDocument
+      ? item.planningDocument
+        .replace("__BASE_BUSINESSES__", ["| 店铺等级 | 包装名称 | 业务说明（玩家文案） |", "| --- | --- | --- |", ...item.baseBusinesses.map(entry => `| ${typeof entry.level === "number" ? entry.level + "级" : entry.level} | ${entry.name} | ${entry.desc} |`)].join("\n"))
+        .replace("__EXPANSION_BUSINESSES__", ["| 拓展等级 | 包装名称 | 业务说明（玩家文案） |", "| --- | --- | --- |", ...item.expansionBusinesses.map(entry => `| ${entry.level}级 | ${entry.name} | ${entry.desc} |`)].join("\n"))
+      : "";
+
+    if (retailLoadFailed) {
+      mount(pageShell({
+        activeGroup: "shops",
+        content: `<article class="surface"><div class="empty"><h1>便利店正文暂时无法载入</h1><p>请刷新重试；如果仍无法显示，请检查阅读服务是否能读取便利店正文。</p><button class="button light" type="button" onclick="location.reload()">重新载入</button></div></article>`,
+      }));
+      document.dispatchEvent(new Event("retail-document-ready"));
+    } else if (!item) {
+      mount(pageShell({
+        activeGroup: "overview",
+        content: `<article class="surface"><div class="empty"><h1>没有找到这个系统</h1><p>该页面可能尚未建立。</p><a class="button light" href="index.html">返回总览</a></div></article>`,
+      }));
+    } else {
+      const isCharacterArtPage = item.id === "partners" || item.id === "romance";
+      const group = GROUPS[item.group];
+      const siblings = getGroupModules(item.group);
+      const index = siblings.findIndex((entry) => entry.id === item.id);
+      const previous = siblings[index - 1];
+      const next = siblings[index + 1];
+      const protagonistDetails = item.id === "protagonists" ? (() => {
+        const rules = (item.rules || []).map((entry) => `<li>${escapeHtml(entry)}</li>`).join("");
+        const background = (item.background || []).map((entry) => `<li>${escapeHtml(entry)}</li>`).join("");
+        const identityRanks = (item.identityRanks || []).map((rank, rankIndex) => `
+          <article class="identity-stage${rankIndex === 0 ? " is-initial" : ""}">
+            <div class="identity-stage-meta"><span>${escapeHtml(rank.step)}</span><b>${escapeHtml(rank.range)}</b></div>
+            <h4>${escapeHtml(rank.title)}</h4>
+            <em>${escapeHtml(rank.english)}</em>
+            <small>《赘婿》门槛：${escapeHtml(rank.source)}</small>
+          </article>`).join("");
+        const appearanceByRole = new Map((item.appearanceNeeds || []).map((need) => [need.role, need]));
+        const leads = (item.leads || []).map((lead) => {
+          const need = appearanceByRole.get(lead.role) || { summary: "", stages: [] };
+          return `
+            <article class="lead-card">
+              <div class="lead-head"><div><h3>${escapeHtml(lead.title)}</h3><p>${escapeHtml(lead.subtitle)}</p></div><span>${lead.role === "女主" ? "FEMALE LEAD" : "MALE LEAD"}</span></div>
+              <div class="lead-content">
+                <div><h4>人物设定</h4><ul>${lead.setting.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul></div>
+                <div class="lead-appearance-head"><h3>身份形象需求</h3><p>${escapeHtml(need.summary)}</p></div>
+                <div class="lead-art-copy"><ul>${lead.art.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul></div>
+                <div class="lead-cautions"><h4>面向欧美受众的设计注意</h4><ul>${(lead.avoid || []).map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul></div>
+                <div class="lead-reference">
+                  <h4>形象参考｜${escapeHtml(lead.reference.title)}</h4>
+                  <div class="reference-images">${lead.reference.images.map((image) => `
+                    <figure><img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.caption)}" loading="lazy" /><figcaption>${escapeHtml(image.caption)}</figcaption></figure>`).join("")}
+                  </div>
+                </div>
+                <div class="lead-stage-wrap"><ol class="appearance-stage-list">${need.stages.map((stage, stageIndex) => `
+                  <li>
+                    <span>${String(stageIndex + 1).padStart(2, "0")}</span>
+                    <div><div class="appearance-stage-title"><b>${escapeHtml(stage.rank)}</b><small>${escapeHtml(stage.level)}</small></div><p>${escapeHtml(stage.detail)}</p></div>
+                  </li>`).join("")}</ol></div>
+              </div>
+            </article>`;
+        }).join("");
+        return `
+          <section class="character-section protagonist-section" style="--accent:var(--rust)">
+            <div class="protagonist-stack">
+              <article class="protagonist-card"><h3>规则设定</h3><ol>${rules}</ol></article>
+              <article class="protagonist-card"><h3>背景设定</h3><ol>${background}</ol></article>
+            </div>
+            <article class="identity-card">
+              <div class="identity-heading">
+                <div><p>IDENTITY PROGRESSION</p><h3>身份等级与形象进化</h3></div>
+                <span>初始形象 + 5 套进阶形象</span>
+              </div>
+              <p class="identity-rule">双胞胎共用一套身份等级，称号统一采用“XX双胞胎 / XX Twins”结构；关键大身份同步解锁男女主进阶形象，最后的商界与大亨阶段共用终阶主体并以配饰和表现强化。初始形象统一为深栗棕发与绿色眼睛，后续可改变发型和发色处理，但绿色瞳孔始终作为家族识别点保留。品阶数量与开放节奏沿用《赘婿》原版。</p>
+              <div class="identity-grid">${identityRanks}</div>
+            </article>
+            <div class="lead-grid">${leads}</div>
+          </section>`;
+      })() : "";
+      const extraCard = item.minigame ? `
+        <article class="detail-card"><h2>小游戏方向</h2><p>${escapeHtml(item.minigame)}</p></article>` : "";
+      const functionEntries = item.coreFunctions || item.functions || item.foundationFunctions;
+      const functionPositionCard = functionEntries ? `
+        <article class="detail-card">
+          <h2>核心功能</h2>
+          <div class="function-position-grid">
+            ${functionEntries.map((entry, entryIndex) => `<section><span>${String(entryIndex + 1).padStart(2, "0")}</span><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.text)}</p></section>`).join("")}
+          </div>
+        </article>` : "";
+      const shopStructureCard = item.group === "shops" && item.storeType ? `
+        <article class="detail-card">
+          <h2>店铺类型与收益结构</h2>
+          <div class="function-position-grid shop-structure-grid">
+            <section><span>类型</span><h3>${escapeHtml(item.storeType)}</h3><p>${escapeHtml(item.typeSummary)}</p></section>
+            <section><span>收益</span><h3>收益组成</h3><p>${escapeHtml(item.incomeModel)}</p></section>
+            <section><span>小游戏</span><h3>入口规则</h3><p>${escapeHtml(item.minigamePolicy)}</p></section>
+          </div>
+        </article>` : "";
+      const shopInteractionCard = item.group === "shops" && item.interactionStages ? `
+        <article class="detail-card shop-interaction-card">
+          <h2>强交互玩法细化</h2>
+          <p class="shop-interaction-summary">${escapeHtml(item.interactionSummary || "")}</p>
+          <div class="shop-interaction-flow">
+            ${(item.interactionFlow || []).map((entry, entryIndex) => `<section><span>${String(entryIndex + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.text)}</p></div></section>`).join("")}
+          </div>
+          <h3 class="shop-interaction-subtitle">交互规则</h3>
+          <div class="art-performance-grid shop-interaction-rules">
+            ${(item.interactionRules || []).map((entry, entryIndex) => `<section><span>${String(entryIndex + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.text)}</p></div></section>`).join("")}
+          </div>
+          <h3 class="shop-interaction-subtitle">初始服务与9次业务升级</h3>
+          <div class="shop-table-scroll"><table class="shop-business-table shop-interaction-table">
+            <thead><tr><th>阶段</th><th>等级／服务</th><th>车辆需求</th><th>固定工具位变化</th><th>点击后的动画表演</th></tr></thead>
+            <tbody>${item.interactionStages.map((entry) => `<tr><td><strong>${escapeHtml(entry.stage)}</strong></td><td><span class="business-level">${escapeHtml(entry.level)}级</span><br><strong>${escapeHtml(entry.service)}</strong></td><td>${escapeHtml(entry.request)}</td><td>${escapeHtml(entry.tool)}</td><td>${escapeHtml(entry.performance)}</td></tr>`).join("")}</tbody>
+          </table></div>
+        </article>` : "";
+      const shopBusinessCard = item.group === "shops" && item.businessStatus ? `
+        <article class="detail-card shop-business-pending-card">
+          <h2>业务规划</h2>
+          <p>${escapeHtml(item.businessStatus)}</p>
+        </article>` : gasStationMarkdown ? `<article class="detail-card retail-document-card gas-station-document">${renderRetailDocument(gasStationMarkdown)}<p>油号口径：<a href="https://www.eia.gov/energyexplained/gasoline/octane-in-depth.php" target="_blank" rel="noopener">美国能源信息署</a>。</p></article>` : retailMarkdown ? `<article class="detail-card retail-document-card">${renderRetailDocument(retailMarkdown)}</article>` : item.group === "shops" && (item.baseBusinesses || item.expansionBusinesses) ? `
+        <article class="detail-card">
+          <h2>业务规划</h2>
+          <p class="shop-business-config-note"><strong>配置说明：</strong>${escapeHtml(item.businessConfigNote || `本页只集中展示${item.title}的业务包装。程序配置统一写入经营商铺系统的基础业务表与拓展业务表，并通过店铺 ID 关联；通用字段及结算规则不在单店重复定义。`)}</p>
+          ${item.retailRules ? `
+            <section class="shop-retail-rules">
+              <h3>进货、库存、上架与出售规则</h3>
+              <p>数值来源：数值策划提供的《宁创好物_进货与出售逻辑整理》；已确认沿用原版数值，并将四个货架统一为15格。随机方式及资料未证明的结算边界另列待确认。</p>
+              <div class="art-performance-grid shop-interaction-rules">${item.retailRules.map((entry, entryIndex) => `<section><span>${String(entryIndex + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.text)}</p></div></section>`).join("")}</div>
+              <h3>四类商品与货架分页</h3>
+              <div class="shop-table-scroll"><table class="shop-business-table">
+                <thead><tr><th>商品type</th><th>货架ID</th><th>分页／分类</th><th>开放等级</th><th>商品数</th><th>固定格数</th></tr></thead>
+                <tbody>${item.productCategories.map((category) => `<tr><td>${escapeHtml(category.type)}</td><td>${escapeHtml(category.shelfId)}</td><td>${escapeHtml(category.title)}</td><td>${businessLevelLabel(category.unlockLevel)}</td><td>${escapeHtml(category.count)}</td><td>15</td></tr>`).join("")}</tbody>
+              </table></div>
+              <h3>配置表与字段</h3>
+              ${(item.retailConfigTables || []).map((table) => `<section class="shop-business-table-block"><header><span>配置</span><div><h3>${escapeHtml(table.title)}</h3><p>${escapeHtml(table.description)}</p></div></header><div class="shop-table-scroll"><table class="shop-business-table"><thead><tr>${table.columns.map((column) => `<th>${escapeHtml(column)}</th>`).join("")}</tr></thead><tbody>${table.rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>`).join("")}
+            </section>` : ""}
+          <div class="shop-business-tables">
+            <section class="shop-business-table-block">
+              <header><span>基础</span><div><h3>基础业务（共${(item.baseBusinesses || []).length}项）</h3><p>${item.businessMappingPending ? "旧稿包装候选；等级与原配置行尚未校准，不供程序直接导入。" : "本店包装视图：随店铺等级逐项解锁，数据来自通用基础业务配置表。"}</p></div></header>
+              ${item.productCategories ? `<p>共25项，按货架分类并在各类内按解锁等级排序；商品ID保留原版对应关系。加价列为解锁后对全店统一单价的贡献。</p>${item.productCategories.map((category) => `<section class="shop-product-category"><h3>${escapeHtml(category.title)}（${escapeHtml(category.count)}项）</h3><p>商品type：${escapeHtml(category.type)}；货架ID：${escapeHtml(category.shelfId)}。</p><div class="shop-table-scroll"><table class="shop-business-table base-business-table"><thead><tr><th>商品ID</th><th>店铺等级</th><th>解锁商品</th><th>全店每份加价</th><th>业务说明</th></tr></thead><tbody>${item.baseBusinesses.filter((entry) => entry.type === category.type).sort((left, right) => Number(left.level) - Number(right.level) || left.productId - right.productId).map((entry) => `<tr><td>${escapeHtml(entry.productId)}</td><td><span class="business-level">${businessLevelLabel(entry.level)}</span></td><td><strong>${escapeHtml(entry.name)}</strong></td><td>＋${escapeHtml(entry.benefit)}</td><td>${escapeHtml(entry.desc)}</td></tr>`).join("")}</tbody></table></div></section>`).join("")}` : `<div class="shop-table-scroll"><table class="shop-business-table base-business-table">
+                <thead><tr><th>店铺等级</th><th>解锁物件／内容</th><th>业务说明</th></tr></thead>
+                <tbody>${(item.baseBusinesses || []).map((entry) => `<tr><td><span class="business-level">${businessLevelLabel(entry.level)}</span></td><td><strong>${escapeHtml(entry.name)}</strong></td><td>${escapeHtml(entry.desc)}</td></tr>`).join("")}</tbody>
+              </table></div>`}
+            </section>
+            <section class="shop-business-table-block">
+              <header><span>拓展</span><div><h3>拓展业务（共${(item.expansionBusinesses || []).length}项）</h3><p>${item.businessMappingPending ? "旧稿包装候选；拓展等级与原配置行尚未校准，不供程序直接导入。" : "本店包装视图：按拓展等级解锁区域、设备或服务能力，数据来自通用拓展业务配置表。"}</p></div></header>
+              <div class="shop-table-scroll"><table class="shop-business-table expansion-business-table">
+                <thead><tr><th>拓展等级</th><th>解锁内容／包装名称</th><th>业务说明</th></tr></thead>
+                <tbody>${(item.expansionBusinesses || []).map((entry) => `<tr><td><span class="business-level expansion-level">${businessLevelLabel(entry.level)}</span></td><td><strong>${escapeHtml(entry.name)}</strong></td><td>${escapeHtml(entry.desc)}</td></tr>`).join("")}</tbody>
+              </table></div>
+            </section>
+          </div>
+        </article>` : "";
+      const packagingCard = item.group === "shops" ? `
+        <article class="detail-card shop-packaging-card">
+          <h2>包装设定</h2>
+          <p>${escapeHtml(item.packaging)}</p>
+          ${item.hideUnlock || !item.unlock ? "" : `<div class="packaging-progression"><h3>开放与递进</h3><p>${escapeHtml(item.unlock)}</p></div>`}
+        </article>` : `<article class="detail-card"><h2>包装设定</h2><p>${escapeHtml(item.packaging)}</p></article>`;
+      const animationPerformanceCard = item.animationPerformance ? `
+        <article class="detail-card">
+          <h2>动画表现</h2>
+          <div class="function-position-grid">
+            ${item.animationPerformance.map((entry, entryIndex) => `<section><span>${String(entryIndex + 1).padStart(2, "0")}</span><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.text)}</p></section>`).join("")}
+          </div>
+        </article>` : "";
+      const artPerformanceRequirementsCard = item.artPerformanceRequirements ? `
+        <article class="detail-card">
+          <h2>表现层美术需求</h2>
+          <div class="art-performance-grid">
+            ${item.artPerformanceRequirements.map((entry, entryIndex) => `
+              <section>
+                <span>${String(entryIndex + 1).padStart(2, "0")}</span>
+                <div><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.text)}</p></div>
+              </section>`).join("")}
+          </div>
+        </article>` : "";
+      const eventRequirementsCard = item.eventRequirements ? `
+        <article class="detail-card event-requirements-card">
+          <h2>${escapeHtml(item.eventRequirementsTitle || "事件包装与美术需求")}</h2>
+          ${item.eventRequirementsIntro ? `<p class="event-requirements-intro">${escapeHtml(item.eventRequirementsIntro)}</p>` : ""}
+          <div class="event-requirements-list">
+            ${item.eventRequirements.map((entry, entryIndex) => `
+              <section class="event-requirement-item">
+                <header>
+                  <span>${String(entryIndex + 1).padStart(2, "0")}</span>
+                  <div><h3>${escapeHtml(entry.title)}</h3><p>${escapeHtml(entry.meta)}</p></div>
+                </header>
+                <dl>
+                  ${(entry.rows || [
+                    { label: "界面文本", text: entry.copy },
+                    { label: "功能结算", text: entry.result },
+                    { label: "动画表现", text: entry.performance },
+                    { label: "美术／特效", text: entry.art },
+                  ]).map((row) => `<div><dt>${escapeHtml(row.label)}</dt><dd>${escapeHtml(row.text)}</dd></div>`).join("")}
+                </dl>
+                ${entry.dialogues ? `
+                  <div class="adaptation-table-wrap" style="margin: 14px 16px 16px;">
+                    <table class="adaptation-table">
+                      <thead><tr><th>伙伴</th><th>结识中气泡</th><th>已拥有气泡</th></tr></thead>
+                      <tbody>${entry.dialogues.map((dialogue) => `<tr><td>${escapeHtml(dialogue.name)}</td><td>${escapeHtml(dialogue.unowned)}</td><td>${escapeHtml(dialogue.owned)}</td></tr>`).join("")}</tbody>
+                    </table>
+                  </div>` : ""}
+              </section>`).join("")}
+          </div>
+        </article>` : "";
+      const checkpointEventPlanningCard = item.id === "checkpoints" ? `
+        <article class="detail-card checkpoint-event-planning" data-checkpoint-event-planning>
+          <div class="checkpoint-event-planning-head">
+            <div><p class="eyebrow">EVENT CONFIGURATION</p><h2>关卡事件包装与美术配置</h2></div>
+            <span>7类包装 · 12个Type · 3套结果UI</span>
+          </div>
+          <div class="checkpoint-zone-guide" aria-label="事件界面区域说明">
+            <section><b>1</b><div><h3>动画／街景表现区</h3><p>承载街景、主角、NPC、角色动作和特效。NPC头顶气泡显示在这里，但气泡内容仍按事件文本配置。</p></div></section>
+            <section><b>2</b><div><h3>文本内容区</h3><p>承载事件正文、奖励和结果说明；仅宣传与好运事件额外显示右下角事件名称。Type 1只替换正文，不新增独立美术。</p></div></section>
+          </div>
+          <nav class="checkpoint-event-tabs" aria-label="关卡事件分页">
+            ${CHECKPOINT_EVENT_PAGES.map((page, pageIndex) => `<button type="button" class="${pageIndex === 0 ? "is-active" : ""}" data-checkpoint-event-tab="${escapeHtml(page.id)}">${String(pageIndex + 1).padStart(2, "0")} ${escapeHtml(page.label)}</button>`).join("")}
+          </nav>
+          ${CHECKPOINT_EVENT_PAGES.map((page, pageIndex) => `
+            <section class="checkpoint-event-page${pageIndex === 0 ? " is-active" : ""}" data-checkpoint-event-page="${escapeHtml(page.id)}" ${pageIndex === 0 ? "" : "hidden"}>
+              <header class="checkpoint-event-page-head"><h3>${escapeHtml(page.title)}</h3><p>${escapeHtml(page.intro)}</p></header>
+              ${page.sections.map((section) => `
+                <section class="checkpoint-event-table-block">
+                  <div class="checkpoint-event-table-head"><h4>${escapeHtml(section.title)}</h4>${section.note ? `<p>${escapeHtml(section.note)}</p>` : ""}</div>
+                  ${section.references?.length ? `<div class="checkpoint-ui-reference-grid">${section.references.map((reference) => `
+                    <figure><img src="${escapeHtml(reference.src)}" alt="${escapeHtml(reference.caption)}" /><figcaption>${escapeHtml(reference.caption)}</figcaption></figure>`).join("")}</div>` : ""}
+                  <div class="checkpoint-event-table-scroll"><table>
+                    <thead><tr>${section.columns.map((column) => `<th>${escapeHtml(column)}</th>`).join("")}</tr></thead>
+                    <tbody>${section.rows.map((row) => `<tr>${row.cells.map((cell, cellIndex) => `<td${cellIndex === 0 ? ' class="checkpoint-event-id"' : ""}>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody>
+                  </table></div>
+                </section>`).join("")}
+            </section>`).join("")}
+        </article>` : "";
+      const hasShopUiRules = Boolean(item.uiRuleImage || item.uiRules?.length || item.uiRuleReference);
+      const ruleCompletionCard = item.ruleSections?.length ? `
+        <article class="detail-card checkpoint-rule-completion">
+          <div class="checkpoint-rule-completion-head">
+            <div><p class="eyebrow">SYSTEM RULES</p><h2>${escapeHtml(item.ruleSectionsTitle || "关卡系统规则补全")}</h2></div>
+            <span>${escapeHtml(item.ruleSectionsBadge || "规则完整度补强")}</span>
+          </div>
+          <div class="checkpoint-rule-grid">
+            ${item.ruleSections.map((section, sectionIndex) => `
+              <section class="checkpoint-rule-section">
+                <header><span>${String(sectionIndex + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(section.title)}</h3><p>${escapeHtml(section.summary)}</p></div></header>
+                <dl>${section.rules.map((rule) => `<div><dt>${escapeHtml(rule.label)}</dt><dd>${escapeHtml(rule.text)}</dd></div>`).join("")}</dl>
+              </section>`).join("")}
+          </div>
+        </article>` : "";
+      const ruleConfigCard = item.ruleConfigFields?.length ? `
+        <article class="detail-card checkpoint-rule-config">
+          <div class="checkpoint-rule-completion-head">
+            <div><p class="eyebrow">CONFIGURATION</p><h2>${escapeHtml(item.ruleConfigTitle || "关卡配置与验收字段")}</h2></div>
+            <span>${escapeHtml(item.ruleConfigBadge || "字段名为设计口径")}</span>
+          </div>
+          <p class="checkpoint-rule-completion-intro">${escapeHtml(item.ruleConfigIntro || "具体表名、字段类型与资源ID以程序现有规范为准；本表用于保证规则能够落到配置并被验收。")}</p>
+          <div class="checkpoint-rule-config-scroll"><table>
+            <thead><tr><th>配置组</th><th>核心字段</th><th>验收与约束</th></tr></thead>
+            <tbody>${item.ruleConfigFields.map((entry) => `<tr><td><strong>${escapeHtml(entry.name)}</strong></td><td>${escapeHtml(entry.fields)}</td><td>${escapeHtml(entry.note)}</td></tr>`).join("")}</tbody>
+          </table></div>
+        </article>` : "";
+      const shopUiRuleEntries = item.uiRules || [];
+      const shopUiReference = item.uiRuleReference ? `
+        <section class="shop-ui-reference">
+          <p class="eyebrow">COMMON UI RULES</p>
+          <h3>${escapeHtml(item.uiRuleReference.title || "通用界面规则")}</h3>
+          <p>${escapeHtml(item.uiRuleReference.text || "")}</p>
+          <a class="button shop-ui-reference-link" href="${escapeHtml(item.uiRuleReference.href || "detail.html?id=car-wash&shopTab=interface")}">${escapeHtml(item.uiRuleReference.label || "查看通用界面规则")} <span aria-hidden="true">→</span></a>
+        </section>` : "";
+      const shopUiRulesCard = hasShopUiRules ? `
+        <article class="detail-card shop-ui-rules-card" data-shop-ui-rules>
+          <div class="shop-ui-rules-heading">
+            <div><p class="eyebrow">UI RULES</p><h2>${escapeHtml(item.uiRulesTitle || "经营主界面｜界面规则")}</h2></div>
+            <p>${escapeHtml(item.uiRulesIntro || item.uiRuleIntro || "点击左侧概念图中的编号，查看对应区域的显示、状态与交互规则。")}</p>
+          </div>
+          <div class="shop-ui-rules-layout${shopUiRuleEntries.length ? "" : " is-reference-only"}">
+            <figure class="shop-ui-rules-figure">
+              <img src="${escapeHtml(item.uiRuleImage || item.conceptGallery?.[0]?.src || "")}" alt="${escapeHtml(item.title)}经营主界面区域标注图" />
+              ${item.uiRuleImageHasLabels ? "" : `<div class="shop-ui-hotspot-layer" aria-label="界面区域标注">
+                ${shopUiRuleEntries.filter((rule) => !(item.id === "checkpoints" && Number(rule.id) === 12)).map((rule, ruleIndex) => `<button type="button" class="shop-ui-hotspot${ruleIndex === 0 ? " is-active" : ""}" style="--hotspot-x:${Number(rule.x) || 50}%;--hotspot-y:${Number(rule.y) || 50}%" data-shop-ui-rule-tab="${escapeHtml(rule.id)}" aria-label="${escapeHtml(rule.id)} ${escapeHtml(rule.title)}" aria-pressed="${ruleIndex === 0 ? "true" : "false"}">${escapeHtml(rule.id)}</button>`).join("")}
+              </div>`}
+            </figure>
+            <aside class="shop-ui-rule-panel" aria-live="polite">
+              ${shopUiReference}
+              ${shopUiRuleEntries.length ? `<nav class="shop-ui-rule-index" aria-label="界面规则编号">
+                ${shopUiRuleEntries.map((rule, ruleIndex) => `<button type="button" class="${ruleIndex === 0 ? "is-active" : ""}" data-shop-ui-rule-tab="${escapeHtml(rule.id)}" aria-pressed="${ruleIndex === 0 ? "true" : "false"}">${String(rule.id).padStart(2, "0")}</button>`).join("")}
+              </nav>` : ""}
+              ${shopUiRuleEntries.map((rule, ruleIndex) => `
+                <section class="shop-ui-rule-copy${ruleIndex === 0 ? " is-active" : ""}" data-shop-ui-rule-page="${escapeHtml(rule.id)}" ${ruleIndex === 0 ? "" : "hidden"}>
+                  <header><span>${String(rule.id).padStart(2, "0")}</span><div><h3>${escapeHtml(rule.title)}</h3><p>${escapeHtml(rule.summary)}</p></div></header>
+                  <dl>${rule.rules.map((entry) => `<div><dt>${escapeHtml(entry.label)}</dt><dd>${escapeHtml(entry.text)}</dd></div>`).join("")}</dl>
+                </section>`).join("")}
+            </aside>
+          </div>
+        </article>` : "";
+      const conceptGalleryCard = item.conceptGallery && !hasShopUiRules ? `
+        <article class="detail-card system-concept-card">
+          <h2>${escapeHtml(item.conceptGalleryTitle || "AI概念图")}</h2>
+          <div class="system-concept-grid">
+            ${item.conceptGallery.map((entry) => `
+              <figure class="${entry.layout === "wide" ? "is-wide" : entry.layout === "portrait-center" ? "is-portrait-center" : ""}">
+                <div class="system-concept-image">
+                  <img src="${escapeHtml(entry.src)}" alt="${escapeHtml(entry.alt || entry.caption)}" loading="lazy" />
+                </div>
+                <figcaption>${escapeHtml(entry.caption)}</figcaption>
+              </figure>`).join("")}
+          </div>
+        </article>` : "";
+      const storyRulesCard = item.storyRules ? `
+        <article class="detail-card narrative-rules-card">
+          <h2>主线人物投放原则</h2>
+          <ol class="rule-change-list">${item.storyRules.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ol>
+        </article>` : "";
+      const shopUnlockAuditCard = item.shopUnlockAudit ? `
+        <article class="detail-card shop-unlock-audit-card">
+          <div class="chapter-plan-heading"><div><p>SHOP UNLOCK</p><h2>店铺开放节点</h2></div><strong>玩家界面关卡</strong></div>
+          <div class="chapter-plan-table-wrap">
+            <table class="chapter-plan-table">
+              <thead><tr><th>新包装店铺</th><th>原配置槽位</th><th>开放条件</th><th>同期身份区间</th><th>剧情落点</th></tr></thead>
+              <tbody>${item.shopUnlockAudit.map((entry) => `<tr><td><strong>${escapeHtml(entry.shop)}</strong></td><td>${escapeHtml(entry.source)}</td><td><span class="chapter-identity">${escapeHtml(entry.stage)}</span></td><td>${escapeHtml(entry.identity)}</td><td>${escapeHtml(entry.placement)}</td></tr>`).join("")}</tbody>
+            </table>
+          </div>
+        </article>` : "";
+      const storyPartsCard = item.storyParts ? `
+        <article class="detail-card story-parts-card">
+          <h2>完整主线分部</h2>
+          <p class="character-section-lead">覆盖身份1—80的长线骨架；具体单章以经营事故和群像笑点为主，每部结尾再推进一次家族与商业冲突。</p>
+          <div class="story-parts-list">
+            ${item.storyParts.map((part, partIndex) => `
+              <section class="story-part-item">
+                <header><span>${String(partIndex + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(part.name)}</h3><b>${escapeHtml(part.range)}</b></div></header>
+                <dl>
+                  <div><dt>经营目标</dt><dd>${escapeHtml(part.business)}</dd></div>
+                  <div><dt>喜剧主轴</dt><dd>${escapeHtml(part.comedy)}</dd></div>
+                  <div><dt>关系推进</dt><dd>${escapeHtml(part.relation)}</dd></div>
+                  <div><dt>阶段结尾</dt><dd>${escapeHtml(part.ending)}</dd></div>
+                </dl>
+              </section>`).join("")}
+          </div>
+        </article>` : "";
+      const earlyStoryBeatsCard = item.earlyStoryBeats ? `
+        <article class="detail-card early-story-card">
+          <h2>前期主线与人物登场</h2>
+          <p class="character-section-lead">先在剧情中建立人物关系，再按身份节点发放人才或开启免费关系线；身份升级本身不赠送后续伙伴角色。</p>
+          <div class="early-story-list">
+            ${item.earlyStoryBeats.map((beat, beatIndex) => `
+              <section class="early-story-item">
+                <div class="early-story-index"><span>${String(beatIndex + 1).padStart(2, "0")}</span><b>${escapeHtml(beat.identity)}</b></div>
+                <div><h3>${escapeHtml(beat.title)}</h3><p>${escapeHtml(beat.plot)}</p><strong>${escapeHtml(beat.cast)}</strong></div>
+              </section>`).join("")}
+          </div>
+        </article>` : "";
+      const partnerRewardNames = ["弗兰克", "格洛丽亚", "瑞秋", "凯文", "维尼", "马库斯", "伊森", "泰勒"];
+      const relationshipRewardNames = ["克莱尔", "梅根", "娜奥米", "布鲁克", "萨姆", "莉迪亚", "凡妮莎", "杰西卡"];
+      const shopRewardTerms = ["洗车行", "加油站", "超市", "便利店", "公路餐厅", "公路洗衣房", "旅行写真馆", "照相馆", "宠物洗护寄养店", "修车厂", "音乐酒吧", "按摩理疗店", "保龄球馆", "汽车影院"];
+      const renderChapterUnlocks = (reward = "") => {
+        const unlocks = String(reward)
+          .split(/[；;]/)
+          .map((entry) => entry.trim())
+          .filter((entry) => entry && !entry.includes("剧情小游戏"));
+        if (!unlocks.length) return `<span class="chapter-unlock-empty">—</span>`;
+        return `<span class="chapter-unlock-list">${unlocks.map((entry) => {
+          let type = "system";
+          let label = "系统";
+          if (/^晋升身份\d+/.test(entry)) {
+            label = "身份";
+          } else if (partnerRewardNames.some((name) => entry.includes(name)) || (/人才/.test(entry) && !/人才系统/.test(entry))) {
+            type = "partner";
+            label = "人才";
+          } else if (relationshipRewardNames.some((name) => entry.includes(name)) || (/伙伴|关系线/.test(entry) && !/伙伴系统/.test(entry))) {
+            type = "relationship";
+            label = "伙伴";
+          } else if (shopRewardTerms.some((term) => entry.includes(term)) && !/玩法/.test(entry)) {
+            type = "shop";
+            label = "店铺";
+          }
+          return `<span class="chapter-unlock-tag is-${type}"><b>${label}</b><em>${escapeHtml(entry)}</em></span>`;
+        }).join("")}</span>`;
+      };
+      const standardChapters = item.chapters ? item.chapters.filter((chapter) => !chapter.isPrologue) : [];
+      const chapterTableCard = item.chapters ? `
+        <article class="detail-card chapter-plan-card" id="chapter-plan">
+          <div class="chapter-plan-heading"><div><p>PART 1 · PROLOGUE / CHAPTER 01—${String(standardChapters.length).padStart(2, "0")}</p><h2>线性主线章节</h2></div><strong>序章＋${standardChapters.length}章</strong></div>
+          ${item.prologue ? `
+            <section class="story-prologue" aria-label="${escapeHtml(item.prologue.label)}">
+              <header><span>PROLOGUE</span><strong>${escapeHtml(item.prologue.label)}</strong></header>
+              <div class="story-prologue-copy"><p>${escapeHtml(item.prologue.subtitle)}</p><h3>${escapeHtml(item.prologue.title)}</h3><div>${escapeHtml(item.prologue.summary)}</div></div>
+              <ol>${item.prologue.objectives.map((objective) => `<li>${escapeHtml(objective)}</li>`).join("")}</ol>
+              <footer><span>序章结算</span>${renderChapterUnlocks(item.prologue.reward)}</footer>
+            </section>` : ""}
+          <div class="chapter-plan-table-wrap">
+            <table class="chapter-plan-table">
+              <thead><tr><th>章节</th><th>标题</th><th>身份等级</th><th>解锁身份</th><th>系统／店铺／角色解锁</th><th>本章内容</th></tr></thead>
+              <tbody>
+                ${standardChapters.map((chapter, chapterIndex) => {
+                  const arcStart = chapterIndex === 0 || standardChapters[chapterIndex - 1].arc !== chapter.arc;
+                  return `<tr class="${arcStart ? "is-arc-start" : ""}">
+                    <td><b class="chapter-number">${String(chapter.no).padStart(2, "0")}</b></td>
+                    <td><strong>${escapeHtml(chapter.title)}</strong>${arcStart ? `<small>总览节点｜${escapeHtml(chapter.arc)}</small>` : ""}</td>
+                    <td>${escapeHtml(chapter.level)}</td>
+                    <td>${chapter.identity ? `<span class="chapter-identity">${escapeHtml(chapter.identity)}</span>` : ""}</td>
+                    <td>${renderChapterUnlocks(chapter.reward)}${chapter.cityBuild ? `<span class="chapter-city-build"><b>旅馆改建</b>${escapeHtml(chapter.cityBuild)}</span>` : ""}</td>
+                    <td><p>${escapeHtml(chapter.summary)}</p></td>
+                  </tr>`;
+                }).join("")}
+              </tbody>
+            </table>
+          </div>
+        </article>` : "";
+      const characterQualityCard = item.characterBatch?.qualityLegend ? `
+        <article class="detail-card character-quality-card">
+          <h2>角色品质与颜色</h2>
+          <p>以下为本系统的完整品质体系；首批角色仅投放其中部分品质。</p>
+          <div class="character-quality-list">
+            ${item.characterBatch.qualityLegend.map((entry) => `
+              <span class="character-quality-pill is-${escapeHtml(entry.tone)}"><b>${escapeHtml(entry.name)}</b><em>${escapeHtml(entry.color)}</em></span>
+            `).join("")}
+          </div>
+          ${item.characterBatch.qualityRule ? `<p class="character-quality-rule">${escapeHtml(item.characterBatch.qualityRule)}</p>` : ""}
+        </article>` : "";
+      const characterBatchCard = item.characterBatch ? `
+        <article class="detail-card character-batch-card">
+          <div class="character-batch-heading"><div><p>FIRST BATCH</p><h2>${escapeHtml(item.characterBatch.title)}</h2></div><strong>${escapeHtml(item.characterBatch.total)}</strong></div>
+          <div class="character-batch-stats">
+            ${item.characterBatch.stats.map((entry) => `<section><span>${escapeHtml(entry.label)}</span><b>${escapeHtml(entry.value)}</b></section>`).join("")}
+          </div>
+          <p class="character-batch-note">${escapeHtml(item.characterBatch.note)}</p>
+        </article>` : "";
+      const characterReferencePolicyCard = isCharacterArtPage ? `
+        <article class="detail-card character-reference-policy-card">
+          <h2>影视角色参考原则</h2>
+          <p>参考影视角色的目的，是为原创角色建立具有知名度的形象锚点，让熟悉作品的玩家能够自然产生联想，并非一比一复刻演员的五官与外貌。</p>
+          <p>若参考角色具有辨识度较高的服装、发型、职业道具、姿态或场景，应优先保留这些视觉锚点；若缺少明确的外在标志，可在保持原创差异的前提下，让五官轮廓与整体气质适度贴近参考角色。</p>
+        </article>` : "";
+      const relationshipRulesCard = item.relationshipRules ? `
+        <article class="detail-card relationship-rules-card">
+          <h2>关系角色投放原则</h2>
+          <ol class="rule-change-list">${item.relationshipRules.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ol>
+        </article>` : "";
+      const characterRosterCard = item.characterRoster ? `
+        <article class="detail-card character-roster-card">
+          <h2>${escapeHtml(item.characterRosterTitle || "前期人物规划")}</h2>
+          <p class="character-section-lead">首批角色设定仅保留品质、身份职业与人设、主线关联及影视形象参考。</p>
+          <div class="character-roster-grid">
+            ${item.characterRoster.map((character, characterIndex) => {
+              const badgeClass = character.quality === "传奇" ? " is-legendary" : character.quality === "卓越" ? " is-superior" : character.quality === "普通" ? " is-normal" : "";
+              const gender = character.meta.endsWith("｜女") || ["格洛丽亚·阿尔瓦雷斯"].includes(character.name) ? "女" : "男";
+              const conciseProfiles = {
+                "弗兰克·道尔": "56岁，汽车旅馆前员工／小镇老住户。看见故人孩子重新点灯，便回来搭把手。",
+                "格洛丽亚·阿尔瓦雷斯": "41岁，社区活动承办人／前工会干事。习惯先质疑口号，也敢为真正做事的人改口。",
+                "雷·特纳": "42岁，家族农场主／农业合作社负责人。守着土地和没说出口的棒球梦想。",
+                "凯文·朴": "27岁，社区大学肄业生／业余魔术师与电子迷。爱炫技，也总把小聪明玩脱。",
+                "文森特“维尼”·鲁索": "35岁，地方电台DJ／有线节目主持人。镜头前夸张热闹，私下真诚重情。",
+                "马库斯·里德": "26岁，小镇社区巡警。阳光正直、认真负责，私下随和爱开玩笑，是镇民熟悉的年轻警员。",
+                "杰西卡·门罗": "34岁，车辆与资产估价师／前赛车手。好胜强势，能用专业报告把虚高估值逐项拆穿。",
+                "泰勒·格兰特": "27岁，青少年中心活动辅导员。亲切耐心、爱运动，擅长带孩子玩游戏、做手工，是暖心的大哥哥。职业可关联青少年中心。",
+                "克莱尔·贝内特": "30岁，地方周刊记者／摄影师。聪明大胆，最擅长拍到主角不想被看见的瞬间。",
+                "梅根·卡特": "32岁，包机飞行员／志愿搜救协调员。自立嘴硬，越是危险越冷静。",
+                "娜奥米·福斯特": "35岁，兽医／动物救援站负责人。对动物极有耐心，对不靠谱的人完全没有。",
+                "布鲁克·摩根": "28岁，录像带租赁店店员／影迷。嘴快机灵，用电影台词掩饰敏感。",
+                "萨曼莎“萨姆”·里德": "31岁，美发沙龙老板／车库乐队主唱。爽快护短，张扬且有掌控力。",
+                "莉迪亚·托雷斯": "37岁，高中音乐教师／前巡演和声歌手。要求严格，能在一分钟内让混乱人群找到节拍。",
+                "凡妮莎·金": "34岁，地方电视台制片人／主播。强势专业，敢在权力面前坚持完成电视现场直播。",
+                "伊森·科尔": "24岁，小镇邮递员。开朗机灵、健谈利落，熟悉街巷和住户，总背着邮差包穿梭小镇。职业可关联征才信箱。",
+              };
+              const lightStories = {
+                "弗兰克·道尔": "看见荒废多年的旅馆重新亮灯后回来确认，认出双胞胎便说先帮几天；用一场短戏完成首位人才教学，此后不强行占用主线。",
+                "格洛丽亚·阿尔瓦雷斯": "先因选美事故与镇庆预算站在双胞胎对面，看到他们公开账目、把决定交还居民后才转为人才；加入后仍保留监督和争辩。",
+                "雷·特纳": "先因越界测量线认定双胞胎侵占农场，发现双方都被同一开发商算计后被迫联手；他加入阵容，却仍会公开反对主角。",
+                "凯文·朴": "镇庆抽奖时用小机关连续抽中自己，被拆穿后又发现主办方另有更大的内定骗局；为证明自己不是最坏的那个，他交出证据并加入。",
+                "文森特“维尼”·鲁索": "误播停水争执后主动补做地方有线说明，推动供水方抢修并组织集市报名；断电时又用地方电台发布供电点和营业信息。",
+                "马库斯·里德": "通用型人才，剧情随时可调",
+                "伊森·科尔": "通用型人才，剧情随时可调",
+                "泰勒·格兰特": "通用型人才，剧情随时可调",
+                "克莱尔·贝内特": "暴雨夜带着私人调查和失踪胶卷倒在旅馆门口。她会记录双胞胎，也会拒绝卷入经营；关系从互相怀疑、深夜争论与偶尔同行中推进。",
+                "梅根·卡特": "克莱尔错过暴雨后的约定联络，她沿公路寻找并误闯旅馆；此后在飞行、搜救与天气封路事件中反复相遇，关系从风险边界的争执与互相托付中推进。",
+                "娜奥米·福斯特": "追着叼走开发地图的流浪狗闯进旅馆；她与主角会争论救助边界，也会在完全无关经营的夜间出诊与休息日逐渐靠近。",
+                "布鲁克·摩根": "凭录像带贴纸帮忙找回监控，却坚持按照烂片剧情夜探仓库；她把主角拉进自己的电影世界，也逐渐愿意谈起台词之外的真实未来。",
+                "萨曼莎“萨姆”·里德": "先用沙龙消息网为集市找摊主并强行给双胞胎改造型，后来守住客人隐私，并在公路酒馆组织匿名证言夜。",
+                "莉迪亚·托雷斯": "带学生合唱团参加才艺竞演特别节目，把唱错公司名的事故临场救成全场高潮；后续从学校排练、镇庆演出与深夜改编中重新面对自己的作品。",
+                "凡妮莎·金": "在银幕套房闹剧中发现收购集团信封，最终争取现场直播资产听证；她选择播完整证据，而不是只剪最热闹的片段。",
+                "杰西卡·门罗": "先在公路挑战赛前查出车辆被动手脚，又在听证现场拆穿抵押车辆造假；她把与主角的每次合作都说成专业竞争。",
+              };
+              return `
+                <section class="character-roster-item">
+                  <header>
+                    <span class="character-order">${String(characterIndex + 1).padStart(2, "0")}</span>
+                    <div class="character-name-line"><h3>${escapeHtml(character.name)}</h3><span class="character-gender is-${gender === "女" ? "female" : "male"}" title="${gender === "女" ? "女性" : "男性"}">${gender === "女" ? "♀" : "♂"}</span></div>
+                    <div class="character-badges">${character.acquire ? `<i class="${character.acquire === "初始赠送" ? "is-initial" : ""}">${escapeHtml(character.acquire)}</i>` : ""}<b>${escapeHtml(character.identity)}</b><em class="${badgeClass.trim()}">${escapeHtml(character.quality)}</em></div>
+                  </header>
+                  <dl>
+                    <div><dt>身份／职业／人设</dt><dd>${escapeHtml(conciseProfiles[character.name] || character.meta)}</dd></div>
+                    <div><dt>主线剧情相关</dt><dd>${escapeHtml(lightStories[character.name] || character.story)}</dd></div>
+                  </dl>
+                  ${character.reference ? `
+                    <section class="character-reference">
+                      <h4>形象参考｜${escapeHtml(character.reference.title)}</h4>
+                      <div class="character-reference-images">
+                        ${character.reference.images.map((image) => `
+                          <figure>
+                            <img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.caption)}" loading="lazy" />
+                            <figcaption>${escapeHtml(image.caption)}</figcaption>
+                          </figure>`).join("")}
+                      </div>
+                    </section>` : ""}
+                </section>`;
+            }).join("")}
+          </div>
+        </article>` : "";
+      const adaptationCard = item.adaptationMap ? `
+        <article class="detail-card">
+          <h2>${escapeHtml(item.adaptationTitle || "原系统包装改造")}</h2>
+          <p style="margin-bottom:14px">${escapeHtml(item.adaptationIntro || "底层成长结构尽量保留，重点替换与餐饮、古代书院和亲缘关系绑定的表现。")}</p>
+          <div class="adaptation-table-wrap">
+            <table class="adaptation-table">
+              <thead><tr><th>原包装</th><th>新包装</th><th>改造说明</th></tr></thead>
+              <tbody>${item.adaptationMap.map((entry) => `<tr><td>${escapeHtml(entry.source)}</td><td><strong>${escapeHtml(entry.target)}</strong></td><td>${escapeHtml(entry.note)}</td></tr>`).join("")}</tbody>
+            </table>
+          </div>
+        </article>` : "";
+      const ruleChangesCard = item.ruleChanges ? `
+        <article class="detail-card">
+          <h2>${escapeHtml(item.ruleTitle || "合并后的规则调整")}</h2>
+          <ol class="rule-change-list">${item.ruleChanges.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ol>
+        </article>` : "";
+      const rankTierCard = item.rankTiers ? `
+        <article class="detail-card">
+          <h2>节目梯度与席位配置</h2>
+          <p style="margin-bottom:14px">底层席位数量与《赘婿》濮院诗会完全一致，仅替换电视节目包装名称。</p>
+          <div style="overflow-x:auto">
+            <table style="width:100%;border-collapse:collapse;min-width:760px;font-size:14px">
+              <thead><tr>${["原舫位", "节目包装", "席位数", "全局席位", "本级名次", "参与方式"].map((label) => `<th style="padding:10px;border-bottom:2px solid #c8d3df;text-align:left;background:#eef3f7">${label}</th>`).join("")}</tr></thead>
+              <tbody>${item.rankTiers.map((tier) => `<tr><td style="padding:10px;border-bottom:1px solid #dde4eb">${escapeHtml(tier.source)}</td><td style="padding:10px;border-bottom:1px solid #dde4eb"><strong>${escapeHtml(tier.name)}</strong></td><td style="padding:10px;border-bottom:1px solid #dde4eb">${escapeHtml(tier.seats)}</td><td style="padding:10px;border-bottom:1px solid #dde4eb">${escapeHtml(tier.global)}</td><td style="padding:10px;border-bottom:1px solid #dde4eb">${escapeHtml(tier.rank)}</td><td style="padding:10px;border-bottom:1px solid #dde4eb">${escapeHtml(tier.mode)}</td></tr>`).join("")}</tbody>
+            </table>
+          </div>
+          <p style="margin-top:14px"><strong>边界：</strong>前三档共601席为个人NPC保护区；第602席“州级舞台第1000名”是同服共享竞争区的第一席；全部共2101席。</p>
+        </article>` : "";
+      const interfaceRulesCard = item.interfaceRules ? `
+        <article class="detail-card">
+          <h2>界面与交互规则</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px">
+            ${item.interfaceRules.map((rule, ruleIndex) => `<section style="padding:15px;border:1px solid #dbe2e8;border-radius:12px;background:#f8fafb"><span style="color:#b64b30;font-size:12px;font-weight:900">${String(ruleIndex + 1).padStart(2, "0")}</span><h3 style="margin:3px 0 6px;font-size:16px">${escapeHtml(rule.title)}</h3><p>${escapeHtml(rule.text)}</p></section>`).join("")}
+          </div>
+        </article>` : "";
+      const isStructuredScene = item.id === "main-town" || item.id === "city" || item.id === "home";
+      const renderBuildingList = (entries = []) => entries.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("");
+      const renderReferenceGallery = (gallery) => {
+        const slides = (gallery.images || []).map((image, slideIndex) => `
+          <figure class="reference-carousel-slide" data-carousel-slide aria-hidden="${slideIndex === 0 ? "false" : "true"}">
+            ${image.src
+              ? `<img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.caption)}" loading="lazy" />`
+              : `<div class="reference-carousel-placeholder"><span>图片预留</span><strong>${escapeHtml(image.placeholder)}</strong></div>`}
+            <figcaption>
+              <span>${escapeHtml(image.caption)}</span>
+              ${image.sourceUrl ? `<a href="${escapeHtml(image.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(image.source || "查看来源")}</a>` : ""}
+            </figcaption>
+          </figure>`).join("");
+        const dots = (gallery.images || []).map((_, slideIndex) => `
+          <button type="button" data-carousel-dot aria-label="查看第 ${slideIndex + 1} 张" aria-current="${slideIndex === 0 ? "true" : "false"}"></button>`).join("");
+        return `
+          <section class="town-reference-panel">
+            <header><h2>${escapeHtml(gallery.title)}</h2><span><b data-carousel-current>1</b> / ${gallery.images.length}</span></header>
+            <div class="reference-carousel" data-carousel tabindex="0" aria-label="${escapeHtml(gallery.title)}图片切换">
+              <div class="reference-carousel-viewport"><div class="reference-carousel-track">${slides}</div></div>
+              <button class="reference-carousel-arrow is-prev" type="button" data-carousel-prev aria-label="上一张">←</button>
+              <button class="reference-carousel-arrow is-next" type="button" data-carousel-next aria-label="下一张">→</button>
+              <div class="reference-carousel-dots" aria-label="图片页码">${dots}</div>
+            </div>
+          </section>`;
+      };
+      const referenceGalleries = (item.referenceGalleries || []).map(renderReferenceGallery).join("");
+      const prototypeScenes = item.scenePrototype?.scenes || (item.scenePrototype ? [{
+        id: "scene",
+        label: "场景",
+        icon: "景",
+        image: item.scenePrototype.image,
+        alt: item.scenePrototype.alt,
+      }] : []);
+      const firstPrototypeScene = prototypeScenes[0];
+      const prototypeHotspotLayers = prototypeScenes.map((scene, sceneIndex) => {
+        if (!(scene.hotspots || []).length) return "";
+        const hotspots = scene.hotspots.map((hotspot) => `
+          <button class="home-scene-hotspot${hotspot.locked ? " is-locked" : ""}" type="button" data-scene-hotspot
+            data-hotspot-label="${escapeHtml(hotspot.label)}"
+            ${hotspot.locked ? "data-hotspot-locked" : `data-hotspot-src="${escapeHtml(hotspot.image)}" data-hotspot-alt="${escapeHtml(hotspot.alt)}"`}
+            style="--hotspot-x:${Number(hotspot.x)}%;--hotspot-y:${Number(hotspot.y)}%;--hotspot-w:${Number(hotspot.w)}%;--hotspot-h:${Number(hotspot.h)}%"
+            aria-label="${escapeHtml(hotspot.locked ? `${hotspot.label}，尚未解锁` : `查看${hotspot.label}近景`)}">
+            <span><b>${hotspot.locked ? "🔒" : "＋"}</b></span>
+          </button>`).join("");
+        return `<div class="home-scene-hotspot-layer" data-scene-hotspot-layer data-scene-id="${escapeHtml(scene.id)}" ${sceneIndex === 0 ? "" : "hidden"}>${hotspots}</div>`;
+      }).join("");
+      const scenePrototype = item.scenePrototype ? `
+        <article class="home-prototype-card">
+          <header class="home-prototype-head">
+            <div>
+              <p class="eyebrow">INTERACTIVE PROTOTYPE</p>
+              <h2>${escapeHtml(item.scenePrototype.title)}</h2>
+              <p>${escapeHtml(item.scenePrototype.description)}</p>
+            </div>
+            <span>拖动浏览 · 点击拉近</span>
+          </header>
+          ${(item.scenePrototype.rules || []).length ? `
+            <section class="home-prototype-rules" aria-labelledby="home-prototype-rules-title">
+              <h3 id="home-prototype-rules-title">界面与操作规则</h3>
+              <div class="home-prototype-rule-grid">
+                ${item.scenePrototype.rules.map((rule, ruleIndex) => `
+                  <article class="home-prototype-rule">
+                    <span>${String(ruleIndex + 1).padStart(2, "0")}</span>
+                    <div><h4>${escapeHtml(rule.title)}</h4><p>${escapeHtml(rule.text)}</p></div>
+                  </article>`).join("")}
+              </div>
+            </section>` : ""}
+          <div class="home-phone-frame">
+            <div class="home-phone-hardware" aria-hidden="true"><i></i></div>
+            <div class="home-scene-preview" data-scene-preview tabindex="0" aria-label="汽车旅馆侧剖面交互预览。左右拖动浏览，点击房间拉近，按 Escape 返回总览。">
+              <div class="home-scene-stage" data-scene-preview-stage>
+                <img src="${escapeHtml(firstPrototypeScene.image)}" alt="${escapeHtml(firstPrototypeScene.alt)}" data-scene-preview-image data-no-preview draggable="false" />
+                ${prototypeHotspotLayers}
+              </div>
+              <div class="home-game-title" aria-hidden="true">
+                <strong>MOTEL</strong>
+                <span>MY HOME</span>
+              </div>
+              <div class="home-scene-toolbar">
+                <span data-scene-preview-status>侧剖面总览</span>
+                <button type="button" data-scene-preview-reset>返回总览</button>
+              </div>
+              <div class="home-scene-hint" data-scene-preview-hint><b>↔</b> 左右拖动浏览 · 点击房间拉近</div>
+              <div class="home-scene-toast" data-scene-toast role="status" aria-live="polite"></div>
+              <div class="home-game-side-actions" aria-hidden="true">
+                <div class="home-game-side-action"><b>▤</b><span>图鉴</span></div>
+                <div class="home-game-side-action is-draw"><b>✦</b><span>家具抽取</span></div>
+              </div>
+              <div class="home-game-dock" aria-label="主宅区域切换">
+                <button class="home-game-back" type="button" data-home-back aria-disabled="true" aria-label="返回上一界面，交互原型中仅作展示">
+                  <b>←</b><span>返回</span>
+                </button>
+                <div class="home-game-dock-tabs">
+                  ${prototypeScenes.map((scene, sceneIndex) => `
+                    <button class="home-game-dock-item${sceneIndex === 0 ? " is-active" : ""}" type="button" data-scene-tab data-scene-id="${escapeHtml(scene.id)}" data-scene-src="${escapeHtml(scene.image)}" data-scene-alt="${escapeHtml(scene.alt)}" data-scene-label="${escapeHtml(scene.label)}" aria-pressed="${sceneIndex === 0 ? "true" : "false"}">
+                      <b>${escapeHtml(scene.icon)}</b><span>${escapeHtml(scene.label)}</span>
+                    </button>`).join("")}
+                </div>
+              </div>
+            </div>
+            <div class="home-phone-homebar" aria-hidden="true"></div>
+          </div>
+        </article>` : "";
+      const buildingGroups = item.buildingGroups || [
+        { title: "经营店铺", items: item.businessBuildings },
+        { title: "系统功能建筑", items: item.systemBuildings },
+      ];
+      const sceneBuildingGroups = buildingGroups.map((buildingGroup) => `
+        <section><h3>${escapeHtml(buildingGroup.title)}</h3><${buildingGroup.ordered ? "ol" : "ul"}>${renderBuildingList(buildingGroup.items)}</${buildingGroup.ordered ? "ol" : "ul"}></section>`).join("");
+      const sceneFunctionPlanCard = item.sceneFunctionPlan ? (() => {
+        const plan = item.sceneFunctionPlan;
+        const interfaceFlowCard = plan.interfaceFlow ? `
+          <section class="town-interface-flow" data-town-interface-flow data-main-town-legacy-flow>
+            <div class="town-interface-flow-heading">
+              <div><span>01</span><div><h3>${escapeHtml(plan.interfaceFlow.title)}</h3><p>${escapeHtml(plan.interfaceFlow.intro)}</p></div></div>
+              <nav aria-label="主城界面流程步骤">
+                ${plan.interfaceFlow.screens.map((screen, screenIndex) => `<button type="button" class="${screenIndex === 0 ? "is-active" : ""}" data-town-flow-target="${escapeHtml(screen.id)}" aria-pressed="${screenIndex === 0 ? "true" : "false"}"><b>${escapeHtml(screen.step)}</b><span>${escapeHtml(screen.tab)}</span></button>`).join("")}
+              </nav>
+            </div>
+            <div class="town-interface-flow-layout">
+              <div class="town-flow-visual-column">
+                <div class="town-flow-phone">
+                  <div class="town-flow-phone-speaker" aria-hidden="true"><i></i></div>
+                  <div class="town-flow-screen-stack">
+                    ${plan.interfaceFlow.screens.map((screen, screenIndex) => `
+                      <figure class="town-flow-screen ${screenIndex === 0 ? "is-active" : ""}" data-town-flow-screen="${escapeHtml(screen.id)}" data-town-flow-hint-text="${escapeHtml(screen.hint)}" aria-hidden="${screenIndex === 0 ? "false" : "true"}">
+                        <img src="${escapeHtml(screen.image)}" alt="${escapeHtml(screen.alt)}" data-no-preview />
+                        ${screen.hotspot ? `<button type="button" class="town-flow-hotspot" data-town-flow-target="${escapeHtml(screen.hotspot.target)}" aria-label="${escapeHtml(screen.hotspot.label)}" style="--hotspot-left:${escapeHtml(screen.hotspot.left)};--hotspot-top:${escapeHtml(screen.hotspot.top)};--hotspot-width:${escapeHtml(screen.hotspot.width)};--hotspot-height:${escapeHtml(screen.hotspot.height)}"><span>${escapeHtml(screen.hotspot.label)}</span></button>` : ""}
+                      </figure>`).join("")}
+                  </div>
+                  <div class="town-flow-phone-homebar" aria-hidden="true"></div>
+                </div>
+                <p class="town-flow-click-hint" data-town-flow-hint>${escapeHtml(plan.interfaceFlow.screens[0].hint)}</p>
+              </div>
+              <div class="town-flow-copy-stack" aria-live="polite">
+                ${plan.interfaceFlow.screens.map((screen, screenIndex) => `
+                  <section class="town-flow-copy ${screenIndex === 0 ? "is-active" : ""}" data-town-flow-copy="${escapeHtml(screen.id)}" aria-hidden="${screenIndex === 0 ? "false" : "true"}">
+                    <header><span>STEP ${escapeHtml(screen.step)}</span><h3>${escapeHtml(screen.title)}</h3><p>${escapeHtml(screen.summary)}</p></header>
+                    <div class="town-flow-rule-groups">
+                      ${screen.groups.map((group) => `<section><h4>${escapeHtml(group.title)}</h4><ul>${group.items.map((entry) => `<li>${escapeHtml(entry)}</li>`).join("")}</ul></section>`).join("")}
+                    </div>
+                  </section>`).join("")}
+              </div>
+            </div>
+          </section>` : "";
+        const hierarchyAndDock = plan.interfaceFlow ? "" : `
+            <h3 class="scene-function-section-title">01｜界面入口层级</h3>
+            <div class="scene-hierarchy-grid">
+              ${plan.hierarchy.map((entry) => `<section><span>${escapeHtml(entry.level)}</span><div><h4>${escapeHtml(entry.title)}</h4><p>${escapeHtml(entry.text)}</p></div></section>`).join("")}
+            </div>
+
+            <h3 class="scene-function-section-title">02｜底部常驻系统入口</h3>
+            <div class="scene-spec-table-wrap"><table class="scene-spec-table scene-dock-table">
+              <thead><tr><th>位置</th><th>入口</th><th>开放</th><th>功能</th><th>界面／美术要求</th></tr></thead>
+              <tbody>${plan.bottomDock.map((entry) => `<tr><td><b>${escapeHtml(entry.position)}</b></td><td><strong>${escapeHtml(entry.entry)}</strong></td><td>${escapeHtml(entry.unlock)}</td><td>${escapeHtml(entry.function)}</td><td>${escapeHtml(entry.art)}</td></tr>`).join("")}</tbody>
+            </table></div>`;
+        const sceneEntriesAndCounts = plan.interfaceFlow ? "" : `
+            <h3 class="scene-function-section-title">03｜场景内系统入口</h3>
+            <div class="scene-spec-table-wrap"><table class="scene-spec-table scene-entry-table">
+              <thead><tr><th>入口组</th><th>数量</th><th>具体内容</th><th>场景包装与点击方式</th></tr></thead>
+              <tbody>${plan.sceneEntries.map((entry) => `<tr><td><strong>${escapeHtml(entry.group)}</strong></td><td><b>${escapeHtml(entry.count)}</b></td><td>${escapeHtml(entry.content)}</td><td>${escapeHtml(entry.presentation)}</td></tr>`).join("")}</tbody>
+            </table></div>
+
+            <h3 class="scene-function-section-title">04｜建筑数量需求</h3>
+            <div class="scene-building-count-grid">
+              ${plan.buildingCounts.map((entry) => `<section><strong>${escapeHtml(entry.value)}</strong><h4>${escapeHtml(entry.label)}</h4><p>${escapeHtml(entry.note)}</p></section>`).join("")}
+            </div>`;
+        return `
+          <article class="detail-card scene-function-plan-card">
+            <header class="scene-function-plan-head">
+              <div><p class="eyebrow">${escapeHtml(plan.eyebrow)}</p><h2>${escapeHtml(plan.title)}</h2></div>
+              <span>功能与美术共用规格</span>
+            </header>
+            <p class="scene-function-plan-intro">${escapeHtml(plan.intro)}</p>
+
+            ${interfaceFlowCard}
+            ${hierarchyAndDock}
+            ${sceneEntriesAndCounts}
+
+            <h3 class="scene-function-section-title">${plan.interfaceFlow ? "02" : "05"}｜建筑大致分区与布局</h3>
+            <div class="scene-layout-zone-grid">
+              ${plan.layoutZones.map((entry) => `<section><h4>${escapeHtml(entry.title)}</h4><p>${escapeHtml(entry.text)}</p></section>`).join("")}
+            </div>
+
+            ${plan.interfaceFlow ? "" : `
+              <h3 class="scene-function-section-title">06｜入口状态与反馈规则</h3>
+              <div class="scene-state-rule-grid">
+                ${plan.stateRules.map((entry) => `<section><h4>${escapeHtml(entry.title)}</h4><p>${escapeHtml(entry.text)}</p></section>`).join("")}
+              </div>`}
+          </article>`;
+      })() : "";
+      const areaPlansCard = (item.areaPlans || []).length ? `
+        <article class="detail-card home-area-plan-card">
+          <h2>三大区域与美术资产拆分</h2>
+          <p class="home-area-plan-lead">本馆固定主线区域、开放顺序和每区6件核心家具；区域内其余点位以及前场、后院的全部装修内容，由城建卡池长期投放。</p>
+          <div class="home-area-plan-groups">
+            ${item.areaPlans.map((group) => `
+              <section class="home-area-plan-group">
+                <header><h3>${escapeHtml(group.title)}</h3><strong>${escapeHtml(group.summary)}</strong><p>${escapeHtml(group.note)}</p></header>
+                ${(group.areas || []).length ? `<div class="home-area-plan-grid">
+                  ${group.areas.map((area, areaIndex) => `
+                    <article class="home-area-plan-item">
+                      <span>${String(areaIndex + 1).padStart(2, "0")}</span>
+                      <div class="home-area-plan-item-head"><h4>${escapeHtml(area.title)}</h4><b>${escapeHtml(area.count)}</b></div>
+                      <p>${escapeHtml(area.timing)}</p>
+                      ${area.capacity ? `<strong class="home-area-plan-capacity">${escapeHtml(area.capacity)}</strong>` : ""}
+                      <ol>${area.modules.map((module) => `<li>${escapeHtml(module)}</li>`).join("")}</ol>
+                    </article>`).join("")}
+                </div>` : ""}
+                ${(group.directions || []).length ? `<div class="home-area-direction-grid">
+                  ${group.directions.map((direction) => `<article><h4>${escapeHtml(direction.title)}</h4><p>${escapeHtml(direction.text)}</p></article>`).join("")}
+                </div>` : ""}
+              </section>`).join("")}
+          </div>
+        </article>` : "";
+      const structuredPositioningCard = `
+        <article class="detail-card town-positioning-card">
+          <h2>系统定位</h2>
+          <p>${escapeHtml(item.role)}</p>
+          <h3 class="town-buildings-title">${escapeHtml(item.buildingsTitle || "场景中的功能型建筑／店铺")}</h3>
+          <div class="town-building-groups">${sceneBuildingGroups}</div>
+        </article>`;
+      const structuredPackagingCard = `
+        <article class="detail-card town-packaging-card">
+          <h2>包装设定</h2>
+          <p class="town-packaging-lead">${escapeHtml(item.packaging)}</p>
+          ${(item.artRequirements || []).length ? `
+            <h3 class="town-art-requirements-title">美术关键需求</h3>
+            <div class="town-art-requirements">${item.artRequirements.map((requirement) => `
+              <section><h3>${escapeHtml(requirement.title)}</h3><p>${escapeHtml(requirement.text)}</p></section>`).join("")}
+            </div>` : ""}
+        </article>`;
+      const structuredReferences = `<div class="town-reference-grid">${referenceGalleries}</div>`;
+      const citySystemOverviewCard = item.citySystemOverview ? `
+        <article class="detail-card city-system-overview-card">
+          <header>
+            <p class="eyebrow">CITY SYSTEMS</p>
+            <h2>城市（城郊）系统入口</h2>
+          </header>
+          <div class="city-system-overview-layout">
+            <div class="city-system-phone">
+              <img src="${escapeHtml(item.citySystemOverview.image)}" alt="${escapeHtml(item.citySystemOverview.alt)}" data-no-preview />
+            </div>
+            <section class="city-system-list" aria-label="城市系统名称">
+              <h3>当前系统名称</h3>
+              <div>
+                ${item.citySystemOverview.systems.map((system, index) => `
+                  <article><span>${String(index + 1).padStart(2, "0")}</span><div><h4>${escapeHtml(system.name)}</h4><p>${escapeHtml(system.source)}</p></div></article>`).join("")}
+              </div>
+            </section>
+          </div>
+        </article>` : "";
+      const structuredSceneDetails = item.citySystemOverview ? `
+        ${citySystemOverviewCard}
+        ${structuredPackagingCard}
+        ${structuredReferences}
+      ` : item.id === "home" ? `
+        ${structuredPackagingCard}
+        ${structuredPositioningCard}
+        ${sceneFunctionPlanCard}
+        ${areaPlansCard}
+        ${scenePrototype}
+        ${structuredReferences}
+        ${renderMotelPlanning(motelEnabled, motelLoadFailed)}
+      ` : `
+        ${structuredPositioningCard}
+        ${item.id === "main-town" ? '<article class="detail-card shop-ui-rules-card" data-shop-ui-rules hidden></article>' : ""}
+        ${sceneFunctionPlanCard}
+        ${areaPlansCard}
+        ${structuredPackagingCard}
+        ${scenePrototype}
+        ${structuredReferences}
+      `;
+      const chapterDetailCards = item.chapterDetail ? `
+        <article class="detail-card chapter-detail-overview">
+          <div class="chapter-detail-heading">
+            <div><p class="eyebrow">CHAPTER ${String(item.chapterNumber).padStart(2, "0")}</p><h2>${escapeHtml(item.chapterTitle)}</h2></div>
+            <span>${escapeHtml(item.status)}</span>
+          </div>
+          <div class="chapter-detail-meta">
+            <span><b>身份等级</b>${escapeHtml(item.chapterLevel)}</span>
+            <span><b>身份节点</b>${escapeHtml(item.chapterIdentity)}</span>
+            <span><b>剧情阶段</b>${escapeHtml(item.chapterArc)}</span>
+          </div>
+        </article>
+        <article class="detail-card">
+          <h2>本章剧情</h2>
+          <p>${escapeHtml(item.chapterPlot)}</p>
+        </article>
+        <article class="detail-card">
+          <h2>主线任务衔接</h2>
+          <div class="chapter-task-route">${escapeHtml(item.chapterMainTask)}</div>
+        </article>
+        <article class="detail-card chapter-detail-unlocks">
+          <h2>系统／店铺／角色解锁与旅馆改建</h2>
+          ${renderChapterUnlocks(item.chapterReward)}
+          <span class="chapter-city-build"><b>旅馆改建</b>${escapeHtml(item.chapterCityBuild)}</span>
+        </article>
+        <article class="detail-card chapter-detail-minigame">
+          <div class="chapter-detail-section-head"><h2>剧情小游戏</h2><span>待设计确认</span></div>
+          <p>${escapeHtml(item.chapterMiniGame)}</p>
+          <div class="chapter-detail-placeholder">后续在此明确：是否需要小游戏、玩法目标、操作步骤、成功/失败表现、奖励及跳过规则。</div>
+        </article>
+        <article class="detail-card chapter-detail-art">
+          <div class="chapter-detail-section-head"><h2>美术需求</h2><span>待逐项填写</span></div>
+          <div class="chapter-art-grid">
+            ${item.chapterArtRequirements.map((requirement) => `<section><h3>${escapeHtml(requirement.title)}</h3><p>${escapeHtml(requirement.text)}</p></section>`).join("")}
+          </div>
+        </article>` : "";
+      const standardDetails = item.chapterDetail ? chapterDetailCards : `
+        ${item.group === "shops" || isCharacterArtPage ? "" : `<article class="detail-card"><h2>系统定位</h2><p>${escapeHtml(item.role)}</p></article>`}
+         ${shopStructureCard}
+         ${isCharacterArtPage ? "" : packagingCard}
+         ${ruleCompletionCard}
+         ${ruleConfigCard}
+         ${shopUnlockAuditCard}
+         ${chapterTableCard}
+        ${characterBatchCard}
+        ${characterReferencePolicyCard}
+        ${characterQualityCard}
+        ${isCharacterArtPage ? "" : relationshipRulesCard}
+        ${characterRosterCard}
+        ${shopInteractionCard}
+        ${shopBusinessCard}
+         ${functionPositionCard}
+         ${animationPerformanceCard}
+         ${artPerformanceRequirementsCard}
+         ${checkpointEventPlanningCard}
+         ${eventRequirementsCard}
+         ${adaptationCard}
+        ${ruleChangesCard}
+        ${item.group === "shops" || item.hideUnlock || isCharacterArtPage || item.id === "narrative-mainline" ? "" : `<article class="detail-card"><h2>开放与递进</h2><p>${escapeHtml(item.unlock)}</p></article>`}
+        ${rankTierCard}
+        ${item.id === "brand-pitch" ? "" : interfaceRulesCard}
+        ${extraCard}
+        ${item.id === "brand-pitch" || item.id === "narrative-mainline" || isCharacterArtPage ? "" : `<article class="detail-card"><h2>场景与表现</h2><p><strong>场景：</strong>${escapeHtml(item.scene)}</p><p style="margin-top:10px"><strong>视觉重点：</strong>${escapeHtml(item.visual)}</p></article>`}
+        ${item.group === "shops" ? "" : conceptGalleryCard}`;
+      const shopInterfacePendingCard = item.group === "shops" && !hasShopUiRules ? `
+        <article class="detail-card shop-interface-pending-card">
+          <div><p class="eyebrow">INTERFACE RULES</p><h2>界面规则待补充</h2></div>
+          <p>${item.conceptGallery?.length
+            ? "当前店铺已有概念图或视觉参考，但尚未提供可确认的实际界面截图，因此暂不编写按钮位置、交互与状态规则。后续确认界面后在此分页继续完善。"
+            : "当前店铺尚未提供可确认的界面截图或界面方案，因此暂不编写按钮位置、交互与状态规则。后续补充界面后在此分页继续完善。"}</p>
+        </article>` : "";
+      const shopTabbedDetails = item.group === "shops" ? `
+        <div class="shop-page-tabs-shell">
+          <section class="shop-page-panel is-active" data-shop-page-panel="rules">
+            ${standardDetails}
+          </section>
+          <section class="shop-page-panel" data-shop-page-panel="interface" hidden>
+            ${hasShopUiRules ? shopUiRulesCard : `${shopInterfacePendingCard}${conceptGalleryCard}`}
+          </section>
+          ${item.id === "gas-station" && item.minigameDocument ? `<section class="shop-page-panel" data-shop-page-panel="minigame" hidden>${oilDesignLoadFailed ? `<article class="detail-card"><h2>棋盘暂时无法载入</h2><p>请刷新重试；当前没有展示旧棋盘代替新版本。</p><button class="button light" type="button" onclick="location.reload()">重新载入</button></article>` : renderOilMinigame(item.minigameDocument, oilLevelDesign)}</section>` : item.id === "convenience-store" && retailMarkdown ? `<section class="shop-page-panel" data-shop-page-panel="minigame" hidden><article class="detail-card retail-document-card retail-minigame-document"><h2 data-retail-edit-id="retail-split-mini-title">KC MART便利店：连连看进货</h2></article></section>` : ""}
+          ${["gas-station", "convenience-store"].includes(item.id) ? `<section class="shop-page-panel" data-shop-page-panel="minigame-ui" hidden><article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-minigame-ui-rules><h2>小游戏界面待补充</h2><p>当前正式版尚未加入小游戏界面资料；编辑版读取本店小游戏界面草稿。</p></article></section>` : ""}
+        </div>` : "";
+      const isCharacterTabbedPage = item.id === "protagonists" || item.id === "partners";
+      const characterTabbedDetails = isCharacterTabbedPage ? `
+        <div class="shop-page-tabs-shell">
+          <section class="shop-page-panel is-active" data-character-page-panel="rules">
+            ${item.id === "protagonists" ? protagonistDetails : standardDetails}
+          </section>
+          <section class="shop-page-panel" data-character-page-panel="interface" hidden>
+            ${hasShopUiRules ? shopUiRulesCard : `<article class="detail-card shop-interface-pending-card">
+              <div><p class="eyebrow">INTERFACE RULES</p><h2>界面规则待补充</h2></div>
+              <p>等待确认界面截图。收到界面图后，在此分页添加编号和对应规则；现有内容完整保留在“规则”分页。</p>
+            </article>`}
+          </section>
+        </div>` : "";
+      const shopTopActions = item.group === "shops" ? `
+        <button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>
+        <nav class="shop-page-tabs" data-shop-page-tabs aria-label="${escapeHtml(item.title)}策划案分页">
+          <button type="button" class="is-active" data-shop-page-tab="rules" aria-pressed="true">规则</button>
+          <button type="button" data-shop-page-tab="interface" aria-pressed="false">界面</button>
+          ${(item.id === "gas-station" && item.minigameDocument) || (item.id === "convenience-store" && retailMarkdown) ? `<button type="button" data-shop-page-tab="minigame" aria-pressed="false">小游戏</button>` : ""}
+          ${["gas-station", "convenience-store"].includes(item.id) ? `<button type="button" data-shop-page-tab="minigame-ui" aria-pressed="false">小游戏界面</button>` : ""}
+        </nav>` : "";
+      const characterTopActions = isCharacterTabbedPage ? `
+        <button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>
+        <nav class="shop-page-tabs" data-character-page-tabs aria-label="${escapeHtml(item.title)}策划案分页">
+          <button type="button" class="is-active" data-character-page-tab="rules" aria-pressed="true">规则</button>
+          ${item.id === "partners"
+            ? `<a class="shop-page-tab-link" href="talent-system.html?tab=ui" aria-label="打开人才系统界面规则">界面</a>`
+            : `<button type="button" data-character-page-tab="interface" aria-pressed="false">界面</button>`}
+        </nav>` : "";
+      const isDollHouse = item.id === "doll-house";
+      const checkpointTopActions = item.id === "checkpoints" || isDollHouse ? `
+        ${isDollHouse ? `<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>` : ""}
+        <nav class="shop-page-tabs" data-checkpoint-page-tabs aria-label="${isDollHouse ? "幸运抓抓" : "关卡"}策划案分页">
+          <button type="button" class="is-active" data-checkpoint-page-tab="rules" aria-pressed="true">规则</button>
+          <button type="button" data-checkpoint-page-tab="interface" aria-pressed="false">界面</button>
+        </nav>` : "";
+      const checkpointShowcase = item.id === "checkpoints" ? `
+        <section class="checkpoint-showcase" aria-label="关卡概念图与玩法演示">
+          <article class="checkpoint-showcase-column">
+            <div class="checkpoint-showcase-head"><h2>AI概念图</h2><span data-checkpoint-gallery-count>1 / 2</span></div>
+            <div class="checkpoint-gallery-frame">
+              <div class="checkpoint-concept-gallery" data-checkpoint-gallery>
+                <figure><img src="assets/checkpoint-concepts/market-research-ui-revised.png" alt="市场调研关卡AI概念图" /></figure>
+                <figure><img src="assets/checkpoint-concepts/early-layout.png" alt="早期关卡界面构图概念图" /></figure>
+              </div>
+              <button class="checkpoint-gallery-arrow is-prev" type="button" data-checkpoint-gallery-prev aria-label="上一张概念图">←</button>
+              <button class="checkpoint-gallery-arrow is-next" type="button" data-checkpoint-gallery-next aria-label="下一张概念图">→</button>
+            </div>
+            <div class="checkpoint-gallery-dots" aria-hidden="true"><i class="is-active"></i><i></i></div>
+          </article>
+          <article class="checkpoint-showcase-column">
+            <div class="checkpoint-showcase-head"><h2>玩法演示</h2></div>
+            <div class="checkpoint-phone checkpoint-demo-phone">
+              <div class="checkpoint-phone-speaker" aria-hidden="true"></div>
+              <iframe src="checkpoint-demo.html?embed=1" title="市场调研关卡玩法演示" loading="eager"></iframe>
+              <div class="checkpoint-phone-homebar" aria-hidden="true"></div>
+            </div>
+          </article>
+        </section>` : "";
+      const checkpointInterfaceDetails = item.id === "checkpoints" ? `
+        <article class="detail-card checkpoint-interface-note">
+          <div><p class="eyebrow">INTERFACE PAGE</p><h2>界面规则使用说明</h2></div>
+          <p>本页以关卡主界面原图为底，叠加可点击的1—11号分区标记，说明各模块的显示内容、状态、交互、刷新与异常边界。后续视觉稿调整时同步修订图片与标记位置。</p>
+        </article>
+        ${shopUiRulesCard}` : "";
+      const dollInterfaceDetails = isDollHouse ? `<article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><h2>界面规则待补充</h2><p>编辑版读取幸运抓抓界面草稿；未发布前阅读版不展示草稿。</p></article>` : "";
+      const checkpointTabbedDetails = item.id === "checkpoints" || isDollHouse ? `
+        <div class="shop-page-tabs-shell">
+          <section class="shop-page-panel is-active" data-checkpoint-page-panel="rules">
+            ${standardDetails}
+            ${isDollHouse ? "" : checkpointShowcase}
+          </section>
+          <section class="shop-page-panel" data-checkpoint-page-panel="interface" hidden>
+            ${isDollHouse ? dollInterfaceDetails : checkpointInterfaceDetails}
+          </section>
+        </div>` : "";
+      const talentShowcase = item.id === "brand-pitch" ? `
+        <section class="talent-showcase" aria-label="本地电视台才艺竞演包装展示示意">
+          <article class="talent-showcase-card">
+            <div class="talent-showcase-head">
+              <div><p class="eyebrow">概念流程</p><h2>包装展示示意</h2></div>
+              <p>点击界面中的“参赛”“晋级”、任意对手、“跳过”或返回按钮，可查看主要界面的串联方式。</p>
+            </div>
+            <div class="talent-showcase-body is-concept-only">
+              <div class="talent-demo-phone">
+                <iframe src="talent-showcase-demo.html?embed=2" title="本地电视台才艺竞演包装流程演示" loading="eager" data-talent-demo-frame></iframe>
+              </div>
+              <!-- 界面规则暂时隐藏；独立备份见 brand-pitch-interface-rules.backup.md -->
+              <aside class="talent-screen-rules" aria-live="polite" hidden>
+                <span class="talent-screen-step" data-talent-rule-step>界面 01 / 04</span>
+                <h3 data-talent-rule-title>节目主场景</h3>
+                <p data-talent-rule-summary>节目总入口。集中展示当前梯度、名次、可领取收益及各功能入口。</p>
+                <ul data-talent-rule-list>
+                  <li>场景背景对应玩家当前节目梯度，六个梯度分别配置一张背景图；晋级后切换。</li>
+                  <li>中央收益图标显示当前累计挂机收益；点击后领取，播放资源飞入动画并清空环形进度，图标始终保留。</li>
+                  <li>“参赛”按钮始终可点击，点击后进入挑选对手界面。</li>
+                  <li>“晋级”打开六级节目路线；存在可领取阶段奖励时显示红点。</li>
+                </ul>
+              </aside>
+            </div>
+          </article>
+        </section>` : "";
+      const previousLink = previous
+        ? `<a class="page-switch page-switch-prev" href="detail.html?id=${previous.detailId || previous.id}"><span class="page-switch-direction"><b aria-hidden="true">←</b> 上一个</span><strong>${escapeHtml(previous.title)}</strong></a>`
+        : `<a class="page-switch page-switch-prev" href="category.html?group=${item.group}"><span class="page-switch-direction"><b aria-hidden="true">←</b> 返回分类</span><strong>${escapeHtml(group.title)}</strong></a>`;
+      const nextLink = next
+        ? `<a class="page-switch page-switch-next" href="detail.html?id=${next.detailId || next.id}"><span class="page-switch-direction">下一个 <b aria-hidden="true">→</b></span><strong>${escapeHtml(next.title)}</strong></a>`
+        : `<a class="page-switch page-switch-next" href="category.html?group=${item.group}"><span class="page-switch-direction">返回分类 <b aria-hidden="true">→</b></span><strong>${escapeHtml(group.title)}</strong></a>`;
+
+      document.title = `${item.title}｜《破产双胞胎》包装策划案`;
+      const content = `
+        <article class="surface">
+          <header class="page-head">
+            <div class="page-navrow">
+              ${item.group === "shops" || isCharacterTabbedPage || isDollHouse ? "" : `<button class="back-button" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>`}
+              <div class="breadcrumbs"><a href="index.html">总览</a><span>›</span><a href="category.html?group=${item.group}">${escapeHtml(group.title)}</a><span>›</span><span>${escapeHtml(item.title)}</span></div>
+            </div>
+            <p class="eyebrow">${escapeHtml(group.kicker)}</p>
+            <h1>${escapeHtml(item.title)}</h1>
+            <p>${escapeHtml(item.group === "shops" ? item.role : item.summary)}</p>
+            <div class="page-meta">
+              <span class="meta-chip">《赘婿》对标：${escapeHtml(item.original)}</span>
+              ${item.view ? `<span class="meta-chip">场景视角：${escapeHtml(item.view)}</span>` : ""}
+            </div>
+          </header>
+          <section class="content-section">
+            <div class="detail-layout detail-layout-single">
+              <div class="detail-stack">
+                ${isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse ? checkpointTabbedDetails : standardDetails}
+                ${talentShowcase}
+                <div class="prev-next">${previousLink}${nextLink}</div>
+              </div>
+            </div>
+          </section>
+          <footer>当前位置：总览 / ${escapeHtml(group.title)} / ${escapeHtml(item.title)}</footer>
+        </article>`;
+      mount(pageShell({ activeGroup: item.group, content, topActions: characterTopActions || checkpointTopActions || shopTopActions || (item.id === "home" && motelEnabled ? motelPlanningActions() : "") }));
+      if (item.id === "home") {
+        installMotelPlanning(document.querySelector("#app"));
+        if (motelEnabled && window.parent === window) {
+          const patches = motelPagePatches;
+          for (const [selector, html] of Object.entries(patches)) { try { const el=document.querySelector(selector); if(el) el.innerHTML=html; } catch {} }
+          const marker = document.querySelector("[data-motel-ui-data]");
+          let source; try { source=JSON.parse(marker.textContent); } catch { source=MOTEL_UI; }
+          let screenId="main",selectedId=1,expandedPopupKey="",expandedNestedPopupKey="";
+          const render=()=>renderShopUiRulesCard(document.querySelector("[data-shop-ui-rules]"), source, {editable:false,screenId,selectedId,expandedPopupKey,expandedNestedPopupKey,
+            onSelectScreen(id){screenId=id;selectedId=1;expandedPopupKey="";expandedNestedPopupKey="";render();},
+            onSelect(id){selectedId=id;expandedPopupKey="";expandedNestedPopupKey="";render();},
+            onTogglePopup(key){expandedPopupKey=expandedPopupKey===key?"":key;render();},
+            onToggleNestedPopup(key){expandedNestedPopupKey=expandedNestedPopupKey===key?"":key;render();}
+          }); render();
+        }
+        document.dispatchEvent(new Event("retail-document-ready"));
+      }
+      const characterPageTabs = document.querySelector("[data-character-page-tabs]");
+      if (characterPageTabs) {
+        const pageTabs = [...characterPageTabs.querySelectorAll("[data-character-page-tab]")];
+        const pagePanels = [...document.querySelectorAll("[data-character-page-panel]")];
+        const showCharacterPage = (pageId, updateUrl = false) => {
+          const activePageId = pageId === "interface" ? "interface" : "rules";
+          pageTabs.forEach((button) => {
+            const active = button.dataset.characterPageTab === activePageId;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          pagePanels.forEach((panel) => {
+            const active = panel.dataset.characterPagePanel === activePageId;
+            panel.classList.toggle("is-active", active);
+            panel.hidden = !active;
+          });
+          if (updateUrl) {
+            const nextUrl = new URL(location.href);
+            if (activePageId === "rules") nextUrl.searchParams.delete("shopTab");
+            else nextUrl.searchParams.set("shopTab", activePageId);
+            history.replaceState(null, "", nextUrl);
+          }
+        };
+        pageTabs.forEach((button) => button.addEventListener("click", () => showCharacterPage(button.dataset.characterPageTab, true)));
+        showCharacterPage(new URLSearchParams(location.search).get("shopTab"));
+      }
+      if (item.id === "convenience-store" && retailMarkdown) splitConvenienceDocument(document.querySelector("#app"));
+      const shopPageTabs = document.querySelector("[data-shop-page-tabs]");
+      if (shopPageTabs) {
+        const pageTabs = [...shopPageTabs.querySelectorAll("[data-shop-page-tab]")];
+        const pagePanels = [...document.querySelectorAll("[data-shop-page-panel]")];
+        const showShopPage = (pageId, updateUrl = false) => {
+          const activePageId = pageTabs.some(button => button.dataset.shopPageTab === pageId) ? pageId : "rules";
+          pageTabs.forEach((button) => {
+            const active = button.dataset.shopPageTab === activePageId;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          pagePanels.forEach((panel) => {
+            const active = panel.dataset.shopPagePanel === activePageId;
+            panel.classList.toggle("is-active", active);
+            panel.hidden = !active;
+          });
+          if (updateUrl) {
+            try {
+              const nextUrl = new URL(location.href);
+              if (activePageId === "rules") nextUrl.searchParams.delete("shopTab");
+              else nextUrl.searchParams.set("shopTab", activePageId);
+              history.replaceState(null, "", nextUrl);
+            } catch {}
+          }
+          if (updateUrl && ["gas-station", "convenience-store"].includes(item.id)) {
+            window.scrollTo(0, 0);
+            document.dispatchEvent(new CustomEvent("gas-shop-page-change"));
+          }
+        };
+        pageTabs.forEach((button) => button.addEventListener("click", () => showShopPage(button.dataset.shopPageTab, true)));
+        showShopPage(new URLSearchParams(location.search).get("shopTab"));
+        if (window.parent === window && ["gas-station", "convenience-store"].includes(item.id)) {
+          const miniCard = document.querySelector("[data-shop-minigame-ui-rules]");
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 10000);
+          (async () => {
+            try {
+              const response = await fetch("/api/shop-ui/formal", {signal: controller.signal});
+              if (!response.ok) throw new Error("界面资料读取失败");
+              const result = await response.json();
+              const source = result.documents?.[item.id];
+              let miniScreen = source?.uiScreens?.find((screen) => screen.id.startsWith("minigame-"));
+              if (!miniScreen) return;
+              let selectedId = Number(miniScreen.uiRules?.[0]?.id || 1), expandedPopupKey = "", expandedNestedPopupKey = "";
+              const render = () => renderShopUiRulesCard(miniCard, source, {editable:false, screenId:miniScreen.id, screenCategory:"minigame", selectedId, expandedPopupKey, expandedNestedPopupKey,
+                onSelectScreen(id) { const next = source.uiScreens?.find((screen) => screen.id === id && screen.id.startsWith("minigame-")); if (!next) return; miniScreen = next; selectedId = Number(next.uiRules?.[0]?.id || 1); expandedPopupKey=""; expandedNestedPopupKey=""; render(); },
+                onSelect(id) { selectedId=id; expandedPopupKey=""; expandedNestedPopupKey=""; render(); },
+                onTogglePopup(key) { expandedPopupKey=expandedPopupKey===key?"":key; render(); },
+                onToggleNestedPopup(key) { expandedNestedPopupKey=expandedNestedPopupKey===key?"":key; render(); }
+              });
+              render();
+            } catch { miniCard.innerHTML = "<h2>小游戏界面暂时无法载入</h2><p>请刷新重试；未用旧图代替新资料。</p>"; }
+            finally { clearTimeout(timer); }
+          })();
+        }
+        if (retailMarkdown || item.id === "gas-station") document.dispatchEvent(new Event("retail-document-ready"));
+      }
+      const checkpointPageTabs = document.querySelector("[data-checkpoint-page-tabs]");
+      if (checkpointPageTabs) {
+        const pageTabs = [...checkpointPageTabs.querySelectorAll("[data-checkpoint-page-tab]")];
+        const pagePanels = [...document.querySelectorAll("[data-checkpoint-page-panel]")];
+        const showCheckpointPage = (pageId, updateUrl = false) => {
+          const activePageId = pageId === "interface" ? "interface" : "rules";
+          pageTabs.forEach((button) => {
+            const active = button.dataset.checkpointPageTab === activePageId;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          pagePanels.forEach((panel) => {
+            const active = panel.dataset.checkpointPagePanel === activePageId;
+            panel.classList.toggle("is-active", active);
+            panel.hidden = !active;
+          });
+          if (updateUrl) {
+            const nextUrl = new URL(location.href);
+            const tabParam = isDollHouse ? "shopTab" : "checkpointTab";
+            if (activePageId === "rules") nextUrl.searchParams.delete(tabParam);
+            else nextUrl.searchParams.set(tabParam, activePageId);
+            history.replaceState(null, "", nextUrl);
+          }
+        };
+        pageTabs.forEach((button) => button.addEventListener("click", () => showCheckpointPage(button.dataset.checkpointPageTab, true)));
+        showCheckpointPage(new URLSearchParams(location.search).get(isDollHouse ? "shopTab" : "checkpointTab"));
+      }
+      const shopUiRules = document.querySelector("[data-shop-ui-rules]");
+      if (shopUiRules) {
+        const ruleTabs = [...shopUiRules.querySelectorAll("[data-shop-ui-rule-tab]")];
+        const rulePages = [...shopUiRules.querySelectorAll("[data-shop-ui-rule-page]")];
+        const showShopUiRule = (ruleId) => {
+          ruleTabs.forEach((button) => {
+            const active = button.dataset.shopUiRuleTab === String(ruleId);
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          rulePages.forEach((page) => {
+            const active = page.dataset.shopUiRulePage === String(ruleId);
+            page.classList.toggle("is-active", active);
+            page.hidden = !active;
+          });
+        };
+        ruleTabs.forEach((button) => button.addEventListener("click", () => showShopUiRule(button.dataset.shopUiRuleTab)));
+      }
+      const checkpointEventPlanning = document.querySelector("[data-checkpoint-event-planning]");
+      if (checkpointEventPlanning) {
+        const checkpointEventTabs = [...checkpointEventPlanning.querySelectorAll("[data-checkpoint-event-tab]")];
+        const checkpointEventPages = [...checkpointEventPlanning.querySelectorAll("[data-checkpoint-event-page]")];
+        const knownCheckpointPages = new Set(checkpointEventTabs.map((button) => button.dataset.checkpointEventTab));
+        const requestedCheckpointPage = new URLSearchParams(location.search).get("eventPage");
+        const showCheckpointEventPage = (pageId, updateUrl = false) => {
+          const activePageId = knownCheckpointPages.has(pageId) ? pageId : CHECKPOINT_EVENT_PAGES[0].id;
+          checkpointEventTabs.forEach((button) => button.classList.toggle("is-active", button.dataset.checkpointEventTab === activePageId));
+          checkpointEventPages.forEach((page) => {
+            const active = page.dataset.checkpointEventPage === activePageId;
+            page.classList.toggle("is-active", active);
+            page.hidden = !active;
+          });
+          if (updateUrl && location.protocol !== "file:") {
+            const nextUrl = new URL(location.href);
+            nextUrl.searchParams.set("eventPage", activePageId);
+            history.replaceState(null, "", nextUrl);
+          }
+        };
+        checkpointEventTabs.forEach((button) => button.addEventListener("click", () => showCheckpointEventPage(button.dataset.checkpointEventTab, true)));
+        showCheckpointEventPage(requestedCheckpointPage || CHECKPOINT_EVENT_PAGES[0].id);
+      }
+      const talentFrame = document.querySelector("[data-talent-demo-frame]");
+      if (talentFrame) {
+        const talentScreenRules = {
+          main: {
+            step: "界面 01 / 04",
+            title: "节目主场景",
+            summary: "节目总入口。集中展示当前梯度、名次、可领取收益及各功能入口。",
+            rules: [
+              "【背景】场景对应玩家当前节目梯度，六个梯度分别配置一张背景图；晋级成功后立即切换到新梯度背景。",
+              "【收益图标】中央显示当前累计挂机收益。点击后领取，资源播放飞入动画，数值归零、环形进度清空；图标本体始终保留。",
+              "【收益状态】分为累积中、可领取、已达存储上限三种。达到上限后停止累积并加强高亮；为0时点击只提示“暂无可领取收益”。",
+              "【参赛按钮】始终保持可点击状态；点击后进入挑选对手界面。",
+              "【晋级ICON】点击进入六级节目路线。存在未领取的首次突破或阶段奖励时显示红点，领取完毕后红点消失。",
+              "【达人商店】随本系统同时开放，入口始终正常显示，不设置红点或置灰状态；点击后进入节目商店。",
+              "【排行榜】随本系统同时开放；点击后弹出排行榜弹窗。",
+              "【参赛记录】随本系统同时开放；点击后弹出参赛记录弹窗，展示玩家最近30场战斗结果。",
+              "【返回】返回上一级主城界面。存在未领取挂机收益时不阻断返回，收益继续按当前席位累积。",
+            ],
+          },
+          opponents: {
+            step: "界面 02 / 04",
+            title: "选择对手",
+            summary: "从当前席位前方的候选列表中选择挑战目标；候选范围和真人显示受601/602席边界约束。",
+            rules: [
+              "【候选席位】由服务端返回玩家当前席位前方连续3个席位，即当前位置+1、+2、+3，不进行随机抽取；接近全国舞台第1名、不足3席时按实际剩余席位展示。",
+              "【候选卡字段】展示对手名称与头像、节目梯度、梯度内名次、实力，以及该席位对应的名气曝光与持续收益。",
+              "【前三梯度】社区海选、小镇展演、城市频道为NPC晋级阶段，候选列表只出现NPC。",
+              "【对手类型】前三个节目梯度的对手均为NPC；进入州级舞台后，对手根据当前排名显示为同服玩家或NPC。",
+              "【我的信息】底部固定展示玩家当前梯度、名次、实力、名气曝光和收益，方便与候选目标直接比较。",
+              "【挑战按钮】正常状态显示“挑战”；点击后进入对战界面，同时按钮置为“挑战中”并禁止重复提交。若进入前发现目标席位已变化，则取消本次对战，刷新候选列表并提示重新选择。",
+              "【登顶状态】全国舞台第1名没有更高候选席位，页面显示登顶空状态，并提供返回主界面的按钮。",
+              "【返回】点击返回节目主场景；列表滚动位置无需保留，下次进入按最新席位重新获取候选人。",
+            ],
+          },
+          battle: {
+            step: "界面 03 / 04",
+            title: "才艺竞演",
+            summary: "双方完整人才阵容进行N对N车轮守擂；界面只演出服务端已经确定的权威结果。",
+            rules: [
+              "【顶部信息】展示双方玩家、剩余总实力和人才队列。头像有待上场、当前上场、已退场三种状态。",
+              "【出场顺序】双方人才按既定阵容顺序逐轮登台，不允许在演出过程中临时换序或更换成员。",
+              "【车轮规则】败方人才退场并熄灭头像；胜方保留剩余舞台状态继续迎战下一人，直至一方全员退场。",
+              "【评委反馈】举蓝牌或红牌表现单轮胜负；3:2、4:1、5:0只区分表现幅度，不参与二次结算。",
+              "【跳过按钮】首次挑战完整播放；达到原配置的跳过开放条件后常驻显示。点击后直接进入最终结果，跳过期间按钮置灰防止重复操作。",
+              "【关闭边界】挑战请求成功后，即使关闭界面或网络中断，胜负、名次和奖励也以服务端结果为准；重新进入时读取最新席位。",
+              "【异常兜底】题目、动画或角色资源缺失时跳过对应演出，仍必须展示最终胜负、席位变化和实际奖励。",
+            ],
+          },
+          progression: {
+            step: "界面 04 / 04",
+            title: "节目晋级路线",
+            summary: "查看六级节目路线、各级席位容量、当前进度和保护区边界；本界面不直接发起挑战。",
+            rules: [
+              "【六级容量】社区海选1席、小镇展演100席、城市频道500席；州级舞台1000席、区域联播400席、全国舞台100席。",
+              "【保护区】前三档共601席为个人NPC晋级区；第602席“州级舞台第1000名”开始进入同服真人与NPC共享竞争区。",
+              "【节点状态】已跨越梯度显示完成勾选；当前梯度高亮并显示梯度内名次；尚未到达的梯度显示锁定。",
+              "【节点点击】点击当前或已完成节点只展开该级席位容量、曝光区间和奖励说明；锁定节点点击后提示到达条件，不跳转挑战。",
+              "【晋级方式】本界面只用于查看路线。玩家必须返回主界面点击“参赛”，通过挑战更高席位完成晋级。",
+              "【收益说明】梯度与名次越高，名气曝光越高，由曝光带来的持续经营收益越高；不再使用播出时段与轮播频率解释。",
+              "【登顶状态】全国舞台第1名显示“全国焦点/已登顶”，后续不再出现更高节点或虚构席位。",
+              "【返回】返回节目主场景，并保持进入前的主界面状态与未领取收益显示。",
+            ],
+          },
+        };
+        const renderTalentRules = (screen) => {
+          const copy = talentScreenRules[screen] || talentScreenRules.main;
+          document.querySelector("[data-talent-rule-step]").textContent = copy.step;
+          document.querySelector("[data-talent-rule-title]").textContent = copy.title;
+          document.querySelector("[data-talent-rule-summary]").textContent = copy.summary;
+          document.querySelector("[data-talent-rule-list]").innerHTML = copy.rules.map((rule) => `<li>${escapeHtml(rule)}</li>`).join("");
+        };
+        window.addEventListener("message", (event) => {
+          if (event.source === talentFrame.contentWindow && event.data?.type === "talent-showcase-screen") {
+            renderTalentRules(event.data.screen);
+          }
+        });
+        renderTalentRules("main");
+      }
+      const checkpointGallery = document.querySelector("[data-checkpoint-gallery]");
+      if (checkpointGallery) {
+        const checkpointSlides = [...checkpointGallery.children];
+        const checkpointCount = document.querySelector("[data-checkpoint-gallery-count]");
+        const checkpointDots = [...document.querySelectorAll(".checkpoint-gallery-dots i")];
+        let checkpointGalleryIndex = 0;
+        const showCheckpointSlide = (nextIndex) => {
+          checkpointGalleryIndex = (nextIndex + checkpointSlides.length) % checkpointSlides.length;
+          checkpointGallery.scrollTo({ left: checkpointGallery.clientWidth * checkpointGalleryIndex, behavior: "smooth" });
+          checkpointCount.textContent = `${checkpointGalleryIndex + 1} / ${checkpointSlides.length}`;
+          checkpointDots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === checkpointGalleryIndex));
+        };
+        document.querySelector("[data-checkpoint-gallery-prev]").addEventListener("click", () => showCheckpointSlide(checkpointGalleryIndex - 1));
+        document.querySelector("[data-checkpoint-gallery-next]").addEventListener("click", () => showCheckpointSlide(checkpointGalleryIndex + 1));
+        checkpointGallery.addEventListener("scroll", () => {
+          const visibleIndex = Math.round(checkpointGallery.scrollLeft / Math.max(1, checkpointGallery.clientWidth));
+          if (visibleIndex !== checkpointGalleryIndex) {
+            checkpointGalleryIndex = visibleIndex;
+            checkpointCount.textContent = `${checkpointGalleryIndex + 1} / ${checkpointSlides.length}`;
+            checkpointDots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === checkpointGalleryIndex));
+          }
+        }, { passive: true });
+      }
+    }
+  </script>
+</body>
+</html>

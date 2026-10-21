@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <script>if(window.top===window)location.replace("reader.html"+location.search+location.hash);</script>
+  <script src="static-reader.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>总览｜《破产双胞胎》包装策划案</title>
+  <meta name="description" content="1993 美国复古小镇经营题材包装策划总览" />
+  <link rel="stylesheet" href="assets/site.css?v=20260917-57" />
+  <link rel="stylesheet" href="assets/overview-framework.css?v=20260922-1" />
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import { mount, pageShell, renderEntryCards } from "./assets/site.js?v=20260923-7";
+
+    const content = `
+      <article class="surface">
+        <header class="hero">
+          <p class="eyebrow">Game Packaging Overview</p>
+          <h1>从爷爷的汽车旅馆出发<br />重振我们的公路小镇</h1>
+          <p class="lead">1993 年，一对曾经生活优渥的男女双胞胎遭遇城市生活中的现金流崩塌，破产后回到童年家乡，接手爷爷留下、早已停业荒废的汽车旅馆。两人回来后的第一件事，是清理修缮并改造出供自己居住的房间，先有一个能安顿下来的家。随后通过洗车赚取经营首金，继续修复旅馆，逐步恢复对外接待。这里曾是繁荣的公路服务小镇，熟悉的长辈仍生活在这里；玩家收购旧店或盘下空铺开新店，与镇民一起把过路车辆变成停留消费的游客，再把小镇经营成值得专程前来的旅行目的地。</p>
+          <div class="tags"><span class="tag">双胞胎归乡</span><span class="tag">富家落差喜剧</span><span class="tag">汽车旅馆起家</span><span class="tag">前期 12 家经营店铺</span><span class="tag">外来客流带动复兴</span></div>
+        </header>
+
+        <section class="content-section" id="setting">
+          <div class="section-head"><h2><span>01</span>核心设定</h2><p>从修复自家旅馆，到经营自己的店铺，再到与镇民共同振兴家乡。</p></div>
+          <div class="facts">
+            <article class="fact" style="--accent:var(--blue)"><div class="label">TIME & PLACE</div><h3>曾经繁荣的公路服务小镇</h3><ul><li>保留 1993 年阳光、复古招牌、霓虹与公路旅行的美式氛围</li><li>老公路仍有过路需求，但小镇缺少让游客停留和专程到访的理由</li><li>沿公路组织商业主街，服务与休闲并重，避免全是汽车专业店</li></ul></article>
+            <article class="fact" style="--accent:var(--rust)"><div class="label">PLAYER</div><h3>破产归乡的富家双胞胎</h3><ul><li>以生活支出与债务压力导致的破产为开局背景，具体事故组合后续确定</li><li>男女双主角地位对等，带着过去的审美与生活习惯学习亲手经营</li><li>小镇是童年家乡，熟悉的长辈与人才提供人情支持、手艺和经验</li></ul></article>
+            <article class="fact" style="--accent:var(--green)"><div class="label">STARTING ASSET</div><h3>爷爷留下的荒废汽车旅馆</h3><ul><li>位于小镇入口或边缘，带停车区与附属洗车场地；开局早已停业，无住客、无住宿营业收入</li><li>先清理修缮、改造双胞胎自己的房间，让两人能够入住；之后再修复客房与配套、重启对外营业</li><li>旅馆单独成长，不计入前期 12 家经营店铺；新增店铺明确属于玩家</li></ul></article>
+            <article class="fact" style="--accent:var(--gold)"><div class="label">LONG-TERM GOAL</div><h3>把家乡经营成旅行目的地</h3><ul><li>近期：先把两人居住的房间修出来，再以经营收入推动旅馆重启与店铺扩张</li><li>中期：以店铺与地方特色延长停留，让游客愿意留下过夜</li><li>长期：打出小镇名气，吸引专程到访与回头客，与镇民共同繁荣</li></ul></article>
+          </div>
+          <div class="sequence-strip framework-notes">
+            <div class="sequence-row"><span class="sequence-label">主要客源</span><span>过路司机、自驾家庭、情侣、携宠游客，以及逐步增加的周边周末游客。镇民可以消费，但经营增长主要来自外来客流；镇民同时是员工、人才、手艺人与生活伙伴。</span></div>
+            <div class="sequence-row"><span class="sequence-label">内容气质</span><span>参考《富家穷路》的富家生活落差、人物磨合与温暖日常，用双胞胎的审美和镇民的手艺共同创造生意。阶段性对手来自镇外，经营成长围绕复兴家乡展开。</span></div>
+            <div class="sequence-row"><span class="sequence-label">目标可见</span><span>旅馆从荒废、无法入住，变成双胞胎自己的房间修缮完成，再到客房和配套陆续修好、正式恢复接待。自己的房间改造前后变化是开局第一份建设成果；主街逐店亮灯与待修复汽车影院承接后续目标。</span></div>
+          </div>
+        </section>
+
+        <section class="content-section" id="hook">
+          <div class="section-head"><h2><span>02</span>开局钩子</h2><p>接手荒废旅馆，先把双胞胎自己的房间修出来住；从安家开始，逐步重启经营。</p></div>
+          <div class="flow">
+            <article class="flow-card" style="--accent:var(--rust)"><span class="num">1</span><h3>破产归乡</h3><p>城市生活的现金流崩塌，两人决定回到童年家乡，依靠爷爷留下的旅馆重新生活。</p></article><div class="flow-arrow">→</div>
+            <article class="flow-card" style="--accent:var(--blue)"><span class="num">2</span><h3>推开荒废旅馆的大门</h3><p>熟悉的镇民迎接归乡，但爷爷留下的旅馆早已停业荒废，无法直接入住或接待客人。两人首先面对的是：先把自己的住处修出来。</p></article><div class="flow-arrow">→</div>
+            <article class="flow-card" style="--accent:var(--rust)"><span class="num">3</span><h3>修出两人的住处</h3><p>清理、修缮并改造供双胞胎居住的房间，让两人先安顿下来。房间从荒废到可以生活的变化，提供开局最直接的目标与完成反馈。</p></article><div class="flow-arrow">→</div>
+            <article class="flow-card" style="--accent:var(--green)"><span class="num">4</span><h3>经营赚钱，逐步重启</h3><p>安顿后利用旅馆附属场地开展洗车服务，用经营收入继续修复客房和配套。旅馆具备接待条件后再恢复营业，随后扩展新的店铺。</p></article>
+          </div>
+          <div class="notice framework-notes">开局第一目标是“把我们自己的房间修出来，先住下来”。自住房间修好不等于整座旅馆已经复业；住宿客流与营业收入在客房、配套具备接待条件后才出现。具体修缮步骤、初始材料与资金来源留待开局任务细化，剧情章节本轮不改。</div>
+        </section>
+
+        <section class="content-section" id="roadmap">
+          <div class="section-head"><h2><span>03</span>经营发展流程</h2><p>先确定长期经营目标与前期 12 家开放顺序，再细化店铺规则与剧情节点。</p></div>
+          <div class="track-head"><span class="track-index">A</span><h3>长期经营路径</h3><p>从恢复生计，到留住过路客，再到让游客为小镇专程出发。</p></div>
+          <div class="roadmap framework-phases">
+            <article class="stage" style="--accent:var(--rust)"><h3>归乡安家 · 重启公路生意</h3><p>先把荒废旅馆中供双胞胎居住的房间修好，再用洗车等经营收入继续修复客房与配套。依次补齐加油、旅途补给和公路餐饮，接住最基础的过路需求；旅馆复业后再承接住客。</p><span class="unlock"><b>店铺范围：</b>安家起步，随后开放 01—04。<br><b>阶段成果：</b>两人先有自己的住处，旅馆再逐步恢复接待，形成歇脚、加油、补给与用餐节点。</span></article>
+            <article class="stage" style="--accent:var(--gold)"><h3>完善服务 · 让人愿意多留</h3><p>补上长途住客需要的洗衣服务，用旅行写真制造小镇记忆，再以宠物照护和修车服务解决旅途中的实际难题，让短暂停车变成更长停留。</p><span class="unlock"><b>店铺范围：</b>05—08<br><b>阶段成果：</b>旅途服务逐渐完整，游客开始愿意多停留、拍照并推荐给朋友。</span></article>
+            <article class="stage" style="--accent:var(--blue)"><h3>留客过夜 · 点亮小镇夜晚</h3><p>音乐、放松服务、保龄球与汽车电影补齐休闲体验，吸引结伴旅行与家庭客群，让游客有理由住上一晚。</p><span class="unlock"><b>店铺范围：</b>09—12<br><b>阶段成果：</b>汽车影院重新亮起，与旅馆住宿形成完整的停留消费链。</span></article>
+            <article class="stage" style="--accent:var(--green)"><h3>专程到访 · 成为周末目的地</h3><p>以成熟店铺和地方特色组织主题周末、集市或区域活动，让邻近城镇的游客专程前来，推动新的体验和镇郊经营需求。</p><span class="unlock"><b>后续规划：</b>13—20 家候选重新筛选，名称与顺序待定。<br><b>阶段成果：</b>从依赖顺路客，成长为有稳定吸引力的区域目的地。</span></article>
+            <article class="stage" style="--accent:var(--rust)"><h3>共同繁荣 · 持续经营小镇名气</h3><p>持续提升现有店铺、员工与服务，围绕节庆、回头客和区域合作增加长期内容。通过镇外竞争检验经营成果，与镇民一起守住家乡。</p><span class="unlock"><b>长期方向：</b>游客回访、区域合作与经营竞争。<br><b>设计边界：</b>新增系统、开放条件与数值另行确认。</span></article>
+          </div>
+          <div class="track-head"><span class="track-index">B</span><h3>前期 12 家店铺 · 开放顺序</h3><p>以下编号为店铺开放顺序。获得方式与复业起点为包装建议；10 号按摩理疗店暂定，具体条件后续细化。</p></div>
+          <div class="roadmap framework-shops">
+            <article class="stage" style="--accent:var(--rust)"><h3>洗车行</h3><p>先完成双胞胎自住房间的基础改造，再利用旅馆附属洗车位赚取经营首金，支持后续客房与配套修缮。保留开局强交互经营定位。</p><span class="unlock"><b>获得建议：</b>随旅馆继承的附属场地，作为开局资产。<br><b>初始状态：</b>旧招牌、落灰工具与损坏水管。<br><b>人物衔接：</b>熟悉爷爷的维修师傅帮助恢复设备。</span></article>
+            <article class="stage" style="--accent:var(--blue)"><h3>加油站</h3><p>洗车客人提出加油需求，完成第一次正式收购，先把持续经过公路的车辆变成稳定客流。</p><span class="unlock"><b>获得建议：</b>收购停业老油站，继续原有加油生意。<br><b>初始状态：</b>加油机封停、油价牌褪色并挂着转让告示。<br><b>人物衔接：</b>邀请熟悉司机与油站设备的原员工留下。</span></article>
+            <article class="stage" style="--accent:var(--gold)"><h3>超市／便利店</h3><p>承接加油客人与旅馆住客的饮食、日用品和旅行补给需求；本地自产纪念品作为后续解锁商品进入货架，不再单独占用店铺名额。</p><span class="unlock"><b>获得建议：</b>盘下加油站附近的空置商铺，经营独立的补给生意。<br><b>初始状态：</b>空货架、停用冷柜和待整理的小型后仓。<br><b>人物衔接：</b>邀请熟悉供货渠道与本地手艺人的镇民协助经营。</span></article>
+            <article class="stage" style="--accent:var(--gold)"><h3>公路餐厅</h3><p>解决过路客与住客的吃饭需求，以招牌套餐建立口碑。早餐、咖啡、奶昔与点心纳入同一家餐厅经营。</p><span class="unlock"><b>获得建议：</b>收购关闭的老餐厅，重新营业。<br><b>初始状态：</b>旧卡座、老菜单和封存厨房。<br><b>人物衔接：</b>找回老厨师，与双胞胎磨合菜品和店面呈现。</span></article>
+            <article class="stage" style="--accent:var(--green)"><h3>公路洗衣房</h3><p>旅馆逐步恢复接客，为长途旅行家庭、房车客人与住客提供洗烘服务，同时承接旅馆布草需求。</p><span class="unlock"><b>获得建议：</b>盘下空铺，开设新的洗衣生意。<br><b>初始状态：</b>空房间逐步安装洗衣机、烘干机与折衣台。<br><b>人物衔接：</b>邀请熟悉洗护或旅馆后勤的人物受聘。</span></article>
+            <article class="stage" style="--accent:var(--gold)"><h3>旅行写真馆</h3><p>游客开始在修复后的招牌和街景前合影，把双胞胎的审美与小镇特色转化为旅行写真服务。</p><span class="unlock"><b>获得建议：</b>盘下空铺，建设摄影与换装空间。<br><b>初始状态：</b>空店面改造成布景区、摄影区和照片橱窗。<br><b>人物衔接：</b>招募摄影师，共同设计旅行留念体验。</span></article>
+            <article class="stage" style="--accent:var(--green)"><h3>宠物洗护寄养店</h3><p>为携宠游客提供洗护与临时照看，让客人可以放心拍照、购物、用餐并参与后续娱乐。</p><span class="unlock"><b>获得建议：</b>盘下带院子的闲置物业，开新店。<br><b>初始状态：</b>空房与旧围栏改造成洗护、活动和寄养区。<br><b>人物衔接：</b>招募懂动物照护的镇民，承接宠物日常故事。</span></article>
+            <article class="stage" style="--accent:var(--blue)"><h3>修车厂</h3><p>随客流增长，将原有零散维修升级为正式修车厂，提供换胎、保养和故障修复，也为旅客暂留小镇创造契机。</p><span class="unlock"><b>获得建议：</b>收购老修车厂，更新设备后复业。<br><b>初始状态：</b>旧举升机、工具墙与未充分使用的维修位。<br><b>人物衔接：</b>聘请原维修师傅；前期可保留其零散救急服务。</span></article>
+            <article class="stage" style="--accent:var(--rust)"><h3>音乐酒吧</h3><p>承接逐渐稳定的晚间客流，以驻唱、听歌、舞池和饮品建立夜生活。旅行者与镇民在这里交流故事。</p><span class="unlock"><b>获得建议：</b>盘下闲置铺面，建设自己的酒吧。<br><b>初始状态：</b>空铺改造成吧台、小舞台与观众区。<br><b>人物衔接：</b>本地音乐人或旅行乐手参与经营；烧烤聚餐归宴会系统。</span></article>
+            <article class="stage" style="--accent:var(--green)"><h3>按摩理疗店（暂定）</h3><p>为长途驾驶后的疲劳、游客步行后的放松与住客休息提供服务。采用明亮、温暖的正规按摩理疗包装。</p><span class="unlock"><b>获得建议：</b>盘下空铺，开设放松护理服务。<br><b>初始状态：</b>空房改造成接待区、按摩床与热敷护理区。<br><b>人物衔接：</b>邀请有相关经验的人物负责服务；名称与具体内容待确认。</span></article>
+            <article class="stage" style="--accent:var(--blue)"><h3>保龄球馆</h3><p>增加适合家庭与朋友共同参与的大型室内娱乐，以聚会和小型比赛吸引周边客人，拓展专程到访需求。</p><span class="unlock"><b>获得建议：</b>收购停业老球馆，逐步修复营业。<br><b>初始状态：</b>旧球道、损坏设备、蒙尘计分牌和租鞋柜。<br><b>人物衔接：</b>邀请熟悉设备或场馆运营的原员工回归。</span></article>
+            <article class="stage" style="--accent:var(--gold)"><h3>汽车影院</h3><p>恢复小镇夜间地标，以影院重新亮起收束首批建设。白天逛店、晚上看电影、旅馆住一晚形成完整体验。</p><span class="unlock"><b>获得建议：</b>收购荒废影院，修复后重开。<br><b>初始状态：</b>旧银幕、长草停车场、关闭售票亭与放映室。<br><b>人物衔接：</b>邀请老放映员参与复业，首映庆功可衔接烧烤宴会。</span></article>
+          </div>
+          <div class="track-head"><span class="track-index">C</span><h3>获得店铺与持续经营</h3><p>每次开店都强化玩家自己的资产增长，并让镇民以受聘或招募的方式加入。</p></div>
+          <div class="sequence-strip framework-boundaries">
+            <div class="sequence-row"><span class="sequence-label">收购旧店</span><span>待售旧店保留原行业招牌、停业告示和闲置设备。玩家完成收购后投入整修、恢复营业，原店主或员工可受邀留下；店铺收益与经营决策归玩家。</span></div>
+            <div class="sequence-row"><span class="sequence-label">盘铺新开</span><span>取得空铺或闲置物业后，由玩家建设新店。美术从空房、空院、无行业标识的状态，逐步变成自有招牌、设备、工作区和营业场景。开局旅馆及附属洗车位属于继承资产。</span></div>
+            <div class="sequence-row"><span class="sequence-label">经营循环</span><span>获得店铺 → 整修开业 → 招募或委任员工 → 升级设备与服务 → 持续赚取经营收益 → 投入旅馆与下一家店铺。游客停留与小镇名气承接长期目标，暂不额外定义新货币或数值系统。</span></div>
+            <div class="sequence-row"><span class="sequence-label">玩法分工</span><span>主线店铺以服务、加工和体验承接持续经营收益；镇上自产纪念品并入 03 超市／便利店，作为后续解锁商品品类，不再单独开设纪念品店。进货转售的额外收益玩法统一在该店规划，烧烤包装保留给宴会系统，不占本轮经营店铺名额。</span></div>
+            <div class="sequence-row"><span class="sequence-label">当前范围</span><span>本轮更新总览经营框架与前 12 家顺序。13—20 家重新筛选；店铺详情、功能系统开放节点、具体等级与剧情主线后续另行衔接。</span></div>
+          </div>
+        </section>
+
+        <section class="content-section" id="storyline">
+          <div class="section-head"><h2><span>04</span>剧情主线</h2><p>这里只确定长线悬念与主要转折；具体章节进入独立剧情分页细写。</p></div>
+          <div class="sequence-strip">
+            <div class="sequence-row"><span class="sequence-label">前期故事基调</span><span>只安排一次因陌生而产生的不信任，随后转向兄妹帮助镇民、赢得接纳、发展感情关系，再由邻镇报复牵出家族旧势力。</span></div>
+            <div class="sequence-row"><span class="sequence-label">主角能力边界</span><span>城市经验只表现为查账、定价、排期、营销、谈判和资源组织能力，聪明但不奸诈，不使用黑心商业手段。</span></div>
+            <div class="sequence-row"><span class="sequence-label">人物投放节奏</span><span>首位人才对标身份 2；首位伙伴对标身份 4；后续重要伙伴分别参考《赘婿》剧情节点 5、12、16、22 的引入节奏。普通人才随身份阶段持续加入。</span></div>
+          </div>
+          <div class="story-premise"><strong>Part 1主线：</strong>兄妹从被怀疑到被小镇接纳，成功救活周末集市后遭到邻镇商人报复。对方将兄妹重新起势的消息传给夺产亲戚，引来家族旧势力再次打压。Part 1解决夺产亲戚这一层，结尾只揭示其背后还有区域商业集团，为后续留下悬念。</div>
+          <div class="roadmap story-roadmap">
+            <article class="stage" style="--accent:var(--rust)"><h3>最后一把旅馆钥匙</h3><p>双胞胎带着破产羞辱来到小镇，面对银行回收和一团糟的旅馆。留下看门的老员工起初准备离职，却在两人亲手修屋、洗车还债后决定再帮一次。</p><span class="unlock"><b>人物解锁：</b>首位人才——旅馆老员工</span></article>
+            <article class="stage" style="--accent:var(--blue)"><h3>修好那辆旧巴士</h3><p>兄妹在旅馆停车场发现一辆长期报废的接驳巴士。面对昂贵的修理报价，他们请来本地修车师傅一起检查故障、寻找零件并完成试车，让巴士重新成为旅馆连接小镇的交通与宣传入口。</p><span class="unlock"><b>剧情小游戏：</b>检查故障 · 更换零件 · 启动试车<br><b>人物解锁：</b>第二位人才——本地修车师傅<br><b>功能解锁：</b>旅馆接驳巴士</span></article>
+            <article class="stage" style="--accent:var(--green)"><h3>加油站少了一箱货</h3><p>兄妹向附近加油站借来工具和应急物资，归还时却被发现少了一箱货。两人根据送货单和仓库记录查出货物被错装上外地卡车，不仅洗清嫌疑，也帮助经营者追回损失。</p><span class="unlock"><b>人物解锁：</b>第三位人才——加油站经营者<br><b>商铺衔接：</b>加油站 + 便利店</span></article>
+            <article class="stage" style="--accent:var(--gold)"><h3>差点办不成的周末集市</h3><p>小镇集市因供货、摊位、交通和宣传同时出问题而面临取消。兄妹重新安排摊位、组织巴士接送、协调食品供应并完成宣传，让原本冷清的集市成为小镇近期最热闹的一天。</p><span class="unlock"><b>人物解锁：</b>首位伙伴——地方报社记者 / 活动协办人<br><b>关系推进：</b>在共同救场、争执与互相补位中产生好感</span></article>
+            <article class="stage" style="--accent:var(--rust)"><h3>被砸掉的旅馆招牌</h3><p>集市成功带来客流，也抢走了邻镇部分生意。几名邻镇商人暗中破坏旅馆招牌、巴士和集市摊位，兄妹与伙伴通过照片、货运记录和证人找到真凶，迫使对方当众赔偿。</p><span class="unlock"><b>关系推进：</b>首位伙伴参与调查，感情进一步升温<br><b>阶段对手：</b>邻镇商人</span></article>
+            <article class="stage" style="--accent:var(--blue)"><h3>家族的人找上门了</h3><p>邻镇商人将刊登兄妹事迹的报纸剪报传真给夺产亲戚。家族代理人随即来到小镇，以旧债、产权和家族名义施压，并在众人面前羞辱兄妹，要求他们再次交出旅馆。</p><span class="unlock"><b>主线升级：</b>小镇日常转入家族旧势力冲突<br><b>人物引入：</b>熟悉旧家族账目的会计 / 律师</span></article>
+            <article class="stage" style="--accent:var(--rust)"><h3>他们想连小镇一起买走</h3><p>夺产亲戚开始断供、压价并收购周边商铺，企图迫使镇民与兄妹切割。此前受过帮助的商户拿出订单、账目和证言共同站队，兄妹也第一次从守住自家资产转为守住小镇的经营秩序。</p><span class="unlock"><b>人物阶段：</b>核心人才集结 · 小镇阵营形成<br><b>矛盾升级：</b>个人夺产转为区域商业对抗</span></article>
+            <article class="stage" style="--accent:var(--green)"><h3>这一次，我们不走</h3><p>兄妹在小镇听证与资产处置中公开完整证据，击败负责夺产的亲戚，保住旅馆与商户。胜利后，他们从追回的清算文件中发现同一家区域商业集团反复出现，证明家族破产背后还有更深的操盘者。</p><span class="unlock"><b>Part 1结局：</b>夺产亲戚败退 · 兄妹正式被小镇接纳<br><b>后续悬念：</b>幕后区域商业集团浮出水面</span></article>
+          </div>
+        </section>
+
+        <section class="content-section" id="scenes">
+          <div class="section-head"><h2><span>05</span>美术相关</h2><p>这里只确定总览方向，详细规范进入后续独立美术需求。</p></div>
+          <div class="art-brief">
+            <p><strong>整体风格：</strong>90年代美式复古。</p>
+            <p><strong>场景设计避雷点：</strong>避免用中式乡村逻辑理解美国小镇。1993年的基础商业与汽车文化已经完整，胜出方向强调阳光、汽车、餐饮、音乐、霓虹与公路旅行感；小镇可以建筑较旧、节奏较慢，但不能显得贫穷、荒废或闭塞。</p>
+          </div>
+          <div class="art-subhead"><h3>场景结构</h3></div>
+          <div class="scene-grid scene-grid-three">
+            <article class="scene" style="--accent:var(--rust);--scene-soft:var(--soft-rust)"><span class="where">镇内 · 俯视经营主场景</span><h3>小镇主街</h3><p>汽车旅馆位于镇内画面的入口或边缘，以建筑、停车场和车辆动线构成一块醒目的完整区域；其他商铺与系统建筑向小镇内部展开。采用俯视角，重点展示经营布局、建筑关系和日常客流。</p></article>
+            <article class="scene" style="--accent:var(--green);--scene-soft:var(--soft-green)"><span class="where">镇内 · 俯视外围区域</span><h3>公路商业与生活区</h3><p>仍属于镇内场景，从主街自然过渡到加油便利店、花店温室、公路酒馆、汽车影院和仓储区域。少量农牧与自然景观只放在远端作为产业来源和空间过渡，不承担主视觉。</p></article>
+            <article class="scene" style="--accent:var(--blue);--scene-soft:var(--soft-blue)"><span class="where">城市 · 第三人称观景视角</span><h3>90年代繁华都市</h3><p>以更有纵深的第三人称视角展示高楼、商业街、酒店、广告牌、车流和城市灯光，突出与镇内不同的繁华感。战斗竞争、出游及区域商业等相关功能主要放置在城市中。</p></article>
+          </div>
+        </section>
+
+        <section class="content-section" id="module-entry">
+          <div class="section-head"><h2><span>06</span>策划案模块入口</h2><p>总览阅读完成后，可按分类进入单个系统或商铺分页。</p></div>
+          <div class="entry-grid">${renderEntryCards()}</div>
+          <div class="notice" style="margin-top:18px">后续每个系统都拥有独立详情页。图片、业务升级、小游戏流程和修改记录只进入对应模块，不再把所有信息堆回总览。</div>
+        </section>
+
+        <footer>总览只讲清题材、开局、经营发展、剧情主线、模块和整体美术想象。详细规则均进入对应分页。</footer>
+      </article>`;
+
+    mount(pageShell({ activeGroup: "overview", content }));
+  </script>
+</body>
+</html>

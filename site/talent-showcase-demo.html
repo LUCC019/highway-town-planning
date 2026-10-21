@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <script src="static-reader.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>本地电视台才艺竞演包装展示</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #111a27; }
+    body { font-family: "Microsoft YaHei", system-ui, sans-serif; }
+    .demo, .screen { position: absolute; inset: 0; }
+    .screen { display: none; overflow: hidden; background: #111a27; }
+    .screen.is-active { display: block; }
+    .screen img { width: 100%; height: 100%; display: block; object-fit: cover; user-select: none; -webkit-user-drag: none; }
+    .hotspot { position: absolute; z-index: 2; border: 0; border-radius: 18px; background: transparent; cursor: pointer; }
+    .hotspot:focus-visible { outline: 4px solid rgba(255, 223, 112, .95); outline-offset: -4px; background: rgba(255, 214, 82, .12); }
+    .main-join { left: 55%; top: 84%; width: 44%; height: 15%; }
+    .main-rankup { left: 0; top: 49%; width: 20%; height: 11%; }
+    .opponent { left: 1%; width: 98%; height: 20%; }
+    .opponent-one { top: 14%; }
+    .opponent-two { top: 35%; }
+    .opponent-three { top: 56%; }
+    .opponents-back, .progression-back { left: 0; bottom: 0; width: 26%; height: 13%; }
+    .battle-skip { right: 0; bottom: 0; width: 30%; height: 13%; }
+  </style>
+</head>
+<body>
+  <main class="demo" aria-label="才艺竞演界面流程">
+    <section class="screen is-active" data-screen="main" aria-label="竞演主场景">
+      <img src="assets/talent-showcase/main.png" alt="本地电视台才艺竞演主场景" draggable="false" />
+      <button class="hotspot main-join" type="button" data-go="opponents" aria-label="参赛，选择对手"></button>
+      <button class="hotspot main-rankup" type="button" data-go="progression" aria-label="查看晋级路线"></button>
+    </section>
+    <section class="screen" data-screen="opponents" aria-label="选择对手" aria-hidden="true">
+      <img src="assets/talent-showcase/opponents.png" alt="才艺竞演对手选择界面" draggable="false" />
+      <button class="hotspot opponent opponent-one" type="button" data-go="battle" aria-label="挑战第一位对手"></button>
+      <button class="hotspot opponent opponent-two" type="button" data-go="battle" aria-label="挑战第二位对手"></button>
+      <button class="hotspot opponent opponent-three" type="button" data-go="battle" aria-label="挑战第三位对手"></button>
+      <button class="hotspot opponents-back" type="button" data-go="main" aria-label="返回竞演主场景"></button>
+    </section>
+    <section class="screen" data-screen="battle" aria-label="才艺车轮战" aria-hidden="true">
+      <img src="assets/talent-showcase/battle.png" alt="双方伙伴进行才艺车轮战" draggable="false" />
+      <button class="hotspot battle-skip" type="button" data-go="main" aria-label="跳过对战并返回主场景"></button>
+    </section>
+    <section class="screen" data-screen="progression" aria-label="晋级路线" aria-hidden="true">
+      <img src="assets/talent-showcase/progression.png" alt="从家乡海选到全国总决赛的晋级路线" draggable="false" />
+      <button class="hotspot progression-back" type="button" data-go="main" aria-label="返回竞演主场景"></button>
+    </section>
+  </main>
+  <script>
+    const screens = [...document.querySelectorAll("[data-screen]")];
+    const showScreen = (name) => {
+      screens.forEach((screen) => {
+        const active = screen.dataset.screen === name;
+        screen.classList.toggle("is-active", active);
+        screen.setAttribute("aria-hidden", String(!active));
+      });
+      window.parent.postMessage({ type: "talent-showcase-screen", screen: name }, "*");
+    };
+    document.addEventListener("click", (event) => {
+      const target = event.target.closest("[data-go]");
+      if (target) showScreen(target.dataset.go);
+    });
+    showScreen("main");
+  </script>
+</body>
+</html>

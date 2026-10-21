@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <script src="static-reader.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>关卡包装玩法演示｜市场调研</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: radial-gradient(circle at 50% 0%, #34455f, #111924 58%, #080d13); color: #102c50; }
+    body.embedded { min-height: 100vh; overflow: hidden; background: #101927; }
+    body.embedded .phone { width: 100vw; height: 100vh; border: 0; box-shadow: none; }
+    button, a { font: inherit; }
+    .phone { position: relative; width: min(440px, 100vw); height: min(900px, 100vh); overflow: hidden; display: grid; grid-template-rows: 82px 68px minmax(300px, 1fr) 128px 116px; background: #efe7d8; border: 7px solid #1c2b40; box-shadow: 0 24px 70px #0009, inset 0 0 0 2px #63738a; }
+    .topbar { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: linear-gradient(#354762, #1e3049); border-bottom: 3px solid #9e7c4b; color: white; }
+    .title-paper { flex: 1; height: 58px; padding: 7px 13px; background: #f4eddf; color: #18385e; border: 2px solid #d3c2a4; transform: rotate(-1deg); box-shadow: 0 3px 8px #07132166; }
+    .title-paper small { display: block; font-size: 10px; font-weight: 900; letter-spacing: 2px; color: #bc4a32; }
+    .title-paper strong { display: block; font-family: Georgia, serif; font-size: 22px; line-height: 27px; white-space: nowrap; }
+    .resources { display: grid; gap: 5px; width: 126px; }
+    .resource { display: flex; align-items: center; justify-content: space-between; padding: 5px 8px; border-radius: 7px; background: #f7f0e4; border: 1px solid #c9b799; color: #1a3555; font-size: 12px; font-weight: 900; }
+    .resource b { color: #b4452e; }
+    .progress { position: relative; padding: 9px 13px 5px; background: linear-gradient(#354865, #273952); border-bottom: 3px solid #1c2a3d; color: white; }
+    .progress-head { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 11px; font-weight: 900; letter-spacing: 1px; }
+    .nodes { display: grid; grid-template-columns: repeat(10, 1fr); align-items: center; position: relative; }
+    .nodes::before { content: ""; position: absolute; left: 4%; right: 4%; top: 50%; height: 4px; background: #8fa2bd; transform: translateY(-50%); }
+    .node { position: relative; z-index: 1; justify-self: center; width: 23px; height: 23px; display: grid; place-items: center; border: 2px solid #dce5f4; border-radius: 50%; background: #526783; color: #eaf0fa; font-size: 9px; font-weight: 900; transition: .25s; }
+    .node.done { background: #6a9e4b; border-color: #f2df97; }
+    .node.current { width: 31px; height: 31px; background: #f4a523; border: 3px solid white; color: #173254; box-shadow: 0 0 16px #ffc04f; }
+    .scene { position: relative; overflow: hidden; background: linear-gradient(#43a8ef 0 38%, #d7ecf4 38% 60%, #a8a19a 60% 100%); isolation: isolate; }
+    .sun { position: absolute; top: 24px; right: 38px; width: 54px; height: 54px; border-radius: 50%; background: #fff3ad; box-shadow: 0 0 40px #ffe888; }
+    .cloud { position: absolute; width: 120px; height: 30px; border-radius: 30px; background: #fff9; filter: blur(.2px); }
+    .cloud::before, .cloud::after { content: ""; position: absolute; border-radius: 50%; background: inherit; }
+    .cloud::before { width: 48px; height: 48px; left: 23px; top: -23px; }
+    .cloud::after { width: 60px; height: 60px; right: 16px; top: -32px; }
+    .c1 { top: 50px; left: 50px; } .c2 { top: 98px; right: -22px; transform: scale(.7); }
+    .skyline { position: absolute; left: -60px; right: -500px; bottom: 176px; height: 180px; display: flex; align-items: flex-end; gap: 9px; transition: transform .75s cubic-bezier(.2,.8,.2,1); opacity: .72; }
+    .tower { width: 48px; flex: 0 0 auto; height: var(--h); background: linear-gradient(90deg, #708eaa, #d1d6cf 25%, #819db5 27% 54%, #e0d1b4 56% 75%, #7791a8 77%); clip-path: polygon(8% 12%, 35% 12%, 35% 0, 60% 0, 60% 12%, 92% 12%, 92% 100%, 8% 100%); }
+    .track { position: absolute; left: 0; bottom: 68px; height: 255px; display: flex; align-items: flex-end; transition: transform .75s cubic-bezier(.2,.8,.2,1); will-change: transform; }
+    .block { position: relative; width: 238px; height: 238px; flex: 0 0 auto; border-left: 3px solid #87634d; border-right: 3px solid #503b35; background: var(--wall); box-shadow: inset 0 11px #76513b, inset 0 -15px #614738; }
+    .block:nth-child(3n) { height: 220px; } .block:nth-child(4n) { height: 248px; }
+    .sign { position: absolute; left: 17px; right: 17px; top: 24px; min-height: 48px; display: grid; place-items: center; padding: 5px; background: var(--sign); border: 4px solid #ead9b8; box-shadow: 0 3px 0 #4f3428; color: white; font-family: Georgia, serif; font-size: 18px; font-weight: 900; letter-spacing: 1px; text-shadow: 0 2px #0007; }
+    .awning { position: absolute; left: 8px; right: 8px; top: 86px; height: 35px; background: repeating-linear-gradient(100deg, #f4efe0 0 18px, var(--awning) 18px 36px); border-bottom: 6px solid #405e55; transform: skewX(-5deg); }
+    .windows { position: absolute; left: 18px; right: 18px; bottom: 19px; height: 104px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .window { position: relative; background: linear-gradient(135deg, #7bc2deaa, #263e58 70%); border: 8px solid #4b3a31; box-shadow: inset 0 0 0 3px #a8e0ef55; }
+    .window::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 8px; height: 22px; background: linear-gradient(90deg, #f2cf60 0 25%, #d96e48 25% 50%, #dbe3c5 50% 75%, #6d9a69 75%); box-shadow: 0 0 10px #ffd76a66; }
+    .sidewalk { position: absolute; left: 0; right: 0; bottom: 0; height: 76px; background: repeating-linear-gradient(100deg, #d6cdc0 0 80px, #c4b9ab 81px 83px); border-top: 8px solid #eee8df; }
+    .sidewalk::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 26px; background: #5d6670; border-top: 4px solid #e7c86b; }
+    .mailbox { position: absolute; left: 38px; bottom: 45px; z-index: 5; width: 42px; height: 65px; border-radius: 15px 15px 5px 5px; background: #1765a7; border: 4px solid #0e3f6d; box-shadow: inset 0 0 0 4px #3d91ca; }
+    .mailbox::after { content: "✉"; display: grid; place-items: center; margin: 19px 7px; height: 22px; background: white; color: #1765a7; font-size: 16px; }
+    .hydrant { position: absolute; right: 46px; bottom: 43px; z-index: 5; font-size: 44px; filter: drop-shadow(0 4px 2px #0004); }
+    .hero, .boss { position: absolute; z-index: 8; bottom: 43px; width: 72px; height: 142px; transition: left .45s, right .55s, opacity .35s, transform .35s; filter: drop-shadow(0 8px 5px #0004); }
+    .hero { left: 27%; }
+    .boss { right: -105px; opacity: 0; }
+    .boss.show { right: 9%; opacity: 1; }
+    .person-head { position: absolute; top: 4px; left: 23px; width: 34px; height: 38px; border-radius: 47% 47% 44% 44%; background: #e4b08a; border: 2px solid #503729; }
+    .person-head::before { content: ""; position: absolute; left: -3px; right: -3px; top: -4px; height: 16px; border-radius: 55% 55% 20% 20%; background: #3a271e; }
+    .torso { position: absolute; top: 40px; left: 17px; width: 47px; height: 59px; border-radius: 11px 11px 4px 4px; background: #7a482b; border: 2px solid #3a2a24; transform: skewX(-4deg); }
+    .torso::after { content: ""; position: absolute; width: 8px; height: 53px; right: -10px; top: 2px; border-radius: 8px; background: #e2ae86; transform: rotate(-22deg); transform-origin: top; }
+    .leg { position: absolute; top: 94px; width: 15px; height: 46px; border-radius: 6px; background: #4775a1; border: 2px solid #243c58; transform-origin: 50% 4px; }
+    .leg.left { left: 20px; transform: rotate(10deg); } .leg.right { left: 42px; transform: rotate(-10deg); }
+    .leg::after { content: ""; position: absolute; bottom: -5px; left: -3px; width: 24px; height: 8px; border-radius: 7px 9px 3px 3px; background: #4b3023; }
+    .notebook { position: absolute; z-index: 3; top: 61px; left: 2px; width: 30px; height: 24px; background: #f0ead7; border: 3px solid #254d6f; transform: rotate(12deg); box-shadow: inset 0 0 0 2px #c8bda7; }
+    .boss .torso { background: #243852; } .boss .notebook { left: 53px; width: 25px; background: #503225; border-color: #2b1d18; }
+    .boss-tag { position: absolute; left: 50%; bottom: 143px; transform: translateX(-50%); width: 128px; padding: 6px; border-radius: 7px; background: #7e2e29; border: 2px solid #f4c976; color: white; text-align: center; font-size: 11px; font-weight: 900; box-shadow: 0 4px 10px #0005; }
+    .walking .hero { animation: hero-step .7s ease-in-out; }
+    .walking .hero .leg.left { animation: leg-left .22s ease-in-out 3; }
+    .walking .hero .leg.right { animation: leg-right .22s ease-in-out 3; }
+    @keyframes hero-step { 0% { transform: translate(0,0); } 45% { transform: translate(34px,-5px); } 100% { transform: translate(0,0); } }
+    @keyframes leg-left { 50% { transform: rotate(-25deg); } } @keyframes leg-right { 50% { transform: rotate(25deg); } }
+    .event { position: relative; display: grid; grid-template-columns: 76px 1fr; gap: 13px; align-items: center; padding: 13px 17px; background: #f5eee2; border-top: 3px solid #8d6848; border-bottom: 2px solid #cdbb9d; box-shadow: inset 0 0 30px #9f7d4a16; }
+    .event-icon { width: 72px; height: 82px; display: grid; place-items: center; background: #dce9ee; border: 5px solid white; outline: 1px solid #b59f7d; transform: rotate(-3deg); font-size: 40px; box-shadow: 0 3px 8px #6a4b2a33; }
+    .event h2 { margin: 0 0 7px; font-size: 22px; font-family: Georgia, serif; }
+    .event p { margin: 0; color: #31465d; font-size: 14px; line-height: 1.5; }
+    .reward-pop { position: absolute; z-index: 20; right: 24px; top: -34px; padding: 8px 14px; border-radius: 20px; background: #fff5c7; border: 2px solid #d99d2e; color: #b53e24; font-weight: 1000; opacity: 0; transform: translateY(15px) scale(.75); pointer-events: none; }
+    .reward-pop.play { animation: reward .9s ease-out; }
+    @keyframes reward { 0% { opacity: 0; transform: translateY(15px) scale(.75); } 20%,70% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-20px) scale(.9); } }
+    .controls { display: grid; grid-template-columns: 58px 1fr 104px; align-items: center; gap: 10px; padding: 12px 14px; background: linear-gradient(#5f402b, #38271e); color: white; }
+    .back { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; border: 3px solid #eef3f8; background: #3b536d; color: white; text-decoration: none; font-size: 27px; box-shadow: 0 3px 0 #142133; }
+    .action { height: 78px; border: 3px solid #7c4a12; border-radius: 18px; background: linear-gradient(#ffd965, #f4a91e); color: #3d270d; font-family: Georgia, serif; font-size: 33px; font-weight: 1000; letter-spacing: 4px; box-shadow: inset 0 0 0 3px #ffe9a3, 0 6px 0 #6f3e12; cursor: pointer; }
+    .action:active { transform: translateY(4px); box-shadow: inset 0 0 0 3px #ffe9a3, 0 2px 0 #6f3e12; }
+    .action.competition { background: linear-gradient(#f36f50, #bd392b); border-color: #641d1b; color: white; box-shadow: inset 0 0 0 3px #ffb49e, 0 6px 0 #5b1d18; }
+    .side-actions { display: grid; gap: 7px; font-size: 12px; }
+    .mini { padding: 8px 5px; border: 2px solid #c9d2df; border-radius: 8px; background: #536a87; color: white; font-weight: 900; }
+    .auto { display: flex; gap: 6px; align-items: center; justify-content: center; }
+    .auto input { width: 18px; height: 18px; }
+    .battle { position: absolute; z-index: 50; inset: 0; display: grid; grid-template-rows: 88px 1fr 150px; background: radial-gradient(circle at 50% 35%, #365b79, #101a28 65%); color: white; opacity: 0; pointer-events: none; transform: translateY(18px); transition: .35s; }
+    .battle.active { opacity: 1; pointer-events: auto; transform: none; }
+    .battle-head { display: grid; place-items: center; background: #17283e; border-bottom: 3px solid #b99458; text-align: center; }
+    .battle-head small { color: #e2bb6f; letter-spacing: 3px; font-weight: 900; } .battle-head h2 { margin: 2px; font: 900 27px Georgia, serif; }
+    .versus { position: relative; display: grid; grid-template-columns: 1fr 64px 1fr; align-items: center; padding: 30px 18px; overflow: hidden; }
+    .battle-card { padding: 18px 8px; min-height: 230px; display: grid; place-items: center; align-content: center; gap: 12px; border-radius: 18px; background: #eaf0f7; border: 5px solid #7194bd; color: #17304e; text-align: center; box-shadow: 0 16px 30px #0006; }
+    .battle-card.rival { border-color: #b86059; background: #f0e7e4; color: #57221d; }
+    .portrait { width: 92px; height: 92px; display: grid; place-items: center; border-radius: 50%; background: #f0c48e; border: 6px solid #294e77; font-size: 50px; }
+    .rival .portrait { border-color: #85392f; }
+    .battle-card strong { font: 900 17px Georgia, serif; } .power { font-size: 25px; font-weight: 1000; }
+    .vs { position: relative; z-index: 4; font: 1000 32px Georgia, serif; color: #ffd16b; text-shadow: 0 3px #7a2b20; text-align: center; }
+    .clash { position: absolute; left: 50%; top: 48%; width: 10px; height: 10px; border-radius: 50%; background: white; box-shadow: 0 0 0 0 #ffd56b; transform: translate(-50%,-50%); opacity: 0; }
+    .battle.fighting .battle-card:first-child { animation: hit-left .8s ease .35s; } .battle.fighting .battle-card.rival { animation: hit-right .8s ease .35s; }
+    .battle.fighting .clash { animation: clash 1s ease .55s; }
+    @keyframes hit-left { 50% { transform: translateX(28px) rotate(2deg); } } @keyframes hit-right { 50% { transform: translateX(-28px) rotate(-2deg); } }
+    @keyframes clash { 20% { opacity: 1; box-shadow: 0 0 0 0 #ffd56bcc; } 70% { opacity: 1; box-shadow: 0 0 0 90px #ffd56b00; transform: translate(-50%,-50%) scale(8); } 100% { opacity: 0; } }
+    .battle-result { position: absolute; z-index: 9; left: 50%; top: 51%; width: 82%; padding: 22px; border-radius: 14px; background: #fff4cf; border: 4px solid #d79d37; color: #17304e; text-align: center; transform: translate(-50%,-40%) scale(.7); opacity: 0; transition: .35s; box-shadow: 0 20px 45px #0009; }
+    .battle.won .battle-result { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    .battle-result h3 { margin: 0 0 8px; color: #b43a27; font: 1000 32px Georgia, serif; }
+    .battle-result p { margin: 4px; }
+    .battle-bottom { display: grid; place-items: center; padding: 18px; background: #17283e; border-top: 2px solid #53677e; }
+    .reset { width: 70%; padding: 16px; border: 2px solid #f1d58c; border-radius: 12px; background: #bd472f; color: white; font-size: 19px; font-weight: 900; opacity: 0; pointer-events: none; transition: .3s; }
+    .battle.won .reset { opacity: 1; pointer-events: auto; }
+    @media (max-height: 720px) { .phone { grid-template-rows: 70px 58px minmax(250px,1fr) 110px 96px; } .topbar { padding: 6px 9px; } .title-paper { height: 50px; } .scene { min-height: 250px; } .event { padding: 8px 13px; } .event-icon { height: 70px; } .controls { padding: 8px 11px; } .action { height: 65px; } }
+  </style>
+</head>
+<body>
+  <main class="phone" id="phone">
+    <header class="topbar">
+      <div class="title-paper"><small>CHAPTER 1 · 商机考察</small><strong>MARKET RESEARCH</strong></div>
+      <div class="resources">
+        <div class="resource"><span>💵 现金</span><b id="cash">$12,480</b></div>
+        <div class="resource"><span>📁 情报</span><b id="intel">36</b></div>
+      </div>
+    </header>
+
+    <section class="progress">
+      <div class="progress-head"><span>小镇周边 · 市场走访</span><span id="stageCount">0 / 10</span></div>
+      <div class="nodes" id="nodes"></div>
+    </section>
+
+    <section class="scene" id="scene">
+      <div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div>
+      <div class="skyline" id="skyline"></div>
+      <div class="track" id="track"></div>
+      <div class="sidewalk"></div><div class="mailbox"></div><div class="hydrant">🚒</div>
+      <div class="hero" aria-label="正在走访市场的主角">
+        <i class="person-head"></i><i class="torso"></i><i class="leg left"></i><i class="leg right"></i><i class="notebook"></i>
+      </div>
+      <div class="boss" id="boss" aria-label="竞争企业代表">
+        <span class="boss-tag">RIVAL CORP<br>竞争企业</span><i class="person-head"></i><i class="torso"></i><i class="leg left"></i><i class="leg right"></i><i class="notebook"></i>
+      </div>
+    </section>
+
+    <section class="event">
+      <div class="event-icon" id="eventIcon">📼</div>
+      <div><h2 id="eventTitle">调研准备</h2><p id="eventText">沿街观察客流、需求与同业经营，寻找下一门值得投入的生意。</p></div>
+      <div class="reward-pop" id="reward">阅历 +1000</div>
+    </section>
+
+    <section class="controls">
+      <a class="back" href="detail.html?id=checkpoints" aria-label="返回关卡说明">←</a>
+      <button class="action" id="action">调研</button>
+      <div class="side-actions"><button class="mini" id="quick">一键调研</button><label class="auto"><input type="checkbox" id="auto" />自动调研</label></div>
+    </section>
+
+    <section class="battle" id="battle">
+      <header class="battle-head"><div><small>CHAPTER BOSS</small><h2>街区合作权竞争</h2></div></header>
+      <div class="versus">
+        <article class="battle-card"><div class="portrait">🧑🏻‍💼</div><strong>你的经营团队</strong><div class="power">68,420</div></article>
+        <div class="vs">VS</div>
+        <article class="battle-card rival"><div class="portrait">👨🏻‍💼</div><strong>城市发展公司</strong><div class="power">61,800</div></article>
+        <div class="clash"></div>
+        <div class="battle-result"><h3>竞争胜利</h3><p>取得街区合作资格</p><p><b>新店铺：社区餐厅</b></p></div>
+      </div>
+      <div class="battle-bottom"><button class="reset" id="reset">重新体验</button></div>
+    </section>
+  </main>
+
+  <script>
+    document.body.classList.toggle("embedded", new URLSearchParams(location.search).has("embed"));
+    const events = [
+      ["📼", "录像店客流", "录像店客流稳定，附近缺少能快速用餐的去处。"],
+      ["☕", "通勤需求", "清晨客流集中，热饮与便携早餐存在明显缺口。"],
+      ["🎬", "周末人群", "影院散场后街道依旧热闹，夜间消费值得尝试。"],
+      ["🛠️", "住户反馈", "周边新住户增加，常用维修与五金需求正在上升。"],
+      ["📰", "本地消息", "新公交线路即将开通，街角铺位可能迎来更多客流。"],
+      ["👟", "年轻潮流", "年轻顾客频繁询问运动鞋与街头服饰。"],
+      ["🥤", "午后热销", "汽水和冰品在午后售罄，便利零售仍有空间。"],
+      ["📦", "供货渠道", "本地批发商愿意提供稳定供货与首批试销额度。"],
+      ["🍔", "商机明确", "餐饮需求、客流时段和供货条件已经基本明确。"],
+      ["🏢", "竞争出现", "另一家企业也盯上了这片街区，准备争夺合作资格。"]
+    ];
+    const stores = [
+      ["SUNSET RECORDS", "#45687b", "#b54935", "#2f6d61"], ["CORNER DINER", "#c77955", "#bd3e32", "#c94b3d"],
+      ["HARDWARE", "#8d9b77", "#3f6e5b", "#397568"], ["CITY PHARMACY", "#d1b185", "#346c70", "#bd5841"],
+      ["LAUNDROMAT", "#7393a0", "#375d86", "#d9b64c"], ["VIDEO WORLD", "#b98a64", "#7f3d47", "#2d7261"],
+      ["FAMILY MARKET", "#b18d62", "#9d4736", "#487f61"], ["SPORT SHOP", "#8b9d85", "#325e52", "#c75343"],
+      ["BOOKS & NEWS", "#b67c65", "#345f77", "#3e7967"], ["COFFEE STOP", "#9f8a70", "#8f452e", "#a7523c"],
+      ["SHOE DEPOT", "#7f9b9d", "#2d5f79", "#d0a03c"], ["NEIGHBORHOOD MALL", "#b9936f", "#774138", "#356c62"]
+    ];
+    const nodes = document.getElementById("nodes");
+    const track = document.getElementById("track");
+    const skyline = document.getElementById("skyline");
+    const scene = document.getElementById("scene");
+    const action = document.getElementById("action");
+    const boss = document.getElementById("boss");
+    const battle = document.getElementById("battle");
+    const reward = document.getElementById("reward");
+    let step = 0, busy = false, autoTimer = 0;
+
+    nodes.innerHTML = Array.from({ length: 10 }, (_, i) => `<span class="node${i === 0 ? " current" : ""}">${i === 9 ? "★" : i + 1}</span>`).join("");
+    skyline.innerHTML = Array.from({ length: 20 }, (_, i) => `<i class="tower" style="--h:${70 + (i * 37) % 110}px"></i>`).join("");
+    track.innerHTML = stores.map(([name, wall, sign, awning]) => `<article class="block" style="--wall:${wall};--sign:${sign};--awning:${awning}"><div class="sign">${name}</div><div class="awning"></div><div class="windows"><i class="window"></i><i class="window"></i></div></article>`).join("");
+
+    function paintProgress() {
+      [...nodes.children].forEach((node, i) => {
+        node.classList.toggle("done", i < step);
+        node.classList.toggle("current", i === Math.min(step, 9));
+      });
+      document.getElementById("stageCount").textContent = `${step} / 10`;
+    }
+
+    function showReward() {
+      reward.classList.remove("play"); void reward.offsetWidth; reward.classList.add("play");
+    }
+
+    function research() {
+      if (busy || step >= 10) return;
+      busy = true; scene.classList.add("walking");
+      step += 1;
+      track.style.transform = `translateX(${-step * 170}px)`;
+      skyline.style.transform = `translateX(${-step * 48}px)`;
+      const [icon, title, text] = events[step - 1];
+      document.getElementById("eventIcon").textContent = icon;
+      document.getElementById("eventTitle").textContent = title;
+      document.getElementById("eventText").textContent = text;
+      document.getElementById("cash").textContent = `$${(12480 - step * 250).toLocaleString()}`;
+      document.getElementById("intel").textContent = 36 + step;
+      paintProgress(); showReward();
+      setTimeout(() => {
+        scene.classList.remove("walking"); busy = false;
+        if (step === 10) {
+          boss.classList.add("show"); action.textContent = "竞争"; action.classList.add("competition");
+          clearInterval(autoTimer); document.getElementById("auto").checked = false;
+        }
+      }, 720);
+    }
+
+    function enterBattle() {
+      battle.classList.add("active");
+      setTimeout(() => battle.classList.add("fighting"), 450);
+      setTimeout(() => battle.classList.add("won"), 1650);
+    }
+
+    action.addEventListener("click", () => step < 10 ? research() : enterBattle());
+    document.getElementById("quick").addEventListener("click", research);
+    document.getElementById("auto").addEventListener("change", event => {
+      clearInterval(autoTimer);
+      if (event.target.checked && step < 10) autoTimer = setInterval(research, 850);
+    });
+    document.getElementById("reset").addEventListener("click", () => {
+      step = 0; busy = false; clearInterval(autoTimer);
+      track.style.transform = "translateX(0)"; skyline.style.transform = "translateX(0)";
+      boss.classList.remove("show"); battle.className = "battle"; action.textContent = "调研"; action.classList.remove("competition");
+      document.getElementById("eventIcon").textContent = "📼"; document.getElementById("eventTitle").textContent = "调研准备";
+      document.getElementById("eventText").textContent = "沿街观察客流、需求与同业经营，寻找下一门值得投入的生意。";
+      document.getElementById("cash").textContent = "$12,480"; document.getElementById("intel").textContent = "36"; paintProgress();
+    });
+  </script>
+</body>
+</html>
