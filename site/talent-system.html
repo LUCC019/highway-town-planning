@@ -42,10 +42,11 @@
           <div class="section-head"><h2><span>01</span>系统规则</h2></div>
           <div class="talent-grid">
             <article class="talent-card"><h3>定位与获取</h3><p>人才是角色收集与养成单位，原门客对象一对一映射为人才。人才贡献赚钱属性，并参与关卡与店铺已有的人才计算。</p><p>人才分未拥有、已拥有两种详情状态。未拥有时预览档案和获取途径；招募条件、资源消耗和跳转使用原 <code>PartnerCfg.GetType / GetParam / JumpId</code> 与关联配置。</p></article>
-            <article class="talent-card"><h3>升级与晋升</h3><p>逐级消耗人才阅历，按 <code>PartnerLevelCfg</code> 增长等级基础属性。达到 <code>PartnerBreakCfg.MaxLevel</code> 时升级入口切为“晋升”；晋升即原突破流程，按原阶段、材料、属性与等级上限生效。配置覆盖 1–1000 级、20 个晋升阶段。</p></article>
+            <article class="talent-card"><h3>升级与晋升</h3><p>逐级消耗人才阅历，按 <code>PartnerLevelCfg</code> 增长等级基础属性。达到 <code>PartnerBreakCfg.MaxLevel</code> 时升级入口切为“晋升”；这里的晋升是原突破流程，按原阶段、材料、属性与等级上限生效，不等同于品质进阶。配置覆盖 1–1000 级、20 个晋升阶段。</p></article>
             <article class="talent-card"><h3>进修、技能与专长</h3><p>进修即原升星流程。材料、星级限制、赚钱固定值/百分比效果取 <code>PartnerStarCfg</code>。技能与暂称“专长”的原百业技能，依原 <code>CommonSkillCfg / SkillUnlockCfg / SkillUpgradeCfg</code> 判定解锁、等级、消耗、效果。保留十连升级逻辑，材料不足按原提示/跳转。</p></article>
             <article class="talent-card"><h3>光环、皮肤与资料</h3><p>光环按原皮肤、套装或关联条件激活。皮肤既可只换外观，也可有强化等级、重复皮肤消耗与服装光环。故事沿用原分段解锁和奖励结构；缘分展示关联伙伴及加成。主题羁绊的跨时尚中心规则暂不在本页定义。</p></article>
             <article class="talent-card wide"><h3>属性计算与跨系统边界</h3><p>原属性链路可概括为：<code>floor((等级基础属性 + 晋升基础属性) × 天赋 × (1 + 百分比加成 / 10000) + 固定加成)</code>。这是原门客计算链的包装表述；具体叠加、例外与取整顺序以原运行逻辑为准，界面预览不得自行另算。关卡及店铺引用同一人才赚钱与潜力结果，不新增第二套数值。</p><p>人才类别 <strong>服、农、商、娱</strong> 映射原 <code>Profession 1/2/3/4</code>。店铺类别仍为<strong>生活、休闲、购物、娱乐</strong>，两套分类不能混用。</p></article>
+            <article class="talent-card wide"><h3>品质进阶</h3><p>仅配置为可进阶且尚未进阶的人才显示【进阶】入口；入口在解锁皮肤前也可点击查看预览。当前原表的进阶条件是已解锁该人才任意一款非初始皮肤，未满足时不能执行；解锁皮肤只作为资格，不消耗皮肤。进阶完成后该入口不再显示。</p><p>手动进阶后，人才品质、基础潜力和天赋技能、人才技能集合切换为该人才进阶配置。新获得、升级和专属技能分别按对应技能变化展示；金色品质人才才配置专属技能。品质进阶不替代等级晋升或进修升星。</p></article>
           </div>
         </section>
         <section class="content-section" id="config-map"><div class="section-head"><h2><span>02</span>原包配置映射</h2></div><article class="talent-card"><p>以下是数据归属，不是新配置表；同 ID、同字段、同值沿用。截图中的数字只是账号状态，不作为默认值。</p><table><thead><tr><th>原配置</th><th>数据职责</th><th>人才包装处理</th></tr></thead><tbody>
@@ -53,12 +54,12 @@
           <tr><td><code>PartnerLevelCfg</code></td><td>经验与等级基础属性；1000 级</td><td>数值不变</td></tr>
           <tr><td><code>PartnerBreakCfg</code></td><td>阶段、等级上限、属性与材料；20 条</td><td>原“突破”仅显示为“晋升”</td></tr>
           <tr><td><code>PartnerStarCfg</code></td><td>进修材料、限制和赚钱效果；含 0 星共 26 条</td><td>保留进修流程与升星结果</td></tr>
-          <tr><td><code>PartnerAdvanceCfg</code></td><td>品质、潜力、技能替换与进阶状态</td><td>原条件保留；18 图未覆盖的入口不擅自设计</td></tr>
+          <tr><td><code>PartnerAdvanceCfg</code></td><td><code>PartnerId</code>、<code>Quality</code>、<code>Type</code>、<code>Potential</code>、<code>SkillList</code>、<code>BusinessSkill</code>、<code>TalentSkill</code>：定义每名可进阶人才的目标品质、基础潜力、皮肤条件及进阶后技能</td><td>与 <code>PartnerCfg.Advance</code> 共同确定入口；当前原表 <code>Type=1</code> 为任意一款皮肤，技能按该人才进阶前后配置对照，不把截图中的具体技能当作全员通用值</td></tr>
           <tr><td><code>CommonSkillCfg</code>、<code>SkillUnlockCfg</code>、<code>SkillUpgradeCfg</code></td><td>技能类型、效果、解锁、升级与消耗</td><td>旧“百业”暂称“专长”；类型与技能 ID 不改</td></tr>
           <tr><td><code>ItemCfg</code>、<code>AttributeCfg</code> 及相关系统表</td><td>材料道具、潜力、赚钱和跨系统属性来源</td><td>只同步已确认包装；道具 ID 和属性定义不改</td></tr>
         </tbody></table></article></section>
         <section class="content-section" id="terms"><div class="section-head"><h2><span>03</span>包装名词</h2></div><article class="talent-card"><table><thead><tr><th>原词</th><th>本项目写法</th><th>说明</th></tr></thead><tbody>
-          <tr><td>门客</td><td>人才</td><td>显示层替换，内部仍为 Partner</td></tr><tr><td>士 / 农 / 商 / 侠</td><td>服 / 农 / 商 / 娱</td><td>仅人才类别，单字；Profession 1/2/3/4 不改</td></tr><tr><td>突破 / 突破成功</td><td>晋升 / 晋升成功</td><td>底层突破流程不改</td></tr><tr><td>百业</td><td>专长（待确认）</td><td>Excel 明示漏定包装；暂占位</td></tr><tr><td>进修成功</td><td>升星成功</td><td>按 Excel 页面标注；“进修”按钮保留</td></tr><tr><td>红颜</td><td>伙伴</td><td>与已有关卡页称谓一致，缘分机制不变</td></tr><tr><td>升级、技能、天赋、光环、故事、缘分、皮肤、招募、潜力、赚钱</td><td>保留</td><td>合适通用名不硬改</td></tr><tr><td>店铺：生活 / 休闲 / 购物 / 娱乐</td><td>保留</td><td>独立于人才单字类别</td></tr>
+          <tr><td>门客</td><td>人才</td><td>显示层替换，内部仍为 Partner</td></tr><tr><td>士 / 农 / 商 / 侠</td><td>服 / 农 / 商 / 娱</td><td>仅人才类别，单字；Profession 1/2/3/4 不改</td></tr><tr><td>突破 / 突破成功</td><td>晋升 / 晋升成功</td><td>等级上限阶段流程</td></tr><tr><td>原品质晋升 / 晋升成功</td><td>进阶 / 进阶成功</td><td>解锁皮肤后的品质变化流程，与等级晋升分开</td></tr><tr><td>百业</td><td>专长（待确认）</td><td>Excel 明示漏定包装；暂占位</td></tr><tr><td>进修成功</td><td>升星成功</td><td>按 Excel 页面标注；“进修”按钮保留</td></tr><tr><td>红颜</td><td>伙伴</td><td>与已有关卡页称谓一致，缘分机制不变</td></tr><tr><td>升级、技能、天赋、光环、故事、缘分、皮肤、招募、潜力、赚钱</td><td>保留</td><td>合适通用名不硬改</td></tr><tr><td>店铺：生活 / 休闲 / 购物 / 娱乐</td><td>保留</td><td>独立于人才单字类别</td></tr>
         </tbody></table></article></section>
         </div>
         <div class="talent-panel" id="panel-ui" role="tabpanel" aria-labelledby="tab-ui" hidden>
