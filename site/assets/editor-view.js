@@ -91,7 +91,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
   const renderRuleLink = (link) => {
     const href = String(link?.href || "");
     const jump = /^#ui-screen-([a-zA-Z0-9-]+)(?:\?(.*))?$/.exec(href);
-    if (jump && visibleScreens.some((item) => item.id === jump[1])) {
+    if (jump && screens.some((item) => item.id === jump[1])) {
       const params = new URLSearchParams(jump[2] || "");
       return `<button type="button" class="button shop-ui-reference-link" data-ui-screen-jump="${escapeHtml(jump[1])}" data-ui-rule-jump="${escapeHtml(params.get("rule") || "")}" data-ui-popup-jump="${escapeHtml(params.get("popup") || "")}" data-ui-nested-jump="${escapeHtml(params.get("nested") || "")}">${escapeHtml(link.label || "查看关联界面")} <span aria-hidden="true">→</span></button>`;
     }

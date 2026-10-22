@@ -592,6 +592,10 @@ function renderInlineShopUi() {
     expandedPopupKey: uiState.expandedPopupKey,
     expandedNestedPopupKey: uiState.expandedNestedPopupKey,
     onSelectScreen(id, jump = {}) {
+      const nextIsMinigame = id.startsWith("minigame-");
+      if (nextIsMinigame !== isMinigameUi) {
+        frameDocument.querySelector(`[data-shop-page-tab="${nextIsMinigame ? "minigame-ui" : "interface"}"]`)?.click();
+      }
       uiState.selectedScreenId = id;
       const rules = activeShopUiRules(source, uiState) || [];
       uiState.selectedId = Number(rules.find((rule) => Number(rule.id) === jump.ruleId)?.id || rules[0]?.id || 1);
@@ -687,7 +691,7 @@ function prepareFrame() {
     history.replaceState(null, "", `${mode === "reader" ? "reader.html" : "editor.html"}?page=${encodeURIComponent(loadedFramePage)}`);
     renderCatalog(document.querySelector("#full-page-search")?.value || "");
     document.querySelector("#full-current-title").textContent = state.currentTitle;
-    if (mode === "edit") document.querySelector("#full-reader-link").href = `reader.html?page=${encodeURIComponent(loadedFramePage)}`;
+    if (mode === "edit") document.querySelector("#full-reader-link").href = onlineReaderPage(loadedFramePage);
   }
 
   const integratedLayoutStyle = frameDocument.createElement("style");
@@ -712,7 +716,7 @@ function prepareFrame() {
       state.currentFramePage = `${targetUrl.pathname.split("/").pop()}${targetUrl.search}`;
       history.replaceState(null, "", `${mode === "reader" ? "reader.html" : "editor.html"}?page=${encodeURIComponent(state.currentFramePage)}`);
       const readerLink = document.querySelector("#full-reader-link");
-      if (readerLink) readerLink.href = `reader.html?page=${encodeURIComponent(state.currentFramePage)}`;
+      if (readerLink) readerLink.href = onlineReaderPage(state.currentFramePage);
       renderInlineShopUi();
     });
   }
@@ -886,7 +890,7 @@ function mountShell() {
     <button id="full-reset-button" type="button">恢复正式版</button>
     <button id="full-history-button" type="button">历史版本</button>
     <button id="full-publish-button" type="button" class="is-publish">发布整案</button>
-    <a id="full-reader-link" href="reader.html" target="_blank" rel="noopener">打开阅读版</a>` : `
+    <a id="full-reader-link" href="${onlineReaderPage()}" target="_blank" rel="noopener">打开阅读版</a>` : `
     <span class="full-reader-badge">正式阅读版</span>`;
 
   app.innerHTML = `
