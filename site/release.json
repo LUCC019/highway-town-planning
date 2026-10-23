@@ -1,9 +1,14 @@
 {
   "schemaVersion": 1,
-  "releaseId": "e823e0af-0b01-443a-950c-3436f737d659",
-  "builtAt": "2026-10-23T09:29:26.189Z",
+  "releaseId": "12843d51-20f5-4e0f-82bd-db11a80434e1",
+  "builtAt": "2026-10-23T09:31:16.870Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
+    {
+      "id": "checkpoints",
+      "name": "市场调研（0.1）",
+      "nodes": 14
+    },
     {
       "id": "main-town",
       "name": "主城（0.1）",
@@ -45,11 +50,6 @@
       "nodes": 32
     },
     {
-      "id": "checkpoints",
-      "name": "市场调研（0.1）",
-      "nodes": 11
-    },
-    {
       "id": "shop-system",
       "name": "店铺系统（0.1）",
       "nodes": 15
@@ -65,15 +65,16 @@
       "nodes": 4
     }
   ],
-  "embeddedImageFiles": 199,
-  "files": 627,
-  "totalBytes": 561132711,
+  "embeddedImageFiles": 202,
+  "files": 630,
+  "totalBytes": 563397170,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
     "shop-formal.json",
     "car-wash.json",
     "flows.json",
+    "flows/checkpoints.json",
     "flows/main-town.json",
     "flows/protagonists.json",
     "flows/d93f99a3-5d49-4947-9c5f-408f71dce72a.json",
@@ -82,7 +83,6 @@
     "flows/convenience-store.json",
     "flows/9e7c722c-6393-4d31-af13-d61314a20876.json",
     "flows/talent-system.json",
-    "flows/checkpoints.json",
     "flows/shop-system.json",
     "flows/gas-station.json",
     "flows/car-wash.json",
