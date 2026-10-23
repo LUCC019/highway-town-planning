@@ -95,7 +95,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
       const params = new URLSearchParams(jump[2] || "");
       return `<button type="button" class="button shop-ui-reference-link" data-ui-screen-jump="${escapeHtml(jump[1])}" data-ui-rule-jump="${escapeHtml(params.get("rule") || "")}" data-ui-popup-jump="${escapeHtml(params.get("popup") || "")}" data-ui-nested-jump="${escapeHtml(params.get("nested") || "")}">${escapeHtml(link.label || "查看关联界面")} <span aria-hidden="true">→</span></button>`;
     }
-    if (!/^(?:(?:talent-system\.html|detail\.html)\?|https:\/\/)/.test(href)) return "";
+    if (!/^(?:(?:talent-system\.html|partner-system\.html|detail\.html)\?|https:\/\/)/.test(href)) return "";
     return `<a class="shop-ui-reference-link" href="${escapeHtml(href)}"${/^https:\/\//.test(href) ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(link.label || "查看关联界面")} <span aria-hidden="true">→</span></a>`;
   };
   const ruleEntries = selectedRule.rules.map((entry, entryIndex) => {
@@ -204,7 +204,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
                 </div>` : ""}
             </figure>
             <div class="editor-popup-rules">
-              <div class="editor-popup-rules-head"><strong>弹窗界面规则</strong><span>${popup.rules?.length || 0} 条</span></div>
+              <div class="editor-popup-rules-head"><strong>${document.id === "doll-house" ? (["super-grab", "cumulative-effects"].includes(popup.id) ? "关联界面规则" : ["lucky-skill", "atlas-bonus", "event-lock"].includes(popup.id) ? "同页展开规则" : ["talent-button-states", "single-lock-tip", "single-unlock-tip", "single-sell-tip"].includes(popup.id) ? "状态说明" : "弹窗界面规则") : "弹窗界面规则"}</strong><span>${popup.rules?.length || 0} 条</span></div>
               ${popupRules || '<p class="editor-popup-empty">尚未填写弹窗规则。</p>'}
               ${editable ? `<button type="button" class="editor-popup-add-rule" data-popup-add-rule data-entry-index="${entryIndex}">＋ 新增一条弹窗规则</button>` : ""}
             </div>

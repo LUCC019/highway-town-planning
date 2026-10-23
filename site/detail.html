@@ -1012,9 +1012,10 @@
             : `<button type="button" data-character-page-tab="interface" aria-pressed="false">界面</button>`}
         </nav>` : "";
       const isDollHouse = item.id === "doll-house";
-      const checkpointTopActions = item.id === "checkpoints" || isDollHouse ? `
-        ${isDollHouse ? `<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>` : ""}
-        <nav class="shop-page-tabs" data-checkpoint-page-tabs aria-label="${isDollHouse ? "幸运抓抓" : "关卡"}策划案分页">
+      const isTalentMarket = item.id === "talent-market";
+      const checkpointTopActions = item.id === "checkpoints" || isDollHouse || isTalentMarket ? `
+        ${isDollHouse || isTalentMarket ? `<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>` : ""}
+        <nav class="shop-page-tabs" data-checkpoint-page-tabs aria-label="${isTalentMarket ? "征才信箱" : isDollHouse ? "幸运抓抓" : "关卡"}策划案分页">
           <button type="button" class="is-active" data-checkpoint-page-tab="rules" aria-pressed="true">规则</button>
           <button type="button" data-checkpoint-page-tab="interface" aria-pressed="false">界面</button>
         </nav>` : "";
@@ -1047,15 +1048,15 @@
           <p>本页以关卡主界面原图为底，叠加可点击的1—11号分区标记，说明各模块的显示内容、状态、交互、刷新与异常边界。后续视觉稿调整时同步修订图片与标记位置。</p>
         </article>
         ${shopUiRulesCard}` : "";
-      const dollInterfaceDetails = isDollHouse ? `<article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><h2>界面规则待补充</h2><p>编辑版读取幸运抓抓界面草稿；未发布前阅读版不展示草稿。</p></article>` : "";
-      const checkpointTabbedDetails = item.id === "checkpoints" || isDollHouse ? `
+      const dollInterfaceDetails = isDollHouse || isTalentMarket ? `<article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><h2>界面规则待发布</h2><p>编辑版可查看当前界面草稿。</p></article>` : "";
+      const checkpointTabbedDetails = item.id === "checkpoints" || isDollHouse || isTalentMarket ? `
         <div class="shop-page-tabs-shell">
           <section class="shop-page-panel is-active" data-checkpoint-page-panel="rules">
-            ${standardDetails}
-            ${isDollHouse ? "" : checkpointShowcase}
+            ${isTalentMarket ? `<div data-mailbox-system-content>${standardDetails}</div>` : standardDetails}
+            ${isDollHouse || isTalentMarket ? "" : checkpointShowcase}
           </section>
           <section class="shop-page-panel" data-checkpoint-page-panel="interface" hidden>
-            ${isDollHouse ? dollInterfaceDetails : checkpointInterfaceDetails}
+            ${isDollHouse || isTalentMarket ? dollInterfaceDetails : checkpointInterfaceDetails}
           </section>
         </div>` : "";
       const talentShowcase = item.id === "brand-pitch" ? `
@@ -1096,7 +1097,7 @@
         <article class="surface">
           <header class="page-head">
             <div class="page-navrow">
-              ${item.group === "shops" || isCharacterTabbedPage || isDollHouse ? "" : `<button class="back-button" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>`}
+              ${item.group === "shops" || isCharacterTabbedPage || isDollHouse || isTalentMarket ? "" : `<button class="back-button" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>`}
               <div class="breadcrumbs"><a href="index.html">总览</a><span>›</span><a href="category.html?group=${item.group}">${escapeHtml(group.title)}</a><span>›</span><span>${escapeHtml(item.title)}</span></div>
             </div>
             <p class="eyebrow">${escapeHtml(group.kicker)}</p>
@@ -1110,7 +1111,7 @@
           <section class="content-section">
             <div class="detail-layout detail-layout-single">
               <div class="detail-stack">
-                ${isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse ? checkpointTabbedDetails : standardDetails}
+                ${isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse || isTalentMarket ? checkpointTabbedDetails : standardDetails}
                 ${talentShowcase}
                 <div class="prev-next">${previousLink}${nextLink}</div>
               </div>
@@ -1119,6 +1120,32 @@
           <footer>当前位置：总览 / ${escapeHtml(group.title)} / ${escapeHtml(item.title)}</footer>
         </article>`;
       mount(pageShell({ activeGroup: item.group, content, topActions: characterTopActions || checkpointTopActions || shopTopActions || (item.id === "home" && motelEnabled ? motelPlanningActions() : "") }));
+      if (isTalentMarket) {
+        const style = document.createElement("link");
+        style.rel = "stylesheet";
+        style.href = "assets/editor.css?v=20261022-mailbox";
+        document.head.append(style);
+        if (window.parent === window) {
+          const card = document.querySelector("[data-shop-ui-rules]");
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 7000);
+          try {
+            const response = await fetch("/api/shop-ui/formal", {signal: controller.signal});
+            if (!response.ok) throw new Error("界面资料读取失败");
+            const source = (await response.json()).documents?.[item.id];
+            if (source?.uiRules?.length) {
+              let screenId="main",selectedId=1,expandedPopupKey="",expandedNestedPopupKey="";
+              const render=()=>renderShopUiRulesCard(card,source,{editable:false,screenId,selectedId,expandedPopupKey,expandedNestedPopupKey,
+                onSelectScreen(id,jump={}){screenId=id;selectedId=jump.ruleId||1;expandedPopupKey=jump.popupKey||"";expandedNestedPopupKey=jump.nestedPopupKey||"";render();},
+                onSelect(id){selectedId=id;expandedPopupKey="";expandedNestedPopupKey="";render();},
+                onTogglePopup(key){expandedPopupKey=expandedPopupKey===key?"":key;render();},
+                onToggleNestedPopup(key){expandedNestedPopupKey=expandedNestedPopupKey===key?"":key;render();}
+              }); render();
+            }
+          } catch {card.innerHTML="<h2>界面规则暂时无法载入</h2><p>请刷新重试。</p>";}
+          finally {clearTimeout(timer);}
+        }
+      }
       if (item.id === "home") {
         installMotelPlanning(document.querySelector("#app"));
         if (motelEnabled && window.parent === window) {
@@ -1238,14 +1265,34 @@
           });
           if (updateUrl) {
             const nextUrl = new URL(location.href);
-            const tabParam = isDollHouse ? "shopTab" : "checkpointTab";
+            const tabParam = isDollHouse || isTalentMarket ? "shopTab" : "checkpointTab";
             if (activePageId === "rules") nextUrl.searchParams.delete(tabParam);
             else nextUrl.searchParams.set(tabParam, activePageId);
             history.replaceState(null, "", nextUrl);
           }
         };
         pageTabs.forEach((button) => button.addEventListener("click", () => showCheckpointPage(button.dataset.checkpointPageTab, true)));
-        showCheckpointPage(new URLSearchParams(location.search).get(isDollHouse ? "shopTab" : "checkpointTab"));
+        showCheckpointPage(new URLSearchParams(location.search).get(isDollHouse || isTalentMarket ? "shopTab" : "checkpointTab"));
+      }
+      if (isDollHouse) {
+        // Delegate so saved body overrides can supply the inner tabs after load.
+        document.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-lucky-claw-rule-tab]");
+          if (!button) return;
+          const root = button.closest('[data-checkpoint-page-panel="rules"]');
+          if (!root) return;
+          const selected = button.dataset.luckyClawRuleTab;
+          root.querySelectorAll("[data-lucky-claw-rule-tab]").forEach((tab) => {
+            const active = tab.dataset.luckyClawRuleTab === selected;
+            tab.classList.toggle("is-active", active);
+            tab.setAttribute("aria-pressed", String(active));
+          });
+          root.querySelectorAll("[data-lucky-claw-rule-panel]").forEach((panel) => {
+            const active = panel.dataset.luckyClawRulePanel === selected;
+            panel.classList.toggle("is-active", active);
+            panel.hidden = !active;
+          });
+        });
       }
       const shopUiRules = document.querySelector("[data-shop-ui-rules]");
       if (shopUiRules) {

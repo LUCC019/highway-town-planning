@@ -944,7 +944,7 @@ function mountShell() {
         const submittedUi = new Map(Object.entries(state.shopUi).map(([id, ui]) => [id, clone(ui.current)]));
         const [fullResult, shopResults] = await Promise.all([
           fullNeedsSave ? api("/api/full/draft", { method: "PUT", body: JSON.stringify({ document: submittedFull }) }) : Promise.resolve(null),
-          Promise.all(dirtyShopEntries.map(([id, uiState]) => api("/api/shop-ui/draft", { method: "PUT", body: JSON.stringify({ id, document: submittedUi.get(id), ...(["talent-system", "partner-system", "doll-house"].includes(id) ? { baseRevision: uiState.revision } : {}) }) }))),
+          Promise.all(dirtyShopEntries.map(([id, uiState]) => api("/api/shop-ui/draft", { method: "PUT", body: JSON.stringify({ id, document: submittedUi.get(id), ...(["talent-system", "partner-system", "doll-house", "talent-market"].includes(id) ? { baseRevision: uiState.revision } : {}) }) }))),
         ]);
         if (fullResult) {
           if (equal(state.working, submittedFull)) state.working = clone(fullResult.document);
@@ -955,7 +955,7 @@ function mountShell() {
           const uiState = state.shopUi[result.id];
           if (equal(uiState.current, submittedUi.get(result.id))) uiState.current = clone(result.document);
           uiState.savedDraft = clone(result.document);
-          if (["talent-system", "partner-system", "doll-house"].includes(result.id)) uiState.revision = result.revision;
+          if (["talent-system", "partner-system", "doll-house", "talent-market"].includes(result.id)) uiState.revision = result.revision;
         });
         // Keep the focused field and any typing made while the request was in flight.
         updateToolbar();
