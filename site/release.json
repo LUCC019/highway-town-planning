@@ -1,9 +1,14 @@
 {
   "schemaVersion": 1,
-  "releaseId": "a9c36d08-718c-46f5-be6e-4e524b0b51fd",
-  "builtAt": "2026-10-23T09:27:47.603Z",
+  "releaseId": "e823e0af-0b01-443a-950c-3436f737d659",
+  "builtAt": "2026-10-23T09:29:26.189Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
+    {
+      "id": "main-town",
+      "name": "主城（0.1）",
+      "nodes": 8
+    },
     {
       "id": "protagonists",
       "name": "主角身份（0.1）",
@@ -58,22 +63,18 @@
       "id": "car-wash",
       "name": "洗车行（0.1）",
       "nodes": 4
-    },
-    {
-      "id": "main-town",
-      "name": "主城（0.1）",
-      "nodes": 7
     }
   ],
-  "embeddedImageFiles": 198,
-  "files": 626,
-  "totalBytes": 560099918,
+  "embeddedImageFiles": 199,
+  "files": 627,
+  "totalBytes": 561132711,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
     "shop-formal.json",
     "car-wash.json",
     "flows.json",
+    "flows/main-town.json",
     "flows/protagonists.json",
     "flows/d93f99a3-5d49-4947-9c5f-408f71dce72a.json",
     "flows/8d29cc3f-caf6-42b0-9c49-0875c11e1bd3.json",
@@ -85,7 +86,6 @@
     "flows/shop-system.json",
     "flows/gas-station.json",
     "flows/car-wash.json",
-    "flows/main-town.json",
     "health.json"
   ]
 }
