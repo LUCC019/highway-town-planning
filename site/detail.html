@@ -960,6 +960,7 @@
         ${ruleChangesCard}
         ${item.group === "shops" || item.hideUnlock || isCharacterArtPage || item.id === "narrative-mainline" ? "" : `<article class="detail-card"><h2>开放与递进</h2><p>${escapeHtml(item.unlock)}</p></article>`}
         ${rankTierCard}
+        ${item.id === "brand-pitch" ? '<div data-brand-furniture-source></div>' : ""}
         ${item.id === "brand-pitch" ? "" : interfaceRulesCard}
         ${extraCard}
         ${item.id === "brand-pitch" || item.id === "narrative-mainline" || isCharacterArtPage ? "" : `<article class="detail-card"><h2>场景与表现</h2><p><strong>场景：</strong>${escapeHtml(item.scene)}</p><p style="margin-top:10px"><strong>视觉重点：</strong>${escapeHtml(item.visual)}</p></article>`}

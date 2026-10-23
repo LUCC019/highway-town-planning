@@ -1,9 +1,14 @@
 {
   "schemaVersion": 1,
-  "releaseId": "b66b37a8-80ad-485a-8a4e-0e07dd9bfd7a",
-  "builtAt": "2026-10-23T03:25:14.051Z",
+  "releaseId": "a9c36d08-718c-46f5-be6e-4e524b0b51fd",
+  "builtAt": "2026-10-23T09:27:47.603Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
+    {
+      "id": "protagonists",
+      "name": "主角身份（0.1）",
+      "nodes": 26
+    },
     {
       "id": "d93f99a3-5d49-4947-9c5f-408f71dce72a",
       "name": "伙伴系统（0.2）",
@@ -40,11 +45,6 @@
       "nodes": 11
     },
     {
-      "id": "protagonists",
-      "name": "主角身份（0.1）",
-      "nodes": 24
-    },
-    {
       "id": "shop-system",
       "name": "店铺系统（0.1）",
       "nodes": 15
@@ -65,15 +65,16 @@
       "nodes": 7
     }
   ],
-  "embeddedImageFiles": 196,
-  "files": 619,
-  "totalBytes": 552254089,
+  "embeddedImageFiles": 198,
+  "files": 626,
+  "totalBytes": 560099918,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
     "shop-formal.json",
     "car-wash.json",
     "flows.json",
+    "flows/protagonists.json",
     "flows/d93f99a3-5d49-4947-9c5f-408f71dce72a.json",
     "flows/8d29cc3f-caf6-42b0-9c49-0875c11e1bd3.json",
     "flows/1cf02c4b-b0c6-40d1-bfc3-8171da2959e9.json",
@@ -81,7 +82,6 @@
     "flows/9e7c722c-6393-4d31-af13-d61314a20876.json",
     "flows/talent-system.json",
     "flows/checkpoints.json",
-    "flows/protagonists.json",
     "flows/shop-system.json",
     "flows/gas-station.json",
     "flows/car-wash.json",
