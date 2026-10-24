@@ -789,6 +789,20 @@ function prepareFrame() {
     }
   }
   renderInlineShopUi();
+  if (mode === "edit") {
+    const focusSelector = new URLSearchParams(location.search).get("acceptFocus");
+    if (focusSelector && focusSelector.length <= 500) {
+      try {
+        const target = frameDocument.querySelector(focusSelector);
+        if (target && target.getClientRects().length) {
+          target.scrollIntoView({ block: "center", behavior: "instant" });
+          target.animate([{ outline: "3px solid #d8a938" }, { outline: "3px solid transparent" }], { duration: 2400 });
+        } else {
+          document.querySelector("#full-frame-status").textContent += " · 已到对应页签，请按验收台路径定位条目";
+        }
+      } catch { /* Invalid or outdated locator must never stop editing. */ }
+    }
+  }
   app.setAttribute("aria-busy", "false");
 }
 
@@ -900,7 +914,7 @@ function mountShell() {
     </header>
     <div class="full-editor-layout">
       <aside class="full-editor-catalog">
-        <div class="full-catalog-head"><p>DOCUMENT MAP</p><h2>完整策划案</h2><span>总览＋全部分类与详情页</span></div>
+        <div class="full-catalog-head"><p>DOCUMENT MAP</p><h2>完整策划案</h2><span>总览＋全部分类与详情页</span>${mode === "edit" ? '<p><a id="acceptance-desk-entry" href="/api/acceptance/desk" target="_blank" rel="noopener">修改与验收台 ↗</a></p>' : ''}</div>
         <label class="full-page-search"><span>查找页面</span><input id="full-page-search" type="search" placeholder="输入角色、商铺或章节" /></label>
         <nav id="full-page-nav" aria-label="完整策划案目录"></nav>
         ${mode === "edit" ? '<div class="full-catalog-extra"><a href="index.html" target="_blank" rel="noopener">打开原始副本对照</a></div>' : ""}
