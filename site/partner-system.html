@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <script src="static-reader.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>伙伴系统｜《破产双胞胎》策划案</title>
+  <link rel="stylesheet" href="assets/site.css?v=20260917-57" />
+  <link rel="stylesheet" href="assets/editor.css?v=20260928-5" />
+  <style>
+    .partner-page{width:100%;max-width:none;margin:0}.partner-panel[hidden]{display:none!important}#partner-visit-flow-ui:empty{display:none}
+    .partner-nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 24px;padding:0 34px}
+    .partner-nav button{font:inherit;font-size:13px;color:#24675c;background:#eff8f3;border:1px solid #cde3d8;border-radius:20px;padding:6px 11px;cursor:pointer}
+    .partner-nav button:hover{background:#d8eee3}.partner-note{padding:16px 19px;background:#fff8e9;border:1px solid #e5cfa9;border-radius:12px;color:#694d28;line-height:1.65;margin:18px 0}
+    .partner-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.partner-card{border:1px solid #dbe7de;background:white;border-radius:14px;padding:18px 21px;line-height:1.7}
+    .partner-card.wide{grid-column:1/-1}.partner-card h3{font-size:18px;color:#23564b;margin:0 0 8px}.partner-card p{margin:6px 0}
+    .partner-card code{color:#1c6053;background:#eaf5ed;border-radius:3px;padding:1px 4px}.partner-card table{width:100%;border-collapse:collapse;font-size:14px}
+    .partner-card th,.partner-card td{text-align:left;vertical-align:top;padding:8px;border-bottom:1px solid #e7ebe5}.partner-card th{color:#195c4c;background:#f4faf6}
+    .partner-muted{color:#6b7b70;font-size:13px}.partner-warning{display:block;padding:0 34px 20px;color:#986536;font-size:12px}
+    @media(max-width:900px){.partner-grid{grid-template-columns:1fr}.partner-card.wide{grid-column:auto}}
+    @media(max-width:600px){.partner-nav{padding:0 14px}}
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <template id="partner-content">
+    <article class="surface partner-page">
+      <header class="page-head">
+        <div class="page-navrow"><div class="breadcrumbs"><a href="index.html">总览</a><span>›</span><span>伙伴系统</span></div></div>
+        <p class="eyebrow">PARTNER SYSTEM · 规则与界面</p>
+        <h1>伙伴系统</h1>
+        <p>沿用《赘婿》红颜系统的对象、流程、配置和数值，只替换《破产双胞胎》的玩家可见称谓与素材。系统规则、配置映射和界面规则分开查阅。</p>
+      </header>
+      <div class="partner-note"><strong>实现边界：</strong>BeautyId、原配置行与字段、亲密度／技能／羁绊／集训／谈心／同游的条件和结算逻辑不改。原图里的“红颜、人气、带货、祈星、美名、缘分、仪容”是来源词，不是本项目最终显示文案。账号截图数值不写成初始值。</div>
+      <div class="partner-panel" id="partner-rules-panel" role="tabpanel" aria-labelledby="partner-tab-rules">
+        <nav class="partner-nav" aria-label="系统规则目录">
+          <button type="button" data-section="partner-core">系统规则</button>
+          <button type="button" data-section="partner-config">原包配置</button>
+          <button type="button" data-section="partner-terms">包装名词</button>
+        </nav>
+        <section class="content-section" id="partner-core">
+          <div class="section-head"><h2><span>01</span>系统规则</h2></div>
+          <div class="partner-grid">
+            <article class="partner-card"><h3>对象、获取与列表</h3>
+              <p>每名伙伴一对一沿用原 <code>BeautyInfoCfg.Id</code>／BeautyId。拥有状态以 <code>BeautyDataModel.NewBeautyDataDic</code> 为准；未结识可从目标页查看原 <code>GetType、GetParam、JumpId</code> 对应的条件和来源。已结识与未结识分层，列表筛选读取原 <code>Profession</code>，排序保留默认／亲密度两种模式。</p>
+              <p>原配置、屏蔽和投放决定可见总数；示例图的 29/34 是单账号状态，不是系统上限。卡片、详情、目标使用同一 BeautyId，不能生成第二份伙伴数据。</p>
+            </article>
+            <article class="partner-card"><h3>亲密度与赠礼</h3>
+              <p>原 <code>Popular</code> 玩家可见名为“亲密度”。伙伴初始值读 <code>BeautyInfoCfg.Popularity</code>，实际当前值读服务端伙伴状态。赠礼道具及单件收益读 <code>GameConfigCfg.BEAUTY_POP_ITEM_CONFIG</code>，当前原表为 100027→1、100028→2、100029→5；物品名称、图标和库存从物品与背包数据读取。</p>
+              <p>普通赠送一次；勾选十连按原逻辑上限和库存取可赠数量。资源不足展示来源；只在原赠礼请求成功后更新亲密度、库存、红点与关联显示，不以客户端动画预扣预加。</p>
+            </article>
+            <article class="partner-card"><h3>羁绊晋升</h3>
+              <p>“羁绊”对应原美名／称号晋升，不是亲密度的别名。阶段名、所需亲密度、已结识伙伴数、品质倍率及效果均读 <code>BeautyReputationCfg</code>。晋升前同时校验下一阶段的 <code>Popularity</code> 与 <code>BeautyNum</code>；达到最高档不再晋升。</p>
+              <p>点击晋升走原 <code>RequestNewBeautyTitleUpgrade</code>；成功结果展示前后阶段与实际效果，并回写详情和羁绊册。原表 12 档，实际可达性仍受原版投放约束，不按截图的具体人数自行放宽。</p>
+            </article>
+            <article class="partner-card"><h3>经营技能与商铺赚速</h3>
+              <p>“经营技能”对应原带货技能。每个技能的目标商铺类型、效果范围、升级经验和权重取 <code>BeautyBringingSkillCfg</code>；全体伙伴的分类加成按原 <code>BeautyHelper.CalcTotalSkillAddValue(shopType)</code> 汇总，已解锁技能数按 <code>CalcTotalSkillCount</code> 统计。</p>
+              <p>商铺仍使用生活、休闲、购物、娱乐分类。界面预览和实际店铺收益应读取原统一计算结果，不新增第二套加成，也不把原图四项百分比写成常量。</p>
+            </article>
+            <article class="partner-card"><h3>谈心与心意</h3>
+              <p>“谈心”对应原祈星。至少拥有一名伙伴才可执行；心意当前值、上限及恢复时间分别读原状态和 <code>LevelCfg.DateBackEnergy / DateBackEnergyRecoverTime</code>。心意不足时沿原道具 <code>100030</code> 的使用／来源流程。</p>
+              <p>一键谈心须先达到累计谈心次数门槛 <code>GameConfigCfg.BEAUTY_QUICK_DRAW_CONFIG</code>（当前原表 5 次）；勾选偏好沿原设置保存。请求成功后按返回的每名伙伴结果展示，跳过动画不改变抽取或奖发结果。</p>
+            </article>
+            <article class="partner-card"><h3>集训与亲密度票</h3>
+              <p>集训席位按 <code>BEAUTY_DATE_BAN_CONFIG</code> 的结识数量开放，付费席按 <code>BEAUTY_DATE_BAN_COST</code> 顺序开启。空席选择已结识伙伴；已安排席位点击召回须二次确认，并自动领取当前舞台可领的亲密度票。可领时才提交原领取请求，无可领值不发放。</p>
+              <p>集训中的伙伴暂不参与谈心、同游、招收学徒与使用增加亲密度道具时的随机选取。席位数、累计产出、可领状态均读原服务端集训数据；图片的 5/5、+0 不作固定配置。</p>
+            </article>
+            <article class="partner-card"><h3>人脉、名气技能与服装</h3>
+              <p>“人脉”是原缘分页的本项目界面名：关联人才由 <code>BeautyInfoCfg.Partner</code> 及 <code>BeautyAdvanceCfg.Partner</code> 读取；技能等级、消耗与当前／下级效果沿原 <code>BeautyUpgradeCfg.Cost / Attr</code> 和技能配置。关联人才继续使用人才系统的同一对象。</p>
+              <p>“名气技能”对应原仪容技能。技能列表、升级消耗、当前效果和满级状态沿用原 <code>SkillUpgradeCfg</code>；上限按 <code>BeautyHelper.GetFaceSkillMaxLv</code> 结合服装强化条件计算。服装来自 <code>AppearanceCfg</code>，预览、持有、穿戴和强化不混为一次操作。</p>
+            </article>
+            <article class="partner-card"><h3>同游</h3>
+              <p>保留陶艺、花艺两种原同游项目。陶艺费用随本伙伴已同游次数按 <code>BEAUTY_CERAMICS_COST</code> 取档，花艺沿用原固定道具消耗；亲密度收益按 <code>BEAUTY_TRAVEL_POP_CONFIG</code> 读取。两种项目均与学徒座位状态联动：座位不足时先按原规则提醒，再由玩家决定是否继续。</p>
+              <p>同游结算以原服务端响应为准；跨学徒系统的具体人选与奖励仍用原流程，不在本页另造学徒规则。</p>
+            </article>
+            <article class="partner-card wide"><h3>跨系统与结算边界</h3>
+              <p>伙伴与人才、店铺、学徒、道具、排行和服装共用原对象链。伙伴带来的分类商铺加成直接进入原店铺计算；人脉页的相关人才链接到现有人才系统；同游获得的学徒沿原学徒系统入账。所有消耗、奖励、状态更新与失败回滚以原请求结果为准，不因为包装改名而改协议、资源 ID、触发时机或数值。</p>
+            </article>
+          </div>
+        </section>
+        <section class="content-section" id="partner-daily"></section>
+        <section class="content-section" id="partner-config">
+          <div class="section-head"><h2><span>02</span>原包配置映射</h2></div>
+          <article class="partner-card">
+            <p>以下是原表归属和实际字段，不是新建一套“伙伴表”。原值、ID、解析方式与服务端请求保持不变；仅本项目最终包装文本和角色资源另行替换。</p>
+            <table><thead><tr><th>原配置／字段</th><th>职责与界面读取</th><th>包装边界</th></tr></thead><tbody>
+              <tr><td><code>BeautyInfoCfg</code></td><td>BeautyId、名称、描述、品质、初始 Popularity、类别 Profession、技能、模型、获取 GetType / GetParam / JumpId、关联 Partner 与初始阶段。</td><td>红颜称伙伴；人气称亲密度。现有 31 行，投放与屏蔽按原逻辑。</td></tr>
+              <tr><td><code>BeautyAdvanceCfg</code></td><td>进阶后的品质、Popular、称号、技能和关联人才。</td><td>保持原进阶对象与数据，不按截图单独派生伙伴。</td></tr>
+              <tr><td><code>BeautyReputationCfg</code></td><td>称号档位、Popularity、BeautyNum、学徒品质名与倍率 Rate；原 12 档。</td><td>美名改羁绊；条件和倍率不变。</td></tr>
+              <tr><td><code>BeautyBringingSkillCfg</code></td><td>经营技能 Id、Exp、EarnSpeedRateTarget、EffectRange、免费／付费权重范围。</td><td>带货改经营；商铺分类及权重不变。</td></tr>
+              <tr><td><code>BeautyUpgradeCfg</code></td><td>人脉技能每级 Cost 与 Attr；原 1000 级行。</td><td>原缘分技能页包装为人脉，不改成长曲线。</td></tr>
+              <tr><td><code>AppearanceCfg</code>、技能相关表</td><td>伙伴服装、品质、强化、效果及名气技能的解锁、升级消耗和等级上限。</td><td>服装和名气技能沿原资源关系；不从原图推断新数值。</td></tr>
+              <tr><td><code>LevelCfg</code></td><td>DateBackEnergy 和 DateBackEnergyRecoverTime 决定心意上限及恢复。</td><td>祈星改谈心；心意仍是原资源。</td></tr>
+              <tr><td><code>GameConfigCfg</code></td><td>BEAUTY_POP_ITEM_CONFIG、BEAUTY_QUICK_DRAW_CONFIG、BEAUTY_DATE_BAN_CONFIG、BEAUTY_DATE_BAN_COST、BEAUTY_CERAMICS_COST、BEAUTY_TRAVEL_POP_CONFIG、BEAUTY_SKIN_SKILL_UPPER_LIMIT_CONFIG 等全局参数。</td><td>键和值沿原包。新增包装文字不改全局开关。</td></tr>
+              <tr><td><code>ItemCfg</code>／背包</td><td>亲密度道具、心意补充、技能材料、同游消耗、图标、库存与获取途径。</td><td>沿原 ItemId；资源不足统一走原来源提示。</td></tr>
+            </tbody></table>
+          </article>
+        </section>
+        <section class="content-section" id="partner-terms">
+          <div class="section-head"><h2><span>03</span>包装名词</h2></div>
+          <article class="partner-card"><table><thead><tr><th>《赘婿》来源词</th><th>本项目界面词</th><th>含义</th></tr></thead><tbody>
+            <tr><td>红颜</td><td>伙伴</td><td>系统与角色对象称谓；内部 BeautyId 不改。</td></tr>
+            <tr><td>人气</td><td>亲密度</td><td>原 Popular 数值、道具增量及相关门槛。</td></tr>
+            <tr><td>带货／带货技能</td><td>经营／经营技能</td><td>原商铺赚速加成与技能养成。</td></tr>
+            <tr><td>祈星</td><td>谈心</td><td>原心意消耗与随机结果。</td></tr>
+            <tr><td>美名／美名册</td><td>羁绊／羁绊册</td><td>原称号阶段及晋升，与亲密度是不同概念。</td></tr>
+            <tr><td>缘分／缘分技能</td><td>人脉／人脉技能</td><td>原人才关联与技能页；底层 FateSkills 不改。</td></tr>
+            <tr><td>仪容／仪容技能</td><td>名气／名气技能</td><td>原服装条件影响的技能页；底层 YrSkills 不改。</td></tr>
+            <tr><td>集训、同游、服装、目标、心意</td><td>保留</td><td>合适通用名不硬改。</td></tr>
+          </tbody></table></article>
+        </section>
+      </div>
+      <div class="partner-panel" id="partner-ui-panel" role="tabpanel" aria-labelledby="partner-tab-ui" hidden>
+        <section class="content-section" id="partner-interface">
+          <article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><div role="status">正在读取界面规则…</div></article>
+        </section>
+        <section class="content-section" id="partner-visit-flow-ui"></section>
+        <p class="partner-warning">来源：用户保存的伙伴系统界面流程截图、《赘婿》原代码与配置。截图内原词仅作区域与状态参考，正文使用本项目包装名。</p>
+      </div>
+    </article>
+  </template>
+  <script type="module">
+    import { mount, pageShell } from "./assets/site.js?v=20261019-partner";
+    import { renderShopUiRulesCard } from "./assets/editor-view.js?v=20261008-1";
+    const topActions = '<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href=\'index.html\'; }">← 返回</button><nav class="shop-page-tabs" aria-label="伙伴系统策划案分页"><button type="button" id="partner-tab-rules" class="is-active" aria-pressed="true" data-partner-tab="rules">规则</button><button type="button" id="partner-tab-ui" aria-pressed="false" data-partner-tab="ui">界面</button></nav>';
+    mount(pageShell({ activeGroup: "partner-system", content: document.querySelector("#partner-content").innerHTML, topActions }));
+    function switchTab(name, updateUrl = true) {
+      const ui = name === "ui";
+      document.querySelectorAll("[data-partner-tab]").forEach((button) => {
+        const active = button.dataset.partnerTab === (ui ? "ui" : "rules");
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      document.querySelector("#partner-rules-panel").hidden = ui;
+      document.querySelector("#partner-ui-panel").hidden = !ui;
+      if (updateUrl) {
+        const next = new URL(location.href);
+        if (ui) next.searchParams.set("tab", "ui");
+        else next.searchParams.delete("tab");
+        next.hash = ui ? "partner-interface" : "partner-core";
+        history.replaceState(null, "", next);
+      }
+      document.querySelector(".partner-page").scrollIntoView({ block: "start" });
+    }
+    document.querySelectorAll("[data-partner-tab]").forEach((button) => button.addEventListener("click", () => switchTab(button.dataset.partnerTab)));
+    document.querySelectorAll("[data-section]").forEach((button) => button.addEventListener("click", () => document.getElementById(button.dataset.section).scrollIntoView({ block: "start" })));
+    if (location.hash === "#partner-interface" || new URLSearchParams(location.search).get("tab") === "ui") switchTab("ui", false);
+    if (!window.frameElement) {
+      const card = document.querySelector("[data-shop-ui-rules]");
+      try {
+        const response = await fetch("api/shop-ui/formal", { cache: "no-store" });
+        if (!response.ok) throw Error("读取失败");
+        const documentData = (await response.json()).documents?.["partner-system"];
+        if (!documentData?.uiRules?.length) throw Error("尚未发布");
+        const state = { screenId: "main", selectedId: 1, expandedPopupKey: "", expandedNestedPopupKey: "" };
+        const draw = () => renderShopUiRulesCard(card, documentData, {
+          screenId: state.screenId, selectedId: state.selectedId,
+          expandedPopupKey: state.expandedPopupKey, expandedNestedPopupKey: state.expandedNestedPopupKey,
+          onSelectScreen(id) { state.screenId = id; state.selectedId = 1; state.expandedPopupKey = ""; state.expandedNestedPopupKey = ""; draw(); },
+          onSelect(id) { state.selectedId = id; state.expandedPopupKey = ""; state.expandedNestedPopupKey = ""; draw(); },
+          onTogglePopup(key) { state.expandedPopupKey = state.expandedPopupKey === key ? "" : key; state.expandedNestedPopupKey = ""; draw(); },
+          onToggleNestedPopup(key) { state.expandedNestedPopupKey = state.expandedNestedPopupKey === key ? "" : key; draw(); },
+        });
+        draw();
+      } catch {
+        card.innerHTML = "<h2>界面规则暂不可用</h2><p>伙伴系统的正式界面规则尚未发布；请在整案编辑器查看当前草稿。</p>";
+      }
+    }
+  </script>
+</body>
+</html>
