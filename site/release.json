@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "releaseId": "e80fbaa2-2635-454d-88d2-60c0fb0913a0",
-  "builtAt": "2026-10-26T02:36:12.317Z",
+  "releaseId": "ee5355c0-1bfc-4141-9edf-38fab5fd913c",
+  "builtAt": "2026-10-26T02:41:55.699Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
-    {
-      "id": "1cf02c4b-b0c6-40d1-bfc3-8171da2959e9",
-      "name": "旅馆系统（0.2）",
-      "nodes": 24
-    },
     {
       "id": "9e7c722c-6393-4d31-af13-d61314a20876",
       "name": "幸运抓抓（0.2）",
       "nodes": 31
+    },
+    {
+      "id": "1cf02c4b-b0c6-40d1-bfc3-8171da2959e9",
+      "name": "旅馆系统（0.2）",
+      "nodes": 24
     },
     {
       "id": "talent-system",
@@ -67,15 +67,15 @@
   ],
   "embeddedImageFiles": 204,
   "files": 635,
-  "totalBytes": 574067064,
+  "totalBytes": 574067112,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
     "shop-formal.json",
     "car-wash.json",
     "flows.json",
-    "flows/1cf02c4b-b0c6-40d1-bfc3-8171da2959e9.json",
     "flows/9e7c722c-6393-4d31-af13-d61314a20876.json",
+    "flows/1cf02c4b-b0c6-40d1-bfc3-8171da2959e9.json",
     "flows/talent-system.json",
     "flows/checkpoints.json",
     "flows/shop-system.json",
