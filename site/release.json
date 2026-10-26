@@ -1,9 +1,14 @@
 {
   "schemaVersion": 1,
-  "releaseId": "ca188b98-cc9e-4a70-9de5-13883cd6ca2e",
-  "builtAt": "2026-10-26T03:26:21.399Z",
+  "releaseId": "39a5c373-e358-4784-9764-5f6d7df5a8f0",
+  "builtAt": "2026-10-26T03:29:14.087Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
+    {
+      "id": "shop-system",
+      "name": "店铺系统（0.1）",
+      "nodes": 16
+    },
     {
       "id": "checkpoints",
       "name": "市场调研（0.1）",
@@ -35,11 +40,6 @@
       "nodes": 33
     },
     {
-      "id": "shop-system",
-      "name": "店铺系统（0.1）",
-      "nodes": 16
-    },
-    {
       "id": "d93f99a3-5d49-4947-9c5f-408f71dce72a",
       "name": "伙伴系统（0.2）",
       "nodes": 26
@@ -67,20 +67,20 @@
   ],
   "embeddedImageFiles": 204,
   "files": 635,
-  "totalBytes": 574067591,
+  "totalBytes": 574067666,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
     "shop-formal.json",
     "car-wash.json",
     "flows.json",
+    "flows/shop-system.json",
     "flows/checkpoints.json",
     "flows/protagonists.json",
     "flows/main-town.json",
     "flows/9e7c722c-6393-4d31-af13-d61314a20876.json",
     "flows/1cf02c4b-b0c6-40d1-bfc3-8171da2959e9.json",
     "flows/talent-system.json",
-    "flows/shop-system.json",
     "flows/d93f99a3-5d49-4947-9c5f-408f71dce72a.json",
     "flows/8d29cc3f-caf6-42b0-9c49-0875c11e1bd3.json",
     "flows/convenience-store.json",
