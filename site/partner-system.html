@@ -27,15 +27,14 @@
     <article class="surface partner-page">
       <header class="page-head">
         <div class="page-navrow"><div class="breadcrumbs"><a href="index.html">总览</a><span>›</span><span>伙伴系统</span></div></div>
-        <p class="eyebrow">PARTNER SYSTEM · 规则与界面</p>
+        <p class="eyebrow">PARTNER SYSTEM · 规则、配置与界面</p>
         <h1>伙伴系统</h1>
-        <p>沿用《赘婿》红颜系统的对象、流程、配置和数值，只替换《破产双胞胎》的玩家可见称谓与素材。系统规则、配置映射和界面规则分开查阅。</p>
+        <p>伙伴系统包含伙伴获取、亲密度、经营技能、谈心、羁绊、集训、同游、服装和名气技能。系统规则、配置表和界面规则分开查阅。</p>
       </header>
-      <div class="partner-note"><strong>实现边界：</strong>BeautyId、原配置行与字段、亲密度／技能／羁绊／集训／谈心／同游的条件和结算逻辑不改。原图里的“红颜、人气、带货、祈星、美名、缘分、仪容”是来源词，不是本项目最终显示文案。账号截图数值不写成初始值。</div>
+      <div class="partner-note"><strong>配置边界：</strong>伙伴 ID、表字段、条件、消耗、奖励、权重、上限和关联关系按本页配置表执行；“伙伴、亲密度、经营、谈心、羁绊、人脉、名气”是本项目正式显示名。截图中的账号数量只用于说明界面状态，不作为默认值。</div>
       <div class="partner-panel" id="partner-rules-panel" role="tabpanel" aria-labelledby="partner-tab-rules">
         <nav class="partner-nav" aria-label="系统规则目录">
           <button type="button" data-section="partner-core">系统规则</button>
-          <button type="button" data-section="partner-config">原包配置</button>
           <button type="button" data-section="partner-terms">包装名词</button>
         </nav>
         <section class="content-section" id="partner-core">
@@ -79,35 +78,146 @@
           </div>
         </section>
         <section class="content-section" id="partner-daily"></section>
+        <section class="content-section" id="partner-terms">
+          <div class="section-head"><h2><span>03</span>本项目术语</h2></div>
+          <article class="partner-card"><table><thead><tr><th>正式名称</th><th>适用对象</th><th>规则含义</th></tr></thead><tbody>
+            <tr><td>伙伴</td><td>伙伴角色对象</td><td>列表、详情、获取、谈心、服装和技能页统一使用的角色称谓。</td></tr>
+            <tr><td>亲密度</td><td>伙伴关系数值</td><td>伙伴初始值、赠礼增量、阶段门槛和效果计算使用的关系数值。</td></tr>
+            <tr><td>经营／经营技能</td><td>商铺增益</td><td>伙伴技能对生活、休闲、购物、娱乐四类商铺的累计赚速加成。</td></tr>
+            <tr><td>谈心</td><td>随机互动</td><td>消耗心意并产生伙伴互动结果；一键谈心只改变本次执行次数。</td></tr>
+            <tr><td>羁绊／羁绊册</td><td>阶段成长</td><td>按亲密度和已结识伙伴数提升的阶段系统，与亲密度数值本身分开。</td></tr>
+            <tr><td>人脉／人脉技能</td><td>伙伴与人才关联</td><td>展示关联人才并提供对应技能等级、消耗和效果。</td></tr>
+            <tr><td>名气／名气技能</td><td>服装关联技能</td><td>由服装品质和强化条件影响等级上限的技能页。</td></tr>
+            <tr><td>集训、同游、服装、目标、心意</td><td>页面和资源名称</td><td>本项目保留的通用功能名；具体字段和条件以配置表与系统规则为准。</td></tr>
+          </tbody></table></article>
+        </section>
+      </div>
+      <div class="partner-panel" id="partner-config-panel" role="tabpanel" aria-labelledby="partner-tab-config" hidden>
         <section class="content-section" id="partner-config">
-          <div class="section-head"><h2><span>02</span>原包配置映射</h2></div>
-          <article class="partner-card">
-            <p>以下是原表归属和实际字段，不是新建一套“伙伴表”。原值、ID、解析方式与服务端请求保持不变；仅本项目最终包装文本和角色资源另行替换。</p>
-            <table><thead><tr><th>原配置／字段</th><th>职责与界面读取</th><th>包装边界</th></tr></thead><tbody>
-              <tr><td><code>BeautyInfoCfg</code></td><td>BeautyId、名称、描述、品质、初始 Popularity、类别 Profession、技能、模型、获取 GetType / GetParam / JumpId、关联 Partner 与初始阶段。</td><td>红颜称伙伴；人气称亲密度。现有 31 行，投放与屏蔽按原逻辑。</td></tr>
-              <tr><td><code>BeautyAdvanceCfg</code></td><td>进阶后的品质、Popular、称号、技能和关联人才。</td><td>保持原进阶对象与数据，不按截图单独派生伙伴。</td></tr>
-              <tr><td><code>BeautyReputationCfg</code></td><td>称号档位、Popularity、BeautyNum、学徒品质名与倍率 Rate；原 12 档。</td><td>美名改羁绊；条件和倍率不变。</td></tr>
-              <tr><td><code>BeautyBringingSkillCfg</code></td><td>经营技能 Id、Exp、EarnSpeedRateTarget、EffectRange、免费／付费权重范围。</td><td>带货改经营；商铺分类及权重不变。</td></tr>
-              <tr><td><code>BeautyUpgradeCfg</code></td><td>人脉技能每级 Cost 与 Attr；原 1000 级行。</td><td>原缘分技能页包装为人脉，不改成长曲线。</td></tr>
-              <tr><td><code>AppearanceCfg</code>、技能相关表</td><td>伙伴服装、品质、强化、效果及名气技能的解锁、升级消耗和等级上限。</td><td>服装和名气技能沿原资源关系；不从原图推断新数值。</td></tr>
-              <tr><td><code>LevelCfg</code></td><td>DateBackEnergy 和 DateBackEnergyRecoverTime 决定心意上限及恢复。</td><td>祈星改谈心；心意仍是原资源。</td></tr>
-              <tr><td><code>GameConfigCfg</code></td><td>BEAUTY_POP_ITEM_CONFIG、BEAUTY_QUICK_DRAW_CONFIG、BEAUTY_DATE_BAN_CONFIG、BEAUTY_DATE_BAN_COST、BEAUTY_CERAMICS_COST、BEAUTY_TRAVEL_POP_CONFIG、BEAUTY_SKIN_SKILL_UPPER_LIMIT_CONFIG 等全局参数。</td><td>键和值沿原包。新增包装文字不改全局开关。</td></tr>
-              <tr><td><code>ItemCfg</code>／背包</td><td>亲密度道具、心意补充、技能材料、同游消耗、图标、库存与获取途径。</td><td>沿原 ItemId；资源不足统一走原来源提示。</td></tr>
+          <div class="section-head"><h2><span>01</span>配置表</h2></div>
+          <article class="partner-card wide">
+            <p>本页列出伙伴系统实际使用的表结构、字段、类型、关联和用途。字段名作为正式配置字段保留；表内记录数为当前版本有效范围，后续新增伙伴、服装、技能或剧情时在对应表中追加，不另建同义表。</p>
+          </article>
+
+          <article class="partner-card wide"><h3>伙伴基础表 BeautyInfoCfg</h3><p class="partner-muted">当前 31 条；一名伙伴对应一个 Id，列表、详情、目标、谈心结果和关联人才均使用同一 Id。</p>
+            <table><thead><tr><th>英文字段</th><th>中文名称</th><th>类型／结构</th><th>使用说明</th></tr></thead><tbody>
+              <tr><td><code>Id</code></td><td>伙伴ID</td><td>int，唯一</td><td>伙伴主键，关联所有伙伴状态、服装、技能和剧情。</td></tr>
+              <tr><td><code>name</code>／<code>desc</code>／<code>voiceDesc</code></td><td>名称／简介／语音简介</td><td>多语言 key</td><td>列表卡、详情页和获得展示读取；玩家可见词使用伙伴包装。</td></tr>
+              <tr><td><code>quality</code></td><td>初始品质</td><td>int</td><td>未进阶时的品质；进阶后由 <code>BeautyAdvanceCfg.Quality</code> 接管。</td></tr>
+              <tr><td><code>Popularity</code></td><td>初始亲密度</td><td>int</td><td>结识后的初始亲密度及基础效果计算。</td></tr>
+              <tr><td><code>Reputation</code></td><td>初始羁绊阶段</td><td>int → <code>BeautyReputationCfg.Id</code></td><td>结识时的羁绊起点。</td></tr>
+              <tr><td><code>Skill</code></td><td>经营技能组</td><td>int／技能 ID</td><td>伙伴结识后开放的经营技能入口及初始技能关系。</td></tr>
+              <tr><td><code>modelId</code></td><td>基础立绘模型</td><td>int／资源 ID</td><td>详情、获得展示和谈心结果使用的默认模型。</td></tr>
+              <tr><td><code>Profession</code></td><td>伙伴类型</td><td>int／类型枚举</td><td>列表类型筛选、职业图标及经营技能分类。</td></tr>
+              <tr><td><code>GetType</code>／<code>GetParam</code>／<code>JumpId</code></td><td>获取方式／获取参数／跳转目标</td><td>int、int[]、int</td><td>目标页和未结识详情展示获取条件；招募、VIP、组合兑换等入口按此字段决定按钮和跳转。</td></tr>
+              <tr><td><code>Partner</code></td><td>关联人才</td><td>int[]／人才 ID</td><td>人脉页、获得展示和伙伴详情展示关联人才。</td></tr>
+              <tr><td><code>Advance</code></td><td>进阶配置 ID</td><td>int → <code>BeautyAdvanceCfg.Id</code></td><td>存在进阶配置时显示进阶入口并读取进阶后的品质、技能和关联人才。</td></tr>
+              <tr><td><code>Course</code></td><td>集训课程</td><td>int／课程 ID</td><td>集训页确定伙伴可参与的课程类型。</td></tr>
+              <tr><td><code>Offset</code></td><td>立绘偏移</td><td>int[]</td><td>详情、结果和弹窗中的模型定位参数。</td></tr>
+              <tr><td><code>paradeDesc</code></td><td>展示说明</td><td>多语言 key</td><td>伙伴展示或获得结果中的补充文案。</td></tr>
+              <tr><td><code>DatePlot</code>／<code>PlotId</code></td><td>谈心／同游剧情入口</td><td>int</td><td>关联谈心、同游及剧情内容；无配置时不显示对应入口。</td></tr>
             </tbody></table>
           </article>
-        </section>
-        <section class="content-section" id="partner-terms">
-          <div class="section-head"><h2><span>03</span>包装名词</h2></div>
-          <article class="partner-card"><table><thead><tr><th>《赘婿》来源词</th><th>本项目界面词</th><th>含义</th></tr></thead><tbody>
-            <tr><td>红颜</td><td>伙伴</td><td>系统与角色对象称谓；内部 BeautyId 不改。</td></tr>
-            <tr><td>人气</td><td>亲密度</td><td>原 Popular 数值、道具增量及相关门槛。</td></tr>
-            <tr><td>带货／带货技能</td><td>经营／经营技能</td><td>原商铺赚速加成与技能养成。</td></tr>
-            <tr><td>祈星</td><td>谈心</td><td>原心意消耗与随机结果。</td></tr>
-            <tr><td>美名／美名册</td><td>羁绊／羁绊册</td><td>原称号阶段及晋升，与亲密度是不同概念。</td></tr>
-            <tr><td>缘分／缘分技能</td><td>人脉／人脉技能</td><td>原人才关联与技能页；底层 FateSkills 不改。</td></tr>
-            <tr><td>仪容／仪容技能</td><td>名气／名气技能</td><td>原服装条件影响的技能页；底层 YrSkills 不改。</td></tr>
-            <tr><td>集训、同游、服装、目标、心意</td><td>保留</td><td>合适通用名不硬改。</td></tr>
-          </tbody></table></article>
+
+          <article class="partner-card wide"><h3>伙伴进阶表 BeautyAdvanceCfg</h3><p class="partner-muted">当前 6 条；仅配置可进阶伙伴填写，结识后按服装条件和进阶条件判定。</p>
+            <table><thead><tr><th>英文字段</th><th>中文名称</th><th>类型／结构</th><th>使用说明</th></tr></thead><tbody>
+              <tr><td><code>Id</code></td><td>进阶配置 ID</td><td>int，唯一</td><td>由 <code>BeautyInfoCfg.Advance</code> 关联。</td></tr>
+              <tr><td><code>BeautyId</code></td><td>伙伴 ID</td><td>int → <code>BeautyInfoCfg.Id</code></td><td>确定进阶对象。</td></tr>
+              <tr><td><code>Type</code></td><td>进阶类型</td><td>int／枚举</td><td>确定进阶入口和条件分支。</td></tr>
+              <tr><td><code>Skill</code></td><td>进阶专属技能</td><td>int／技能 ID</td><td>进阶成功后新增或替换的伙伴专属技能。</td></tr>
+              <tr><td><code>Quality</code>／<code>Popularity</code>／<code>Reputation</code></td><td>进阶品质／亲密度／羁绊</td><td>int</td><td>进阶成功后更新对应品质、属性和阶段。</td></tr>
+              <tr><td><code>Partner</code></td><td>进阶后关联人才</td><td>int[]／人才 ID</td><td>进阶后人脉页新增的关联人才。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card"><h3>羁绊阶段表 BeautyReputationCfg</h3><p class="partner-muted">当前 12 条；阶段顺序由 Id 决定。</p>
+            <table><thead><tr><th>字段</th><th>中文名称</th><th>类型／用途</th></tr></thead><tbody>
+              <tr><td><code>Id</code>／<code>name</code></td><td>阶段 ID／阶段名称</td><td>int、多语言 key；羁绊册和晋升结果显示。</td></tr>
+              <tr><td><code>Popularity</code>／<code>BeautyNum</code></td><td>亲密度门槛／已结识伙伴数门槛</td><td>int；下一阶段需同时满足两项。</td></tr>
+              <tr><td><code>studentQualityName</code>／<code>Rate</code></td><td>学徒品质名／效果倍率</td><td>多语言 key、int；阶段晋升后影响学徒品质和对应倍率。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card"><h3>经营技能表 BeautyBringingSkillCfg</h3><p class="partner-muted">当前 140 条；经营技能和四类商铺加成使用同一套技能记录。</p>
+            <table><thead><tr><th>字段</th><th>中文名称</th><th>类型／用途</th></tr></thead><tbody>
+              <tr><td><code>Id</code></td><td>经营技能 ID</td><td>int，关联伙伴的技能组。</td></tr>
+              <tr><td><code>Exp</code></td><td>升级经验</td><td>int；技能提升所需经验。</td></tr>
+              <tr><td><code>EarnSpeedRateTarget</code></td><td>目标赚速倍率</td><td>int；技能完成后对目标商铺赚速的效果。</td></tr>
+              <tr><td><code>EffectRange</code></td><td>效果等级范围</td><td>int[]；技能等级可生效区间。</td></tr>
+              <tr><td><code>FreeWeightRange</code>／<code>PayWeightRange</code></td><td>免费／付费权重范围</td><td>int[][]；经营技能升级与效果计算使用的权重曲线。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card"><h3>人脉技能升级表 BeautyUpgradeCfg</h3><p class="partner-muted">当前 1000 条；每条 Id 对应一个人脉技能等级。</p>
+            <table><thead><tr><th>字段</th><th>中文名称</th><th>类型／用途</th></tr></thead><tbody>
+              <tr><td><code>Id</code></td><td>技能等级</td><td>int；当前等级及下一级索引。</td></tr>
+              <tr><td><code>Cost</code></td><td>升级消耗</td><td>int[]；人脉技能提升时扣除的材料与数量。</td></tr>
+              <tr><td><code>Attr</code></td><td>等级属性效果</td><td>int[][]；当前等级和下一级效果展示及结算。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card wide"><h3>会客室与每日互动表 BeautySufuCfg</h3><p class="partner-muted">当前 6 条；本项目将苏府包装为会客室，字段结构保留，核心伙伴的常驻详情与每日随机来访共用本表。</p>
+            <table><thead><tr><th>字段</th><th>中文名称</th><th>类型／结构</th><th>使用说明</th></tr></thead><tbody>
+              <tr><td><code>Id</code>／<code>ModelId</code></td><td>伙伴 ID／会客室模型 ID</td><td>int、int</td><td>确定来访伙伴与会客室中的 2D 小人模型。</td></tr>
+              <tr><td><code>Voice</code></td><td>互动语音组</td><td>int[][]</td><td>点击伙伴气泡或进入互动界面时的语音索引。</td></tr>
+              <tr><td><code>Bubbles</code>／<code>moveBubble</code></td><td>心情气泡／移动气泡</td><td>string[]、多语言 key</td><td>来访伙伴未交互前在会客室内走动时显示的心情文字。</td></tr>
+              <tr><td><code>MovePlot</code></td><td>走动剧情 ID</td><td>int → <code>BeautySufuPlotCfg.Id</code></td><td>决定会客室走动和气泡表现。</td></tr>
+              <tr><td><code>VoiceDesc</code>／<code>MemoryDesc</code></td><td>语音说明／记忆说明</td><td>string[][]</td><td>伙伴常驻详情页的语音和记忆内容。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card"><h3>互动节点表 BeautySufuInteractionCfg</h3><p class="partner-muted">当前 42 条；每日互动使用 Type 区分节点类型。</p>
+            <table><thead><tr><th>字段</th><th>中文名称</th><th>类型／用途</th></tr></thead><tbody>
+              <tr><td><code>Id</code></td><td>互动配置 ID</td><td>int；被 <code>BeautySufuCfg</code> 和互动剧情引用。</td></tr>
+              <tr><td><code>Type</code></td><td>互动类型</td><td>int／枚举；区分问候、心情、谈心等节点。</td></tr>
+              <tr><td><code>PlotId</code></td><td>剧情节点列表</td><td>int[] → <code>BeautySufuPlotCfg.Id</code>；按节点顺序播放对话和结果。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card"><h3>互动剧情表 BeautySufuPlotCfg</h3><p class="partner-muted">当前 333 条；用于会客室气泡点击后的对话、Spine 过程和结果内容。</p>
+            <table><thead><tr><th>字段</th><th>中文名称</th><th>类型／用途</th></tr></thead><tbody>
+              <tr><td><code>Id</code>／<code>NodeList</code></td><td>节点 ID／子节点列表</td><td>int、int[]；确定剧情节点和跳转顺序。</td></tr>
+              <tr><td><code>Panel</code>／<code>Type</code></td><td>面板／节点类型</td><td>int；决定对话、选择、结果等展示分支。</td></tr>
+              <tr><td><code>BgResource</code>／<code>ModelId</code></td><td>背景资源／模型资源</td><td>资源 key、string；决定互动背景和伙伴立绘／Spine。</td></tr>
+              <tr><td><code>name</code>／<code>Pos</code>／<code>Skip</code></td><td>节点名称／位置／是否可跳过</td><td>多语言 key、int、int；控制节点定位与跳过规则。</td></tr>
+              <tr><td><code>desc</code>／<code>Voice</code></td><td>正文／语音</td><td>多语言 key、string；对话框文本与语音资源。</td></tr>
+              <tr><td><code>TouchPos</code>／<code>PostSpine</code></td><td>触摸区域／结束 Spine</td><td>int[]、string；交互点击区域和结果演出。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card"><h3>同游事件表 BeautyOutingsCfg</h3><p class="partner-muted">当前 13 条；同游入口使用，事件按权重抽取。</p>
+            <table><thead><tr><th>字段</th><th>中文名称</th><th>类型／用途</th></tr></thead><tbody>
+              <tr><td><code>Id</code>／<code>Type</code></td><td>事件 ID／事件类型</td><td>int；区分陶艺、花艺及其他同游事件。</td></tr>
+              <tr><td><code>Weight</code></td><td>抽取权重</td><td>int；同游候选事件的随机权重。</td></tr>
+              <tr><td><code>name</code>／<code>desc</code></td><td>事件名称／说明</td><td>多语言 key；同游过程和结果文案。</td></tr>
+              <tr><td><code>Param</code>／<code>Reward</code></td><td>事件参数／奖励 ID</td><td>int[]、int；事件消耗、亲密度收益和奖励关联。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card wide"><h3>会客室功能配置（本项目新增）</h3><p class="partner-muted">会客室只承载核心伙伴每日来访和心情互动；伙伴系统主入口仍由小镇底部快捷入口进入。</p>
+            <table><thead><tr><th>配置项</th><th>字段</th><th>当前有效内容</th><th>使用说明</th></tr></thead><tbody>
+              <tr><td>会客室每日来访</td><td>候选池、心情状态、每日数量下限／上限、抽取方式</td><td>候选池引用已开放核心伙伴；优先抽取心情为失落／生气的伙伴；每日 1—2 名；同一日名单只确定一次，重进不重抽，已离场不补位。</td><td>未交互前伙伴以 2D 小人在会客室走动，头顶气泡显示心情；点击气泡直接打开该伙伴的比例立绘 Spine 对话。</td></tr>
+              <tr><td>伙伴来访簿</td><td>入口 icon、列表范围、红点条件、跳转目标</td><td>列表展示全部已开放核心伙伴，不只展示当日来访者；列表按伙伴配置顺序排列。</td><td>入口红点、伙伴卡红点只表示存在可领取回礼；查看列表或离开会客室不清除红点。点击伙伴进入该伙伴心情主界面，不绕过每日 1—2 名来访限制。</td></tr>
+              <tr><td>互动完成</td><td>完成状态、离场条件、奖励归属</td><td>对话完成后恢复该伙伴心情并离开会客室；奖励进入来访簿和对应伙伴卡的可领取状态。</td><td>奖励领取沿伙伴互动结果配置执行；未领取前保留红点，不因关闭弹窗或返回会客室而丢失。</td></tr>
+              <tr><td>会客室家具</td><td>家具 ID、所属伙伴、摆放位置、获得途径、表现资源</td><td>允许配置伙伴专属家具；家具可关联核心伙伴和会客室点位，具体家具清单与数值另行追加。</td><td>家具只改变会客室展示和互动表现，不自动增加每日来访次数或改变心情恢复条件。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card wide"><h3>服装与技能配置</h3>
+            <table><thead><tr><th>表</th><th>关键字段</th><th>使用说明</th></tr></thead><tbody>
+              <tr><td><code>AppearanceCfg</code>（当前 69 条）</td><td><code>Id</code>、<code>ModelId</code>、<code>Type</code>、<code>ChildType</code>、<code>name</code>、<code>desc</code>、<code>Param</code>、<code>Sort</code>、<code>EffectType</code>、<code>EffectParam</code>、<code>TimeLimit</code>、<code>UpgradeScheme</code></td><td>服装获得、品质、穿戴、强化、模型和名气技能上限。</td></tr>
+              <tr><td><code>SkillUnlockCfg</code>（当前 12 条）</td><td><code>Id</code>、<code>SkillId</code>、<code>Condition</code>、<code>Param</code></td><td>技能解锁条件；未满足时显示条件，不显示可执行升级。</td></tr>
+              <tr><td><code>SkillUpgradeCfg</code>（当前 14406 条）</td><td><code>Id</code>、<code>SkillId</code>、<code>Level</code>、<code>Cost</code>、<code>EffectType</code>、<code>EffectParam</code>、<code>MaxLevel</code> 等技能等级字段</td><td>名气技能和其他伙伴技能的等级、消耗、当前／下级效果和等级上限。</td></tr>
+            </tbody></table>
+          </article>
+
+          <article class="partner-card wide"><h3>全局参数与资源表</h3>
+            <table><thead><tr><th>表／参数</th><th>字段或当前有效值</th><th>使用说明</th></tr></thead><tbody>
+              <tr><td><code>LevelCfg</code></td><td><code>Id</code>、<code>DateBackEnergy</code>、<code>DateBackEnergyRecoverTime</code>、<code>BeautyEnergy</code>、<code>BeautyEnergyRecoverTime</code></td><td>按玩家等级确定谈心心意上限、恢复时间及相关伙伴能量。</td></tr>
+              <tr><td><code>GameConfigCfg</code></td><td><code>Param</code>／<code>Value</code>；<code>BEAUTY_POP_ITEM_CONFIG=100027|1;100028|2;100029|5</code>；<code>BEAUTY_QUICK_DRAW_CONFIG=5</code>；<code>BEAUTY_DATE_BAN_CONFIG</code>；<code>BEAUTY_DATE_BAN_COST</code>；<code>BEAUTY_CERAMICS_COST</code>；<code>BEAUTY_TRAVEL_POP_CONFIG=5|20</code>；<code>BEAUTY_SKIN_SKILL_UPPER_LIMIT_CONFIG</code></td><td>亲密度道具、十连谈心门槛、集训席位与消耗、同游消耗／收益、服装技能上限。</td></tr>
+              <tr><td><code>ItemCfg</code></td><td><code>Id</code>、<code>name</code>、<code>Icon</code>、<code>Type</code>、<code>GetWay</code>、<code>UseWay</code>、<code>Param</code>、<code>BatchUse</code> 等</td><td>赠礼、心意补充、技能材料、同游消耗的名称、图标、库存和获取途径。</td></tr>
+            </tbody></table>
+          </article>
         </section>
       </div>
       <div class="partner-panel" id="partner-ui-panel" role="tabpanel" aria-labelledby="partner-tab-ui" hidden>
@@ -115,36 +225,39 @@
           <article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><div role="status">正在读取界面规则…</div></article>
         </section>
         <section class="content-section" id="partner-visit-flow-ui"></section>
-        <p class="partner-warning">来源：用户保存的伙伴系统界面流程截图、《赘婿》原代码与配置。截图内原词仅作区域与状态参考，正文使用本项目包装名。</p>
+        <p class="partner-warning">界面规则依据已确认截图和本页配置表编写；截图内原词仅作区域与状态参考，正文使用本项目包装名。</p>
       </div>
     </article>
   </template>
   <script type="module">
     import { mount, pageShell } from "./assets/site.js?v=20261019-partner";
     import { renderShopUiRulesCard } from "./assets/editor-view.js?v=20261008-1";
-    const topActions = '<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href=\'index.html\'; }">← 返回</button><nav class="shop-page-tabs" aria-label="伙伴系统策划案分页"><button type="button" id="partner-tab-rules" class="is-active" aria-pressed="true" data-partner-tab="rules">规则</button><button type="button" id="partner-tab-ui" aria-pressed="false" data-partner-tab="ui">界面</button></nav>';
+    const topActions = '<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href=\'index.html\'; }">← 返回</button><nav class="shop-page-tabs" aria-label="伙伴系统策划案分页"><button type="button" id="partner-tab-rules" class="is-active" aria-pressed="true" data-partner-tab="rules">系统规则</button><button type="button" id="partner-tab-config" aria-pressed="false" data-partner-tab="config">配置表</button><button type="button" id="partner-tab-ui" aria-pressed="false" data-partner-tab="ui">界面规则</button></nav>';
     mount(pageShell({ activeGroup: "partner-system", content: document.querySelector("#partner-content").innerHTML, topActions }));
     function switchTab(name, updateUrl = true) {
-      const ui = name === "ui";
+      const active = ["rules", "config", "ui"].includes(name) ? name : "rules";
       document.querySelectorAll("[data-partner-tab]").forEach((button) => {
-        const active = button.dataset.partnerTab === (ui ? "ui" : "rules");
-        button.classList.toggle("is-active", active);
-        button.setAttribute("aria-pressed", String(active));
+        const selected = button.dataset.partnerTab === active;
+        button.classList.toggle("is-active", selected);
+        button.setAttribute("aria-pressed", String(selected));
       });
-      document.querySelector("#partner-rules-panel").hidden = ui;
-      document.querySelector("#partner-ui-panel").hidden = !ui;
+      document.querySelector("#partner-rules-panel").hidden = active !== "rules";
+      document.querySelector("#partner-config-panel").hidden = active !== "config";
+      document.querySelector("#partner-ui-panel").hidden = active !== "ui";
       if (updateUrl) {
         const next = new URL(location.href);
-        if (ui) next.searchParams.set("tab", "ui");
+        if (active !== "rules") next.searchParams.set("tab", active);
         else next.searchParams.delete("tab");
-        next.hash = ui ? "partner-interface" : "partner-core";
+        next.hash = active === "ui" ? "partner-interface" : active === "config" ? "partner-config" : "partner-core";
         history.replaceState(null, "", next);
       }
       document.querySelector(".partner-page").scrollIntoView({ block: "start" });
     }
     document.querySelectorAll("[data-partner-tab]").forEach((button) => button.addEventListener("click", () => switchTab(button.dataset.partnerTab)));
     document.querySelectorAll("[data-section]").forEach((button) => button.addEventListener("click", () => document.getElementById(button.dataset.section).scrollIntoView({ block: "start" })));
-    if (location.hash === "#partner-interface" || new URLSearchParams(location.search).get("tab") === "ui") switchTab("ui", false);
+    const initialTab = new URLSearchParams(location.search).get("tab");
+    if (location.hash === "#partner-interface" || initialTab === "ui") switchTab("ui", false);
+    else if (location.hash === "#partner-config" || initialTab === "config") switchTab("config", false);
     if (!window.frameElement) {
       const card = document.querySelector("[data-shop-ui-rules]");
       try {

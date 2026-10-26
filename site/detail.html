@@ -965,6 +965,10 @@
         ${extraCard}
         ${item.id === "brand-pitch" || item.id === "narrative-mainline" || isCharacterArtPage ? "" : `<article class="detail-card"><h2>场景与表现</h2><p><strong>场景：</strong>${escapeHtml(item.scene)}</p><p style="margin-top:10px"><strong>视觉重点：</strong>${escapeHtml(item.visual)}</p></article>`}
         ${item.group === "shops" ? "" : conceptGalleryCard}`;
+      const shopConfigDetails = item.group === "shops"
+        ? (standardDetails.match(/<article class="detail-card retail-document-card (?:retail-business-document|gas-station-document)">[\s\S]*?<\/article>/)?.[0] || `<article class="detail-card checkpoint-rule-config"><h2>配置表待补充</h2><p>当前页面尚未整理独立配置表，待核对原始表结构后补入。</p></article>`)
+        : "";
+      const shopRulesDetails = item.group === "shops" ? standardDetails.replace(shopConfigDetails, "") : standardDetails;
       const shopInterfacePendingCard = item.group === "shops" && !hasShopUiRules ? `
         <article class="detail-card shop-interface-pending-card">
           <div><p class="eyebrow">INTERFACE RULES</p><h2>界面规则待补充</h2></div>
@@ -975,7 +979,10 @@
       const shopTabbedDetails = item.group === "shops" ? `
         <div class="shop-page-tabs-shell">
           <section class="shop-page-panel is-active" data-shop-page-panel="rules">
-            ${standardDetails}
+            ${shopRulesDetails}
+          </section>
+          <section class="shop-page-panel" data-shop-page-panel="config" hidden>
+            ${shopConfigDetails}
           </section>
           <section class="shop-page-panel" data-shop-page-panel="interface" hidden>
             ${hasShopUiRules ? shopUiRulesCard : `${shopInterfacePendingCard}${conceptGalleryCard}`}
@@ -1000,6 +1007,7 @@
         <button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>
         <nav class="shop-page-tabs" data-shop-page-tabs aria-label="${escapeHtml(item.title)}策划案分页">
           <button type="button" class="is-active" data-shop-page-tab="rules" aria-pressed="true">规则</button>
+          <button type="button" data-shop-page-tab="config" aria-pressed="false">配置表</button>
           <button type="button" data-shop-page-tab="interface" aria-pressed="false">界面</button>
           ${(item.id === "gas-station" && item.minigameDocument) || (item.id === "convenience-store" && retailMarkdown) ? `<button type="button" data-shop-page-tab="minigame" aria-pressed="false">小游戏</button>` : ""}
           ${["gas-station", "convenience-store"].includes(item.id) ? `<button type="button" data-shop-page-tab="minigame-ui" aria-pressed="false">小游戏界面</button>` : ""}
@@ -1018,6 +1026,7 @@
         ${isDollHouse || isTalentMarket ? `<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>` : ""}
         <nav class="shop-page-tabs" data-checkpoint-page-tabs aria-label="${isTalentMarket ? "征才信箱" : isDollHouse ? "幸运抓抓" : "关卡"}策划案分页">
           <button type="button" class="is-active" data-checkpoint-page-tab="rules" aria-pressed="true">规则</button>
+          ${isDollHouse || item.id === "checkpoints" ? `<button type="button" data-checkpoint-page-tab="config" aria-pressed="false">配置表</button>` : ""}
           <button type="button" data-checkpoint-page-tab="interface" aria-pressed="false">界面</button>
         </nav>` : "";
       const checkpointShowcase = item.id === "checkpoints" ? `
@@ -1056,6 +1065,7 @@
             ${isTalentMarket ? `<div data-mailbox-system-content>${standardDetails}</div>` : standardDetails}
             ${isDollHouse || isTalentMarket ? "" : checkpointShowcase}
           </section>
+          ${isDollHouse || item.id === "checkpoints" ? `<section class="shop-page-panel" data-checkpoint-page-panel="config" hidden></section>` : ""}
           <section class="shop-page-panel" data-checkpoint-page-panel="interface" hidden>
             ${isDollHouse || isTalentMarket ? dollInterfaceDetails : checkpointInterfaceDetails}
           </section>
@@ -1253,7 +1263,7 @@
         const pageTabs = [...checkpointPageTabs.querySelectorAll("[data-checkpoint-page-tab]")];
         const pagePanels = [...document.querySelectorAll("[data-checkpoint-page-panel]")];
         const showCheckpointPage = (pageId, updateUrl = false) => {
-          const activePageId = pageId === "interface" ? "interface" : "rules";
+          const activePageId = ["rules", "config", "interface"].includes(pageId) ? pageId : "rules";
           pageTabs.forEach((button) => {
             const active = button.dataset.checkpointPageTab === activePageId;
             button.classList.toggle("is-active", active);

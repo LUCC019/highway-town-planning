@@ -22,7 +22,7 @@ const esc = (v="") => String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").r
 const field = (tag,id,v) => "<"+tag+' data-retail-edit-id="motel-20261015-'+id+'">'+esc(v)+"</"+tag+">";
 const photo=(n,label)=>'<figure><a href="assets/motel-ui-20261015/image'+n+'.jpeg" target="_blank" rel="noopener"><img loading="lazy" src="assets/motel-ui-20261015/image'+n+'.jpeg" alt="'+esc(label)+'"></a>'+field("figcaption","ref-"+n,label)+'</figure>';
 export function motelPlanningActions() {
- return '<nav class="shop-page-tabs" data-motel-page-tabs aria-label="旅馆策划案分页"><button type="button" data-motel-tab="rules">系统规则</button><button type="button" data-motel-tab="interface">界面规则</button><button type="button" data-motel-tab="art">场景美术</button></nav>';
+ return '<nav class="shop-page-tabs" data-motel-page-tabs aria-label="旅馆策划案分页"><button type="button" data-motel-tab="rules">系统规则</button><button type="button" data-motel-tab="config">配置表</button><button type="button" data-motel-tab="interface">界面规则</button><button type="button" data-motel-tab="art">场景美术</button></nav>';
 }
 export function renderMotelPlanning(enabled,failed=false) {
  const marker='<span data-motel-design-ref hidden>'+(enabled?'assets/motel-v02-doc.js':'')+'</span>';
@@ -44,8 +44,8 @@ export function installMotelPlanning(root) {
   doc.hidden=active==="art"; legacy.forEach(el=>el.hidden=active!=="art");
   if(legacyHeader) legacyHeader.style.display=active==="art"?"":"none";
   doc.querySelectorAll("[data-motel-panel]").forEach(el=>el.hidden=el.dataset.motelPanel!==active);
-  ruleTabs.hidden=!["rules","config"].includes(active);
-  buttons.forEach(b=>{const yes=b.dataset.motelTab===active||(b.closest("[data-motel-page-tabs]")&&b.dataset.motelTab==="rules"&&active==="config");b.classList.toggle("is-active",Boolean(yes));b.setAttribute("aria-pressed",String(Boolean(yes)));});
+  ruleTabs.hidden=active!=="rules";
+  buttons.forEach(b=>{const yes=b.dataset.motelTab===active;b.classList.toggle("is-active",Boolean(yes));b.setAttribute("aria-pressed",String(Boolean(yes)));});
   if(change){const u=new URL(location.href);if(active==="rules")u.searchParams.delete("shopTab");else u.searchParams.set("shopTab",active);history.replaceState(null,"",u);window.scrollTo(0,0);document.dispatchEvent(new Event("gas-shop-page-change"));}
  };
  buttons.forEach(b=>b.addEventListener("click",()=>show(b.dataset.motelTab,true)));
