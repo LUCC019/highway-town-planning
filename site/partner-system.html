@@ -95,6 +95,7 @@
       <div class="partner-panel" id="partner-config-panel" role="tabpanel" aria-labelledby="partner-tab-config" hidden>
         <section class="content-section" id="partner-config">
           <div class="section-head"><h2><span>01</span>配置表</h2></div>
+          <section class="content-section" id="partner-daily-config"></section>
           <article class="partner-card wide">
             <p>本页列出伙伴系统实际使用的表结构、字段、类型、关联和用途。字段名作为正式配置字段保留；表内记录数为当前版本有效范围，后续新增伙伴、服装、技能或剧情时在对应表中追加，不另建同义表。</p>
           </article>
@@ -258,6 +259,83 @@
     const initialTab = new URLSearchParams(location.search).get("tab");
     if (location.hash === "#partner-interface" || initialTab === "ui") switchTab("ui", false);
     else if (location.hash === "#partner-config" || initialTab === "config") switchTab("config", false);
+    // 整案正文覆盖会把会客室规则与日常互动配置一起写入 #partner-daily；只把配置表文章移到配置分页，保留其余规则原位。
+    const normalizePartnerConfigTables = () => {
+      const panel = document.querySelector("#partner-config-panel");
+      if (!panel) return;
+      const headers = ["英文字段", "中文名称", "类型／结构", "使用说明"];
+      panel.querySelectorAll("table").forEach((table) => {
+        if (table.dataset.partnerNormalized === "true") return;
+        const headCells = [...table.querySelectorAll("thead th")];
+        const rows = [...table.querySelectorAll("tbody tr")];
+        const articleTitle = table.closest("article")?.querySelector("h3")?.textContent.trim() || "";
+        if (headCells.length === 3 && table.closest("#partner-daily-config")) {
+          headCells[0].textContent = headers[0];
+          headCells[1].textContent = headers[2];
+          headCells[2].textContent = headers[3];
+          const nameHeader = document.createElement("th"); nameHeader.textContent = headers[1];
+          headCells[0].after(nameHeader);
+          const names = {
+            "BeautySufuCfg": "会客室伙伴基础",
+            "BeautySufuInteractionCfg / BeautySufuPlotCfg": "互动节点与剧情",
+            "SUFU_MOOD_WEIGHT": "心情随机权重",
+            "SUFU_LISTEN_UNLOCK_EVENT_COUNT / SUFU_STORY_UNLOCK_EVENT_COUNT": "倾听／往事解锁门槛",
+            "SUFU_INTERACTION_TIMES / SUFU_INTERACTION_REWARD": "互动回礼门槛与奖励",
+            "SUFU_INTERACTION_REWARD2": "互动即时奖励",
+            "SUFU_ROOM_PARTNER / ROOM_UNLOCK_IDENTITY / ROOM_MOVE_IDENTITY": "会客室槽位与开放",
+            "旅馆家具配置（新增关联项）": "伙伴专属家具",
+            "会客室每日来访（本项目新增配置）": "每日来访规则",
+            "伙伴来访簿（本项目新增入口）": "伙伴来访簿",
+          };
+          rows.forEach((row) => {
+            const cells = [...row.children];
+            const name = names[cells[0]?.textContent.trim()] || "配置项";
+            const nameCell = document.createElement("td"); nameCell.textContent = name;
+            row.insertBefore(nameCell, cells[1]);
+          });
+        } else if (headCells.length === 3 && (articleTitle === "服装与技能配置" || articleTitle === "全局参数与资源表")) {
+          headCells.forEach((cell, index) => { cell.textContent = headers[index === 0 ? 0 : index === 1 ? 2 : 3]; });
+          const nameHeader = document.createElement("th"); nameHeader.textContent = headers[1];
+          headCells[0].after(nameHeader);
+          rows.forEach((row) => {
+            const cells = [...row.children];
+            const nameCell = document.createElement("td");
+            nameCell.textContent = articleTitle === "服装与技能配置" ? "关键字段" : "字段与当前值";
+            row.insertBefore(nameCell, cells[1]);
+          });
+        } else if (headCells.length === 3) {
+          headCells.forEach((cell, index) => { cell.textContent = headers[index]; });
+          const usageHeader = document.createElement("th"); usageHeader.textContent = headers[3];
+          headCells[2].after(usageHeader);
+          rows.forEach((row) => {
+            const cells = [...row.children];
+            if (cells.length !== 3) return;
+            const source = cells[2].textContent.trim();
+            const split = source.match(/^(.+?[；。])([\s\S]*)$/);
+            const typeCell = document.createElement("td");
+            const usageCell = document.createElement("td");
+            typeCell.textContent = split ? split[1].replace(/[；。]$/, "") : source;
+            usageCell.textContent = split?.[2]?.trim() || "—";
+            row.replaceChild(typeCell, cells[2]);
+            row.appendChild(usageCell);
+          });
+        } else if (headCells.length === 4) {
+          headCells.forEach((cell, index) => { cell.textContent = headers[index]; });
+        }
+        table.dataset.partnerNormalized = "true";
+      });
+    };
+    const relocatePartnerDailyConfig = () => {
+      const source = document.querySelector("#partner-daily");
+      const target = document.querySelector("#partner-daily-config");
+      if (!source || !target) return;
+      const configArticle = [...source.children].find((element) => element.tagName === "ARTICLE" && element.querySelector("h3")?.textContent.trim() === "日常互动配置");
+      if (configArticle && !target.contains(configArticle)) target.replaceChildren(configArticle);
+      normalizePartnerConfigTables();
+    };
+    relocatePartnerDailyConfig();
+    const partnerDailyObserver = new MutationObserver(relocatePartnerDailyConfig);
+    partnerDailyObserver.observe(document.querySelector("#partner-daily") || document.body, { childList: true, subtree: true });
     if (!window.frameElement) {
       const card = document.querySelector("[data-shop-ui-rules]");
       try {

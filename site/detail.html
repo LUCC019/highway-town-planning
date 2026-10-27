@@ -965,8 +965,85 @@
         ${extraCard}
         ${item.id === "brand-pitch" || item.id === "narrative-mainline" || isCharacterArtPage ? "" : `<article class="detail-card"><h2>场景与表现</h2><p><strong>场景：</strong>${escapeHtml(item.scene)}</p><p style="margin-top:10px"><strong>视觉重点：</strong>${escapeHtml(item.visual)}</p></article>`}
         ${item.group === "shops" ? "" : conceptGalleryCard}`;
+      const carWashConfigDetails = item.id === "car-wash" ? `
+        <article class="detail-card retail-document-card retail-business-document car-wash-config-card">
+          <h2>洗车行：配置表</h2>
+          <aside class="retail-document-note">
+            <p><strong>配置边界：</strong>本页只落洗车行独有的等级、基础业务、拓展、订单需求和自动经营字段；店铺通用资产、委任和收益结算仍由经营商铺系统统一提供。</p>
+            <p><strong>证据标记：</strong>等级、业务名称、工具位和拓展阶段沿用当前规则页已确认口径；资源 ID、正式消耗、收益、概率和上限没有在当前可见有效配表中查实，统一标为“待数值配置”，不把示意值当正式配置。</p>
+          </aside>
+          <section class="retail-document-section">
+            <h2>1. 店铺主表</h2>
+            <div class="shop-table-scroll"><table class="shop-business-table retail-document-table">
+              <thead><tr><th>字段</th><th>当前值／口径</th><th>用途与限制</th></tr></thead>
+              <tbody>
+                <tr><td>店铺标识</td><td>car-wash（工作标识）</td><td>与洗车行页面、经营商铺通用表关联；正式配置 ID 由程序表统一确认。</td></tr>
+                <tr><td>开放条件</td><td>序章开局；具体条件待配置</td><td>不从旧剧情示意值倒推任务 ID。</td></tr>
+                <tr><td>初始等级</td><td>1</td><td>开店后从 1 级开始。</td></tr>
+                <tr><td>店铺等级上限</td><td>待数值配置</td><td>达到上限后不可继续升级，不扣除资源。</td></tr>
+                <tr><td>拓展等级上限</td><td>待数值配置</td><td>拓展只改变设备／场景和已配置效果，不增加固定每秒洗车数量。</td></tr>
+                <tr><td>自动经营</td><td>支持；解锁条件待配置</td><td>开启后不可关闭；离开店铺或离线是否累计按统一经营规则结算。</td></tr>
+              </tbody>
+            </table></div>
+          </section>
+          <section class="retail-document-section">
+            <h2>2. 店铺等级与基础业务表</h2>
+            <p>基础业务按店铺等级逐项解锁。下表的等级、业务和工具位是当前规则页口径；现金消耗、基础赚速、单车收益和正式业务 ID 仍由数值配置填写。</p>
+            <div class="shop-table-scroll"><table class="shop-business-table retail-document-table">
+              <thead><tr><th>解锁等级</th><th>业务包装</th><th>需求类型</th><th>工具位</th><th>现金消耗</th><th>效果／收益</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>基础冲水</td><td>车身冲洗</td><td>1｜普通水枪</td><td>待配置</td><td>待配置</td></tr>
+                <tr><td>10</td><td>轮毂清洁</td><td>轮胎／轮毂</td><td>2｜轮毂刷</td><td>待配置</td><td>待配置</td></tr>
+                <tr><td>20</td><td>车内吸尘</td><td>内饰清洁</td><td>3｜桶式吸尘器</td><td>待配置</td><td>待配置</td></tr>
+                <tr><td>30</td><td>玻璃清洁</td><td>玻璃清洗</td><td>4｜玻璃清洁套装</td><td>待配置</td><td>待配置</td></tr>
+                <tr><td>40</td><td>车漆打蜡</td><td>全车抛光／打蜡</td><td>5｜手持抛光机</td><td>待配置</td><td>待配置</td></tr>
+                <tr><td>50</td><td>高压泡沫洗</td><td>车身重度脏污</td><td>1｜高压泡沫水枪</td><td>待配置</td><td>替换基础冲水效果；具体替换关系和收益待配置。</td></tr>
+                <tr><td>200</td><td>轮胎养护上光</td><td>轮胎／轮毂养护</td><td>2｜电动轮胎美容刷</td><td>待配置</td><td>替换轮毂清洁效果；具体替换关系和收益待配置。</td></tr>
+                <tr><td>300</td><td>内饰蒸汽深洁</td><td>内饰深度清洁</td><td>3｜高温蒸汽清洁器</td><td>待配置</td><td>替换车内吸尘效果；具体替换关系和收益待配置。</td></tr>
+                <tr><td>400</td><td>玻璃防水镀膜</td><td>玻璃清洁／镀膜</td><td>4｜玻璃镀膜套装</td><td>待配置</td><td>替换玻璃清洁效果；具体替换关系和收益待配置。</td></tr>
+                <tr><td>500</td><td>精细美容</td><td>全车精细护理</td><td>5｜经典车美容工具组</td><td>待配置</td><td>替换车漆打蜡效果；具体替换关系和收益待配置。</td></tr>
+              </tbody>
+            </table></div>
+          </section>
+          <section class="retail-document-section">
+            <h2>3. 拓展配置表</h2>
+            <p>拓展等级与店铺等级条件、材料、效果引用和设备阶段分别配置；任何拓展不得增加固定每秒洗车数量或凭空增加并行车位。</p>
+            <div class="shop-table-scroll"><table class="shop-business-table retail-document-table">
+              <thead><tr><th>拓展等级</th><th>包装名称</th><th>店铺等级条件</th><th>材料 ID／数量</th><th>效果引用</th><th>设备阶段</th></tr></thead>
+              <tbody>
+                <tr><td>2</td><td>遮棚与照明改造</td><td>待配置</td><td>待配置</td><td>待配置</td><td>遮棚、工位照明</td></tr>
+                <tr><td>3</td><td>水路增压设备</td><td>待配置</td><td>待配置</td><td>待配置</td><td>水泵、管线、压力表</td></tr>
+                <tr><td>4</td><td>清洁剂调配设备</td><td>待配置</td><td>待配置</td><td>待配置</td><td>分装桶、量杯、药剂架</td></tr>
+                <tr><td>6</td><td>污水回收过滤设备</td><td>待配置</td><td>待配置</td><td>待配置</td><td>排水沟、过滤罐、回收管路</td></tr>
+                <tr><td>8</td><td>自动泡沫预洗设备</td><td>待配置</td><td>待配置</td><td>待配置</td><td>自动喷淋、泡沫覆盖设备</td></tr>
+              </tbody>
+            </table></div>
+          </section>
+          <section class="retail-document-section">
+            <h2>4. 订单需求与结算字段</h2>
+            <div class="shop-table-scroll"><table class="shop-business-table retail-document-table">
+              <thead><tr><th>配置组</th><th>字段</th><th>当前口径</th><th>约束</th></tr></thead>
+              <tbody>
+                <tr><td>车辆</td><td>车型、底图、进出场表现</td><td>按车型配置</td><td>表现资源不直接决定收益。</td></tr>
+                <tr><td>需求池</td><td>需求类型、可用条件、工具映射、组合权重</td><td>每车随机 1—3 项；只从已开放工具抽取</td><td>不得生成未解锁工具无法完成的死单；正式权重待配置。</td></tr>
+                <tr><td>服务表现</td><td>基础／加重脏污层、动效资源、时长</td><td>按需求和工具阶段配置</td><td>只清除自身图层；动画不作为结算依据。</td></tr>
+                <tr><td>整车结算</td><td>单车收益、收益精度、取整方式</td><td>全部需求完成后整车结算一次</td><td>重复点击、动画重放和重登不得重复发奖。</td></tr>
+                <tr><td>自动经营</td><td>每秒完成车数、单车收益、离线资格、累计上限</td><td>均支持配置；正式数值待配置</td><td>拓展不改固定每秒车数；手动与自动关系沿统一经营规则结算。</td></tr>
+              </tbody>
+            </table></div>
+          </section>
+          <section class="retail-document-section">
+            <h2>5. 配置验收边界</h2>
+            <ul>
+              <li>等级行必须连续且与业务解锁行一一对应；替换业务不得循环引用。</li>
+              <li>资源 ID、消耗、收益、权重、时间单位和取整方式补齐后，才可作为程序导入表。</li>
+              <li>拓展配置不得出现增加并行车位或提高固定每秒洗车数量的字段。</li>
+              <li>配置缺失或版本不匹配时不得生成无法处理的需求，也不得扣除未知资源。</li>
+            </ul>
+          </section>
+        </article>` : "";
       const shopConfigDetails = item.group === "shops"
-        ? (standardDetails.match(/<article class="detail-card retail-document-card (?:retail-business-document|gas-station-document)">[\s\S]*?<\/article>/)?.[0] || `<article class="detail-card checkpoint-rule-config"><h2>配置表待补充</h2><p>当前页面尚未整理独立配置表，待核对原始表结构后补入。</p></article>`)
+        ? (item.id === "car-wash" ? carWashConfigDetails : (standardDetails.match(/<article class="detail-card retail-document-card (?:retail-business-document|gas-station-document)">[\s\S]*?<\/article>/)?.[0] || `<article class="detail-card checkpoint-rule-config"><h2>配置表待补充</h2><p>当前页面尚未整理独立配置表，待核对原始表结构后补入。</p></article>`))
         : "";
       const shopRulesDetails = item.group === "shops" ? standardDetails.replace(shopConfigDetails, "") : standardDetails;
       const shopInterfacePendingCard = item.group === "shops" && !hasShopUiRules ? `
@@ -991,11 +1068,72 @@
           ${["gas-station", "convenience-store"].includes(item.id) ? `<section class="shop-page-panel" data-shop-page-panel="minigame-ui" hidden><article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-minigame-ui-rules><h2>小游戏界面待补充</h2><p>当前正式版尚未加入小游戏界面资料；编辑版读取本店小游戏界面草稿。</p></article></section>` : ""}
         </div>` : "";
       const isCharacterTabbedPage = item.id === "protagonists" || item.id === "partners";
+      const protagonistConfigDetails = item.id === "protagonists" ? `
+        <article class="detail-card retail-document-card protagonist-config-card">
+          <h2>主角身份：配置表</h2>
+          <aside class="retail-document-note">
+            <p><strong>配置边界：</strong>艾琳与丹尼尔共用一套身份等级、晋升进度和身份权益；性别只影响当前主控角色与对应形象资源，不复制一套独立身份数值。</p>
+            <p><strong>证据标记：</strong>等级区间、阶段称号和权益字段来自当前主角规则与界面稿；正式条件值、奖励数值、资源 ID、文案和形象资源 ID需接入身份配置表后填写，本页不把参考图示例值当正式配置。</p>
+          </aside>
+          <section class="retail-document-section">
+            <h2>1. 身份总表</h2>
+            <div class="shop-table-scroll"><table class="shop-business-table retail-document-table">
+              <thead><tr><th>字段</th><th>当前口径</th><th>用途与限制</th></tr></thead>
+              <tbody>
+                <tr><td>身份主体</td><td>双胞胎共享</td><td>切换艾琳／丹尼尔不重置等级、收益、晋升进度或已领取奖励。</td></tr>
+                <tr><td>身份等级范围</td><td>1—80</td><td>无下一等级配置时显示满级；不能按剧情是否存在判断满级。</td></tr>
+                <tr><td>当前阶段称号</td><td>读取 stage_id／title_id</td><td>主角主页、晋升页和传奇之路统一读取同一阶段配置。</td></tr>
+                <tr><td>晋升条件组</td><td>condition_id</td><td>当前等级到下一等级的条件引用；条件项、目标值和跳转由条件配置提供。</td></tr>
+                <tr><td>升级奖励组</td><td>reward_id</td><td>读取身份等级带来的每日奖励、等级上限、恢复和系统开放等权益。</td></tr>
+                <tr><td>男女形象资源</td><td>appearance_id_f／appearance_id_m</td><td>只在配置指定的身份阶段解锁对应性别形象；未解锁不得提前穿戴。</td></tr>
+              </tbody>
+            </table></div>
+          </section>
+          <section class="retail-document-section">
+            <h2>2. 身份阶段表</h2>
+            <p>阶段只负责称号与形象包装，不新增阶段外的数值轴；阶段内的每个身份等级仍需独立配置条件、权益和是否解锁新形象。</p>
+            <div class="shop-table-scroll"><table class="shop-business-table retail-document-table">
+              <thead><tr><th>阶段</th><th>身份等级</th><th>称号</th><th>英文名</th><th>新形象</th></tr></thead>
+              <tbody>
+                <tr><td>01</td><td>1—3</td><td>公路新人</td><td>ROAD ROOKIE</td><td>身份1初始男女形象</td></tr>
+                <tr><td>02</td><td>4—6</td><td>公路新秀</td><td>RISING TALENT</td><td>按等级配置；未配置不生成</td></tr>
+                <tr><td>03</td><td>7—16</td><td>公路红人</td><td>ROAD FAVORITE</td><td>按等级配置；未配置不生成</td></tr>
+                <tr><td>04</td><td>17—28</td><td>公路明星</td><td>ROAD STAR</td><td>按等级配置；未配置不生成</td></tr>
+                <tr><td>05</td><td>29—43</td><td>公路名流</td><td>ROAD ELITE</td><td>按等级配置；未配置不生成</td></tr>
+                <tr><td>06</td><td>44—58</td><td>公路之王</td><td>ROAD ROYALTY</td><td>按等级配置；未配置不生成</td></tr>
+                <tr><td>07</td><td>59—80</td><td>公路传奇</td><td>ROAD LEGEND</td><td>按等级配置；未配置不生成</td></tr>
+              </tbody>
+            </table></div>
+          </section>
+          <section class="retail-document-section">
+            <h2>3. 身份等级行字段</h2>
+            <div class="shop-table-scroll"><table class="shop-business-table retail-document-table">
+              <thead><tr><th>字段组</th><th>字段</th><th>规则</th></tr></thead>
+              <tbody>
+                <tr><td>条件</td><td>condition_id、condition_type、target_value、jump_id</td><td>升级按钮读取下一等级条件；未满足时逐项显示进度并提供配置跳转。</td></tr>
+                <tr><td>权益</td><td>daily_reward、talent_level_cap、encounter_limit、encounter_recovery、travel_energy_cap、doll_level_cap</td><td>只展示该身份等级带来的变化；新值与上一级比较后再显示改善标记。</td></tr>
+                <tr><td>开放</td><td>feature_unlock_ids、room_unlock_ids、partner_unlock_ids</td><td>身份升级成功后统一生效；对应系统自行读取开放结果。</td></tr>
+                <tr><td>文案</td><td>title、news_title、upgrade_success_text</td><td>报纸、形象提升动画和升级成功弹窗按本次身份配置读取。</td></tr>
+                <tr><td>形象</td><td>appearance_id_f、appearance_id_m、appearance_unlock_level</td><td>晋升触发新形象时读取当前主控性别资源；没有新形象时不展示形象提升步骤。</td></tr>
+              </tbody>
+            </table></div>
+          </section>
+          <section class="retail-document-section">
+            <h2>4. 配置验收边界</h2>
+            <ul>
+              <li>下一等级不存在时显示已满级，升级不可重复提交，不展示虚假的下一条件或下一条件奖励。</li>
+              <li>身份条件、权益、功能开放和形象资源必须按身份等级关联，不能用剧情是否存在替代配置判断。</li>
+              <li>男女主共享同一身份等级行；只有形象资源和当前主控角色表现按性别分支。</li>
+              <li>报纸、形象提升动画、升级成功的顺序属于界面表现规则，不能在配置表中重复生成第二套晋升逻辑。</li>
+            </ul>
+          </section>
+        </article>` : "";
       const characterTabbedDetails = isCharacterTabbedPage ? `
         <div class="shop-page-tabs-shell">
           <section class="shop-page-panel is-active" data-character-page-panel="rules">
             ${item.id === "protagonists" ? protagonistDetails : standardDetails}
           </section>
+          ${item.id === "protagonists" ? `<section class="shop-page-panel" data-character-page-panel="config" hidden>${protagonistConfigDetails}</section>` : ""}
           <section class="shop-page-panel" data-character-page-panel="interface" hidden>
             ${hasShopUiRules ? shopUiRulesCard : `<article class="detail-card shop-interface-pending-card">
               <div><p class="eyebrow">INTERFACE RULES</p><h2>界面规则待补充</h2></div>
@@ -1016,6 +1154,7 @@
         <button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>
         <nav class="shop-page-tabs" data-character-page-tabs aria-label="${escapeHtml(item.title)}策划案分页">
           <button type="button" class="is-active" data-character-page-tab="rules" aria-pressed="true">规则</button>
+          ${item.id === "protagonists" ? `<button type="button" data-character-page-tab="config" aria-pressed="false">配置表</button>` : ""}
           ${item.id === "partners"
             ? `<a class="shop-page-tab-link" href="talent-system.html?tab=ui" aria-label="打开人才系统界面规则">界面</a>`
             : `<button type="button" data-character-page-tab="interface" aria-pressed="false">界面</button>`}
@@ -1179,7 +1318,7 @@
         const pageTabs = [...characterPageTabs.querySelectorAll("[data-character-page-tab]")];
         const pagePanels = [...document.querySelectorAll("[data-character-page-panel]")];
         const showCharacterPage = (pageId, updateUrl = false) => {
-          const activePageId = pageId === "interface" ? "interface" : "rules";
+          const activePageId = pageId === "interface" ? "interface" : (pageId === "config" && item.id === "protagonists" ? "config" : "rules");
           pageTabs.forEach((button) => {
             const active = button.dataset.characterPageTab === activePageId;
             button.classList.toggle("is-active", active);
