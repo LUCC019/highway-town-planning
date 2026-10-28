@@ -18,13 +18,13 @@ export function createReadingView({state,escapeHtml:e,showImage,editor}) {
     const known=new Map(state.systems.map(s=>[s.id,s]));
     const cards=flowV01Systems.map(s=>({...s,...known.get(s.id),available:known.has(s.id)}));
     cards.push(...state.systems.filter(s=>!flowV01Systems.some(k=>k.id===s.id)).map(s=>({...s,available:true})));
-    const groups=['0.1','0.2',...(cards.some(s=>flowVersion(s)==='未分组')?['未分组']:[])];
+    const groups=['0.1','0.2','0.3',...(cards.some(s=>flowVersion(s)==='未分组')?['未分组']:[])];
     return '<section class="flow-catalog"><header><div><p class="read-eyebrow">界面流程图</p><h2>按版本找到系统</h2><p>'+ (state.readOnly?'仅展示已发布的系统内容。':'先选系统，再整理截图、图名和说明。保存草稿不会自动发布。')+'</p></div><div class="catalog-actions"><button id="catalog-refresh">刷新系统列表</button>'+(!state.readOnly?'<button id="catalog-new" class="primary">＋ 新建系统</button>':'')+'</div></header>'+groups.map(version=>{
       const list=cards.filter(s=>flowVersion(s)===version);
       return '<section class="catalog-group" data-version="'+e(version)+'"><h3>'+(version==='未分组'?'未分组':'版本 '+version)+'</h3><div class="catalog-grid">'+list.map(s=>{
         const disabled=state.readOnly&&!s.available;
         return '<button class="catalog-card" data-system="'+e(s.id)+'"'+(disabled?' disabled':'')+'><h4>'+e(s.name)+'</h4><p>'+(!s.available?(state.readOnly?'尚未发布':'尚未整理 · 点击开始'):(s.nodes+' 个节点 · '+(state.readOnly?'已发布':'已保存草稿')))+'</p><span>'+(disabled?'等待发布':'进入系统 →')+'</span></button>';
-      }).join('')+'</div>'+(!list.length?'<p class="catalog-empty">'+(version==='0.2'?(state.readOnly?'本版本暂无已发布内容。':'本版本暂未开始整理。'):'暂无系统。')+'</p>':'')+'</section>';
+      }).join('')+'</div>'+(!list.length?'<p class="catalog-empty">'+(version==='未分组'?'暂无系统。':state.readOnly?'本版本暂无已发布内容。':'本版本暂未开始整理。')+'</p>':'')+'</section>';
     }).join('')+'</section>';
   }
   function sync(){

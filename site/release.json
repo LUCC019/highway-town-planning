@@ -1,9 +1,14 @@
 {
   "schemaVersion": 1,
-  "releaseId": "28ae5432-a2e5-4fc7-b605-71dddc3e50ee",
-  "builtAt": "2026-10-27T02:33:24.878Z",
+  "releaseId": "ba71e1d3-a46c-4ccc-a88a-75128422b407",
+  "builtAt": "2026-10-28T07:49:02.629Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
+    {
+      "id": "65aaf269-0160-4152-9bed-990e97cf571e",
+      "name": "达人秀（0.3）",
+      "nodes": 15
+    },
     {
       "id": "d93f99a3-5d49-4947-9c5f-408f71dce72a",
       "name": "伙伴系统（0.2）",
@@ -65,15 +70,16 @@
       "nodes": 4
     }
   ],
-  "embeddedImageFiles": 205,
-  "files": 636,
-  "totalBytes": 575591282,
+  "embeddedImageFiles": 220,
+  "files": 652,
+  "totalBytes": 599020042,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
     "shop-formal.json",
     "car-wash.json",
     "flows.json",
+    "flows/65aaf269-0160-4152-9bed-990e97cf571e.json",
     "flows/d93f99a3-5d49-4947-9c5f-408f71dce72a.json",
     "flows/shop-system.json",
     "flows/checkpoints.json",

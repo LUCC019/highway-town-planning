@@ -5,7 +5,7 @@ export const flowV01Systems = [
   {id:'convenience-store',name:'便利店'}, {id:'talent-system',name:'人才'}
 ];
 export const flowVersion = doc => flowV01Systems.some(s=>s.id===doc?.id)?'0.1':
-  (String(doc?.name||'').match(/(?:^|[（(\s])v?(0\.[12])(?:[）)\s]|$)/i)?.[1]||'未分组');
+  (String(doc?.name||'').match(/(?:^|[（(\s])v?(0\.[123])(?:[）)\s]|$)/i)?.[1]||'未分组');
 export const isCheckpointPilot = state => Boolean(state.doc);
 const order=['main','result','boss','battle','win','lose','strong_tip','weak_tip',
   'onekey_setup','onekey_active','onekey_summary','auto_active','entry','chat','currency',
