@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "52947436-c22b-470b-94c4-33302113d2aa",
-  "builtAt": "2026-10-28T07:53:07.931Z",
+  "releaseId": "1b446aa8-7b9f-4592-b4f1-75880ae602c0",
+  "builtAt": "2026-10-28T08:44:26.601Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -72,7 +72,7 @@
   ],
   "embeddedImageFiles": 220,
   "files": 652,
-  "totalBytes": 599041121,
+  "totalBytes": 599623045,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
