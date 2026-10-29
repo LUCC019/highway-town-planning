@@ -1161,11 +1161,12 @@
         </nav>` : "";
       const isDollHouse = item.id === "doll-house";
       const isTalentMarket = item.id === "talent-market";
-      const checkpointTopActions = item.id === "checkpoints" || isDollHouse || isTalentMarket ? `
+      const isTalentShow = item.id === "brand-pitch";
+      const checkpointTopActions = item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow ? `
         ${isDollHouse || isTalentMarket ? `<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>` : ""}
-        <nav class="shop-page-tabs" data-checkpoint-page-tabs aria-label="${isTalentMarket ? "征才信箱" : isDollHouse ? "幸运抓抓" : "关卡"}策划案分页">
+        <nav class="shop-page-tabs" data-checkpoint-page-tabs aria-label="${isTalentShow ? "达人秀" : isTalentMarket ? "征才信箱" : isDollHouse ? "幸运抓抓" : "关卡"}策划案分页">
           <button type="button" class="is-active" data-checkpoint-page-tab="rules" aria-pressed="true">规则</button>
-          ${isDollHouse || item.id === "checkpoints" ? `<button type="button" data-checkpoint-page-tab="config" aria-pressed="false">配置表</button>` : ""}
+          ${isDollHouse || isTalentShow || item.id === "checkpoints" ? `<button type="button" data-checkpoint-page-tab="config" aria-pressed="false">配置表</button>` : ""}
           <button type="button" data-checkpoint-page-tab="interface" aria-pressed="false">界面</button>
         </nav>` : "";
       const checkpointShowcase = item.id === "checkpoints" ? `
@@ -1197,16 +1198,16 @@
           <p>本页以关卡主界面原图为底，叠加可点击的1—11号分区标记，说明各模块的显示内容、状态、交互、刷新与异常边界。后续视觉稿调整时同步修订图片与标记位置。</p>
         </article>
         ${shopUiRulesCard}` : "";
-      const dollInterfaceDetails = isDollHouse || isTalentMarket ? `<article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><h2>界面规则待发布</h2><p>编辑版可查看当前界面草稿。</p></article>` : "";
-      const checkpointTabbedDetails = item.id === "checkpoints" || isDollHouse || isTalentMarket ? `
+      const dollInterfaceDetails = isDollHouse || isTalentMarket || isTalentShow ? `${isTalentShow ? '<div data-brand-ui-data hidden>{"id":"brand-pitch","title":"达人秀","uiRules":[]}</div>' : ""}<article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><h2>界面规则待发布</h2><p>编辑版可查看当前界面草稿。</p></article>` : "";
+      const checkpointTabbedDetails = item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow ? `
         <div class="shop-page-tabs-shell">
           <section class="shop-page-panel is-active" data-checkpoint-page-panel="rules">
             ${isTalentMarket ? `<div data-mailbox-system-content>${standardDetails}</div>` : standardDetails}
-            ${isDollHouse || isTalentMarket ? "" : checkpointShowcase}
+            ${isDollHouse || isTalentMarket || isTalentShow ? "" : checkpointShowcase}
           </section>
-          ${isDollHouse || item.id === "checkpoints" ? `<section class="shop-page-panel" data-checkpoint-page-panel="config" hidden></section>` : ""}
+          ${isDollHouse || isTalentShow || item.id === "checkpoints" ? `<section class="shop-page-panel" data-checkpoint-page-panel="config" hidden></section>` : ""}
           <section class="shop-page-panel" data-checkpoint-page-panel="interface" hidden>
-            ${isDollHouse || isTalentMarket ? dollInterfaceDetails : checkpointInterfaceDetails}
+            ${isDollHouse || isTalentMarket || isTalentShow ? dollInterfaceDetails : checkpointInterfaceDetails}
           </section>
         </div>` : "";
       const talentShowcase = item.id === "brand-pitch" ? `
@@ -1261,8 +1262,8 @@
           <section class="content-section">
             <div class="detail-layout detail-layout-single">
               <div class="detail-stack">
-                ${isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse || isTalentMarket ? checkpointTabbedDetails : standardDetails}
-                ${talentShowcase}
+                ${isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow ? checkpointTabbedDetails : standardDetails}
+                ${isTalentShow ? "" : talentShowcase}
                 <div class="prev-next">${previousLink}${nextLink}</div>
               </div>
             </div>
@@ -1270,6 +1271,33 @@
           <footer>当前位置：总览 / ${escapeHtml(group.title)} / ${escapeHtml(item.title)}</footer>
         </article>`;
       mount(pageShell({ activeGroup: item.group, content, topActions: characterTopActions || checkpointTopActions || shopTopActions || (item.id === "home" && motelEnabled ? motelPlanningActions() : "") }));
+      if (isTalentShow) {
+        const style = document.createElement("link");
+        style.rel = "stylesheet";
+        style.href = "assets/editor.css?v=20261028-talent-show";
+        document.head.append(style);
+        if (window.parent === window) {
+          try {
+            const response = await fetch("/api/full/formal", {cache:"no-store",signal:AbortSignal.timeout(7000)});
+            if (response.ok) {
+              const patches = (await response.json()).document?.pages?.["detail.html?id=brand-pitch"] || {};
+              for (const [selector, html] of Object.entries(patches)) {
+                try { const target = document.querySelector(selector); if (target) target.innerHTML = html; } catch {}
+              }
+              const source = JSON.parse(document.querySelector("[data-brand-ui-data]").textContent);
+              if (source.uiRules?.length) {
+                let screenId="main",selectedId=1,expandedPopupKey="",expandedNestedPopupKey="";
+                const render=()=>renderShopUiRulesCard(document.querySelector("[data-shop-ui-rules]"),source,{editable:false,screenId,selectedId,expandedPopupKey,expandedNestedPopupKey,
+                  onSelectScreen(id,jump={}){screenId=id;selectedId=jump.ruleId||1;expandedPopupKey=jump.popupKey||"";expandedNestedPopupKey=jump.nestedPopupKey||"";render();},
+                  onSelect(id){selectedId=id;expandedPopupKey="";expandedNestedPopupKey="";render();},
+                  onTogglePopup(key){expandedPopupKey=expandedPopupKey===key?"":key;render();},
+                  onToggleNestedPopup(key){expandedNestedPopupKey=expandedNestedPopupKey===key?"":key;render();}
+                });render();
+              }
+            }
+          } catch { document.querySelector("[data-shop-ui-rules]").innerHTML="<h2>界面规则暂时无法载入</h2><p>请刷新重试。</p>"; }
+        }
+      }
       if (isTalentMarket) {
         const style = document.createElement("link");
         style.rel = "stylesheet";
@@ -1415,14 +1443,14 @@
           });
           if (updateUrl) {
             const nextUrl = new URL(location.href);
-            const tabParam = isDollHouse || isTalentMarket ? "shopTab" : "checkpointTab";
+            const tabParam = isDollHouse || isTalentMarket || isTalentShow ? "shopTab" : "checkpointTab";
             if (activePageId === "rules") nextUrl.searchParams.delete(tabParam);
             else nextUrl.searchParams.set(tabParam, activePageId);
             history.replaceState(null, "", nextUrl);
           }
         };
         pageTabs.forEach((button) => button.addEventListener("click", () => showCheckpointPage(button.dataset.checkpointPageTab, true)));
-        showCheckpointPage(new URLSearchParams(location.search).get(isDollHouse || isTalentMarket ? "shopTab" : "checkpointTab"));
+        showCheckpointPage(new URLSearchParams(location.search).get(isDollHouse || isTalentMarket || isTalentShow ? "shopTab" : "checkpointTab"));
       }
       if (isDollHouse) {
         // Delegate so saved body overrides can supply the inner tabs after load.
