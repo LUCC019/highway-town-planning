@@ -1,9 +1,14 @@
 {
   "schemaVersion": 1,
-  "releaseId": "b7f97731-d559-49f4-b094-cd2f5222069c",
-  "builtAt": "2026-10-30T06:55:48.844Z",
+  "releaseId": "c8a0a409-0755-4cbb-abd3-fa397a5a82a0",
+  "builtAt": "2026-10-30T10:05:42.002Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
+    {
+      "id": "d14ce6e3-7da9-4485-84a9-0fffe671e22a",
+      "name": "名人周刊（财神庙）（0.3）",
+      "nodes": 11
+    },
     {
       "id": "4854ba62-f845-4c55-a51d-e5637eea9147",
       "name": "出游（0.3）",
@@ -17,11 +22,6 @@
     {
       "id": "64aa5a13-131f-4354-b3d2-19295b3b5470",
       "name": "城市主场景（0.3）",
-      "nodes": 0
-    },
-    {
-      "id": "d14ce6e3-7da9-4485-84a9-0fffe671e22a",
-      "name": "名人周刊（财神庙）（0.3）",
       "nodes": 0
     },
     {
@@ -85,19 +85,19 @@
       "nodes": 4
     }
   ],
-  "embeddedImageFiles": 227,
-  "files": 708,
-  "totalBytes": 674112916,
+  "embeddedImageFiles": 238,
+  "files": 719,
+  "totalBytes": 692062378,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
     "shop-formal.json",
     "car-wash.json",
     "flows.json",
+    "flows/d14ce6e3-7da9-4485-84a9-0fffe671e22a.json",
     "flows/4854ba62-f845-4c55-a51d-e5637eea9147.json",
     "flows/65aaf269-0160-4152-9bed-990e97cf571e.json",
     "flows/64aa5a13-131f-4354-b3d2-19295b3b5470.json",
-    "flows/d14ce6e3-7da9-4485-84a9-0fffe671e22a.json",
     "flows/d93f99a3-5d49-4947-9c5f-408f71dce72a.json",
     "flows/shop-system.json",
     "flows/checkpoints.json",
@@ -365,6 +365,17 @@
     "assets/talent-market-reference/03.png",
     "assets/talent-market-reference/11.png",
     "assets/talent-market-reference/10.png",
+    "assets/embedded/3c6cd1d036a9549c3f5a95be0f16c9b555a7fb4434d3b9a2a8cfc0fbc0e6e55e.png",
+    "assets/embedded/42d36a391ddb4d4871cba20582385221f4a5f32fcdd2b48378e08d0116d7dfd0.png",
+    "assets/embedded/fc7aec8d348c614098aa89db59caba5c1ffc989bea1a6ba6f34f229c2115c098.png",
+    "assets/embedded/07dc72a12a3435937a8b2c829a55728aa6d4f758664c4fa1726887fef7f60fd8.png",
+    "assets/embedded/5567816a1a4b3ff35a8bedbb14cdfe46ce2c31965c92c39150b77a9f6e21aaed.png",
+    "assets/embedded/8ac4ba22589f30c31d69490dbe2a002d1e433b602aaf982c408e0aef9510c73f.png",
+    "assets/embedded/1f04ca9125099d08bf30d01e2473f7945ace28d313dabeab28cbd5c221b1ef22.png",
+    "assets/embedded/c1e49eadffe888f9621f974ace9e22aadd7ff2d599081b79a024bdd53e7de3f5.png",
+    "assets/embedded/8f1034f3edde35a2385604cb984bb8d70fe97422ff6d53c52d65e8b8cc1de223.png",
+    "assets/embedded/1e6864ca7a2dd3afd6491a8a7efadcb99ee2f831978936c8b5e01f638849256c.png",
+    "assets/embedded/9378a9a511fc4026d19628dbc2310f34cc2c3a2dce30b7aa6aa8cd1b44ca57d5.png",
     "assets/embedded/d9d91bc176025ce818e6655c49cb9e56f8828599bb74dd28e396c8292a4ca0db.png",
     "assets/embedded/dbad0275c2eea8f32c7e23e859b5b7a3bac65e8313ed1edf99ca2261d975bf4c.png",
     "assets/embedded/bb84a7e8c2c4ae4498cac982c3a60ac86889c03de93146a5ea2651b4a3e8567b.png",
