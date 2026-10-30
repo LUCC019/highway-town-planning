@@ -171,7 +171,7 @@ function allShopUiMatchFormal() {
 }
 
 function findTitle(page) {
-  if (mode === "edit" && page === "detail.html?id=doll-house") return "幸运抓抓系统";
+  if (page === "detail.html?id=doll-house") return "幸运抓抓系统";
   return allCatalogEntries().find((entry) => entry.page === page)?.title || "策划案页面";
 }
 
@@ -226,7 +226,7 @@ function renderCatalog(filter = "") {
           <button type="button" class="full-page-group-toggle" data-group-toggle="${escapeHtml(group.id)}" aria-expanded="${!collapsed}" aria-label="${collapsed ? "展开" : "收起"}${escapeHtml(group.title)}" title="${collapsed ? "展开" : "收起"}">${collapsed ? "＋" : "−"}</button>
         </div>
         <div class="full-page-group-items"${collapsed ? " hidden" : ""}>
-          ${items.map((item) => `<button type="button" class="full-page-link" data-page="${escapeHtml(item.page)}"><span>${escapeHtml(mode === "edit" && item.id === "doll-house" ? "幸运抓抓系统" : item.title)}</span></button>`).join("")}
+          ${items.map((item) => `<button type="button" class="full-page-link" data-page="${escapeHtml(item.page)}"><span>${escapeHtml(item.id === "doll-house" ? "幸运抓抓系统" : item.title)}</span></button>`).join("")}
         </div>
       </section>${afterGroup}`;
   }).join("");
