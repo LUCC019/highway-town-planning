@@ -13,6 +13,7 @@
   <script type="module">
     import { renderShopUiRulesCard } from "./assets/editor-view.js?v=20261021-linked-navigation-v3";
     import { renderMotelPlanning, motelPlanningActions, installMotelPlanning, MOTEL_UI } from "./assets/motel-v02-doc.js?v=20261021-review-v3";
+    import { WEEKLY_REF, weeklyActions, renderWeeklyPlanning, installWeeklyPlanning } from "./assets/wealth-hall-planning.js?v=20261029-draft-1";
     import { GROUPS, getGroupModules, getModule } from "./assets/data.js?v=20261012-oil-minigame";
     import { renderRetailDocument } from "./assets/822-retail-doc.js?v=20261010-config-notes";
     import { renderOilMinigame } from "./assets/gas-oil-experience-planning.js?v=20261013-v6";
@@ -22,6 +23,19 @@
 
     const id = new URLSearchParams(location.search).get("id");
     const item = getModule(id);
+    let weeklyPatches = {};
+    let weeklyLoadFailed = false;
+    const weeklyEnabled = item?.id === "wealth-hall" ? await (async () => {
+      let editing = false;
+      try { editing = window.parent !== window && window.parent.document.body.dataset.editorMode === "edit"; } catch {}
+      try {
+        const response = await fetch(editing ? "/api/full/state" : "/api/full/formal", {cache:"no-store", signal:AbortSignal.timeout(10000)});
+        if (!response.ok) throw new Error("周刊版本读取失败");
+        const payload = await response.json();
+        weeklyPatches = (editing ? payload.draft : payload.document)?.pages?.["detail.html?id=wealth-hall"] || {};
+        return weeklyPatches["[data-weekly-design-ref]"] === WEEKLY_REF;
+      } catch { weeklyLoadFailed = true; return false; }
+    })() : false;
     let motelLoadFailed = false;
     let motelPagePatches = {};
     const motelEnabled = item?.id === "home" ? await (async () => {
@@ -1262,7 +1276,8 @@
           <section class="content-section">
             <div class="detail-layout detail-layout-single">
               <div class="detail-stack">
-                ${isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow ? checkpointTabbedDetails : standardDetails}
+                ${item.id === "wealth-hall" ? `<span data-weekly-design-ref hidden>${weeklyEnabled ? escapeHtml(WEEKLY_REF) : ""}</span>` : ""}
+                ${item.id === "wealth-hall" && weeklyLoadFailed ? '<article class="detail-card"><h2>名人周刊资料暂时无法载入</h2><p>请刷新重试，未用旧稿代替新资料。</p></article>' : weeklyEnabled ? renderWeeklyPlanning() : isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow ? checkpointTabbedDetails : standardDetails}
                 ${isTalentShow ? "" : talentShowcase}
                 <div class="prev-next">${previousLink}${nextLink}</div>
               </div>
@@ -1270,7 +1285,14 @@
           </section>
           <footer>当前位置：总览 / ${escapeHtml(group.title)} / ${escapeHtml(item.title)}</footer>
         </article>`;
-      mount(pageShell({ activeGroup: item.group, content, topActions: characterTopActions || checkpointTopActions || shopTopActions || (item.id === "home" && motelEnabled ? motelPlanningActions() : "") }));
+      mount(pageShell({ activeGroup: item.group, content, topActions: weeklyEnabled ? weeklyActions() : characterTopActions || checkpointTopActions || shopTopActions || (item.id === "home" && motelEnabled ? motelPlanningActions() : "") }));
+      if (weeklyEnabled) {
+        if (window.parent === window) for (const [selector, html] of Object.entries(weeklyPatches)) {
+          try { const target = document.querySelector(selector); if (target) target.innerHTML = html; } catch {}
+        }
+        installWeeklyPlanning(document.querySelector("#app"));
+      }
+      if (item.id === "wealth-hall") document.dispatchEvent(new Event("retail-document-ready"));
       if (isTalentShow) {
         const style = document.createElement("link");
         style.rel = "stylesheet";

@@ -693,7 +693,7 @@ function prepareFrame() {
   }
   const root = frameDocument?.querySelector("#app");
   // 822规则正文由MD异步载入；等正文就绪后再绑定编辑和草稿，避免空页面先触发load。
-  if (root && ["convenience-store", "gas-station", "home"].includes(new URL(frameDocument.location.href).searchParams.get("id")) && !root.children.length) {
+  if (root && ["convenience-store", "gas-station", "home", "wealth-hall"].includes(new URL(frameDocument.location.href).searchParams.get("id")) && !root.children.length) {
     frameDocument.addEventListener("retail-document-ready", prepareFrame, { once: true });
     return;
   }
@@ -732,7 +732,7 @@ function prepareFrame() {
   applyPagePatches(root, registry.pages[state.currentPage]);
   prepareEmbeddedMotelUi(frameDocument);
   bindFrameNavigation(frameDocument);
-  if (["gas-station", "convenience-store", "home"].includes(loadedUrl.searchParams.get("id"))) {
+  if (["gas-station", "convenience-store", "home", "wealth-hall"].includes(loadedUrl.searchParams.get("id"))) {
     frameDocument.addEventListener("gas-shop-page-change", () => {
       const targetUrl = new URL(frameDocument.location.href);
       state.currentFramePage = `${targetUrl.pathname.split("/").pop()}${targetUrl.search}`;
