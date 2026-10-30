@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "releaseId": "7edd8ca4-670b-4079-9e1e-118bdbe286ae",
-  "builtAt": "2026-10-30T05:43:57.867Z",
+  "releaseId": "b7f97731-d559-49f4-b094-cd2f5222069c",
+  "builtAt": "2026-10-30T06:55:48.844Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
       "id": "4854ba62-f845-4c55-a51d-e5637eea9147",
       "name": "出游（0.3）",
-      "nodes": 4
+      "nodes": 7
     },
     {
       "id": "65aaf269-0160-4152-9bed-990e97cf571e",
@@ -85,9 +85,9 @@
       "nodes": 4
     }
   ],
-  "embeddedImageFiles": 224,
-  "files": 705,
-  "totalBytes": 668547079,
+  "embeddedImageFiles": 227,
+  "files": 708,
+  "totalBytes": 674112916,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -369,6 +369,9 @@
     "assets/embedded/dbad0275c2eea8f32c7e23e859b5b7a3bac65e8313ed1edf99ca2261d975bf4c.png",
     "assets/embedded/bb84a7e8c2c4ae4498cac982c3a60ac86889c03de93146a5ea2651b4a3e8567b.png",
     "assets/embedded/db7af74962f350d6f2cdae904b9a7a2525989b67003e732dc2b4e4ea4c90e351.png",
+    "assets/embedded/e1a4240ae58189e4b66a6d5e4f807aa5fcf4fb8cafce2e75f0de69155f0374a7.png",
+    "assets/embedded/233619d136f47425d03dbe22a2c85561c73ca9bcbbfacbaf7812a9f4c7a4691e.png",
+    "assets/embedded/47f74b6368de366c1a46ca9de63a3087d6d2edcaa73f3ed25b1a7112d15dc669.png",
     "assets/embedded/7c4036faef895619bdacf07a22c0a30ec32f6fc63bfd3814fd9090878a656b26.png",
     "assets/embedded/4cb615be42423c27789162191b61370676cda554030fe7075a9684fd9741c205.png",
     "assets/embedded/73c8eb308caf56ccffef839e622a114fd44a9ee4a1d96cfcf25f067f98d7a56a.png",
