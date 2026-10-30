@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "fa1f6852-b0ae-4bd3-bbb8-a8bb022cd349",
-  "builtAt": "2026-10-30T03:38:51.462Z",
+  "releaseId": "9398a9d6-46ef-45b7-9437-cf394c5fa88d",
+  "builtAt": "2026-10-30T03:55:00.570Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -13,6 +13,16 @@
       "id": "65aaf269-0160-4152-9bed-990e97cf571e",
       "name": "达人秀（0.3）",
       "nodes": 15
+    },
+    {
+      "id": "64aa5a13-131f-4354-b3d2-19295b3b5470",
+      "name": "城市主场景（0.3）",
+      "nodes": 0
+    },
+    {
+      "id": "d14ce6e3-7da9-4485-84a9-0fffe671e22a",
+      "name": "名人周刊（财神庙）（0.3）",
+      "nodes": 0
     },
     {
       "id": "d93f99a3-5d49-4947-9c5f-408f71dce72a",
@@ -76,8 +86,8 @@
     }
   ],
   "embeddedImageFiles": 224,
-  "files": 673,
-  "totalBytes": 632659932,
+  "files": 675,
+  "totalBytes": 632673784,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -86,6 +96,8 @@
     "flows.json",
     "flows/4854ba62-f845-4c55-a51d-e5637eea9147.json",
     "flows/65aaf269-0160-4152-9bed-990e97cf571e.json",
+    "flows/64aa5a13-131f-4354-b3d2-19295b3b5470.json",
+    "flows/d14ce6e3-7da9-4485-84a9-0fffe671e22a.json",
     "flows/d93f99a3-5d49-4947-9c5f-408f71dce72a.json",
     "flows/shop-system.json",
     "flows/checkpoints.json",
