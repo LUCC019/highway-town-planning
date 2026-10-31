@@ -110,7 +110,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
       const nestedRules = nestedPopup?.rules?.map((nestedRule, nestedRuleIndex) => `
         <article class="editor-popup-rule" data-nested-popup-rule="${nestedRuleIndex}">
           <div>
-            ${["talent-system", "protagonists", "doll-house"].includes(document.id) ? `<span class="editor-popup-rule-number">${String(nestedRuleIndex + 1).padStart(2, "0")}</span>` : ""}<strong${editableAttributes(editable, "nested-popup-rule-label", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}" data-nested-rule-index="${nestedRuleIndex}" data-single-line`)}>${escapeHtml(nestedRule.label)}</strong>
+            ${["talent-system", "protagonists", "doll-house", "wealth-hall"].includes(document.id) ? `<span class="editor-popup-rule-number">${String(nestedRuleIndex + 1).padStart(2, "0")}</span>` : ""}<strong${editableAttributes(editable, "nested-popup-rule-label", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}" data-nested-rule-index="${nestedRuleIndex}" data-single-line`)}>${escapeHtml(nestedRule.label)}</strong>
             <p${editableAttributes(editable, "nested-popup-rule-text", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}" data-nested-rule-index="${nestedRuleIndex}"`)}>${escapeHtml(nestedRule.text)}</p>
             ${renderRuleLink(nestedRule.link)}
           </div>
@@ -204,7 +204,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
                 </div>` : ""}
             </figure>
             <div class="editor-popup-rules">
-              <div class="editor-popup-rules-head"><strong>${document.id === "doll-house" ? (["super-grab", "cumulative-effects"].includes(popup.id) ? "关联界面规则" : ["lucky-skill", "atlas-bonus", "event-lock"].includes(popup.id) ? "同页展开规则" : ["talent-button-states", "single-lock-tip", "single-unlock-tip", "single-sell-tip"].includes(popup.id) ? "状态说明" : "弹窗界面规则") : "弹窗界面规则"}</strong><span>${popup.rules?.length || 0} 条</span></div>
+              <div class="editor-popup-rules-head"><strong>${document.id === "wealth-hall" && popup.kind === "state" ? "同页状态规则" : document.id === "wealth-hall" && popup.kind === "page" ? "关联页面规则" : document.id === "doll-house" ? (["super-grab", "cumulative-effects"].includes(popup.id) ? "关联界面规则" : ["lucky-skill", "atlas-bonus", "event-lock"].includes(popup.id) ? "同页展开规则" : ["talent-button-states", "single-lock-tip", "single-unlock-tip", "single-sell-tip"].includes(popup.id) ? "状态说明" : "弹窗界面规则") : "弹窗界面规则"}</strong><span>${popup.rules?.length || 0} 条</span></div>
               ${popupRules || '<p class="editor-popup-empty">尚未填写弹窗规则。</p>'}
               ${editable ? `<button type="button" class="editor-popup-add-rule" data-popup-add-rule data-entry-index="${entryIndex}">＋ 新增一条弹窗规则</button>` : ""}
             </div>

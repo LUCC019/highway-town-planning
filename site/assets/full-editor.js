@@ -267,6 +267,15 @@ function updateToolbar() {
 }
 
 function syncEmbeddedMotelUi() {
+  const weeklyUi = state.shopUi["wealth-hall"];
+  if (weeklyUi?.embedded && mode === "edit") {
+    const key="[data-weekly-ui-data]",page="detail.html?id=wealth-hall";
+    const patches=state.working.pages[page] ||= {};
+    const saved=state.savedDraft.pages[page]?.[key];
+    if (!equal(weeklyUi.current,weeklyUi.savedDraft)) patches[key]=escapeHtml(JSON.stringify(weeklyUi.current));
+    else if (saved===undefined) delete patches[key];
+    else patches[key]=saved;
+  }
   const brandUi = state.shopUi["brand-pitch"];
   if (brandUi?.embedded && mode === "edit") {
     const key="[data-brand-ui-data]",page="detail.html?id=brand-pitch";
@@ -287,6 +296,22 @@ function syncEmbeddedMotelUi() {
 }
 
 function prepareEmbeddedMotelUi(frameDocument) {
+  if (shopIdForPage() === "wealth-hall") {
+    const marker=frameDocument.querySelector("[data-weekly-ui-data]");
+    let current;try {current=JSON.parse(marker?.textContent || "null");}catch {current=null;}
+    const hasRules=Boolean(current?.uiRules?.length);
+    frameDocument.querySelectorAll("[data-weekly-reference-only]").forEach(el=>{el.hidden=hasRules;});
+    const card=frameDocument.querySelector("[data-shop-ui-rules]");if(card)card.hidden=!hasRules;
+    if(!hasRules){delete state.shopUi["wealth-hall"];return;}
+    const existing=state.shopUi["wealth-hall"];
+    if(existing?.embedded&&!equal(existing.current,existing.savedDraft))return;
+    const decode=(html,fallback)=>{try{const el=frameDocument.createElement("div");el.innerHTML=html;return JSON.parse(el.textContent);}catch{return clone(fallback);}};
+    const key="[data-weekly-ui-data]",page="detail.html?id=wealth-hall";
+    const formal=decode(state.formal.pages[page]?.[key],{id:"wealth-hall",title:"名人周刊主界面",uiRules:[]});
+    const saved=decode(state.savedDraft.pages[page]?.[key],current);
+    state.shopUi["wealth-hall"]={embedded:true,formal,current,savedDraft:saved,selectedId:1,selectedScreenId:"main",expandedPopupKey:"",expandedNestedPopupKey:"",undo:[],editBaseline:null,versions:[]};
+    return;
+  }
   if (shopIdForPage() === "brand-pitch") {
     const marker=frameDocument.querySelector("[data-brand-ui-data]");
     if (!marker) { delete state.shopUi["brand-pitch"];return; }
@@ -1116,10 +1141,11 @@ try {
     state.savedDraft = clone(stateResult.draft);
     state.versions = stateResult.versions;
   }
-  const talentShowTitle = (mode === "reader" ? state.formal : state.working).pages["detail.html?id=brand-pitch"]?.[".page-head > h1"];
-  if (talentShowTitle) {
-    const entry = state.catalog.groups.flatMap(group => group.items).find(item => item.id === "brand-pitch");
-    if (entry) entry.title = String(talentShowTitle).replace(/<[^>]+>/g, "");
+  for (const id of ["brand-pitch", "wealth-hall"]) {
+    const savedTitle = (mode === "reader" ? state.formal : state.working).pages[`detail.html?id=${id}`]?.[".page-head > h1"];
+    if (!savedTitle) continue;
+    const entry = state.catalog.groups.flatMap(group => group.items).find(item => item.id === id);
+    if (entry) entry.title = String(savedTitle).replace(/<[^>]+>/g, "");
   }
   Object.entries(shopUiResult.documents || {}).forEach(([id, result]) => {
     const formal = mode === "reader" ? result : result.formal;

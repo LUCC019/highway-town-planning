@@ -1,4 +1,5 @@
 // Content is activated only by this page's saved draft/formal reference.
+import { renderShopUiRulesCard } from "./editor-view.js?v=20261021-linked-navigation-v3";
 export const WEEKLY_REF = "assets/wealth-hall-planning.js";
 const rules = [
   ["scope", "系统定位与玩法循环", [
@@ -204,9 +205,9 @@ export function renderWeeklyPlanning() {
   const section = ([id,title,rows], i) => `<section class="retail-document-section" id="weekly-rule-${id}">${field("h2",`rule-${id}-title`,`${String(i+1).padStart(2,"0")} ${title}`)}<ol>${rows.map(([label,text],r)=>`<li data-retail-edit-id="weekly-rule-${id}-${r}"><strong>${esc(label)}：</strong>${esc(text)}</li>`).join("")}</ol></section>`;
   const table = ([id,title,desc,rows], i) => `<article class="detail-card checkpoint-rule-config" id="weekly-table-${id}">${field("h2",`table-${id}-title`,`${String(i+1).padStart(2,"0")} ${title}`)}${field("p",`table-${id}-desc`,desc)}${id === "appearance" ? '<div data-weekly-title-names></div>' : ""}<div class="checkpoint-rule-config-scroll"><table><colgroup><col style="width:23%"><col style="width:17%"><col style="width:23%"><col style="width:37%"></colgroup><thead><tr>${["英文字段","中文名称","类型 / 结构","使用说明"].map((v,c)=>field("th",`table-${id}-head-${c}`,v)).join("")}</tr></thead><tbody>${rows.map((row,r)=>`<tr>${row.map((v,c)=>field("td",`table-${id}-${r}-${c}`,v)).join("")}</tr>`).join("")}</tbody></table></div></article>`;
   return `<div data-weekly-document>
-    <section class="shop-page-panel is-active" data-weekly-panel="rules"><article class="detail-card retail-document-card">${field("h1","rules-title","名人周刊｜系统规则")}${field("p","rules-intro","活动荣誉展示、每日支持与福利、上榜快讯、名人回馈、封面收藏和纪念品兑换。名称为暂定包装，不增设人物投票竞争。")}${rules.map(section).join("")}</article></section>
-    <section class="shop-page-panel" data-weekly-panel="config" hidden><article class="detail-card">${field("h1","config-title","名人周刊｜配置表")}${field("p","config-intro","按本系统采用的实际表结构列出字段、中文名、类型和用途。参考数值用于说明单位与结构，并非本项目已完成的投放配置；待配内容和未查实语义分别标明。")}</article>${tables.map(table).join("")}</section>
-    <section class="shop-page-panel" data-weekly-panel="interface" hidden><article class="detail-card">${field("h1","interface-title","名人周刊｜界面规则")}${field("p","interface-note","界面规则暂未编写。下图仅为包装参考，不代表按钮、布局与交互已经定稿。")}</article><article class="detail-card"><h2>包装参考</h2><figure class="scene-concept"><a href="assets/wealth-hall-concepts/main-street-weekly-display.png" target="_blank" rel="noopener"><img src="assets/wealth-hall-concepts/main-street-weekly-display.png" alt="名人周刊展示柜包装参考" style="max-height:760px;max-width:100%;object-fit:contain"></a></figure></article></section>
+    <section class="shop-page-panel is-active" data-weekly-panel="rules"><article class="detail-card retail-document-card">${field("h1","rules-title","名人周刊｜系统规则")}${field("p","rules-intro","活动荣誉展示、每日支持与福利、上榜快讯、名人回馈、封面收藏和纪念品兑换。名称为暂定包装，不增设人物投票竞争。")}${rules.map(section).join("")}<div data-weekly-rules-extra></div></article></section>
+    <section class="shop-page-panel" data-weekly-panel="config" hidden><article class="detail-card">${field("h1","config-title","名人周刊｜配置表")}${field("p","config-intro","按本系统采用的实际表结构列出字段、中文名、类型和用途。参考数值用于说明单位与结构，并非本项目已完成的投放配置；待配内容和未查实语义分别标明。")}</article>${tables.map(table).join("")}<div data-weekly-config-extra></div></section>
+    <section class="shop-page-panel" data-weekly-panel="interface" hidden><article class="detail-card" data-weekly-reference-only>${field("h1","interface-title","名人周刊｜界面规则")}${field("p","interface-note","界面规则暂未编写。下图仅为包装参考，不代表按钮、布局与交互已经定稿。")}</article><article class="detail-card" data-weekly-reference-only><h2>包装参考</h2><figure class="scene-concept"><a href="assets/wealth-hall-concepts/main-street-weekly-display.png" target="_blank" rel="noopener"><img src="assets/wealth-hall-concepts/main-street-weekly-display.png" alt="名人周刊展示柜包装参考" style="max-height:760px;max-width:100%;object-fit:contain"></a></figure></article><div data-weekly-ui-data hidden>{"id":"wealth-hall","title":"名人周刊主界面","uiRules":[]}</div><article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules hidden></article></section>
   </div>`;
 }
 export function installWeeklyPlanning(root) {
@@ -222,4 +223,18 @@ export function installWeeklyPlanning(root) {
   };
   buttons.forEach(button=>button.addEventListener("click",()=>show(button.dataset.weeklyTab,true)));
   show(new URLSearchParams(location.search).get("shopTab"));
+  if (window.parent === window) {
+    let source;try {source=JSON.parse(doc.querySelector("[data-weekly-ui-data]").textContent);} catch {return;}
+    if (!source.uiRules?.length) return;
+    const style=document.createElement("link");style.rel="stylesheet";style.href="assets/editor.css?v=20261030-weekly-ui";document.head.append(style);
+    doc.querySelectorAll("[data-weekly-reference-only]").forEach(el=>{el.hidden=true;});
+    const card=doc.querySelector("[data-shop-ui-rules]");card.hidden=false;
+    let screenId="main",selectedId=1,expandedPopupKey="",expandedNestedPopupKey="";
+    const render=()=>renderShopUiRulesCard(card,source,{editable:false,screenId,selectedId,expandedPopupKey,expandedNestedPopupKey,
+      onSelectScreen(id,jump={}){screenId=id;selectedId=jump.ruleId||1;expandedPopupKey=jump.popupKey||"";expandedNestedPopupKey=jump.nestedPopupKey||"";render();},
+      onSelect(id){selectedId=id;expandedPopupKey="";expandedNestedPopupKey="";render();},
+      onTogglePopup(key){expandedPopupKey=expandedPopupKey===key?"":key;expandedNestedPopupKey="";render();},
+      onToggleNestedPopup(key){expandedNestedPopupKey=expandedNestedPopupKey===key?"":key;render();}
+    });render();
+  }
 }
