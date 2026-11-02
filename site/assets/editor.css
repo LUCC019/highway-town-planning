@@ -298,6 +298,13 @@
 .editor-popup-rule p { margin: 0; color: #526779; font-size: 21px; line-height: 1.7; }
 .editor-popup-expansion.is-nested { margin-top: 4px; background: #f6f8fc; border-color: #b9cce3; box-shadow: inset 0 0 0 1px rgba(91, 128, 169, .08); }
 .editor-popup-expansion.is-nested .editor-popup-expansion-layout { grid-template-columns: minmax(240px, 42%) minmax(0, 1fr); padding: 14px; }
+/* 出游沿用双栏弹窗；嵌入窄规则列时按实际容器宽度折行，避免二级正文被裁掉。 */
+[data-outing-ui-rules] .editor-popup-expansion { container-type: inline-size; }
+@container (max-width: 680px) {
+  [data-outing-ui-rules] .editor-popup-expansion-layout,
+  [data-outing-ui-rules] .editor-popup-expansion.is-nested .editor-popup-expansion-layout { grid-template-columns: minmax(0, 1fr); }
+  [data-outing-ui-rules] .editor-popup-figure { width: min(390px, 100%); justify-self: center; }
+}
 .editor-popup-rule-actions { display: flex; align-items: flex-start; gap: 4px; }
 .editor-popup-rule-actions button,
 .editor-popup-add-rule {

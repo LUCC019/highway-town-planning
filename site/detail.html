@@ -1176,11 +1176,12 @@
       const isDollHouse = item.id === "doll-house";
       const isTalentMarket = item.id === "talent-market";
       const isTalentShow = item.id === "brand-pitch";
-      const checkpointTopActions = item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow ? `
+      const isOuting = item.id === "outing";
+      const checkpointTopActions = item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow || isOuting ? `
         ${isDollHouse || isTalentMarket ? `<button class="button shop-top-back" type="button" aria-label="返回上一页" onclick="if (history.length > 1) { history.back(); } else { location.href='category.html?group=${item.group}'; }">← 返回</button>` : ""}
-        <nav class="shop-page-tabs" data-checkpoint-page-tabs aria-label="${isTalentShow ? "达人秀" : isTalentMarket ? "征才信箱" : isDollHouse ? "幸运抓抓" : "关卡"}策划案分页">
+        <nav class="shop-page-tabs" data-checkpoint-page-tabs aria-label="${isOuting ? "出游" : isTalentShow ? "达人秀" : isTalentMarket ? "征才信箱" : isDollHouse ? "幸运抓抓" : "关卡"}策划案分页">
           <button type="button" class="is-active" data-checkpoint-page-tab="rules" aria-pressed="true">规则</button>
-          ${isDollHouse || isTalentShow || item.id === "checkpoints" ? `<button type="button" data-checkpoint-page-tab="config" aria-pressed="false">配置表</button>` : ""}
+          ${isDollHouse || isTalentShow || isOuting || item.id === "checkpoints" ? `<button type="button" data-checkpoint-page-tab="config" aria-pressed="false">配置表</button>` : ""}
           <button type="button" data-checkpoint-page-tab="interface" aria-pressed="false">界面</button>
         </nav>` : "";
       const checkpointShowcase = item.id === "checkpoints" ? `
@@ -1213,15 +1214,15 @@
         </article>
         ${shopUiRulesCard}` : "";
       const dollInterfaceDetails = isDollHouse || isTalentMarket || isTalentShow ? `${isTalentShow ? '<div data-brand-ui-data hidden>{"id":"brand-pitch","title":"达人秀","uiRules":[]}</div>' : ""}<article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules><h2>界面规则待发布</h2><p>编辑版可查看当前界面草稿。</p></article>` : "";
-      const checkpointTabbedDetails = item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow ? `
+      const checkpointTabbedDetails = item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow || isOuting ? `
         <div class="shop-page-tabs-shell">
           <section class="shop-page-panel is-active" data-checkpoint-page-panel="rules">
             ${isTalentMarket ? `<div data-mailbox-system-content>${standardDetails}</div>` : standardDetails}
             ${isDollHouse || isTalentMarket || isTalentShow ? "" : checkpointShowcase}
           </section>
-          ${isDollHouse || isTalentShow || item.id === "checkpoints" ? `<section class="shop-page-panel" data-checkpoint-page-panel="config" hidden></section>` : ""}
+          ${isDollHouse || isTalentShow || isOuting || item.id === "checkpoints" ? `<section class="shop-page-panel" data-checkpoint-page-panel="config" hidden></section>` : ""}
           <section class="shop-page-panel" data-checkpoint-page-panel="interface" hidden>
-            ${isDollHouse || isTalentMarket || isTalentShow ? dollInterfaceDetails : checkpointInterfaceDetails}
+            ${isOuting ? '<div data-outing-ui-data hidden>{"id":"outing","title":"出游主界面","uiRules":[]}</div><article class="detail-card shop-ui-rules-card editor-rules-card" data-shop-ui-rules data-outing-ui-rules><h2>界面规则待发布</h2><p>编辑版可查看当前界面草稿。</p></article>' : isDollHouse || isTalentMarket || isTalentShow ? dollInterfaceDetails : checkpointInterfaceDetails}
           </section>
         </div>` : "";
       const talentShowcase = item.id === "brand-pitch" ? `
@@ -1277,7 +1278,7 @@
             <div class="detail-layout detail-layout-single">
               <div class="detail-stack">
                 ${item.id === "wealth-hall" ? `<span data-weekly-design-ref hidden>${weeklyEnabled ? escapeHtml(WEEKLY_REF) : ""}</span>` : ""}
-                ${item.id === "wealth-hall" && weeklyLoadFailed ? '<article class="detail-card"><h2>名人周刊资料暂时无法载入</h2><p>请刷新重试，未用旧稿代替新资料。</p></article>' : weeklyEnabled ? renderWeeklyPlanning() : isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow ? checkpointTabbedDetails : standardDetails}
+                ${item.id === "wealth-hall" && weeklyLoadFailed ? '<article class="detail-card"><h2>名人周刊资料暂时无法载入</h2><p>请刷新重试，未用旧稿代替新资料。</p></article>' : weeklyEnabled ? renderWeeklyPlanning() : isCharacterTabbedPage ? characterTabbedDetails : isStructuredScene ? structuredSceneDetails : item.group === "shops" ? shopTabbedDetails : item.id === "checkpoints" || isDollHouse || isTalentMarket || isTalentShow || isOuting ? checkpointTabbedDetails : standardDetails}
                 ${isTalentShow ? "" : talentShowcase}
                 <div class="prev-next">${previousLink}${nextLink}</div>
               </div>
@@ -1293,7 +1294,7 @@
         installWeeklyPlanning(document.querySelector("#app"));
       }
       if (item.id === "wealth-hall") document.dispatchEvent(new Event("retail-document-ready"));
-      if (isTalentShow) {
+      if (isTalentShow || isOuting) {
         const style = document.createElement("link");
         style.rel = "stylesheet";
         style.href = "assets/editor.css?v=20261028-talent-show";
@@ -1302,11 +1303,11 @@
           try {
             const response = await fetch("/api/full/formal", {cache:"no-store",signal:AbortSignal.timeout(7000)});
             if (response.ok) {
-              const patches = (await response.json()).document?.pages?.["detail.html?id=brand-pitch"] || {};
+              const patches = (await response.json()).document?.pages?.[`detail.html?id=${item.id}`] || {};
               for (const [selector, html] of Object.entries(patches)) {
                 try { const target = document.querySelector(selector); if (target) target.innerHTML = html; } catch {}
               }
-              const source = JSON.parse(document.querySelector("[data-brand-ui-data]").textContent);
+              const source = JSON.parse(document.querySelector(isOuting ? "[data-outing-ui-data]" : "[data-brand-ui-data]").textContent);
               if (source.uiRules?.length) {
                 let screenId="main",selectedId=1,expandedPopupKey="",expandedNestedPopupKey="";
                 const render=()=>renderShopUiRulesCard(document.querySelector("[data-shop-ui-rules]"),source,{editable:false,screenId,selectedId,expandedPopupKey,expandedNestedPopupKey,
@@ -1465,14 +1466,14 @@
           });
           if (updateUrl) {
             const nextUrl = new URL(location.href);
-            const tabParam = isDollHouse || isTalentMarket || isTalentShow ? "shopTab" : "checkpointTab";
+            const tabParam = isDollHouse || isTalentMarket || isTalentShow || isOuting ? "shopTab" : "checkpointTab";
             if (activePageId === "rules") nextUrl.searchParams.delete(tabParam);
             else nextUrl.searchParams.set(tabParam, activePageId);
             history.replaceState(null, "", nextUrl);
           }
         };
         pageTabs.forEach((button) => button.addEventListener("click", () => showCheckpointPage(button.dataset.checkpointPageTab, true)));
-        showCheckpointPage(new URLSearchParams(location.search).get(isDollHouse || isTalentMarket || isTalentShow ? "shopTab" : "checkpointTab"));
+        showCheckpointPage(new URLSearchParams(location.search).get(isDollHouse || isTalentMarket || isTalentShow || isOuting ? "shopTab" : "checkpointTab"));
       }
       if (isDollHouse) {
         // Delegate so saved body overrides can supply the inner tabs after load.

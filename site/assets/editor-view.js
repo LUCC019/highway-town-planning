@@ -110,7 +110,7 @@ export function renderShopUiRulesCard(root, document, options = {}) {
       const nestedRules = nestedPopup?.rules?.map((nestedRule, nestedRuleIndex) => `
         <article class="editor-popup-rule" data-nested-popup-rule="${nestedRuleIndex}">
           <div>
-            ${["talent-system", "protagonists", "doll-house", "wealth-hall"].includes(document.id) ? `<span class="editor-popup-rule-number">${String(nestedRuleIndex + 1).padStart(2, "0")}</span>` : ""}<strong${editableAttributes(editable, "nested-popup-rule-label", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}" data-nested-rule-index="${nestedRuleIndex}" data-single-line`)}>${escapeHtml(nestedRule.label)}</strong>
+            ${["talent-system", "protagonists", "doll-house", "wealth-hall", "partner-system", "outing"].includes(document.id) ? `<span class="editor-popup-rule-number">${String(nestedRuleIndex + 1).padStart(2, "0")}</span>` : ""}<strong${editableAttributes(editable, "nested-popup-rule-label", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}" data-nested-rule-index="${nestedRuleIndex}" data-single-line`)}>${escapeHtml(nestedRule.label)}</strong>
             <p${editableAttributes(editable, "nested-popup-rule-text", `data-entry-index="${entryIndex}" data-popup-rule-index="${popupRuleIndex}" data-nested-rule-index="${nestedRuleIndex}"`)}>${escapeHtml(nestedRule.text)}</p>
             ${renderRuleLink(nestedRule.link)}
           </div>

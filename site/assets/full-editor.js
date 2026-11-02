@@ -285,6 +285,15 @@ function syncEmbeddedMotelUi() {
     else if (saved===undefined) delete patches[key];
     else patches[key]=saved;
   }
+  const outingUi = state.shopUi.outing;
+  if (outingUi?.embedded && mode === "edit") {
+    const key="[data-outing-ui-data]",page="detail.html?id=outing";
+    const patches=state.working.pages[page] ||= {};
+    const saved=state.savedDraft.pages[page]?.[key];
+    if (!equal(outingUi.current,outingUi.savedDraft)) patches[key]=escapeHtml(JSON.stringify(outingUi.current));
+    else if (saved===undefined) delete patches[key];
+    else patches[key]=saved;
+  }
   const ui = state.shopUi.home;
   if (!ui?.embedded || mode !== "edit") return;
   const key = "[data-motel-ui-data]";
@@ -312,17 +321,20 @@ function prepareEmbeddedMotelUi(frameDocument) {
     state.shopUi["wealth-hall"]={embedded:true,formal,current,savedDraft:saved,selectedId:1,selectedScreenId:"main",expandedPopupKey:"",expandedNestedPopupKey:"",undo:[],editBaseline:null,versions:[]};
     return;
   }
-  if (shopIdForPage() === "brand-pitch") {
-    const marker=frameDocument.querySelector("[data-brand-ui-data]");
-    if (!marker) { delete state.shopUi["brand-pitch"];return; }
-    const existing=state.shopUi["brand-pitch"];
+  if (["brand-pitch", "outing"].includes(shopIdForPage())) {
+    const id=shopIdForPage(), key=id==="outing"?"[data-outing-ui-data]":"[data-brand-ui-data]";
+    const title=id==="outing"?"出游主界面":"达人秀";
+    const marker=frameDocument.querySelector(key);
+    if (!marker) { delete state.shopUi[id];return; }
+    const existing=state.shopUi[id];
     if(existing?.embedded&&!equal(existing.current,existing.savedDraft))return;
     const current=JSON.parse(marker.textContent);
+    if(id==="outing"&&!current.uiRules?.length){delete state.shopUi[id];return;}
     const decode=(html,fallback)=>{try{const el=frameDocument.createElement("div");el.innerHTML=html;return JSON.parse(el.textContent);}catch{return clone(fallback);}};
-    const key="[data-brand-ui-data]",page="detail.html?id=brand-pitch";
-    const formal=decode(state.formal.pages[page]?.[key],{id:"brand-pitch",title:"达人秀",uiRules:[]});
+    const page=`detail.html?id=${id}`;
+    const formal=decode(state.formal.pages[page]?.[key],{id,title,uiRules:[]});
     const saved=decode(state.savedDraft.pages[page]?.[key],current);
-    state.shopUi["brand-pitch"]={embedded:true,formal,current,savedDraft:saved,selectedId:1,selectedScreenId:"main",expandedPopupKey:"",expandedNestedPopupKey:"",undo:[],editBaseline:null,versions:[]};
+    state.shopUi[id]={embedded:true,formal,current,savedDraft:saved,selectedId:1,selectedScreenId:"main",expandedPopupKey:"",expandedNestedPopupKey:"",undo:[],editBaseline:null,versions:[]};
     return;
   }
   if (shopIdForPage() !== "home") return;
@@ -915,6 +927,7 @@ function renderVersions() {
         document.querySelector("#full-history-dialog").close();
         delete state.shopUi.home;
         delete state.shopUi["brand-pitch"];
+        delete state.shopUi.outing;
         navigate(state.currentPage);
         updateToolbar();
         showToast("整份策划案已恢复到所选版本");
@@ -1049,6 +1062,7 @@ function mountShell() {
         state.undo = [];
         delete state.shopUi.home;
         delete state.shopUi["brand-pitch"];
+        delete state.shopUi.outing;
         navigate(state.currentPage);
         updateToolbar();
         showToast("全部草稿已恢复为正式版");
