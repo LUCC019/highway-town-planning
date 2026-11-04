@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "c70faaec-59d4-4356-80a1-fdd0decc9853",
-  "builtAt": "2026-11-04T02:56:57.185Z",
+  "releaseId": "07ee9deb-bdca-4fdd-88f8-8774fe9fd261",
+  "builtAt": "2026-11-04T02:59:54.667Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -87,7 +87,7 @@
   ],
   "embeddedImageFiles": 249,
   "files": 762,
-  "totalBytes": 754029062,
+  "totalBytes": 754034795,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -391,7 +391,7 @@
     "assets/talent-market-reference/03.png",
     "assets/talent-market-reference/11.png",
     "assets/talent-market-reference/10.png",
-    "assets/embedded/6f5c2ffb5d33f4c760b75315f216794ed319a075d09c852f739e279f7eb0e324.png",
+    "assets/embedded/ddcce6fe6536c54b8f8759cb0314e0c6a480cbb687156fe3b0248d056567738e.png",
     "assets/embedded/dbad0275c2eea8f32c7e23e859b5b7a3bac65e8313ed1edf99ca2261d975bf4c.png",
     "assets/embedded/bb84a7e8c2c4ae4498cac982c3a60ac86889c03de93146a5ea2651b4a3e8567b.png",
     "assets/embedded/db7af74962f350d6f2cdae904b9a7a2525989b67003e732dc2b4e4ea4c90e351.png",
