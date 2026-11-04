@@ -1,9 +1,14 @@
 {
   "schemaVersion": 1,
-  "releaseId": "2039637e-ac6f-4a74-896c-584efdfb0886",
-  "builtAt": "2026-11-04T05:37:44.934Z",
+  "releaseId": "f79b3838-7540-4b68-9f61-d62b47b91ee5",
+  "builtAt": "2026-11-04T05:39:37.226Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
+    {
+      "id": "64aa5a13-131f-4354-b3d2-19295b3b5470",
+      "name": "城市主场景（0.3）",
+      "nodes": 1
+    },
     {
       "id": "4854ba62-f845-4c55-a51d-e5637eea9147",
       "name": "出游（0.3）",
@@ -23,11 +28,6 @@
       "id": "65aaf269-0160-4152-9bed-990e97cf571e",
       "name": "达人秀（0.3）",
       "nodes": 15
-    },
-    {
-      "id": "64aa5a13-131f-4354-b3d2-19295b3b5470",
-      "name": "城市主场景（0.3）",
-      "nodes": 0
     },
     {
       "id": "shop-system",
@@ -85,20 +85,20 @@
       "nodes": 4
     }
   ],
-  "embeddedImageFiles": 249,
-  "files": 762,
-  "totalBytes": 753952950,
+  "embeddedImageFiles": 250,
+  "files": 763,
+  "totalBytes": 757633949,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
     "shop-formal.json",
     "car-wash.json",
     "flows.json",
+    "flows/64aa5a13-131f-4354-b3d2-19295b3b5470.json",
     "flows/4854ba62-f845-4c55-a51d-e5637eea9147.json",
     "flows/d93f99a3-5d49-4947-9c5f-408f71dce72a.json",
     "flows/d14ce6e3-7da9-4485-84a9-0fffe671e22a.json",
     "flows/65aaf269-0160-4152-9bed-990e97cf571e.json",
-    "flows/64aa5a13-131f-4354-b3d2-19295b3b5470.json",
     "flows/shop-system.json",
     "flows/checkpoints.json",
     "flows/protagonists.json",
@@ -396,6 +396,7 @@
     "assets/talent-market-reference/03.png",
     "assets/talent-market-reference/11.png",
     "assets/talent-market-reference/10.png",
+    "assets/embedded/ddfbc042ebbd82aba71a5a36ff05b86b6ce0aeee75bd9966a4f4b3a09c6d45c7.png",
     "assets/embedded/ddcce6fe6536c54b8f8759cb0314e0c6a480cbb687156fe3b0248d056567738e.png",
     "assets/embedded/dbad0275c2eea8f32c7e23e859b5b7a3bac65e8313ed1edf99ca2261d975bf4c.png",
     "assets/embedded/bb84a7e8c2c4ae4498cac982c3a60ac86889c03de93146a5ea2651b4a3e8567b.png",
