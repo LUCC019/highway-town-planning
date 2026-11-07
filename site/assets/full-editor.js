@@ -1155,7 +1155,15 @@ try {
     state.savedDraft = clone(stateResult.draft);
     state.versions = stateResult.versions;
   }
-  for (const id of ["brand-pitch", "wealth-hall"]) {
+  // Use the active document so an unpublished shop change stays out of the reader.
+  const cafeRules = state.working.pages["detail.html?id=road-diner"]?.['[data-shop-page-panel="rules"]'] || "";
+  if (cafeRules.includes('data-cafe-first-shop="true"')) {
+    const shops = state.catalog.groups.find(group => group.id === "shops")?.items;
+    const cafeIndex = shops?.findIndex(item => item.id === "road-diner") ?? -1;
+    const washIndex = shops?.findIndex(item => item.id === "car-wash") ?? -1;
+    if (cafeIndex >= 0 && washIndex >= 0) [shops[cafeIndex], shops[washIndex]] = [shops[washIndex], shops[cafeIndex]];
+  }
+  for (const id of ["brand-pitch", "wealth-hall", "road-diner"]) {
     const savedTitle = (mode === "reader" ? state.formal : state.working).pages[`detail.html?id=${id}`]?.[".page-head > h1"];
     if (!savedTitle) continue;
     const entry = state.catalog.groups.flatMap(group => group.items).find(item => item.id === id);
