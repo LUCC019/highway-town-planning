@@ -116,6 +116,31 @@ button, input { font: inherit; }
 #full-page-nav { display: grid; gap: 8px; }
 .full-page-group { display: grid; gap: 4px; }
 .full-page-group-heading { display: grid; grid-template-columns: minmax(0, 1fr) 34px; gap: 4px; }
+.full-page-group-heading.is-editable { grid-template-columns: minmax(0, 1fr) 28px 34px; }
+.full-nav-entry { display: grid; grid-template-columns: minmax(0, 1fr) 28px; align-items: start; gap: 4px; }
+.full-nav-edit {
+  width: 28px;
+  min-height: 32px;
+  padding: 0;
+  color: #52708a;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 17px;
+}
+.full-nav-edit:hover, .full-nav-edit:focus-visible { color: #173a57; background: #e1eaf0; }
+.full-nav-input {
+  min-width: 0;
+  width: 100%;
+  min-height: 36px;
+  padding: 5px 8px;
+  color: var(--ink);
+  background: #fffdf7;
+  border: 2px solid #c99d42;
+  border-radius: 8px;
+  outline: 0;
+}
 .full-page-group-items { display: grid; gap: 3px; padding-left: 11px; border-left: 2px solid #e2e7eb; }
 .full-page-group-items[hidden] { display: none; }
 .full-page-group-toggle {

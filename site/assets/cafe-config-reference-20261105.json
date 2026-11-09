@@ -102634,7 +102634,9 @@
       "stage": "初始",
       "name": "黄油吐司",
       "unlockLevel": 1,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "刚烤好的吐司，趁热抹上黄油。简单一点，也能好好开始这一天。",
+      "artDescription": "烤面包机、白餐盘；吐司烤至金黄，表面一小块黄油。"
     },
     {
       "sourceBusinessId": 1101,
@@ -102644,7 +102646,9 @@
       "stage": "初始",
       "name": "滴滤咖啡",
       "unlockLevel": 10,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "来杯热咖啡，慢慢醒醒神。赶路前，先在这儿坐一会儿。",
+      "artDescription": "滴滤咖啡机、玻璃咖啡壶、厚陶瓷杯；倒出深色咖啡，杯口冒热气。"
     },
     {
       "sourceBusinessId": 1103,
@@ -102654,7 +102658,9 @@
       "stage": "初始",
       "name": "煎蛋早餐盘",
       "unlockLevel": 20,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "煎蛋刚出锅，蛋黄还是亮亮的。吃口热乎的，再开始忙吧。",
+      "artDescription": "小煎台、锅铲、白餐盘；以煎蛋为主体，不另设配菜操作位。"
     },
     {
       "sourceBusinessId": 1104,
@@ -102664,7 +102670,9 @@
       "stage": "初始",
       "name": "原味华夫饼",
       "unlockLevel": 30,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "外边微脆，里面松软。把糖浆淋上去，今天的早餐就齐了。",
+      "artDescription": "翻盖华夫饼机；方格饼、黄油块和少量糖浆，成品装盘。"
     },
     {
       "sourceBusinessId": 1105,
@@ -102674,7 +102682,9 @@
       "stage": "初始",
       "name": "橙汁",
       "unlockLevel": 40,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "想喝点清爽的？来杯橙汁，让早晨多一点精神。",
+      "artDescription": "柜台果汁机、透明杯；橙色果汁直接注杯。"
     },
     {
       "sourceBusinessId": 1106,
@@ -102682,9 +102692,11 @@
       "sequence": 6,
       "group": 1,
       "stage": "进阶",
-      "name": "黄油吐司·进阶名称待确认",
+      "name": "果酱吐司",
       "unlockLevel": 50,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "在热吐司上抹一层果酱，甜香刚好。喜欢的话，下次还给你留这个口味。",
+      "artDescription": "复用吐司操作位；红色果酱与果酱罐区分初始款，保留烤面包机。"
     },
     {
       "sourceBusinessId": 1107,
@@ -102692,9 +102704,11 @@
       "sequence": 7,
       "group": 2,
       "stage": "进阶",
-      "name": "滴滤咖啡·进阶名称待确认",
+      "name": "牛奶咖啡",
       "unlockLevel": 200,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "热咖啡加一点牛奶，入口更柔和。今天想慢一点，就喝这一杯。",
+      "artDescription": "复用咖啡操作位；增加小奶壶，杯中改为浅棕色，无拉花操作。"
     },
     {
       "sourceBusinessId": 1108,
@@ -102702,9 +102716,11 @@
       "sequence": 8,
       "group": 3,
       "stage": "进阶",
-      "name": "煎蛋早餐盘·进阶名称待确认",
+      "name": "培根煎蛋早餐盘",
       "unlockLevel": 300,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "煎蛋配上焦香培根，这一盘够扎实。吃饱了，再去忙你的事。",
+      "artDescription": "复用煎台；餐盘增加红褐色培根条，培根与煎蛋整体作为一份餐品。"
     },
     {
       "sourceBusinessId": 1109,
@@ -102712,9 +102728,11 @@
       "sequence": 9,
       "group": 4,
       "stage": "进阶",
-      "name": "原味华夫饼·进阶名称待确认",
+      "name": "蓝莓华夫饼",
       "unlockLevel": 400,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "松软华夫饼配上蓝莓，酸甜正合适。要不要从这一口开始今天？",
+      "artDescription": "复用华夫饼机；成品增加蓝莓与蓝紫色果酱，整盘一起备货、出餐。"
     },
     {
       "sourceBusinessId": 1110,
@@ -102722,9 +102740,53 @@
       "sequence": 10,
       "group": 5,
       "stage": "进阶",
-      "name": "橙汁·进阶名称待确认",
+      "name": "鲜榨橙汁",
       "unlockLevel": 500,
-      "status": "包装草案；正式业务ID与资源待配；数值保留原包基准供数值核定"
+      "status": "包装名称、文案、美术表现草案，待确认；数值保留现稿基准待核定",
+      "playerDescription": "鲜橙现榨，清清爽爽。喝上一杯，再出发吧。",
+      "artDescription": "原果汁操作位替换为压榨式榨汁机，配半切鲜橙；玻璃杯保留少量果肉表现。"
+    }
+  ],
+  "projectExpansionMapping": [
+    {
+      "sequence": 1,
+      "proposedExpandLevel": 2,
+      "name": "餐具调味台",
+      "playerDescription": "餐具、纸巾和调味瓶都在手边。坐下就能开吃，不用四处找。",
+      "artDescription": "柜台边增加餐具盒、纸巾架、盐胡椒瓶和糖包盒。",
+      "status": "包装草案、拓展档位待确认"
+    },
+    {
+      "sequence": 2,
+      "proposedExpandLevel": 3,
+      "name": "咖啡保温台",
+      "playerDescription": "咖啡壶稳稳放好，热气也留住了。忙起来，照样给你一杯热的。",
+      "artDescription": "咖啡操作位后侧增加双壶保温底座与备用玻璃壶，不增加第六个商品位。",
+      "status": "包装草案、拓展档位待确认"
+    },
+    {
+      "sequence": 3,
+      "proposedExpandLevel": 4,
+      "name": "厨房排烟罩",
+      "playerDescription": "煎台上忙得热闹，店里还是清清爽爽。早餐香留着，油烟交给它。",
+      "artDescription": "煎台上方增加金属排烟罩、短管道与工作灯，不遮挡原操作区域。",
+      "status": "包装草案、拓展档位待确认"
+    },
+    {
+      "sequence": 4,
+      "proposedExpandLevel": 6,
+      "name": "窗边卡座",
+      "playerDescription": "找个窗边的位置，放下行李歇一歇。早餐不必总在路上匆匆吃完。",
+      "artDescription": "窗边增加双人卡座、固定桌、靠背和小菜单牌；座位作为场景表现。",
+      "status": "包装草案、拓展档位待确认"
+    },
+    {
+      "sequence": 5,
+      "proposedExpandLevel": 8,
+      "name": "门廊遮阳棚",
+      "playerDescription": "门口添了遮阳棚，进出也舒服些。远远看见招牌，就知道早餐在这儿。",
+      "artDescription": "店门外增加条纹遮阳棚、支架和店名招牌，沿原建筑占地表现。",
+      "status": "包装草案、拓展档位待确认"
     }
   ]
 }

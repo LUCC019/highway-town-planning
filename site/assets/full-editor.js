@@ -108,13 +108,24 @@ async function uploadImage(file) {
 
 function allCatalogEntries() {
   return [
-    state.catalog.overview,
-    ...(state.catalog.standalonePages || []),
+    { ...state.catalog.overview, navKey: "overview" },
+    ...(state.catalog.standalonePages || []).map((item) => ({ ...item, navKey: `standalone:${item.id}` })),
     ...state.catalog.groups.flatMap((group) => [
-      { id: `category-${group.id}`, title: `${group.title} · 分类`, page: group.page },
-      ...group.items,
+      { id: `category-${group.id}`, title: `${group.title} · 分类`, page: group.page, navKey: `group:${group.id}` },
+      ...group.items.map((item) => ({ ...item, navKey: `item:${item.id}` })),
     ]),
   ];
+}
+
+function navigationTitle(key, fallback) {
+  const document = mode === "reader" ? state.formal : state.working;
+  return document.navigationTitles?.[key] || fallback;
+}
+
+function navigationEditButton(key, label) {
+  return mode === "edit"
+    ? `<button type="button" class="full-nav-edit" data-nav-edit="${escapeHtml(key)}" aria-label="编辑导航名称：${escapeHtml(label)}" title="编辑导航名称">✎</button>`
+    : "";
 }
 
 function normalizeCatalogPage(page) {
@@ -171,8 +182,13 @@ function allShopUiMatchFormal() {
 }
 
 function findTitle(page) {
-  if (page === "detail.html?id=doll-house") return "幸运抓抓系统";
-  return allCatalogEntries().find((entry) => entry.page === page)?.title || "策划案页面";
+  const entry = allCatalogEntries().find((item) => item.page === page);
+  if (!entry) return "策划案页面";
+  if (entry.id.startsWith("category-")) {
+    const group = state.catalog.groups.find((item) => item.id === entry.id.slice(9));
+    return `${navigationTitle(entry.navKey, group?.title || entry.title)} · 分类`;
+  }
+  return navigationTitle(entry.navKey, entry.id === "doll-house" ? "幸运抓抓系统" : entry.title);
 }
 
 function isReaderLockedPage(page) {
@@ -183,35 +199,85 @@ function isReaderLockedPage(page) {
   );
 }
 
+function beginNavigationEdit(button) {
+  if (mode !== "edit") return;
+  const container = button.parentElement;
+  const link = container.querySelector(".full-page-link");
+  const oldTitle = link?.querySelector("span")?.textContent || "";
+  if (!link || !oldTitle) return;
+  const input = document.createElement("input");
+  input.className = "full-nav-input";
+  input.type = "text";
+  input.maxLength = 120;
+  input.value = oldTitle;
+  input.setAttribute("aria-label", `修改导航名称：${oldTitle}`);
+  link.replaceWith(input);
+  button.hidden = true;
+  let finished = false;
+  const finish = (cancel = false) => {
+    if (finished) return;
+    finished = true;
+    const title = input.value.trim().replace(/\s+/g, " ");
+    if (!cancel && title && title !== oldTitle) {
+      const previous = clone(state.working);
+      state.working.navigationTitles ||= {};
+      state.working.navigationTitles[button.dataset.navEdit] = title;
+      state.undo.push(previous);
+      if (state.undo.length > 60) state.undo.shift();
+      state.currentTitle = findTitle(state.currentPage);
+      document.querySelector("#full-current-title").textContent = state.currentTitle;
+      updateToolbar();
+    } else if (!cancel && !title) showToast("导航名称不能为空", "error");
+    renderCatalog(document.querySelector("#full-page-search")?.value || "");
+  };
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") { event.preventDefault(); finish(); }
+    if (event.key === "Escape") { event.preventDefault(); finish(true); }
+  });
+  input.addEventListener("blur", () => finish());
+  input.focus();
+  input.select();
+}
+
 function renderCatalog(filter = "") {
   const query = filter.trim().toLowerCase();
   const nav = document.querySelector("#full-page-nav");
   const standalonePages = (state.catalog.standalonePages || []).filter((item) =>
-    item.id !== "interface-flow" && (!query || item.title.toLowerCase().includes(query))
+    item.id !== "interface-flow" && (!query || navigationTitle(`standalone:${item.id}`, item.title).toLowerCase().includes(query))
   );
-  const standaloneNav = standalonePages.map((item) => `
+  const standaloneNav = standalonePages.map((item) => {
+    const title = navigationTitle(`standalone:${item.id}`, item.title);
+    return `
     <section class="full-page-group is-standalone">
+      <div class="full-nav-entry">
       <button type="button" class="full-page-link is-category" data-page="${escapeHtml(item.page)}">
-        <span>${escapeHtml(item.title)}</span><small>独立分页</small>
+        <span>${escapeHtml(title)}</span><small>独立分页</small>
       </button>
-    </section>`).join("");
-  const overviewMatches = !query || state.catalog.overview.title.toLowerCase().includes(query);
+      ${navigationEditButton(`standalone:${item.id}`, title)}
+      </div>
+    </section>`;
+  }).join("");
+  const overviewTitle = navigationTitle("overview", "总览");
+  const overviewMatches = !query || overviewTitle.toLowerCase().includes(query);
   const overview = overviewMatches ? `
+    <div class="full-nav-entry">
     <button type="button" class="full-page-link" data-page="${escapeHtml(state.catalog.overview.page)}">
-      <span>总览</span><small>OVERVIEW</small>
-    </button>` : "";
+      <span>${escapeHtml(overviewTitle)}</span><small>OVERVIEW</small>
+    </button>${navigationEditButton("overview", overviewTitle)}
+    </div>` : "";
   const groups = state.catalog.groups.map((group) => {
     const afterGroup = group.id === "characters" ? standaloneNav : "";
-    const groupMatches = !query || group.title.toLowerCase().includes(query);
-    const items = group.items.filter((item) => groupMatches || item.title.toLowerCase().includes(query));
+    const groupTitle = navigationTitle(`group:${group.id}`, group.title);
+    const groupMatches = !query || groupTitle.toLowerCase().includes(query);
+    const items = group.items.filter((item) => groupMatches || navigationTitle(`item:${item.id}`, item.id === "doll-house" ? "幸运抓抓系统" : item.title).toLowerCase().includes(query));
     if (!groupMatches && !items.length) return afterGroup;
     const readerLocked = mode === "reader" && READER_LOCKED_GROUP_IDS.has(group.id);
     if (readerLocked) {
       return `
         <section class="full-page-group is-reader-locked" data-group="${escapeHtml(group.id)}">
           <div class="full-page-group-heading">
-            <button type="button" class="full-page-link is-category is-locked" disabled aria-label="${escapeHtml(group.title)}暂不开放">
-              <span>${escapeHtml(group.title)}</span><small>暂不开放&nbsp; 🔒</small>
+            <button type="button" class="full-page-link is-category is-locked" disabled aria-label="${escapeHtml(groupTitle)}暂不开放">
+              <span>${escapeHtml(groupTitle)}</span><small>暂不开放&nbsp; 🔒</small>
             </button>
           </div>
         </section>${afterGroup}`;
@@ -219,19 +285,24 @@ function renderCatalog(filter = "") {
     const collapsed = !query && state.collapsedGroups.has(group.id);
     return `
       <section class="full-page-group" data-group="${escapeHtml(group.id)}">
-        <div class="full-page-group-heading">
+        <div class="full-page-group-heading${mode === "edit" ? " is-editable" : ""}">
           <button type="button" class="full-page-link is-category" data-page="${escapeHtml(group.page)}">
-            <span>${escapeHtml(group.title)}</span><small>${items.length} 页</small>
+            <span>${escapeHtml(groupTitle)}</span><small>${items.length} 页</small>
           </button>
-          <button type="button" class="full-page-group-toggle" data-group-toggle="${escapeHtml(group.id)}" aria-expanded="${!collapsed}" aria-label="${collapsed ? "展开" : "收起"}${escapeHtml(group.title)}" title="${collapsed ? "展开" : "收起"}">${collapsed ? "＋" : "−"}</button>
+          ${navigationEditButton(`group:${group.id}`, groupTitle)}
+          <button type="button" class="full-page-group-toggle" data-group-toggle="${escapeHtml(group.id)}" aria-expanded="${!collapsed}" aria-label="${collapsed ? "展开" : "收起"}${escapeHtml(groupTitle)}" title="${collapsed ? "展开" : "收起"}">${collapsed ? "＋" : "−"}</button>
         </div>
         <div class="full-page-group-items"${collapsed ? " hidden" : ""}>
-          ${items.map((item) => `<button type="button" class="full-page-link" data-page="${escapeHtml(item.page)}"><span>${escapeHtml(item.id === "doll-house" ? "幸运抓抓系统" : item.title)}</span></button>`).join("")}
+          ${items.map((item) => {
+            const title = navigationTitle(`item:${item.id}`, item.id === "doll-house" ? "幸运抓抓系统" : item.title);
+            return `<div class="full-nav-entry"><button type="button" class="full-page-link" data-page="${escapeHtml(item.page)}"><span>${escapeHtml(title)}</span></button>${navigationEditButton(`item:${item.id}`, title)}</div>`;
+          }).join("")}
         </div>
       </section>${afterGroup}`;
   }).join("");
-  const flowNav = !query || "界面流程图".includes(query)
-    ? '<section class="full-page-group is-standalone"><button type="button" class="full-page-link is-category" data-page="flow.html"><span>界面流程图</span><small>按系统查看</small></button></section>'
+  const flowTitle = navigationTitle("standalone:interface-flow", "界面流程图");
+  const flowNav = !query || flowTitle.toLowerCase().includes(query)
+    ? `<section class="full-page-group is-standalone"><div class="full-nav-entry"><button type="button" class="full-page-link is-category" data-page="flow.html"><span>${escapeHtml(flowTitle)}</span><small>按系统查看</small></button>${navigationEditButton("standalone:interface-flow", flowTitle)}</div></section>`
     : "";
   nav.innerHTML = overview + flowNav + groups || '<p class="full-page-empty">没有找到对应页面</p>';
   nav.querySelectorAll("[data-page]").forEach((button) => {
@@ -246,6 +317,9 @@ function renderCatalog(filter = "") {
       sessionStorage.setItem("full-editor-collapsed-groups", JSON.stringify([...state.collapsedGroups]));
       renderCatalog(document.querySelector("#full-page-search")?.value || "");
     });
+  });
+  nav.querySelectorAll("[data-nav-edit]").forEach((button) => {
+    button.addEventListener("click", () => beginNavigationEdit(button));
   });
 }
 
@@ -1190,6 +1264,9 @@ try {
   if (mode === "edit") {
     const convenienceEntry = state.catalog.groups.flatMap((group) => group.items).find((entry) => entry.id === "convenience-store");
     if (convenienceEntry && state.shopUi["convenience-store"]?.current.title) convenienceEntry.title = state.shopUi["convenience-store"].current.title;
+    // Draft-only catalog change; the reader keeps its published navigation.
+    const { applyShopCatalogDraft } = await import("./shop-catalog-draft.js?v=20261109-1");
+    applyShopCatalogDraft(state.catalog, mode);
   }
   const requestedFramePage = new URLSearchParams(location.search).get("page");
   const requestedPage = normalizeCatalogPage(requestedFramePage);
