@@ -4,15 +4,15 @@ export const SHOP_CATALOG_DRAFT = [
   ["road-diner", "咖啡早餐店"],
   ["gas-station", "加油站"],
   ["convenience-store", "便利店"],
-  ["road-laundry", "游泳池"],
+  ["road-laundry", "服装店"],
   ["photo-studio", "写真馆"],
   ["pet-care", "宠物洗护"],
   ["auto-repair", "花店"],
   ["car-wash", "洗车行"],
   ["music-bar", "音乐酒吧"],
-  ["massage-clinic", "越野卡丁乐园"],
   ["bowling", "保龄球馆"],
   ["drive-in", "汽车影院"],
+  ["massage-clinic", "越野卡丁乐园"],
 ];
 
 export function applyShopCatalogDraft(catalog, mode) {

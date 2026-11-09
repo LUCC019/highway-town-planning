@@ -1265,7 +1265,7 @@ try {
     const convenienceEntry = state.catalog.groups.flatMap((group) => group.items).find((entry) => entry.id === "convenience-store");
     if (convenienceEntry && state.shopUi["convenience-store"]?.current.title) convenienceEntry.title = state.shopUi["convenience-store"].current.title;
     // Draft-only catalog change; the reader keeps its published navigation.
-    const { applyShopCatalogDraft } = await import("./shop-catalog-draft.js?v=20261109-1");
+    const { applyShopCatalogDraft } = await import("./shop-catalog-draft.js?v=20261109-2");
     applyShopCatalogDraft(state.catalog, mode);
   }
   const requestedFramePage = new URLSearchParams(location.search).get("page");

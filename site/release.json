@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "237c0ef4-116c-49ff-91f0-ebd91e8bb33b",
-  "builtAt": "2026-11-09T08:18:27.891Z",
+  "releaseId": "e21c1a07-21a7-4b0f-96c3-e6dab9e3407a",
+  "builtAt": "2026-11-09T09:09:45.661Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -86,8 +86,8 @@
     }
   ],
   "embeddedImageFiles": 255,
-  "files": 775,
-  "totalBytes": 772448485,
+  "files": 778,
+  "totalBytes": 775012184,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -275,12 +275,13 @@
     "assets/uploads/1790584728009-4ca2c233.png",
     "assets/scene-concepts/main-town-ui-overview-user-20261012.png",
     "assets/ui-supplement-20261021/new-function-open.png",
+    "assets/ui-supplement-20261021/shop-buyout-locked-20261107.png",
+    "assets/ui-supplement-20261021/shop-buyout-ready-20261107.png",
     "assets/uploads/1791874995659-7ea7e5c9.png",
     "assets/uploads/1791889895075-4b0ed72d.png",
     "assets/uploads/1791893386349-001b6526.png",
     "assets/uploads/1791893812203-d5721ebc.png",
     "assets/ui-supplement-20261021/shop-buyout-entry.png",
-    "assets/ui-supplement-20261021/shop-buyout-confirm.png",
     "assets/uploads/1791882733929-9e20b965.png",
     "assets/scene-concepts/main-town-ui-town-menu-user-20261012.png",
     "assets/talent-reference/01.jpeg",
@@ -370,6 +371,9 @@
     "work/lucky-claw-reference/15.png",
     "work/lucky-claw-reference/21.png",
     "work/lucky-claw-reference/22.png",
+    "assets/uploads/claw-auto-wash-running-20261109.png",
+    "assets/uploads/claw-auto-wash-success-20261109.png",
+    "assets/uploads/claw-auto-wash-unchanged-20261109.png",
     "work/lucky-claw-reference/16.png",
     "work/lucky-claw-reference/17.png",
     "work/lucky-claw-reference/18.png",
