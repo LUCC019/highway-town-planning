@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "af882b5a-9f7f-4cb4-9d7b-dc87d03e2479",
-  "builtAt": "2026-11-10T07:48:56.816Z",
+  "releaseId": "fbc7d924-ca0e-45ca-ba1a-e99ea45be985",
+  "builtAt": "2026-11-10T07:52:47.356Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -87,7 +87,7 @@
   ],
   "embeddedImageFiles": 263,
   "files": 798,
-  "totalBytes": 790051778,
+  "totalBytes": 790062298,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -348,6 +348,12 @@
     "assets/partner-reference/17.png",
     "assets/partner-reference/18.png",
     "assets/partner-reference/19.png",
+    "assets/partner-reference/skin-20261110/skin-preview.png",
+    "assets/partner-reference/skin-20261110/partner-after.png",
+    "assets/partner-reference/skin-20261110/partner-base.png",
+    "assets/partner-reference/skin-20261110/skin-effects.png",
+    "assets/partner-reference/skin-20261110/fame-upgrade.png",
+    "assets/partner-reference/skin-20261110/fame-max.png",
     "assets/partner-reference/02.png",
     "assets/partner-reference/acquired-partner-20261021.png",
     "assets/partner-reference/09.png",
