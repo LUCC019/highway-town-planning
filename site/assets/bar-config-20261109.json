@@ -1,0 +1,2921 @@
+{
+  "项目_BuildingInfoCfg": [
+    {
+      "Id": 1009,
+      "MapId": 100,
+      "Type": 140,
+      "UnlockType": 1,
+      "name": "音乐酒馆",
+      "desc": "小镇居民与旅行者相聚的酒馆，供应饮品并呈现音乐和休闲活动。",
+      "Alwayshere": 0,
+      "MaximumCount": 0,
+      "CashProgressBarPos": [
+        -233,
+        826
+      ],
+      "EffectPos": [
+        54,
+        -51
+      ],
+      "EffectScale": [
+        150,
+        150
+      ],
+      "NameplatePos": [
+        0,
+        0
+      ],
+      "BtnPos": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "RefuseCustomer": null,
+      "TalkProb": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "Desc4": null,
+      "Desc5": null,
+      "Desc6": null
+    }
+  ],
+  "项目_ShopCfg": [
+    {
+      "Id": 1009,
+      "BaseEarnSpeed": 18,
+      "CostRate": 2560000,
+      "AppointParam": [
+        1,
+        50,
+        500,
+        1000
+      ],
+      "PosReward": null,
+      "PosSkill": null
+    }
+  ],
+  "项目_BuildingLevelCfg": [
+    {
+      "Id": 1009000,
+      "BuildingId": 1009,
+      "Level": 0,
+      "lvName": "空房",
+      "Resource": "bar_building_0",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          6500,
+          0,
+          0
+        ]
+      ],
+      "Cost": "",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009001,
+      "BuildingId": 1009,
+      "Level": 1,
+      "lvName": "1星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          6500,
+          0,
+          0
+        ]
+      ],
+      "Cost": "100001|50000000000",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009002,
+      "BuildingId": 1009,
+      "Level": 2,
+      "lvName": "2星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|13",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          20000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009003,
+      "BuildingId": 1009,
+      "Level": 3,
+      "lvName": "3星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|31",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          40000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009004,
+      "BuildingId": 1009,
+      "Level": 4,
+      "lvName": "4星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|52",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          60000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009005,
+      "BuildingId": 1009,
+      "Level": 5,
+      "lvName": "5星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|91",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          100000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009006,
+      "BuildingId": 1009,
+      "Level": 6,
+      "lvName": "6星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|130",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          140000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009007,
+      "BuildingId": 1009,
+      "Level": 7,
+      "lvName": "7星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|182",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          190000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009008,
+      "BuildingId": 1009,
+      "Level": 8,
+      "lvName": "8星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|260",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          240000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009009,
+      "BuildingId": 1009,
+      "Level": 9,
+      "lvName": "9星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|390",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          290000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009010,
+      "BuildingId": 1009,
+      "Level": 10,
+      "lvName": "10星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|520",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          340000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009011,
+      "BuildingId": 1009,
+      "Level": 11,
+      "lvName": "11星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|650",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          400000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009012,
+      "BuildingId": 1009,
+      "Level": 12,
+      "lvName": "12星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|780",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          460000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009013,
+      "BuildingId": 1009,
+      "Level": 13,
+      "lvName": "13星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1040",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          520000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009014,
+      "BuildingId": 1009,
+      "Level": 14,
+      "lvName": "14星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1300",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          580000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009015,
+      "BuildingId": 1009,
+      "Level": 15,
+      "lvName": "15星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1560",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          640000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009016,
+      "BuildingId": 1009,
+      "Level": 16,
+      "lvName": "16星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2080",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          700000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009017,
+      "BuildingId": 1009,
+      "Level": 17,
+      "lvName": "17星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          760000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009018,
+      "BuildingId": 1009,
+      "Level": 18,
+      "lvName": "18星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3120",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          820000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009019,
+      "BuildingId": 1009,
+      "Level": 19,
+      "lvName": "19星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3640",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          880000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009020,
+      "BuildingId": 1009,
+      "Level": 20,
+      "lvName": "20星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|4160",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          940000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009021,
+      "BuildingId": 1009,
+      "Level": 21,
+      "lvName": "21星商铺",
+      "Resource": "bar_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|5200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          1000000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    }
+  ],
+  "项目_ShopBusinessCfg": [
+    {
+      "Id": 9001,
+      "BuildingId": 1009,
+      "name": "基础门厅",
+      "desc": "入口和通道",
+      "Appearance": 9011,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9003,
+      "BuildingId": 1009,
+      "name": "基础服务台",
+      "desc": "店内服务动线；含基础等候座、演出角和活动空地",
+      "Appearance": 9031,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9101,
+      "BuildingId": 1009,
+      "name": "瓶装啤酒与汽水",
+      "desc": "先开一瓶，找张空桌坐下吧。",
+      "Appearance": 9041,
+      "Type": 1,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9201,
+      "BuildingId": 1009,
+      "name": "复古吧台升级",
+      "desc": "擦亮木吧台，举杯时心情也亮一点。",
+      "Appearance": 9171,
+      "Type": 2,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        2,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9002,
+      "BuildingId": 1009,
+      "name": "酒馆店员",
+      "desc": "接待、递杯与收杯",
+      "Appearance": 9021,
+      "Type": 0,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9102,
+      "BuildingId": 1009,
+      "name": "生啤供应",
+      "desc": "酒头一拉，满满一杯泡沫刚好。",
+      "Appearance": 9051,
+      "Type": 1,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        600,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9202,
+      "BuildingId": 1009,
+      "name": "卡座休息区",
+      "desc": "歌还没唱完，再舒服地坐一会儿。",
+      "Appearance": 9181,
+      "Type": 2,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        3,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9103,
+      "BuildingId": 1009,
+      "name": "无酒精特调",
+      "desc": "今天不喝酒，也给你调一杯好看的。",
+      "Appearance": 9061,
+      "Type": 1,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1200,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9203,
+      "BuildingId": 1009,
+      "name": "驻唱舞台升级",
+      "desc": "麦克风和灯都就位了，把好歌唱给大家听。",
+      "Appearance": 9201,
+      "Type": 2,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        4,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9104,
+      "BuildingId": 1009,
+      "name": "点唱机金曲",
+      "desc": "投枚硬币，熟悉的旋律就响起来。",
+      "Appearance": 9071,
+      "Type": 1,
+      "Sort": 4,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1800,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9204,
+      "BuildingId": 1009,
+      "name": "舞池灯光升级",
+      "desc": "把灯光交给节拍，今晚多跳一支舞。",
+      "Appearance": 9191,
+      "Type": 2,
+      "Sort": 4,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        6,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9105,
+      "BuildingId": 1009,
+      "name": "经典调酒",
+      "desc": "摇壶一响，今晚就有了开场。",
+      "Appearance": 9081,
+      "Type": 1,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2400,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9205,
+      "BuildingId": 1009,
+      "name": "专业音响升级",
+      "desc": "从第一排到角落，都能听清今晚的歌。",
+      "Appearance": 9151,
+      "Type": 2,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        8,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9106,
+      "BuildingId": 1009,
+      "name": "原声驻唱",
+      "desc": "一把吉他，一首好歌，足够留你多坐一会儿。",
+      "Appearance": 9131,
+      "Type": 1,
+      "Sort": 6,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9107,
+      "BuildingId": 1009,
+      "name": "下酒小食",
+      "desc": "聊得正热闹，小食也给你端来了。",
+      "Appearance": 9141,
+      "Type": 1,
+      "Sort": 7,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3600,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9108,
+      "BuildingId": 1009,
+      "name": "飞镖休闲局",
+      "desc": "靶心就在那儿，今天试试你的手感。",
+      "Appearance": 9101,
+      "Type": 1,
+      "Sort": 8,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        4200,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9109,
+      "BuildingId": 1009,
+      "name": "台球小聚",
+      "desc": "球杆擦好巧粉，熟客已经等着开球。",
+      "Appearance": 9121,
+      "Type": 1,
+      "Sort": 9,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        4800,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9110,
+      "BuildingId": 1009,
+      "name": "开放麦",
+      "desc": "拿起麦克风，唱一首你最拿手的。",
+      "Appearance": 9091,
+      "Type": 1,
+      "Sort": 10,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        5400,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9111,
+      "BuildingId": 1009,
+      "name": "复古舞曲夜",
+      "desc": "节拍一响，坐着的人也忍不住站起来。",
+      "Appearance": 9111,
+      "Type": 1,
+      "Sort": 11,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        6000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9112,
+      "BuildingId": 1009,
+      "name": "金曲唱片扩充",
+      "desc": "熟悉的歌更多了，总有一首让你跟着唱。",
+      "Appearance": 9072,
+      "Type": 1,
+      "Sort": 12,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        7000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9113,
+      "BuildingId": 1009,
+      "name": "小镇乐队专场",
+      "desc": "邻居们带齐了乐器，今晚一起听个痛快。",
+      "Appearance": 9161,
+      "Type": 1,
+      "Sort": 13,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        8000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9114,
+      "BuildingId": 1009,
+      "name": "特色生啤供应",
+      "desc": "熟客的口味都记住了，再添几款新选择。",
+      "Appearance": 9052,
+      "Type": 1,
+      "Sort": 14,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        9000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    }
+  ],
+  "项目_ShopAppearanceCfg": [
+    {
+      "Id": 9011,
+      "Group": 9011,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9011",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9021,
+      "Group": 9021,
+      "BuildingId": 1009,
+      "Type": 2,
+      "Resource": "bar_9021",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9031,
+      "Group": 9031,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9031",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9041,
+      "Group": 9041,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9041",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9051,
+      "Group": 9051,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9051",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9052,
+      "Group": 9051,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9052",
+      "PreAppearance": 9051,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9061,
+      "Group": 9061,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9061",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9121,
+      "Group": 9121,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9121",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9161,
+      "Group": 9161,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9161",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9071,
+      "Group": 9071,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9071",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9072,
+      "Group": 9071,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9072",
+      "PreAppearance": 9071,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9081,
+      "Group": 9081,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9081",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9091,
+      "Group": 9091,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9091",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9101,
+      "Group": 9101,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9101",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9111,
+      "Group": 9111,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9111",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9131,
+      "Group": 9131,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9131",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9141,
+      "Group": 9141,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9141",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9151,
+      "Group": 9151,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9151",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9171,
+      "Group": 9171,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9171",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9181,
+      "Group": 9181,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9181",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9191,
+      "Group": 9191,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9191",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9201,
+      "Group": 9201,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "bar_9201",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    }
+  ],
+  "项目_ShopSceneRoute": [
+    {
+      "Id": 1,
+      "Path": [
+        9041,
+        9141,
+        9051
+      ],
+      "PickMode": "uniform"
+    },
+    {
+      "Id": 2,
+      "Path": [
+        9071,
+        9131,
+        9091,
+        9161
+      ],
+      "PickMode": "uniform"
+    },
+    {
+      "Id": 3,
+      "Path": [
+        9061
+      ],
+      "PickMode": "uniform"
+    }
+  ],
+  "原包_ShopCfg": [
+    {
+      "Id": 1009,
+      "BaseEarnSpeed": 18,
+      "CostRate": 2560000,
+      "AppointParam": [
+        1,
+        50,
+        500,
+        1000
+      ],
+      "PosReward": [
+        [
+          100005,
+          2
+        ],
+        [
+          1700001,
+          10
+        ],
+        [
+          100103,
+          10
+        ],
+        [
+          100027,
+          2
+        ]
+      ],
+      "PosSkill": 1040012
+    }
+  ],
+  "原包_ShopBusinessCfg": [
+    {
+      "Id": 9001,
+      "BuildingId": 1009,
+      "name": "电梯",
+      "desc": "电梯描述",
+      "Appearance": 9011,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9003,
+      "BuildingId": 1009,
+      "name": "取件传送带",
+      "desc": "取件传送带描述",
+      "Appearance": 9031,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9101,
+      "BuildingId": 1009,
+      "name": "取件柜",
+      "desc": "江宁城最省事的取件之地，快件到柜自取，不必苦等小哥上门。出门顺手拿，邻里都夸你办事利落。",
+      "Appearance": 9041,
+      "Type": 1,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9201,
+      "BuildingId": 1009,
+      "name": "寄件统计",
+      "desc": "每日寄件多少，一目了然。姑爷看账心里有数，生意好坏立刻分明。",
+      "Appearance": 9171,
+      "Type": 2,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        2,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9002,
+      "BuildingId": 1009,
+      "name": "取件员工",
+      "desc": "取件员工描述",
+      "Appearance": 9021,
+      "Type": 0,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9102,
+      "BuildingId": 1009,
+      "name": "快递拆箱",
+      "desc": "包裹到手别急回家，来此当场拆箱验货。好物立见分晓，若有差池，当场理论也不迟。",
+      "Appearance": 9051,
+      "Type": 1,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        600,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9202,
+      "BuildingId": 1009,
+      "name": "上门取件",
+      "desc": "懒得出府？门外挂个红灯笼，快递小哥直接上门收件，足不出户也能发货。",
+      "Appearance": 9181,
+      "Type": 2,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        3,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9103,
+      "BuildingId": 1009,
+      "name": "寄件服务",
+      "desc": "写好地址、封好包裹，交由驿站代寄。无论千里送情书，还是万里寄土产，转眼便上路。",
+      "Appearance": 9061,
+      "Type": 1,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1200,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9203,
+      "BuildingId": 1009,
+      "name": "蜜蜂快递柜",
+      "desc": "仿造蜂巢结构的超高密度收纳柜，不仅能存多个包裹，散发的天然木香。",
+      "Appearance": 9201,
+      "Type": 2,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        5,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9104,
+      "BuildingId": 1009,
+      "name": "孔明灯快递",
+      "desc": "极致浪漫的“空投”服务。利用孔明灯运输快递，江宁夜空最亮的星都是为你送的快递。",
+      "Appearance": 9071,
+      "Type": 1,
+      "Sort": 4,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1800,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9204,
+      "BuildingId": 1009,
+      "name": "瑞狮鸣钟",
+      "desc": "挂最豪的装饰，送最快的件！钟声一响，驿工纷纷加快脚步。",
+      "Appearance": 9191,
+      "Type": 2,
+      "Sort": 4,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        7,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9105,
+      "BuildingId": 1009,
+      "name": "快递传送带",
+      "desc": "仓鼠动力驱动的木制传送带，包裹自动流转，告别肩扛手提，物流效率直接飙升。",
+      "Appearance": 9081,
+      "Type": 1,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2400,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9205,
+      "BuildingId": 1009,
+      "name": "纸箱收回机",
+      "desc": "拆完的箱子别乱丢，投入此处再利用。省钱又环保，姑爷看了都点头。",
+      "Appearance": 9151,
+      "Type": 2,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        9,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9106,
+      "BuildingId": 1009,
+      "name": "飞鸭极速递",
+      "desc": "嫌信鸽太慢？我们直接上急速飞鸭！古代版“航空特快”，无视地形，朝发夕至，急件、救命药的首选！",
+      "Appearance": 9131,
+      "Type": 1,
+      "Sort": 6,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9107,
+      "BuildingId": 1009,
+      "name": "扫码出库",
+      "desc": "拿到快递别急走，将包裹上的八卦码对准“机关眼”扫一扫，伴随清脆的“滴”声，自动记录出库成功！",
+      "Appearance": 9141,
+      "Type": 1,
+      "Sort": 7,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3600,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9108,
+      "BuildingId": 1009,
+      "name": "快递安检",
+      "desc": "快递寄出前先过检查，违禁之物无处藏。守住规矩，货通天下才安心。",
+      "Appearance": 9101,
+      "Type": 1,
+      "Sort": 8,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        4200,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9109,
+      "BuildingId": 1009,
+      "name": "生鲜寄件",
+      "desc": "鱼鲜果蔬也能远行，特制冷藏箱一路护送。昨日田里摘，明日亲友桌上见。",
+      "Appearance": 9121,
+      "Type": 1,
+      "Sort": 9,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        4800,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9110,
+      "BuildingId": 1009,
+      "name": "快递分拣机",
+      "desc": "驿工随手一抛，包裹在机中蹦来跳去。看似胡乱碰撞，其实各归其处，驿站效率倍增。",
+      "Appearance": 9091,
+      "Type": 1,
+      "Sort": 10,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        5400,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9111,
+      "BuildingId": 1009,
+      "name": "快递驱邪",
+      "desc": "买的快递怕带有邪气？大师开光，全方位无死角驱邪！让你拆包拆得安心，用得放心。",
+      "Appearance": 9111,
+      "Type": 1,
+      "Sort": 11,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        6000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9112,
+      "BuildingId": 1009,
+      "name": "投石车极速达",
+      "desc": "物理意义上的极速达。用退役投石车将抗摔包裹直接砸进你家后院。",
+      "Appearance": 9072,
+      "Type": 1,
+      "Sort": 12,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        7000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9113,
+      "BuildingId": 1009,
+      "name": "大件专寄",
+      "desc": "古琴、大刀、整箱货物？普通寄法装不下。大件专寄帮你运，稳稳当当送到家。",
+      "Appearance": 9161,
+      "Type": 1,
+      "Sort": 13,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        8000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 9114,
+      "BuildingId": 1009,
+      "name": "自动拆箱",
+      "desc": "包裹放下，驿站培训的专属快递鸟，瞬间帮你把封条完美切开，省时省力不费刀。",
+      "Appearance": 9052,
+      "Type": 1,
+      "Sort": 14,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        9000,
+        1009,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1009,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    }
+  ],
+  "原包_ShopAppearanceCfg": [
+    {
+      "Id": 9011,
+      "Group": 9011,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9011",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9021,
+      "Group": 9021,
+      "BuildingId": 1009,
+      "Type": 2,
+      "Resource": "1009_9021",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9031,
+      "Group": 9031,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9031",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9041,
+      "Group": 9041,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9041",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9051,
+      "Group": 9051,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9051",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9052,
+      "Group": 9051,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9052",
+      "PreAppearance": 9051,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9061,
+      "Group": 9061,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9061",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9121,
+      "Group": 9121,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9121",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9161,
+      "Group": 9161,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9161",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9071,
+      "Group": 9071,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9071",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9072,
+      "Group": 9071,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9072",
+      "PreAppearance": 9071,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9081,
+      "Group": 9081,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9081",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9091,
+      "Group": 9091,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9091",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9101,
+      "Group": 9101,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9101",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9111,
+      "Group": 9111,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9111",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9131,
+      "Group": 9131,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9131",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9141,
+      "Group": 9141,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9141",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9151,
+      "Group": 9151,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9151",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9171,
+      "Group": 9171,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9171",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9181,
+      "Group": 9181,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9181",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9191,
+      "Group": 9191,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9191",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 9201,
+      "Group": 9201,
+      "BuildingId": 1009,
+      "Type": 1,
+      "Resource": "1009_9201",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    }
+  ],
+  "原包_BuildingLevelCfg": [
+    {
+      "Id": 1009000,
+      "BuildingId": 1009,
+      "Level": 0,
+      "lvName": "空房",
+      "Resource": "100_1009_0",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          6500,
+          0,
+          0
+        ]
+      ],
+      "Cost": "",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009001,
+      "BuildingId": 1009,
+      "Level": 1,
+      "lvName": "1星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          6500,
+          0,
+          0
+        ]
+      ],
+      "Cost": "100001|50000000000",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009002,
+      "BuildingId": 1009,
+      "Level": 2,
+      "lvName": "2星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|13",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          20000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009003,
+      "BuildingId": 1009,
+      "Level": 3,
+      "lvName": "3星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|31",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          40000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009004,
+      "BuildingId": 1009,
+      "Level": 4,
+      "lvName": "4星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|52",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          60000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009005,
+      "BuildingId": 1009,
+      "Level": 5,
+      "lvName": "5星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|91",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          100000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009006,
+      "BuildingId": 1009,
+      "Level": 6,
+      "lvName": "6星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|130",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          140000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009007,
+      "BuildingId": 1009,
+      "Level": 7,
+      "lvName": "7星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|182",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          190000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009008,
+      "BuildingId": 1009,
+      "Level": 8,
+      "lvName": "8星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|260",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          240000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009009,
+      "BuildingId": 1009,
+      "Level": 9,
+      "lvName": "9星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|390",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          290000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009010,
+      "BuildingId": 1009,
+      "Level": 10,
+      "lvName": "10星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|520",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          340000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009011,
+      "BuildingId": 1009,
+      "Level": 11,
+      "lvName": "11星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|650",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          400000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009012,
+      "BuildingId": 1009,
+      "Level": 12,
+      "lvName": "12星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|780",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          460000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009013,
+      "BuildingId": 1009,
+      "Level": 13,
+      "lvName": "13星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1040",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          520000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009014,
+      "BuildingId": 1009,
+      "Level": 14,
+      "lvName": "14星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1300",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          580000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009015,
+      "BuildingId": 1009,
+      "Level": 15,
+      "lvName": "15星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1560",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          640000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009016,
+      "BuildingId": 1009,
+      "Level": 16,
+      "lvName": "16星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2080",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          700000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009017,
+      "BuildingId": 1009,
+      "Level": 17,
+      "lvName": "17星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          760000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009018,
+      "BuildingId": 1009,
+      "Level": 18,
+      "lvName": "18星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3120",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          820000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009019,
+      "BuildingId": 1009,
+      "Level": 19,
+      "lvName": "19星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3640",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          880000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009020,
+      "BuildingId": 1009,
+      "Level": 20,
+      "lvName": "20星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|4160",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          940000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1009021,
+      "BuildingId": 1009,
+      "Level": 21,
+      "lvName": "21星商铺",
+      "Resource": "100_1009_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|5200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1009,
+          1000000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    }
+  ]
+}

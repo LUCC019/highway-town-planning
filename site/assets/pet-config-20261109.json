@@ -1,0 +1,5560 @@
+{
+  "项目_BuildingInfoCfg": [
+    {
+      "Id": 1006,
+      "MapId": 100,
+      "Type": 140,
+      "UnlockType": 1,
+      "name": "宠物洗护店",
+      "desc": "顾客带宠物到店，完成洗护、护理与交接后离店。",
+      "Alwayshere": 0,
+      "MaximumCount": 0,
+      "CashProgressBarPos": [
+        -233,
+        826
+      ],
+      "EffectPos": [
+        -4,
+        -78
+      ],
+      "EffectScale": [
+        200,
+        200
+      ],
+      "NameplatePos": [
+        0,
+        0
+      ],
+      "BtnPos": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "RefuseCustomer": null,
+      "TalkProb": [
+        10000,
+        10000,
+        10000,
+        10000,
+        10000,
+        10000
+      ],
+      "Desc1": [
+        "带它来洗个澡。",
+        "今天也拜托你们啦。"
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "Desc4": [
+        "干干净净，真精神。"
+      ],
+      "Desc5": [
+        "来，留张照片。"
+      ],
+      "Desc6": [
+        "下次还来。"
+      ]
+    }
+  ],
+  "项目_ShopCfg": [
+    {
+      "Id": 1006,
+      "BaseEarnSpeed": 8,
+      "CostRate": 320000,
+      "AppointParam": [
+        1,
+        50,
+        500,
+        1000
+      ],
+      "PosReward": null,
+      "PosSkill": null
+    }
+  ],
+  "项目_BuildingLevelCfg": [
+    {
+      "Id": 1006000,
+      "BuildingId": 1006,
+      "Level": 0,
+      "lvName": "空房",
+      "Resource": "pet_building_0",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          2200,
+          0,
+          0
+        ]
+      ],
+      "Cost": "",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006001,
+      "BuildingId": 1006,
+      "Level": 1,
+      "lvName": "1星商铺",
+      "Resource": "pet_building_1",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          2200,
+          0,
+          0
+        ]
+      ],
+      "Cost": "100001|300000000",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006002,
+      "BuildingId": 1006,
+      "Level": 2,
+      "lvName": "2星商铺",
+      "Resource": "pet_building_2",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|10",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          20000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006003,
+      "BuildingId": 1006,
+      "Level": 3,
+      "lvName": "3星商铺",
+      "Resource": "pet_building_3",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|24",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          40000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006004,
+      "BuildingId": 1006,
+      "Level": 4,
+      "lvName": "4星商铺",
+      "Resource": "pet_building_4",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|40",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          60000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006005,
+      "BuildingId": 1006,
+      "Level": 5,
+      "lvName": "5星商铺",
+      "Resource": "pet_building_5",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|70",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          100000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006006,
+      "BuildingId": 1006,
+      "Level": 6,
+      "lvName": "6星商铺",
+      "Resource": "pet_building_6",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|100",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          140000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006007,
+      "BuildingId": 1006,
+      "Level": 7,
+      "lvName": "7星商铺",
+      "Resource": "pet_building_7",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|140",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          190000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006008,
+      "BuildingId": 1006,
+      "Level": 8,
+      "lvName": "8星商铺",
+      "Resource": "pet_building_8",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          240000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006009,
+      "BuildingId": 1006,
+      "Level": 9,
+      "lvName": "9星商铺",
+      "Resource": "pet_building_9",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|300",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          290000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006010,
+      "BuildingId": 1006,
+      "Level": 10,
+      "lvName": "10星商铺",
+      "Resource": "pet_building_10",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          340000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006011,
+      "BuildingId": 1006,
+      "Level": 11,
+      "lvName": "11星商铺",
+      "Resource": "pet_building_11",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|500",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          400000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006012,
+      "BuildingId": 1006,
+      "Level": 12,
+      "lvName": "12星商铺",
+      "Resource": "pet_building_12",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          460000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006013,
+      "BuildingId": 1006,
+      "Level": 13,
+      "lvName": "13星商铺",
+      "Resource": "pet_building_13",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          520000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006014,
+      "BuildingId": 1006,
+      "Level": 14,
+      "lvName": "14星商铺",
+      "Resource": "pet_building_14",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          580000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006015,
+      "BuildingId": 1006,
+      "Level": 15,
+      "lvName": "15星商铺",
+      "Resource": "pet_building_15",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          640000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006016,
+      "BuildingId": 1006,
+      "Level": 16,
+      "lvName": "16星商铺",
+      "Resource": "pet_building_16",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          700000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006017,
+      "BuildingId": 1006,
+      "Level": 17,
+      "lvName": "17星商铺",
+      "Resource": "pet_building_17",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          760000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006018,
+      "BuildingId": 1006,
+      "Level": 18,
+      "lvName": "18星商铺",
+      "Resource": "pet_building_18",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          820000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006019,
+      "BuildingId": 1006,
+      "Level": 19,
+      "lvName": "19星商铺",
+      "Resource": "pet_building_19",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          880000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006020,
+      "BuildingId": 1006,
+      "Level": 20,
+      "lvName": "20星商铺",
+      "Resource": "pet_building_20",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          940000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006021,
+      "BuildingId": 1006,
+      "Level": 21,
+      "lvName": "21星商铺",
+      "Resource": "pet_building_21",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|4000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          1000000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    }
+  ],
+  "项目_ShopBusinessCfg": [
+    {
+      "Id": 6001,
+      "BuildingId": 1006,
+      "name": "简易等候区",
+      "desc": "主人等待座位与小桌",
+      "Appearance": 6011,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6002,
+      "BuildingId": 1006,
+      "name": "基础素色项圈",
+      "desc": "默认离店配饰之一",
+      "Appearance": 6021,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6003,
+      "BuildingId": 1006,
+      "name": "基础布领巾",
+      "desc": "默认离店配饰之一",
+      "Appearance": 6031,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6004,
+      "BuildingId": 1006,
+      "name": "基础小挂牌",
+      "desc": "默认离店配饰之一",
+      "Appearance": 6041,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6005,
+      "BuildingId": 1006,
+      "name": "接待员",
+      "desc": "前台迎宾角色",
+      "Appearance": 6051,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6006,
+      "BuildingId": 1006,
+      "name": "洗护区店员",
+      "desc": "自动洗护角色",
+      "Appearance": 6061,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6007,
+      "BuildingId": 1006,
+      "name": "结账交接员",
+      "desc": "登记与交接角色",
+      "Appearance": 6071,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6008,
+      "BuildingId": 1006,
+      "name": "护理师",
+      "desc": "护理动作角色",
+      "Appearance": 6081,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6009,
+      "BuildingId": 1006,
+      "name": "基础短毛犬",
+      "desc": "开业默认可接待宠物，无业务加成",
+      "Appearance": 6091,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6010,
+      "BuildingId": 1006,
+      "name": "宠物护理区",
+      "desc": "护理流程经过区",
+      "Appearance": 6013,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6011,
+      "BuildingId": 1006,
+      "name": "接待与选套餐区",
+      "desc": "入口接待区",
+      "Appearance": 6010,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6101,
+      "BuildingId": 1006,
+      "name": "清爽沐浴",
+      "desc": "温水和泡沫，先把一身灰尘洗掉。",
+      "Appearance": 6101,
+      "Type": 1,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "今天想做清爽沐浴。",
+          "好，这边为您安排。",
+          "今天想做清爽沐浴。",
+          "好，这边为您安排。",
+          "今天想做清爽沐浴。",
+          "好，这边为您安排。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6102,
+      "BuildingId": 1006,
+      "name": "短毛小型犬",
+      "desc": "小个子也爱干干净净，抱上护理台就能开始。",
+      "Appearance": 6111,
+      "Type": 1,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6102_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6103,
+      "BuildingId": 1006,
+      "name": "梳毛护理",
+      "desc": "顺着毛慢慢梳，把打结的小烦恼理开。",
+      "Appearance": 6121,
+      "Type": 1,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        250,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "今天想做梳毛护理。",
+          "好，这边为您安排。",
+          "今天想做梳毛护理。",
+          "好，这边为您安排。",
+          "今天想做梳毛护理。",
+          "好，这边为您安排。",
+          "今天想做梳毛护理。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做梳毛护理。",
+          "好，这边为您安排。",
+          "今天想做梳毛护理。",
+          "好，这边为您安排。",
+          "今天想做梳毛护理。",
+          "好，这边为您安排。",
+          "今天想做梳毛护理。",
+          "好，这边为您安排。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6104,
+      "BuildingId": 1006,
+      "name": "短毛猫",
+      "desc": "轻一点、慢一点，给猫咪一个安静的位置。",
+      "Appearance": 6131,
+      "Type": 1,
+      "Sort": 6,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        500,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6104_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6105,
+      "BuildingId": 1006,
+      "name": "温和洁护",
+      "desc": "泡沫轻轻揉开，洗完再裹上软毛巾。",
+      "Appearance": 6141,
+      "Type": 1,
+      "Sort": 7,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        750,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "今天想做温和洁护。",
+          "好，这边为您安排。",
+          "今天想做温和洁护。",
+          "好，这边为您安排。",
+          "今天想做温和洁护。",
+          "好，这边为您安排。",
+          "今天想做温和洁护。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做温和洁护。",
+          "好，这边为您安排。",
+          "今天想做温和洁护。",
+          "好，这边为您安排。",
+          "今天想做温和洁护。",
+          "好，这边为您安排。",
+          "今天想做温和洁护。",
+          "好，这边为您安排。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6106,
+      "BuildingId": 1006,
+      "name": "短毛中型犬",
+      "desc": "跑了一路的小家伙，洗净爪子再回家。",
+      "Appearance": 6151,
+      "Type": 1,
+      "Sort": 8,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1000,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6106_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6107,
+      "BuildingId": 1006,
+      "name": "整毛造型",
+      "desc": "毛梳顺，边角修齐，精神一点再回家。",
+      "Appearance": 6161,
+      "Type": 1,
+      "Sort": 9,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1200,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "今天想做整毛造型。",
+          "好，这边为您安排。",
+          "今天想做整毛造型。",
+          "好，这边为您安排。",
+          "今天想做整毛造型。",
+          "好，这边为您安排。",
+          "今天想做整毛造型。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做整毛造型。",
+          "好，这边为您安排。",
+          "今天想做整毛造型。",
+          "好，这边为您安排。",
+          "今天想做整毛造型。",
+          "好，这边为您安排。",
+          "今天想做整毛造型。",
+          "好，这边为您安排。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6108,
+      "BuildingId": 1006,
+      "name": "短毛大型犬",
+      "desc": "大个子也有乖乖站好的时候。",
+      "Appearance": 6171,
+      "Type": 1,
+      "Sort": 10,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1400,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6108_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6109,
+      "BuildingId": 1006,
+      "name": "格纹小领巾",
+      "desc": "围上一块小领巾，今天也要体体面面。",
+      "Appearance": 6181,
+      "Type": 1,
+      "Sort": 11,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1600,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6110,
+      "BuildingId": 1006,
+      "name": "香氛沐浴",
+      "desc": "洗净之后留一点淡淡清香，抱起来更舒服。",
+      "Appearance": 6102,
+      "Type": 1,
+      "Sort": 12,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1800,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。",
+          "今天想做香氛沐浴。",
+          "好，这边为您安排。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6111,
+      "BuildingId": 1006,
+      "name": "长毛小型犬",
+      "desc": "毛蓬松了，走起路来都轻快一点。",
+      "Appearance": 6112,
+      "Type": 1,
+      "Sort": 13,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2000,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6111_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6112,
+      "BuildingId": 1006,
+      "name": "蝴蝶领结",
+      "desc": "小领结一戴，出门像去参加舞会。",
+      "Appearance": 6191,
+      "Type": 1,
+      "Sort": 14,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2200,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6113,
+      "BuildingId": 1006,
+      "name": "柔顺梳护",
+      "desc": "把浮毛梳净，再让毛发服服帖帖。",
+      "Appearance": 6122,
+      "Type": 1,
+      "Sort": 15,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2400,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。",
+          "今天想做柔顺梳护。",
+          "好，这边为您安排。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6113_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6114,
+      "BuildingId": 1006,
+      "name": "长毛猫",
+      "desc": "软乎乎的一身毛，值得多花一点耐心。",
+      "Appearance": 6132,
+      "Type": 1,
+      "Sort": 16,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2600,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6114_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6115,
+      "BuildingId": 1006,
+      "name": "彩色项圈",
+      "desc": "挑个亮眼的颜色，主人一眼就能认出来。",
+      "Appearance": 6201,
+      "Type": 1,
+      "Sort": 17,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2800,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6116,
+      "BuildingId": 1006,
+      "name": "滋润洁护",
+      "desc": "洗得干净，也把毛发照顾得柔柔软软。",
+      "Appearance": 6142,
+      "Type": 1,
+      "Sort": 18,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3000,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。",
+          "今天想做滋润洁护。",
+          "好，这边为您安排。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6117,
+      "BuildingId": 1006,
+      "name": "长毛中型犬",
+      "desc": "把乱蓬蓬的毛理顺，再迎接下一次散步。",
+      "Appearance": 6152,
+      "Type": 1,
+      "Sort": 19,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3200,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6117_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6118,
+      "BuildingId": 1006,
+      "name": "花边围兜",
+      "desc": "胸前添一点花边，今天的照片更可爱。",
+      "Appearance": 6211,
+      "Type": 1,
+      "Sort": 20,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3400,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6119,
+      "BuildingId": 1006,
+      "name": "精致造型",
+      "desc": "耳边、脚边都修整好，走出去就很精神。",
+      "Appearance": 6162,
+      "Type": 1,
+      "Sort": 21,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3600,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。"
+        ],
+        [
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。",
+          "今天想做精致造型。",
+          "好，这边为您安排。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6120,
+      "BuildingId": 1006,
+      "name": "长毛大型犬",
+      "desc": "大毛团整理好了，主人又该抱个满怀。",
+      "Appearance": 6172,
+      "Type": 1,
+      "Sort": 22,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3800,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。",
+          "它今天也很乖吧？",
+          "放心，我们会轻一点。"
+        ]
+      ],
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": [
+        "pet_unlock_6120_1"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6121,
+      "BuildingId": 1006,
+      "name": "花朵领饰",
+      "desc": "给干净的小家伙添一朵小花。",
+      "Appearance": 6221,
+      "Type": 1,
+      "Sort": 23,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        4000,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。",
+          "我来接它回家。",
+          "已经照顾好了，慢走。"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6201,
+      "BuildingId": 1006,
+      "name": "宠物交接区",
+      "desc": "主人领回宠物后离店",
+      "Appearance": 6231,
+      "Type": 0,
+      "Sort": 24,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6206,
+      "BuildingId": 1006,
+      "name": "离店留影区",
+      "desc": "洗得干净，顺便留张好看的照片。",
+      "Appearance": 6232,
+      "Type": 2,
+      "Sort": 25,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        2,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6202,
+      "BuildingId": 1006,
+      "name": "饮水休息角",
+      "desc": "洗完先喝口水，主人马上就来。",
+      "Appearance": 6241,
+      "Type": 2,
+      "Sort": 26,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        3,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6203,
+      "BuildingId": 1006,
+      "name": "等候区升级",
+      "desc": "主人能坐得舒服，小家伙也放松一点。",
+      "Appearance": 6012,
+      "Type": 2,
+      "Sort": 27,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        4,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6204,
+      "BuildingId": 1006,
+      "name": "吹干护理区",
+      "desc": "毛巾擦一擦，再把毛吹得蓬松起来。",
+      "Appearance": 6251,
+      "Type": 2,
+      "Sort": 28,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        6,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6205,
+      "BuildingId": 1006,
+      "name": "迎宾服务升级",
+      "desc": "熟悉的招呼声，一进门就能听见。",
+      "Appearance": 6052,
+      "Type": 2,
+      "Sort": 29,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        8,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    }
+  ],
+  "项目_ShopAppearanceCfg": [
+    {
+      "Id": 6010,
+      "Group": 6010,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6010",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6011,
+      "Group": 6011,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6011",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6021,
+      "Group": 6021,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6021",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6031,
+      "Group": 6031,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6031",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6041,
+      "Group": 6041,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6041",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6051,
+      "Group": 6051,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "pet_6051",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6061,
+      "Group": 6061,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "pet_6061",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6071,
+      "Group": 6071,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "pet_6071",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6081,
+      "Group": 6081,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "pet_6081",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6091,
+      "Group": 6131,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6091",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6101,
+      "Group": 6101,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6101",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6111,
+      "Group": 6111,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6111",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6121,
+      "Group": 6121,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6121",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6131,
+      "Group": 6131,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6131",
+      "PreAppearance": 6091,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6141,
+      "Group": 6141,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6141",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6151,
+      "Group": 6151,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6151",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6161,
+      "Group": 6161,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6161",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6171,
+      "Group": 6171,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6171",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6181,
+      "Group": 6181,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6181",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6102,
+      "Group": 6101,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6102",
+      "PreAppearance": 6101,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6112,
+      "Group": 6111,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6112",
+      "PreAppearance": 6111,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6191,
+      "Group": 6191,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6191",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6122,
+      "Group": 6121,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6122",
+      "PreAppearance": 6121,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6132,
+      "Group": 6131,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6132",
+      "PreAppearance": 6131,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6201,
+      "Group": 6201,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6201",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6142,
+      "Group": 6141,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6142",
+      "PreAppearance": 6141,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6152,
+      "Group": 6151,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6152",
+      "PreAppearance": 6151,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6211,
+      "Group": 6211,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6211",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6162,
+      "Group": 6161,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6162",
+      "PreAppearance": 6161,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6172,
+      "Group": 6171,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6172",
+      "PreAppearance": 6171,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6221,
+      "Group": 6221,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6221",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6231,
+      "Group": 6231,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6231",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6232,
+      "Group": 6232,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "pet_6232",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6241,
+      "Group": 6241,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6241",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6012,
+      "Group": 6011,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6012",
+      "PreAppearance": 6011,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6013,
+      "Group": 6013,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "pet_6013",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6251,
+      "Group": 6251,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "pet_6251",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6052,
+      "Group": 6051,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "pet_6052",
+      "PreAppearance": 6051,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    }
+  ],
+  "项目_美术对应": [
+    {
+      "appearance": 6010,
+      "name": "接待与选套餐区",
+      "group": 6010,
+      "previous": 0,
+      "resource": "pet_6010",
+      "sourceResource": "1006_6010"
+    },
+    {
+      "appearance": 6011,
+      "name": "简易等候区",
+      "group": 6011,
+      "previous": 0,
+      "resource": "pet_6011",
+      "sourceResource": "1006_6011"
+    },
+    {
+      "appearance": 6021,
+      "name": "基础素色项圈",
+      "group": 6021,
+      "previous": 0,
+      "resource": "pet_6021",
+      "sourceResource": "1006_6021"
+    },
+    {
+      "appearance": 6031,
+      "name": "基础布领巾",
+      "group": 6031,
+      "previous": 0,
+      "resource": "pet_6031",
+      "sourceResource": "1006_6031"
+    },
+    {
+      "appearance": 6041,
+      "name": "基础小挂牌",
+      "group": 6041,
+      "previous": 0,
+      "resource": "pet_6041",
+      "sourceResource": "1006_6041"
+    },
+    {
+      "appearance": 6051,
+      "name": "接待员",
+      "group": 6051,
+      "previous": 0,
+      "resource": "pet_6051",
+      "sourceResource": "1006_6051"
+    },
+    {
+      "appearance": 6061,
+      "name": "洗护区店员",
+      "group": 6061,
+      "previous": 0,
+      "resource": "pet_6061",
+      "sourceResource": "1006_6061"
+    },
+    {
+      "appearance": 6071,
+      "name": "结账交接员",
+      "group": 6071,
+      "previous": 0,
+      "resource": "pet_6071",
+      "sourceResource": "1006_6071"
+    },
+    {
+      "appearance": 6081,
+      "name": "护理师",
+      "group": 6081,
+      "previous": 0,
+      "resource": "pet_6081",
+      "sourceResource": "1006_6081"
+    },
+    {
+      "appearance": 6091,
+      "name": "基础短毛犬",
+      "group": 6131,
+      "previous": 0,
+      "resource": "pet_6091",
+      "sourceResource": "1006_6091"
+    },
+    {
+      "appearance": 6101,
+      "name": "清爽沐浴",
+      "group": 6101,
+      "previous": 0,
+      "resource": "pet_6101",
+      "sourceResource": "1006_6101"
+    },
+    {
+      "appearance": 6111,
+      "name": "短毛小型犬",
+      "group": 6111,
+      "previous": 0,
+      "resource": "pet_6111",
+      "sourceResource": "1006_6111"
+    },
+    {
+      "appearance": 6121,
+      "name": "梳毛护理",
+      "group": 6121,
+      "previous": 0,
+      "resource": "pet_6121",
+      "sourceResource": "1006_6121"
+    },
+    {
+      "appearance": 6131,
+      "name": "短毛猫",
+      "group": 6131,
+      "previous": 6091,
+      "resource": "pet_6131",
+      "sourceResource": "1006_6131"
+    },
+    {
+      "appearance": 6141,
+      "name": "温和洁护",
+      "group": 6141,
+      "previous": 0,
+      "resource": "pet_6141",
+      "sourceResource": "1006_6141"
+    },
+    {
+      "appearance": 6151,
+      "name": "短毛中型犬",
+      "group": 6151,
+      "previous": 0,
+      "resource": "pet_6151",
+      "sourceResource": "1006_6151"
+    },
+    {
+      "appearance": 6161,
+      "name": "整毛造型",
+      "group": 6161,
+      "previous": 0,
+      "resource": "pet_6161",
+      "sourceResource": "1006_6161"
+    },
+    {
+      "appearance": 6171,
+      "name": "短毛大型犬",
+      "group": 6171,
+      "previous": 0,
+      "resource": "pet_6171",
+      "sourceResource": "1006_6171"
+    },
+    {
+      "appearance": 6181,
+      "name": "格纹小领巾",
+      "group": 6181,
+      "previous": 0,
+      "resource": "pet_6181",
+      "sourceResource": "1006_6181"
+    },
+    {
+      "appearance": 6102,
+      "name": "香氛沐浴",
+      "group": 6101,
+      "previous": 6101,
+      "resource": "pet_6102",
+      "sourceResource": "1006_6102"
+    },
+    {
+      "appearance": 6112,
+      "name": "长毛小型犬",
+      "group": 6111,
+      "previous": 6111,
+      "resource": "pet_6112",
+      "sourceResource": "1006_6112"
+    },
+    {
+      "appearance": 6191,
+      "name": "蝴蝶领结",
+      "group": 6191,
+      "previous": 0,
+      "resource": "pet_6191",
+      "sourceResource": "1006_6191"
+    },
+    {
+      "appearance": 6122,
+      "name": "柔顺梳护",
+      "group": 6121,
+      "previous": 6121,
+      "resource": "pet_6122",
+      "sourceResource": "1006_6122"
+    },
+    {
+      "appearance": 6132,
+      "name": "长毛猫",
+      "group": 6131,
+      "previous": 6131,
+      "resource": "pet_6132",
+      "sourceResource": "1006_6132"
+    },
+    {
+      "appearance": 6201,
+      "name": "彩色项圈",
+      "group": 6201,
+      "previous": 0,
+      "resource": "pet_6201",
+      "sourceResource": "1006_6201"
+    },
+    {
+      "appearance": 6142,
+      "name": "滋润洁护",
+      "group": 6141,
+      "previous": 6141,
+      "resource": "pet_6142",
+      "sourceResource": "1006_6142"
+    },
+    {
+      "appearance": 6152,
+      "name": "长毛中型犬",
+      "group": 6151,
+      "previous": 6151,
+      "resource": "pet_6152",
+      "sourceResource": "1006_6152"
+    },
+    {
+      "appearance": 6211,
+      "name": "花边围兜",
+      "group": 6211,
+      "previous": 0,
+      "resource": "pet_6211",
+      "sourceResource": "1006_6211"
+    },
+    {
+      "appearance": 6162,
+      "name": "精致造型",
+      "group": 6161,
+      "previous": 6161,
+      "resource": "pet_6162",
+      "sourceResource": "1006_6162"
+    },
+    {
+      "appearance": 6172,
+      "name": "长毛大型犬",
+      "group": 6171,
+      "previous": 6171,
+      "resource": "pet_6172",
+      "sourceResource": "1006_6172"
+    },
+    {
+      "appearance": 6221,
+      "name": "花朵领饰",
+      "group": 6221,
+      "previous": 0,
+      "resource": "pet_6221",
+      "sourceResource": "1006_6221"
+    },
+    {
+      "appearance": 6231,
+      "name": "宠物交接区",
+      "group": 6231,
+      "previous": 0,
+      "resource": "pet_6231",
+      "sourceResource": "1006_6231"
+    },
+    {
+      "appearance": 6232,
+      "name": "离店留影区",
+      "group": 6232,
+      "previous": 0,
+      "resource": "pet_6232",
+      "sourceResource": "1006_6232"
+    },
+    {
+      "appearance": 6241,
+      "name": "饮水休息角",
+      "group": 6241,
+      "previous": 0,
+      "resource": "pet_6241",
+      "sourceResource": "1006_6241"
+    },
+    {
+      "appearance": 6012,
+      "name": "等候区升级",
+      "group": 6011,
+      "previous": 6011,
+      "resource": "pet_6012",
+      "sourceResource": "1006_6012"
+    },
+    {
+      "appearance": 6013,
+      "name": "宠物护理区",
+      "group": 6013,
+      "previous": 0,
+      "resource": "pet_6013",
+      "sourceResource": "1006_6013"
+    },
+    {
+      "appearance": 6251,
+      "name": "吹干护理区",
+      "group": 6251,
+      "previous": 0,
+      "resource": "pet_6251",
+      "sourceResource": "1006_6251"
+    },
+    {
+      "appearance": 6052,
+      "name": "迎宾服务升级",
+      "group": 6051,
+      "previous": 6051,
+      "resource": "pet_6052",
+      "sourceResource": "1006_6052"
+    }
+  ],
+  "原包_ShopCfg": [
+    {
+      "Id": 1006,
+      "BaseEarnSpeed": 8,
+      "CostRate": 320000,
+      "AppointParam": [
+        1,
+        50,
+        500,
+        1000
+      ],
+      "PosReward": [
+        [
+          100005,
+          2
+        ],
+        [
+          1700001,
+          10
+        ],
+        [
+          100103,
+          10
+        ],
+        [
+          100027,
+          2
+        ]
+      ],
+      "PosSkill": 1040012
+    }
+  ],
+  "原包_BuildingInfoCfg": [
+    {
+      "Id": 1006,
+      "MapId": 100,
+      "Type": 140,
+      "UnlockType": 1,
+      "name": "哒哒马车",
+      "desc": "精选良驹骏马，内饰顶配，从马车选购、车夫培训到售后保养一应俱全，另设专业洗车、草料补给窗口，让您的每一趟出行尊贵又省心！",
+      "Alwayshere": 0,
+      "MaximumCount": 0,
+      "CashProgressBarPos": [
+        -233,
+        826
+      ],
+      "EffectPos": [
+        -4,
+        -78
+      ],
+      "EffectScale": [
+        200,
+        200
+      ],
+      "NameplatePos": [
+        0,
+        0
+      ],
+      "BtnPos": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "RefuseCustomer": null,
+      "TalkProb": [
+        10000,
+        10000,
+        10000,
+        10000,
+        10000,
+        10000
+      ],
+      "Desc1": [
+        "腿酸死了，还得要辆车",
+        "瞅瞅有啥好车",
+        "据说这里能订制马车？"
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "Desc4": [
+        "就它了我的梦中情车",
+        "不错不错，非常满意",
+        "现场定制提车就是好"
+      ],
+      "Desc5": [
+        "欢迎来提爱车，恭喜！",
+        "来拍张提车纪念照吧！",
+        "拍照发圈，仪式感拉满"
+      ],
+      "Desc6": [
+        "有问题随时联系我。",
+        "祝您用车一路平安！",
+        "路上小心，慢点开！"
+      ]
+    }
+  ],
+  "原包_ShopBusinessCfg": [
+    {
+      "Id": 6001,
+      "BuildingId": 1006,
+      "name": "茶水区",
+      "desc": "茶水区描述",
+      "Appearance": 6011,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6002,
+      "BuildingId": 1006,
+      "name": "普通车轮",
+      "desc": "普通车轮描述",
+      "Appearance": 6021,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6003,
+      "BuildingId": 1006,
+      "name": "镖车轮",
+      "desc": "镖车轮描述",
+      "Appearance": 6031,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6004,
+      "BuildingId": 1006,
+      "name": "飞车轮",
+      "desc": "飞车轮描述",
+      "Appearance": 6041,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6005,
+      "BuildingId": 1006,
+      "name": "东施车模",
+      "desc": "东施车模1描述",
+      "Appearance": 6051,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6006,
+      "BuildingId": 1006,
+      "name": "前台店员",
+      "desc": "东施车模2描述",
+      "Appearance": 6061,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6007,
+      "BuildingId": 1006,
+      "name": "合同店员",
+      "desc": "东施车模3描述",
+      "Appearance": 6071,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6008,
+      "BuildingId": 1006,
+      "name": "美容师",
+      "desc": "东施车模4描述",
+      "Appearance": 6081,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6009,
+      "BuildingId": 1006,
+      "name": "初始粟马",
+      "desc": "初始粟马描述",
+      "Appearance": 6091,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": [
+        [
+          "让我看看",
+          "挨个瞅",
+          "听话就好",
+          "得嘞"
+        ]
+      ],
+      "Desc3": [
+        [
+          "有优惠吗",
+          "贷款免息",
+          "质保呢",
+          "赠送十年"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6010,
+      "BuildingId": 1006,
+      "name": "马棚",
+      "desc": "初始粟马描述",
+      "Appearance": 6013,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6011,
+      "BuildingId": 1006,
+      "name": "车辆选择区",
+      "desc": "初始粟马描述",
+      "Appearance": 6010,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6101,
+      "BuildingId": 1006,
+      "name": "经济轿车",
+      "desc": "性价比卷到同行哭，实用型马车扛日常出行，不花冤枉钱，代步选它准没错。",
+      "Appearance": 6101,
+      "Type": 1,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "日常代步",
+          "基础款",
+          "价格呢？",
+          "包实惠",
+          "能优惠？",
+          "现买折上折"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "送草卡吗",
+          "两百草卡",
+          "还是太贵",
+          "旧车能抵",
+          "那还行",
+          "包您满意"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6102,
+      "BuildingId": 1006,
+      "name": "实惠小灰",
+      "desc": "拉货代步两头挑，吃得少干得多，打工人看了直点头，性价比没的说。",
+      "Appearance": 6111,
+      "Type": 1,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "选哪个呀",
+          "慢慢选",
+          "低调灰",
+          "这简单​"
+        ]
+      ],
+      "Desc3": [
+        [
+          "送草卡吗",
+          "两百草卡",
+          "还是太贵",
+          "旧车能抵",
+          "那还行",
+          "包您满意"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6103,
+      "BuildingId": 1006,
+      "name": "顺风镖车",
+      "desc": "装得多还稳如老狗，货物运输安全又高效，镖师看了都放心托付。",
+      "Appearance": 6121,
+      "Type": 1,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        250,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "我要改装",
+          "没问题",
+          "拉货货的",
+          "顺风镖车",
+          "送信件",
+          "邮差绿",
+          "就这样",
+          "马上来"
+        ],
+        [
+          "我要改装",
+          "没问题",
+          "拉货货的",
+          "顺风镖车",
+          "送快递",
+          "顺风红",
+          "就这样",
+          "马上来"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "再便宜点",
+          "出血最低价",
+          "赠品呢",
+          "坐垫一套",
+          "送草卡吗",
+          "两百草卡"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6104,
+      "BuildingId": 1006,
+      "name": "勤劳牛马",
+      "desc": "吃苦耐劳属第一，长得像牛更能扛，老板见了眼放光，加班苦干不喊累。",
+      "Appearance": 6131,
+      "Type": 1,
+      "Sort": 6,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        500,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "哪匹好呢",
+          "不踩雷",
+          "吃苦耐劳",
+          "没问题​"
+        ]
+      ],
+      "Desc3": [
+        [
+          "再便宜点",
+          "出血最低价",
+          "赠品呢",
+          "坐垫一套",
+          "送草卡吗",
+          "两百草卡"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6105,
+      "BuildingId": 1006,
+      "name": "法鸭利",
+      "desc": "速度与豪情主角同款，一骑绝尘如飞，飙车快感直接拉满，谁坐谁知道。",
+      "Appearance": 6141,
+      "Type": 1,
+      "Sort": 7,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        750,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "别的款式？",
+          "现场改装",
+          "我要飙车",
+          "法鸭利",
+          "显清爽",
+          "丝滑蓝",
+          "我要了",
+          "这就安排"
+        ],
+        [
+          "别的款式？",
+          "现场改装",
+          "我要飙车",
+          "法鸭利",
+          "吸眼球",
+          "骚气粉",
+          "我要了",
+          "这就安排"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "还是太贵",
+          "旧车能抵",
+          "保险都有？",
+          "全险都含",
+          "保修多久",
+          "十年质保"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6106,
+      "BuildingId": 1006,
+      "name": "再借几百年",
+      "desc": "模样带点小吓人，实则温顺得很，别人换三回马，它还能陪你战五年。",
+      "Appearance": 6151,
+      "Type": 1,
+      "Sort": 8,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1000,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "都有啥",
+          "应有尽有",
+          "长久陪伴",
+          "小菜一碟​"
+        ]
+      ],
+      "Desc3": [
+        [
+          "还是太贵",
+          "旧车能抵",
+          "保险都有？",
+          "全险都含",
+          "保修多久",
+          "十年质保"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6107,
+      "BuildingId": 1006,
+      "name": "大捷战豹",
+      "desc": "专为征战量身造，抗揍能打双在线，战友见了眼馋，都想蹭车往前冲。",
+      "Appearance": 6161,
+      "Type": 1,
+      "Sort": 9,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1200,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "能定制？",
+          "尽管提",
+          "能打胜仗",
+          "大捷战豹",
+          "提振士气",
+          "骄傲红",
+          "试试看",
+          "遵命"
+        ],
+        [
+          "能定制？",
+          "尽管提",
+          "能打胜仗",
+          "大捷战豹",
+          "要显沉稳",
+          "沧浪青",
+          "试试看",
+          "遵命"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "有优惠吗",
+          "分期免息",
+          "包上牌？",
+          "那当然",
+          "提车快不？",
+          "现在就提"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6108,
+      "BuildingId": 1006,
+      "name": "金戈铁马",
+      "desc": "鬃毛燃得像火，脾气爆得像炮仗，冲锋陷阵它最急，战场上的急先锋。",
+      "Appearance": 6171,
+      "Type": 1,
+      "Sort": 10,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1400,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "选哪匹呢",
+          "别着急",
+          "霸气侧漏",
+          "遵命​"
+        ]
+      ],
+      "Desc3": [
+        [
+          "有优惠吗",
+          "分期免息",
+          "包上牌？",
+          "那当然",
+          "提车快不？",
+          "现在就提"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6109,
+      "BuildingId": 1006,
+      "name": "锋芒战轮",
+      "desc": "车轮带刺专扎 “小坏蛋”，近战能当武器使，谁碰谁嗷嗷叫，攻防都靠谱。",
+      "Appearance": 6181,
+      "Type": 1,
+      "Sort": 11,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1600,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "有优惠吗",
+          "分期免息",
+          "包上牌？",
+          "那当然",
+          "提车快不？",
+          "现在就提"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6110,
+      "BuildingId": 1006,
+      "name": "缨菲霓迪",
+      "desc": "秀气得像块棉花糖，猛男坐上去秒变 “小公举”，颜值在线，真香警告！",
+      "Appearance": 6102,
+      "Type": 1,
+      "Sort": 12,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1800,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "要时尚",
+          "最潮改装",
+          "气质不凡",
+          "缨菲霓迪",
+          "少女心",
+          "粉桃花",
+          "没问题",
+          "马上备"
+        ],
+        [
+          "要时尚",
+          "最潮改装",
+          "气质不凡",
+          "缨菲霓迪",
+          "显淡雅",
+          "蓝雪花",
+          "没问题",
+          "马上备"
+        ],
+        [
+          "要时尚",
+          "最潮改装",
+          "气质不凡",
+          "缨菲霓迪",
+          "显淡雅",
+          "蓝雪花",
+          "没问题",
+          "马上备"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "包上牌？",
+          "包办好",
+          "包保养？",
+          "首年免费",
+          "包保险？",
+          "全险都含"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6111,
+      "BuildingId": 1006,
+      "name": "刀马旦",
+      "desc": "自带戏曲范儿出场，摇头晃脑有腔调，骑上它，戏台都省了搭建费。",
+      "Appearance": 6112,
+      "Type": 1,
+      "Sort": 13,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2000,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "哪匹更棒",
+          "您说我帮选",
+          "气质优雅",
+          "得嘞"
+        ]
+      ],
+      "Desc3": [
+        [
+          "包上牌？",
+          "包办好",
+          "包保养？",
+          "首年免费",
+          "包保险？",
+          "全险都含"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6112,
+      "BuildingId": 1006,
+      "name": "梨园绣轮",
+      "desc": "四驱典雅车轮，装上马车秒变 “绅士”“淑女”，路过的都想驻足鞠躬。",
+      "Appearance": 6191,
+      "Type": 1,
+      "Sort": 14,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2200,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "包上牌？",
+          "包办好",
+          "包保养？",
+          "首年免费",
+          "包保险？",
+          "全险都含"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6113,
+      "BuildingId": 1006,
+      "name": "宝石捷",
+      "desc": "满车财宝，还带保险柜，小偷见了只能含泪转行，富贵又安全。",
+      "Appearance": 6122,
+      "Type": 1,
+      "Sort": 15,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2400,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "极致奢华",
+          "都能改",
+          "越贵越好",
+          "宝石捷",
+          "聚财气",
+          "金光闪闪",
+          "看看啥样",
+          "立马开工"
+        ],
+        [
+          "极致奢华",
+          "都能改",
+          "越贵越好",
+          "宝石捷",
+          "显大气",
+          "风水宝蓝",
+          "看看啥样",
+          "立马开工"
+        ],
+        [
+          "极致奢华",
+          "都能改",
+          "越贵越好",
+          "宝石捷",
+          "讨吉利",
+          "红红火火",
+          "看看啥样",
+          "立马开工"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "这次很满意",
+          "特别荣幸",
+          "全款拿下",
+          "老板大气",
+          "保养如何",
+          "专业免预约"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6114,
+      "BuildingId": 1006,
+      "name": "霸总驾到",
+      "desc": "西装墨镜一上身，气场直逼两米八，路过的见了，都得喊声老板。",
+      "Appearance": 6132,
+      "Type": 1,
+      "Sort": 16,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2600,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "就要贵的",
+          "还有呢？",
+          "随叫随到",
+          "小菜一碟​"
+        ]
+      ],
+      "Desc3": [
+        [
+          "这次很满意",
+          "特别荣幸",
+          "全款拿下",
+          "老板大气",
+          "保养如何",
+          "专业免预约"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6115,
+      "BuildingId": 1006,
+      "name": "财源滚滚",
+      "desc": "转起来哗啦啦响，像在数钱不停歇，财运全被它 “卷” 回家。",
+      "Appearance": 6201,
+      "Type": 1,
+      "Sort": 17,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2800,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "这次很满意",
+          "特别荣幸",
+          "全款拿下",
+          "老板大气",
+          "保养如何",
+          "专业免预约"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6116,
+      "BuildingId": 1006,
+      "name": "彪悍野马",
+      "desc": "泥地山路随便造，底盘高得能碾石头，想去哪就去哪，路况从不是问题。",
+      "Appearance": 6142,
+      "Type": 1,
+      "Sort": 18,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3000,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "续航要强",
+          "没问题",
+          "还要越野",
+          "彪悍野马",
+          "耐脏的",
+          "低调黑",
+          "来辆看看",
+          "这就改装"
+        ],
+        [
+          "续航要强",
+          "没问题",
+          "还要越野",
+          "彪悍野马",
+          "显活力",
+          "活力黄",
+          "来辆看看",
+          "这就改装"
+        ],
+        [
+          "续航要强",
+          "没问题",
+          "还要越野",
+          "彪悍野马",
+          "贴自然",
+          "户外青",
+          "来辆看看",
+          "这就改装"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "有赠品吗",
+          "坐垫一套",
+          "保险都有？",
+          "全险都含",
+          "提车快不？",
+          "现在就提"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6117,
+      "BuildingId": 1006,
+      "name": "探险家",
+      "desc": "背着帐篷睡袋像搬家，进了荒野比向导还靠谱，啥装备都带齐了。",
+      "Appearance": 6152,
+      "Type": 1,
+      "Sort": 19,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3200,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "长途跋涉",
+          "体力绝对强",
+          "不迷路",
+          "没问题​"
+        ]
+      ],
+      "Desc3": [
+        [
+          "有赠品吗",
+          "坐垫一套",
+          "保险都有？",
+          "全险都含",
+          "提车快不？",
+          "现在就提"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6118,
+      "BuildingId": 1006,
+      "name": "风雨无阻",
+      "desc": "轮胎粗得像胳膊，烂路碾过如平地，颠簸不存在，再差路况也不怕。",
+      "Appearance": 6211,
+      "Type": 1,
+      "Sort": 20,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3400,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "有赠品吗",
+          "坐垫一套",
+          "保险都有？",
+          "全险都含",
+          "提车快不？",
+          "现在就提"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6119,
+      "BuildingId": 1006,
+      "name": "玛莎兰蒂",
+      "desc": "贵妇人专属巡游兰花车，华贵气质藏不住，高端场合就得它撑场。",
+      "Appearance": 6162,
+      "Type": 1,
+      "Sort": 21,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3600,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "大气上档次",
+          "别的要求？",
+          "要够端庄",
+          "玛莎兰蒂",
+          "赴宴用",
+          "优雅青",
+          "有点心动",
+          "别走开"
+        ],
+        [
+          "大气上档次",
+          "别的要求？",
+          "要够华丽",
+          "玛莎兰蒂",
+          "撑场面",
+          "贵气黄",
+          "有点心动",
+          "别走开"
+        ],
+        [
+          "大气上档次",
+          "别的要求？",
+          "要够张扬",
+          "玛莎兰蒂",
+          "回头率拉满",
+          "炸街红",
+          "有点心动",
+          "别走开"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": [
+        [
+          "价格好说",
+          "老板大气",
+          "保险都有？",
+          "全险都含",
+          "保养如何",
+          "专业免预约"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6120,
+      "BuildingId": 1006,
+      "name": "名媛贵妇",
+      "desc": "遮阳帽大得能藏人，优雅得像在喝下午茶，马界优雅天花板没跑。",
+      "Appearance": 6172,
+      "Type": 1,
+      "Sort": 22,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3800,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": [
+        [
+          "气质出众",
+          "还有吗？",
+          "仪态万方",
+          "这就来"
+        ]
+      ],
+      "Desc3": [
+        [
+          "价格好说",
+          "老板大气",
+          "保险都有？",
+          "全险都含",
+          "保养如何",
+          "专业免预约"
+        ]
+      ],
+      "AnimationName": [
+        "eff_pre_shangpu_aimashi_horseunlock"
+      ],
+      "AnimationParam": [
+        [
+          7500,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 6121,
+      "BuildingId": 1006,
+      "name": "一路生花",
+      "desc": "轮毂美得像朵花，滚起来像在开花，路人见了都看呆，颜值太能打。",
+      "Appearance": 6221,
+      "Type": 1,
+      "Sort": 23,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        4000,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": [
+        [
+          "价格好说",
+          "老板大气",
+          "保险都有？",
+          "全险都含",
+          "保养如何",
+          "专业免预约"
+        ]
+      ],
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6201,
+      "BuildingId": 1006,
+      "name": "提车区",
+      "desc": "提车纪念描述",
+      "Appearance": 6231,
+      "Type": 0,
+      "Sort": 24,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6206,
+      "BuildingId": 1006,
+      "name": "提车纪念",
+      "desc": "提车就送定制好礼，喜悦时刻定格住，仪式感直接拉满，超有纪念意义。",
+      "Appearance": 6232,
+      "Type": 2,
+      "Sort": 25,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        2,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6202,
+      "BuildingId": 1006,
+      "name": "加草站",
+      "desc": "新鲜草料管够，马儿吃饱喝足，续航直接拉满，赶路干活不掉链子！",
+      "Appearance": 6241,
+      "Type": 2,
+      "Sort": 26,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        3,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6203,
+      "BuildingId": 1006,
+      "name": "茶水区升级",
+      "desc": "茶水点心全新焕样，歇脚小坐片刻，舒心解乏，赶路更有劲。",
+      "Appearance": 6012,
+      "Type": 2,
+      "Sort": 27,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        5,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6204,
+      "BuildingId": 1006,
+      "name": "洗车服务",
+      "desc": "马车马匹精洗焕新，里里外外洁净亮堂，出门倍有面子。",
+      "Appearance": 6251,
+      "Type": 2,
+      "Sort": 28,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        7,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 6205,
+      "BuildingId": 1006,
+      "name": "马车西施",
+      "desc": "美女专员贴心服务，选车养护都舒心，看了还想看，体验超棒。",
+      "Appearance": 6052,
+      "Type": 2,
+      "Sort": 29,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        9,
+        1006,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1006,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    }
+  ],
+  "原包_ShopAppearanceCfg": [
+    {
+      "Id": 6010,
+      "Group": 6010,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6010",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6011,
+      "Group": 6011,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6011",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6021,
+      "Group": 6021,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6021",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6031,
+      "Group": 6031,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6031",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6041,
+      "Group": 6041,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6041",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6051,
+      "Group": 6051,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "1006_6051",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6061,
+      "Group": 6061,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "1006_6061",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6071,
+      "Group": 6071,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "1006_6071",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6081,
+      "Group": 6081,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "1006_6081",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6091,
+      "Group": 6131,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6091",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6101,
+      "Group": 6101,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6101",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6111,
+      "Group": 6111,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6111",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6121,
+      "Group": 6121,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6121",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6131,
+      "Group": 6131,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6131",
+      "PreAppearance": 6091,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6141,
+      "Group": 6141,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6141",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6151,
+      "Group": 6151,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6151",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6161,
+      "Group": 6161,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6161",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6171,
+      "Group": 6171,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6171",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6181,
+      "Group": 6181,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6181",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6102,
+      "Group": 6101,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6102",
+      "PreAppearance": 6101,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6112,
+      "Group": 6111,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6112",
+      "PreAppearance": 6111,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6191,
+      "Group": 6191,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6191",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6122,
+      "Group": 6121,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6122",
+      "PreAppearance": 6121,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6132,
+      "Group": 6131,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6132",
+      "PreAppearance": 6131,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6201,
+      "Group": 6201,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6201",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6142,
+      "Group": 6141,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6142",
+      "PreAppearance": 6141,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6152,
+      "Group": 6151,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6152",
+      "PreAppearance": 6151,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6211,
+      "Group": 6211,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6211",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6162,
+      "Group": 6161,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6162",
+      "PreAppearance": 6161,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6172,
+      "Group": 6171,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6172",
+      "PreAppearance": 6171,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6221,
+      "Group": 6221,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6221",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6231,
+      "Group": 6231,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6231",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6232,
+      "Group": 6232,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "1006_6232",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6241,
+      "Group": 6241,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6241",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6012,
+      "Group": 6011,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6012",
+      "PreAppearance": 6011,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6013,
+      "Group": 6013,
+      "BuildingId": 1006,
+      "Type": 3,
+      "Resource": "1006_6013",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6251,
+      "Group": 6251,
+      "BuildingId": 1006,
+      "Type": 1,
+      "Resource": "1006_6251",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 6052,
+      "Group": 6051,
+      "BuildingId": 1006,
+      "Type": 2,
+      "Resource": "1006_6052",
+      "PreAppearance": 6051,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    }
+  ],
+  "原包_BuildingLevelCfg": [
+    {
+      "Id": 1006000,
+      "BuildingId": 1006,
+      "Level": 0,
+      "lvName": "空房",
+      "Resource": "100_1006_0",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          2200,
+          0,
+          0
+        ]
+      ],
+      "Cost": "",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006001,
+      "BuildingId": 1006,
+      "Level": 1,
+      "lvName": "1星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          2200,
+          0,
+          0
+        ]
+      ],
+      "Cost": "100001|300000000",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006002,
+      "BuildingId": 1006,
+      "Level": 2,
+      "lvName": "2星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|10",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          20000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006003,
+      "BuildingId": 1006,
+      "Level": 3,
+      "lvName": "3星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|24",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          40000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006004,
+      "BuildingId": 1006,
+      "Level": 4,
+      "lvName": "4星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|40",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          60000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006005,
+      "BuildingId": 1006,
+      "Level": 5,
+      "lvName": "5星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|70",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          100000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006006,
+      "BuildingId": 1006,
+      "Level": 6,
+      "lvName": "6星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|100",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          140000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006007,
+      "BuildingId": 1006,
+      "Level": 7,
+      "lvName": "7星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|140",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          190000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006008,
+      "BuildingId": 1006,
+      "Level": 8,
+      "lvName": "8星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          240000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006009,
+      "BuildingId": 1006,
+      "Level": 9,
+      "lvName": "9星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|300",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          290000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006010,
+      "BuildingId": 1006,
+      "Level": 10,
+      "lvName": "10星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          340000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006011,
+      "BuildingId": 1006,
+      "Level": 11,
+      "lvName": "11星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|500",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          400000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006012,
+      "BuildingId": 1006,
+      "Level": 12,
+      "lvName": "12星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          460000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006013,
+      "BuildingId": 1006,
+      "Level": 13,
+      "lvName": "13星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          520000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006014,
+      "BuildingId": 1006,
+      "Level": 14,
+      "lvName": "14星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          580000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006015,
+      "BuildingId": 1006,
+      "Level": 15,
+      "lvName": "15星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          640000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006016,
+      "BuildingId": 1006,
+      "Level": 16,
+      "lvName": "16星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          700000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006017,
+      "BuildingId": 1006,
+      "Level": 17,
+      "lvName": "17星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          760000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006018,
+      "BuildingId": 1006,
+      "Level": 18,
+      "lvName": "18星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          820000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006019,
+      "BuildingId": 1006,
+      "Level": 19,
+      "lvName": "19星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          880000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006020,
+      "BuildingId": 1006,
+      "Level": 20,
+      "lvName": "20星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          940000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1006021,
+      "BuildingId": 1006,
+      "Level": 21,
+      "lvName": "21星商铺",
+      "Resource": "100_1006_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|4000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1006,
+          1000000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    }
+  ]
+}

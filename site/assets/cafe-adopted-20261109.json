@@ -1,0 +1,3487 @@
+{
+  "项目_ShopCfg": [
+    {
+      "Id": 1001,
+      "BaseEarnSpeed": 1,
+      "CostRate": 10000,
+      "AppointParam": [
+        1,
+        50,
+        500,
+        1000
+      ],
+      "PosReward": null,
+      "PosSkill": null
+    }
+  ],
+  "项目_BuildingInfoCfg": [
+    {
+      "Id": 1001,
+      "MapId": 100,
+      "Type": 120,
+      "UnlockType": 1,
+      "name": "咖啡早餐厅",
+      "desc": "旅馆旁的美式咖啡早餐厅，四组设备备货并供应早餐。",
+      "Alwayshere": 0,
+      "MaximumCount": 0,
+      "CashProgressBarPos": [
+        -233,
+        826
+      ],
+      "EffectPos": [
+        24,
+        -34
+      ],
+      "EffectScale": [
+        150,
+        150
+      ],
+      "NameplatePos": [
+        0,
+        0
+      ],
+      "BtnPos": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "RefuseCustomer": null,
+      "TalkProb": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "Desc4": null,
+      "Desc5": null,
+      "Desc6": null
+    }
+  ],
+  "项目_BuildingLevelCfg": [
+    {
+      "Id": 1001000,
+      "BuildingId": 1001,
+      "Level": 0,
+      "lvName": "空房",
+      "Resource": "cafe_building_0",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001001,
+      "BuildingId": 1001,
+      "Level": 1,
+      "lvName": "1星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100001|0",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001002,
+      "BuildingId": 1001,
+      "Level": 2,
+      "lvName": "2星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|5",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          20000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001003,
+      "BuildingId": 1001,
+      "Level": 3,
+      "lvName": "3星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|12",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          40000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001004,
+      "BuildingId": 1001,
+      "Level": 4,
+      "lvName": "4星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|20",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          60000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001005,
+      "BuildingId": 1001,
+      "Level": 5,
+      "lvName": "5星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|35",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          100000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001006,
+      "BuildingId": 1001,
+      "Level": 6,
+      "lvName": "6星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|50",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          140000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001007,
+      "BuildingId": 1001,
+      "Level": 7,
+      "lvName": "7星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|70",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          190000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001008,
+      "BuildingId": 1001,
+      "Level": 8,
+      "lvName": "8星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|100",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          240000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001009,
+      "BuildingId": 1001,
+      "Level": 9,
+      "lvName": "9星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|150",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          290000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001010,
+      "BuildingId": 1001,
+      "Level": 10,
+      "lvName": "10星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          340000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001011,
+      "BuildingId": 1001,
+      "Level": 11,
+      "lvName": "11星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|250",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          400000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001012,
+      "BuildingId": 1001,
+      "Level": 12,
+      "lvName": "12星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|300",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          460000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001013,
+      "BuildingId": 1001,
+      "Level": 13,
+      "lvName": "13星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          520000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001014,
+      "BuildingId": 1001,
+      "Level": 14,
+      "lvName": "14星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|500",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          580000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001015,
+      "BuildingId": 1001,
+      "Level": 15,
+      "lvName": "15星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          640000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001016,
+      "BuildingId": 1001,
+      "Level": 16,
+      "lvName": "16星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          700000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001017,
+      "BuildingId": 1001,
+      "Level": 17,
+      "lvName": "17星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          760000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001018,
+      "BuildingId": 1001,
+      "Level": 18,
+      "lvName": "18星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          820000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001019,
+      "BuildingId": 1001,
+      "Level": 19,
+      "lvName": "19星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          880000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001020,
+      "BuildingId": 1001,
+      "Level": 20,
+      "lvName": "20星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          940000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001021,
+      "BuildingId": 1001,
+      "Level": 21,
+      "lvName": "21星商铺",
+      "Resource": "cafe_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          1000000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    }
+  ],
+  "项目_ShopBusinessCfg": [
+    {
+      "Id": 1102,
+      "BuildingId": 1001,
+      "name": "煎蛋早餐盘",
+      "desc": "煎蛋刚出锅，趁热吃。先来一份简单的早餐。",
+      "Appearance": 1021,
+      "Type": 1,
+      "Sort": 1,
+      "Param": [
+        50,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份煎蛋早餐盘正合胃口。",
+          "这份煎蛋早餐盘正合胃口。"
+        ]
+      ],
+      "Desc2": [
+        [
+          "还想再尝尝原来的味道。"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1102_0",
+        "cafe_unlock_1102_1"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          8000
+        ],
+        [
+          10000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1101,
+      "BuildingId": 1001,
+      "name": "蜂蜜华夫饼",
+      "desc": "外边微脆，里面松软，淋上蜂蜜刚刚好。",
+      "Appearance": 1011,
+      "Type": 1,
+      "Sort": 2,
+      "Param": [
+        50,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        10,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份蜂蜜华夫饼正合胃口。",
+          "这份蜂蜜华夫饼正合胃口。",
+          "这份蜂蜜华夫饼正合胃口。"
+        ]
+      ],
+      "Desc2": [
+        [
+          "还想再尝尝原来的味道。"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1101_0",
+        "cafe_unlock_1101_1"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          0
+        ],
+        [
+          8000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1103,
+      "BuildingId": 1001,
+      "name": "烤吐司",
+      "desc": "面包烤得金黄酥脆，趁热咬上一口。",
+      "Appearance": 1031,
+      "Type": 1,
+      "Sort": 3,
+      "Param": [
+        100,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        20,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份烤吐司正合胃口。",
+          "这份烤吐司正合胃口。",
+          "这份烤吐司正合胃口。"
+        ]
+      ],
+      "Desc2": [
+        [
+          "还想再尝尝原来的味道。"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1103_0",
+        "cafe_unlock_1103_1"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          10000
+        ],
+        [
+          6000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1104,
+      "BuildingId": 1001,
+      "name": "美式咖啡",
+      "desc": "一杯热美式，陪你慢慢醒醒神。",
+      "Appearance": 1041,
+      "Type": 1,
+      "Sort": 4,
+      "Param": [
+        100,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        30,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份美式咖啡正合胃口。",
+          "这份美式咖啡正合胃口。",
+          "这份美式咖啡正合胃口。"
+        ]
+      ],
+      "Desc2": [
+        [
+          "还想再尝尝原来的味道。"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1104_0",
+        "cafe_unlock_1104_1"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          10000
+        ],
+        [
+          6000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1105,
+      "BuildingId": 1001,
+      "name": "煎蛋香肠早餐盘",
+      "desc": "煎蛋加上焦香的香肠，这份早餐更顶饱。",
+      "Appearance": 1021,
+      "Type": 1,
+      "Sort": 5,
+      "Param": [
+        150,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        40,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份煎蛋香肠早餐盘正合胃口。",
+          "这份煎蛋香肠早餐盘正合胃口。",
+          "这份煎蛋香肠早餐盘正合胃口。"
+        ]
+      ],
+      "Desc2": [
+        [
+          "还想再尝尝原来的味道。"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1106,
+      "BuildingId": 1001,
+      "name": "果酱吐司",
+      "desc": "热吐司抹上果酱，甜香就多了一层。",
+      "Appearance": 1031,
+      "Type": 1,
+      "Sort": 6,
+      "Param": [
+        150,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        50,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份果酱吐司正合胃口。",
+          "这份果酱吐司正合胃口。",
+          "这份果酱吐司正合胃口。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1107,
+      "BuildingId": 1001,
+      "name": "冰淇淋华夫饼",
+      "desc": "热华夫饼配一球冰淇淋，今天吃点特别的。",
+      "Appearance": 1011,
+      "Type": 1,
+      "Sort": 7,
+      "Param": [
+        200,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        200,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份冰淇淋华夫饼正合胃口。",
+          "这份冰淇淋华夫饼正合胃口。",
+          "这份冰淇淋华夫饼正合胃口。"
+        ]
+      ],
+      "Desc2": [
+        [
+          "还想再尝尝原来的味道。"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1108,
+      "BuildingId": 1001,
+      "name": "拉花拿铁",
+      "desc": "奶香和咖啡香融在一起，杯面再添一朵小拉花。",
+      "Appearance": 1041,
+      "Type": 1,
+      "Sort": 8,
+      "Param": [
+        200,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        300,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份拉花拿铁正合胃口。",
+          "这份拉花拿铁正合胃口。",
+          "这份拉花拿铁正合胃口。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1109,
+      "BuildingId": 1001,
+      "name": "煎蛋香肠培根早餐盘",
+      "desc": "煎蛋、香肠，再加几片培根，丰盛的一盘端上桌。",
+      "Appearance": 1021,
+      "Type": 1,
+      "Sort": 9,
+      "Param": [
+        250,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        400,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份煎蛋香肠培根早餐盘正合胃口。",
+          "这份煎蛋香肠培根早餐盘正合胃口。",
+          "这份煎蛋香肠培根早餐盘正合胃口。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1110,
+      "BuildingId": 1001,
+      "name": "双层吐司",
+      "desc": "吐司叠成双层，果酱夹在中间，一口更满足。",
+      "Appearance": 1031,
+      "Type": 1,
+      "Sort": 10,
+      "Param": [
+        250,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        500,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这份双层吐司正合胃口。",
+          "这份双层吐司正合胃口。",
+          "这份双层吐司正合胃口。"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1201,
+      "BuildingId": 1001,
+      "name": "煎台升级",
+      "desc": "煎台换新了，煎蛋、香肠和培根都能做得香喷喷。",
+      "Appearance": 1022,
+      "Type": 2,
+      "Sort": 11,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        2,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1201_0",
+        "cafe_unlock_1201_1"
+      ],
+      "AnimationParam": [
+        [
+          10000,
+          0,
+          10000
+        ],
+        [
+          14000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1203,
+      "BuildingId": 1001,
+      "name": "华夫饼机升级",
+      "desc": "换上新烤盘，烤出一份金黄松软的华夫饼。",
+      "Appearance": 1012,
+      "Type": 2,
+      "Sort": 12,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        3,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1203_0",
+        "cafe_unlock_1203_1"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          8000
+        ],
+        [
+          10000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1202,
+      "BuildingId": 1001,
+      "name": "吐司机升级",
+      "desc": "吐司机焕然一新，烤面包的香气又飘满了柜台。",
+      "Appearance": 1032,
+      "Type": 2,
+      "Sort": 13,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        4,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1202_0",
+        "cafe_unlock_1202_1"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          0
+        ],
+        [
+          8000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1204,
+      "BuildingId": 1001,
+      "name": "咖啡机升级",
+      "desc": "咖啡机擦亮换新，再为你准备一杯热咖啡。",
+      "Appearance": 1042,
+      "Type": 2,
+      "Sort": 14,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        6,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1204_0",
+        "cafe_unlock_1204_1"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          10000
+        ],
+        [
+          6000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1205,
+      "BuildingId": 1001,
+      "name": "店内环境升级",
+      "desc": "柜台和桌椅收拾一新，坐下来，慢慢吃顿早餐。",
+      "Appearance": 1051,
+      "Type": 2,
+      "Sort": 15,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        8,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "cafe_unlock_1205_0",
+        "cafe_unlock_1205_1"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          10000
+        ],
+        [
+          6000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    }
+  ],
+  "项目_ShopAppearanceCfg": [
+    {
+      "Id": 1011,
+      "Group": 1011,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1011",
+      "PreAppearance": 0,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1012,
+      "Group": 1011,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1012",
+      "PreAppearance": 1011,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1021,
+      "Group": 1021,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1021",
+      "PreAppearance": 0,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1022,
+      "Group": 1021,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1022",
+      "PreAppearance": 1021,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1031,
+      "Group": 1031,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1031",
+      "PreAppearance": 0,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1032,
+      "Group": 1031,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1032",
+      "PreAppearance": 1031,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1041,
+      "Group": 1041,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1041",
+      "PreAppearance": 0,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1042,
+      "Group": 1041,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1042",
+      "PreAppearance": 1041,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1051,
+      "Group": 1051,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "cafe_1051",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    }
+  ],
+  "项目_GameConfigCfg": [
+    {
+      "Id": 58,
+      "Param": "SHOP_QUICK_UPGRADE_CONFIG",
+      "Value": "4"
+    },
+    {
+      "Id": 59,
+      "Param": "SHOP_SUPER_QUICK_UPGRADE_CONFIG",
+      "Value": "30"
+    },
+    {
+      "Id": 178,
+      "Param": "SNACK_STAND_AUTO_OPERATE_PARAM",
+      "Value": "4"
+    },
+    {
+      "Id": 179,
+      "Param": "SNACK_STAND_FOOD_NUM_CONFIG",
+      "Value": "1|60;2|40#1|30;2|30;3|40#1|20;2|40;3|40#1|20;2|40;3|40#1|60;2|40#1|30;2|30;3|40#1|20;2|40;3|40#1|20;2|40;3|40#1|30;2|30;3|40#1|60;2|40"
+    },
+    {
+      "Id": 180,
+      "Param": "SNACK_STAND_FOOD_TYPE_NUM_CONFIG",
+      "Value": "1|0;2|0;3|1000;4|2500"
+    },
+    {
+      "Id": 181,
+      "Param": "SNACK_STAND_OFFLINE_BENEFIT_INTERVAL",
+      "Value": "3000"
+    },
+    {
+      "Id": 182,
+      "Param": "SNACK_STAND_OFFLINE_BENEFIT_PARAM",
+      "Value": "12000|0"
+    },
+    {
+      "Id": 183,
+      "Param": "SNACK_STAND_INITIAL_FOOD_LIST",
+      "Value": "1102|1;1102|1;1102|2;1102|2;1102|1;1102|3;1102|2;1102|2;1102|1"
+    }
+  ],
+  "项目_LevelCfg": [
+    {
+      "Id": 1,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 40,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 2,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 3,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 4,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 5,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 6,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 7,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 8,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 9,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 10,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 11,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 12,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 13,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 14,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 15,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 16,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 17,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 18,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 19,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 20,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 21,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 22,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 23,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 24,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 25,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 26,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 27,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 28,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 29,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 30,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 31,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 32,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 33,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 34,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 35,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 36,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 37,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 38,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 39,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 40,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 41,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 42,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 43,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 44,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 45,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 46,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 47,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 48,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 49,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 50,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 51,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 52,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 53,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 54,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 55,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 56,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 57,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 58,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 59,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 60,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 61,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 62,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 63,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 64,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 65,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 66,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 67,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 68,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 69,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 70,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 71,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 72,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 73,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 74,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 75,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 76,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 77,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 78,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 79,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    },
+    {
+      "Id": 80,
+      "SnackBenefit": 0,
+      "ShopLevelLimit": 99999,
+      "OfflineBenefitTime": 28800000
+    }
+  ],
+  "项目_餐品映射": [
+    {
+      "sourceBusinessId": 1102,
+      "sourceAppearance": 1021,
+      "sequence": 1,
+      "group": 1,
+      "stage": "初始",
+      "name": "煎蛋早餐盘",
+      "unlockLevel": 1,
+      "playerDescription": "煎蛋刚出锅，趁热吃。先来一份简单的早餐。",
+      "artDescription": "中间靠下的首个操作位；旧煎台、锅铲、白餐盘，成品为单个煎蛋。",
+      "stageIndex": 1,
+      "projectRootGroupKey": "breakfast_plate"
+    },
+    {
+      "sourceBusinessId": 1101,
+      "sourceAppearance": 1011,
+      "sequence": 2,
+      "group": 2,
+      "stage": "初始",
+      "name": "蜂蜜华夫饼",
+      "unlockLevel": 10,
+      "playerDescription": "外边微脆，里面松软，淋上蜂蜜刚刚好。",
+      "artDescription": "第二个开放的操作位，安排在中部；翻盖华夫饼机、蜂蜜瓶，成品为淋蜂蜜的华夫饼。",
+      "stageIndex": 1,
+      "projectRootGroupKey": "waffle"
+    },
+    {
+      "sourceBusinessId": 1103,
+      "sourceAppearance": 1031,
+      "sequence": 3,
+      "group": 3,
+      "stage": "初始",
+      "name": "烤吐司",
+      "unlockLevel": 20,
+      "playerDescription": "面包烤得金黄酥脆，趁热咬上一口。",
+      "artDescription": "第三个开放，暂置左上方；旧烤面包机与餐盘，成品为不抹果酱的烤吐司。",
+      "stageIndex": 1,
+      "projectRootGroupKey": "toast"
+    },
+    {
+      "sourceBusinessId": 1104,
+      "sourceAppearance": 1041,
+      "sequence": 4,
+      "group": 4,
+      "stage": "初始",
+      "name": "美式咖啡",
+      "unlockLevel": 30,
+      "playerDescription": "一杯热美式，陪你慢慢醒醒神。",
+      "artDescription": "第四个开放，暂置右上方；破旧意式咖啡机仅供应美式，厚陶瓷杯盛深色咖啡。",
+      "stageIndex": 1,
+      "projectRootGroupKey": "coffee"
+    },
+    {
+      "sourceBusinessId": 1105,
+      "sourceAppearance": 1011,
+      "sequence": 5,
+      "group": 1,
+      "stage": "进阶第2档",
+      "name": "煎蛋香肠早餐盘",
+      "unlockLevel": 40,
+      "playerDescription": "煎蛋加上焦香的香肠，这份早餐更顶饱。",
+      "artDescription": "复用早餐盘煎台；餐盘由煎蛋增加香肠，整盘作为一份餐品。",
+      "stageIndex": 2,
+      "projectRootGroupKey": "breakfast_plate"
+    },
+    {
+      "sourceBusinessId": 1106,
+      "sourceAppearance": 1021,
+      "sequence": 6,
+      "group": 3,
+      "stage": "进阶第2档",
+      "name": "果酱吐司",
+      "unlockLevel": 50,
+      "playerDescription": "热吐司抹上果酱，甜香就多了一层。",
+      "artDescription": "复用左上吐司机操作位；吐司表面加红色果酱，旁置果酱罐。",
+      "stageIndex": 2,
+      "projectRootGroupKey": "toast"
+    },
+    {
+      "sourceBusinessId": 1107,
+      "sourceAppearance": 1031,
+      "sequence": 7,
+      "group": 2,
+      "stage": "进阶第2档",
+      "name": "冰淇淋华夫饼",
+      "unlockLevel": 200,
+      "playerDescription": "热华夫饼配一球冰淇淋，今天吃点特别的。",
+      "artDescription": "复用华夫饼操作位；华夫饼上增加冰淇淋球，冰淇淋随整盘制作、交付，不新增独立设备位。",
+      "stageIndex": 2,
+      "projectRootGroupKey": "waffle"
+    },
+    {
+      "sourceBusinessId": 1108,
+      "sourceAppearance": 1041,
+      "sequence": 8,
+      "group": 4,
+      "stage": "进阶第2档",
+      "name": "拉花拿铁",
+      "unlockLevel": 300,
+      "playerDescription": "奶香和咖啡香融在一起，杯面再添一朵小拉花。",
+      "artDescription": "沿用当前拓展状态的咖啡机，使用蒸汽棒与奶缸表现制作；成品奶泡上有拉花，制作动画自动表现。",
+      "stageIndex": 2,
+      "projectRootGroupKey": "coffee"
+    },
+    {
+      "sourceBusinessId": 1109,
+      "sourceAppearance": 1031,
+      "sequence": 9,
+      "group": 1,
+      "stage": "进阶第3档",
+      "name": "煎蛋香肠培根早餐盘",
+      "unlockLevel": 400,
+      "playerDescription": "煎蛋、香肠，再加几片培根，丰盛的一盘端上桌。",
+      "artDescription": "复用早餐盘煎台；保留煎蛋和香肠，再增加培根，整盘作为一份餐品。",
+      "stageIndex": 3,
+      "projectRootGroupKey": "breakfast_plate"
+    },
+    {
+      "sourceBusinessId": 1110,
+      "sourceAppearance": 1011,
+      "sequence": 10,
+      "group": 3,
+      "stage": "进阶第3档",
+      "name": "双层吐司",
+      "unlockLevel": 500,
+      "playerDescription": "吐司叠成双层，果酱夹在中间，一口更满足。",
+      "artDescription": "复用左上吐司机操作位；两层吐司夹果酱叠放，整体作为一份餐品，不拆成两份需求。",
+      "stageIndex": 3,
+      "projectRootGroupKey": "toast"
+    }
+  ],
+  "项目_设备拓展": [
+    {
+      "sequence": 1,
+      "referenceExpandLevel": 2,
+      "name": "煎台升级",
+      "upgradeTarget": "早餐盘设备",
+      "playerDescription": "煎台换新了，煎蛋、香肠和培根都能做得香喷喷。",
+      "artDescription": "原位替换为整洁的金属煎台，更新面板、旋钮与锅铲；保留当前早餐盘档位。",
+      "projectGroup": 1,
+      "appearanceUsage": "引用本组升级设备外观；PreAppearance指向本组原设备"
+    },
+    {
+      "sequence": 2,
+      "referenceExpandLevel": 3,
+      "name": "华夫饼机升级",
+      "upgradeTarget": "华夫饼设备",
+      "playerDescription": "换上新烤盘，烤出一份金黄松软的华夫饼。",
+      "artDescription": "原位替换华夫饼机外壳、翻盖与烤盘，增加指示灯；成品仍按当前餐品档位显示。",
+      "projectGroup": 2,
+      "appearanceUsage": "引用本组升级设备外观；PreAppearance指向本组原设备"
+    },
+    {
+      "sequence": 3,
+      "referenceExpandLevel": 4,
+      "name": "吐司机升级",
+      "upgradeTarget": "吐司设备",
+      "playerDescription": "吐司机焕然一新，烤面包的香气又飘满了柜台。",
+      "artDescription": "原位替换为较新的金属吐司机，更新拉杆、旋钮与接屑盘；不增加出餐位。",
+      "projectGroup": 3,
+      "appearanceUsage": "引用本组升级设备外观；PreAppearance指向本组原设备"
+    },
+    {
+      "sequence": 4,
+      "referenceExpandLevel": 6,
+      "name": "咖啡机升级",
+      "upgradeTarget": "咖啡设备",
+      "playerDescription": "咖啡机擦亮换新，再为你准备一杯热咖啡。",
+      "artDescription": "原位替换破旧机身、操作面板、蒸汽棒与接水盘；支持美式与拿铁各自的制作表现。",
+      "projectGroup": 4,
+      "appearanceUsage": "引用本组升级设备外观；PreAppearance指向本组原设备"
+    },
+    {
+      "sequence": 5,
+      "referenceExpandLevel": 8,
+      "name": "店内环境升级",
+      "upgradeTarget": "店内环境",
+      "playerDescription": "柜台和桌椅收拾一新，坐下来，慢慢吃顿早餐。",
+      "artDescription": "最后一档统一更新墙面、地面、柜台饰面、桌椅与灯具；保持四设备位置、顾客位置和通行空间。",
+      "projectGroup": null,
+      "appearanceUsage": "引用环境外观，不接入餐品设备链"
+    }
+  ],
+  "原包_ShopBusinessCfg": [
+    {
+      "Id": 1102,
+      "BuildingId": 1001,
+      "name": "烤串",
+      "desc": "新鲜肉品，多色彩椒，独家调料，配上精准的火候掌控，美味烤串完美出炉！",
+      "Appearance": 1021,
+      "Type": 1,
+      "Sort": 1,
+      "Param": [
+        50,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "救命…怎么越吃越饿！",
+          "猎奇成功！意外好吃！我能再吃五个！"
+        ]
+      ],
+      "Desc2": [
+        [
+          "烤串居然下架了？"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          8000
+        ],
+        [
+          10000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1101,
+      "BuildingId": 1001,
+      "name": "煎饼果子",
+      "desc": "鸡蛋一打，薄脆往面皮里一卷，再刷上秘制酱料，一口下去，满是江宁街头烟火气！",
+      "Appearance": 1011,
+      "Type": 1,
+      "Sort": 2,
+      "Param": [
+        50,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        10,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "薄脆的声音太治愈了！",
+          "建议全国巡回摆摊。",
+          "下次我要双蛋双脆！"
+        ]
+      ],
+      "Desc2": [
+        [
+          "我只喜欢吃原味煎饼果子！"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          0
+        ],
+        [
+          8000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1103,
+      "BuildingId": 1001,
+      "name": "炸淀粉肠",
+      "desc": "外酥里嫩的淀粉肠无论在哪里，都是永远的小吃摊之王！",
+      "Appearance": 1031,
+      "Type": 1,
+      "Sort": 3,
+      "Param": [
+        100,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        20,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "吃完再减肥吧！",
+          "建议全国巡回摆摊。",
+          "好香~淀粉肠要趁热吃！"
+        ]
+      ],
+      "Desc2": [
+        [
+          "淀粉肠才是永远的神！"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          10000
+        ],
+        [
+          6000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1104,
+      "BuildingId": 1001,
+      "name": "可乐",
+      "desc": "冰爽可乐，万能搭子，气泡在舌尖舞动，唤醒全身的快乐细胞。",
+      "Appearance": 1041,
+      "Type": 1,
+      "Sort": 4,
+      "Param": [
+        100,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        30,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "啊~快乐了！",
+          "可乐还是得加冰！",
+          "好上头的感觉！"
+        ]
+      ],
+      "Desc2": [
+        [
+          "可乐没了，我不快乐了！"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          10000
+        ],
+        [
+          6000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1105,
+      "BuildingId": 1001,
+      "name": "辣条煎饼",
+      "desc": "辣条煎饼新组合，一吃忘不了！不知是哪个小天才的创意想法？",
+      "Appearance": 1011,
+      "Type": 1,
+      "Sort": 5,
+      "Param": [
+        150,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        40,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "真的不能买一送一吗？",
+          "救命…怎么越吃越饿！",
+          "嗯，就是这个味道！"
+        ]
+      ],
+      "Desc2": [
+        [
+          "呃，只想吃辣条煎饼……"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1106,
+      "BuildingId": 1001,
+      "name": "烤生蚝",
+      "desc": "烤生蚝鲜美多汁，蒜蓉与香料的点缀，让每一口都充满海洋的馈赠。",
+      "Appearance": 1021,
+      "Type": 1,
+      "Sort": 6,
+      "Param": [
+        150,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        50,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "这生蚝真新鲜！",
+          "建议全国巡回摆摊。",
+          "我能再吃五个！"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1107,
+      "BuildingId": 1001,
+      "name": "炸薯条",
+      "desc": "金黄酥脆的炸薯条，简单却美味，是小吃摊的经典之选。",
+      "Appearance": 1031,
+      "Type": 1,
+      "Sort": 7,
+      "Param": [
+        200,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        200,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "吃完再减肥吧！",
+          "真的不能买一送一吗？",
+          "薯条加番茄酱绝了！"
+        ]
+      ],
+      "Desc2": [
+        [
+          "没有薯条，我可怎么活呀！"
+        ]
+      ],
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1108,
+      "BuildingId": 1001,
+      "name": "美年达",
+      "desc": "清爽的美年达，果香四溢，气泡细腻，快乐就是如此简单。",
+      "Appearance": 1041,
+      "Type": 1,
+      "Sort": 8,
+      "Param": [
+        200,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        300,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "好喝！",
+          "每天一杯，快乐神仙！",
+          "真的不能买一送一吗？"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1109,
+      "BuildingId": 1001,
+      "name": "臭豆腐",
+      "desc": "闻着臭，吃着香，是它特殊的风味。爱它的人为它疯狂，欲罢不能！",
+      "Appearance": 1031,
+      "Type": 1,
+      "Sort": 9,
+      "Param": [
+        250,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        400,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "吃完再减肥吧！",
+          "救命…怎么越吃越饿！",
+          "闻着臭吃着真香！"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1110,
+      "BuildingId": 1001,
+      "name": "辣条培根煎饼",
+      "desc": "培根与辣条的完美结合，煎饼里藏着麻辣鲜香，混搭高手，不吃后悔！",
+      "Appearance": 1011,
+      "Type": 1,
+      "Sort": 10,
+      "Param": [
+        250,
+        0,
+        0,
+        0
+      ],
+      "unlockType": 11003,
+      "UnlockParam": [
+        500,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": [
+        [
+          "嗯，就是这个味道！",
+          "建议全国巡回摆摊。",
+          "这组合太罪恶了！"
+        ]
+      ],
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 1201,
+      "BuildingId": 1001,
+      "name": "增加桌布",
+      "desc": "简洁桌布更添精致，出摊小细节，狠狠拿捏了！",
+      "Appearance": 1051,
+      "Type": 2,
+      "Sort": 11,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        2,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          10000,
+          0,
+          10000
+        ],
+        [
+          14000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1203,
+      "BuildingId": 1001,
+      "name": "烤架升级",
+      "desc": "烤架全新升级，加粗加固，均匀烤制，美食更诱人！",
+      "Appearance": 1022,
+      "Type": 2,
+      "Sort": 12,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        3,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          8000
+        ],
+        [
+          10000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1202,
+      "BuildingId": 1001,
+      "name": "铁板升级",
+      "desc": "火力全开，导热更快，美味不用久等，效率杠杠的！",
+      "Appearance": 1012,
+      "Type": 2,
+      "Sort": 13,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        5,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          0
+        ],
+        [
+          8000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1204,
+      "BuildingId": 1001,
+      "name": "炸锅升级",
+      "desc": "食品级材质，加大容量，健康烹饪，安全有保障~",
+      "Appearance": 1032,
+      "Type": 2,
+      "Sort": 14,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        7,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          10000
+        ],
+        [
+          6000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 1205,
+      "BuildingId": 1001,
+      "name": "饮料机升级",
+      "desc": "造型升级，一键即享，冰爽多样，轻松出摊的小神器。",
+      "Appearance": 1042,
+      "Type": 2,
+      "Sort": 15,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        9,
+        1001,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1001,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          0,
+          10000
+        ],
+        [
+          6000,
+          0,
+          10000
+        ]
+      ],
+      "CameraOffset": null
+    }
+  ],
+  "原包_ShopAppearanceCfg": [
+    {
+      "Id": 1011,
+      "Group": 1011,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1011",
+      "PreAppearance": 0,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1012,
+      "Group": 1011,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1012",
+      "PreAppearance": 1011,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1021,
+      "Group": 1021,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1021",
+      "PreAppearance": 0,
+      "Param": [
+        5,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1022,
+      "Group": 1021,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1022",
+      "PreAppearance": 1021,
+      "Param": [
+        5,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1031,
+      "Group": 1031,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1031",
+      "PreAppearance": 0,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1032,
+      "Group": 1031,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1032",
+      "PreAppearance": 1031,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1041,
+      "Group": 1041,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1041",
+      "PreAppearance": 0,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1042,
+      "Group": 1041,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1042",
+      "PreAppearance": 1041,
+      "Param": [
+        3,
+        0,
+        0,
+        0
+      ],
+      "CanClick": 1,
+      "Customer": null
+    },
+    {
+      "Id": 1051,
+      "Group": 1051,
+      "BuildingId": 1001,
+      "Type": 1,
+      "Resource": "1001_1051",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    }
+  ],
+  "原包_BuildingLevelCfg": [
+    {
+      "Id": 1001000,
+      "BuildingId": 1001,
+      "Level": 0,
+      "lvName": "空房",
+      "Resource": "100_1001_0",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001001,
+      "BuildingId": 1001,
+      "Level": 1,
+      "lvName": "1星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100001|0",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001002,
+      "BuildingId": 1001,
+      "Level": 2,
+      "lvName": "2星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|5",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          20000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001003,
+      "BuildingId": 1001,
+      "Level": 3,
+      "lvName": "3星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|12",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          40000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001004,
+      "BuildingId": 1001,
+      "Level": 4,
+      "lvName": "4星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|20",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          60000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001005,
+      "BuildingId": 1001,
+      "Level": 5,
+      "lvName": "5星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|35",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          100000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001006,
+      "BuildingId": 1001,
+      "Level": 6,
+      "lvName": "6星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|50",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          140000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001007,
+      "BuildingId": 1001,
+      "Level": 7,
+      "lvName": "7星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|70",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          190000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001008,
+      "BuildingId": 1001,
+      "Level": 8,
+      "lvName": "8星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|100",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          240000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001009,
+      "BuildingId": 1001,
+      "Level": 9,
+      "lvName": "9星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|150",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          290000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001010,
+      "BuildingId": 1001,
+      "Level": 10,
+      "lvName": "10星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          340000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001011,
+      "BuildingId": 1001,
+      "Level": 11,
+      "lvName": "11星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|250",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          400000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001012,
+      "BuildingId": 1001,
+      "Level": 12,
+      "lvName": "12星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|300",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          460000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001013,
+      "BuildingId": 1001,
+      "Level": 13,
+      "lvName": "13星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          520000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001014,
+      "BuildingId": 1001,
+      "Level": 14,
+      "lvName": "14星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|500",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          580000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001015,
+      "BuildingId": 1001,
+      "Level": 15,
+      "lvName": "15星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          640000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001016,
+      "BuildingId": 1001,
+      "Level": 16,
+      "lvName": "16星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          700000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001017,
+      "BuildingId": 1001,
+      "Level": 17,
+      "lvName": "17星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          760000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001018,
+      "BuildingId": 1001,
+      "Level": 18,
+      "lvName": "18星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          820000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001019,
+      "BuildingId": 1001,
+      "Level": 19,
+      "lvName": "19星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          880000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001020,
+      "BuildingId": 1001,
+      "Level": 20,
+      "lvName": "20星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          940000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1001021,
+      "BuildingId": 1001,
+      "Level": 21,
+      "lvName": "21星商铺",
+      "Resource": "100_1001_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1001,
+          1000000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    }
+  ],
+  "原包_ShopCfg": [
+    {
+      "Id": 1001,
+      "BaseEarnSpeed": 1,
+      "CostRate": 10000,
+      "AppointParam": [
+        1,
+        50,
+        500,
+        1000
+      ],
+      "PosReward": [
+        [
+          100005,
+          2
+        ],
+        [
+          1700001,
+          10
+        ],
+        [
+          100103,
+          10
+        ],
+        [
+          100027,
+          2
+        ]
+      ],
+      "PosSkill": 1040014
+    }
+  ]
+}
