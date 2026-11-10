@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "releaseId": "e3747233-7263-4686-a36c-15211cc49e41",
-  "builtAt": "2026-11-10T06:25:27.322Z",
+  "releaseId": "af882b5a-9f7f-4cb4-9d7b-dc87d03e2479",
+  "builtAt": "2026-11-10T07:48:56.816Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
       "id": "d93f99a3-5d49-4947-9c5f-408f71dce72a",
       "name": "伙伴系统（0.2）",
-      "nodes": 41
+      "nodes": 42
     },
     {
       "id": "4854ba62-f845-4c55-a51d-e5637eea9147",
@@ -85,9 +85,9 @@
       "nodes": 4
     }
   ],
-  "embeddedImageFiles": 262,
-  "files": 791,
-  "totalBytes": 783381643,
+  "embeddedImageFiles": 263,
+  "files": 798,
+  "totalBytes": 790051778,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -440,6 +440,7 @@
     "assets/embedded/37d16954956232df74803492f020f63763e42df521e6f7957296f8032581c8a2.png",
     "assets/embedded/5c6d695e083c11a8f5550a929bec87af98f592aa298425ccdfa3c062f6efd0f8.png",
     "assets/embedded/a97a41d93817dce19b48fe4a696affc792abe3a4248abcacc0a8202de6f582cc.png",
+    "assets/embedded/57d698b4827f549801bbebc0d7d210efa4270f4bddbc2b2475d1fdb2c41eb872.png",
     "assets/embedded/9b41054b428c96c9c955bcd434f08e2be2c60c6e1c61b0e2246aa7a552c83111.png",
     "assets/embedded/dbad0275c2eea8f32c7e23e859b5b7a3bac65e8313ed1edf99ca2261d975bf4c.png",
     "assets/embedded/bb84a7e8c2c4ae4498cac982c3a60ac86889c03de93146a5ea2651b4a3e8567b.png",
