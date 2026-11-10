@@ -1229,14 +1229,6 @@ try {
     state.savedDraft = clone(stateResult.draft);
     state.versions = stateResult.versions;
   }
-  // Use the active document so an unpublished shop change stays out of the reader.
-  const cafeRules = state.working.pages["detail.html?id=road-diner"]?.['[data-shop-page-panel="rules"]'] || "";
-  if (cafeRules.includes('data-cafe-first-shop="true"')) {
-    const shops = state.catalog.groups.find(group => group.id === "shops")?.items;
-    const cafeIndex = shops?.findIndex(item => item.id === "road-diner") ?? -1;
-    const washIndex = shops?.findIndex(item => item.id === "car-wash") ?? -1;
-    if (cafeIndex >= 0 && washIndex >= 0) [shops[cafeIndex], shops[washIndex]] = [shops[washIndex], shops[cafeIndex]];
-  }
   for (const id of ["brand-pitch", "wealth-hall", "road-diner"]) {
     const savedTitle = (mode === "reader" ? state.formal : state.working).pages[`detail.html?id=${id}`]?.[".page-head > h1"];
     if (!savedTitle) continue;
@@ -1264,10 +1256,10 @@ try {
   if (mode === "edit") {
     const convenienceEntry = state.catalog.groups.flatMap((group) => group.items).find((entry) => entry.id === "convenience-store");
     if (convenienceEntry && state.shopUi["convenience-store"]?.current.title) convenienceEntry.title = state.shopUi["convenience-store"].current.title;
-    // Draft-only catalog change; the reader keeps its published navigation.
-    const { applyShopCatalogDraft } = await import("./shop-catalog-draft.js?v=20261109-2");
-    applyShopCatalogDraft(state.catalog, mode);
   }
+  // Both modes use the approved directory order, independently of page drafts.
+  const { applyShopCatalogDraft } = await import("./shop-catalog-draft.js?v=20261110-shared-order");
+  applyShopCatalogDraft(state.catalog, mode);
   const requestedFramePage = new URLSearchParams(location.search).get("page");
   const requestedPage = normalizeCatalogPage(requestedFramePage);
   state.currentPage = allCatalogEntries().some((entry) => entry.page === requestedPage) && !isReaderLockedPage(requestedPage)

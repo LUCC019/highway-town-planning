@@ -1,4 +1,6 @@
-// User-approved editor navigation, 2026-11-09. Keep existing document IDs:
+// User-approved shared navigation, synchronized to the reader on 2026-11-10.
+// This changes directory order only; draft and published page content stay separate.
+// Keep existing document IDs:
 // a packaging change must not orphan saved text, screenshots or incoming links.
 export const SHOP_CATALOG_DRAFT = [
   ["road-diner", "咖啡早餐店"],
@@ -16,7 +18,7 @@ export const SHOP_CATALOG_DRAFT = [
 ];
 
 export function applyShopCatalogDraft(catalog, mode) {
-  if (mode !== "edit") return;
+  if (mode !== "edit" && mode !== "reader") return;
   const group = catalog.groups.find(entry => entry.id === "shops");
   if (!group) return;
   const entries = new Map(group.items.map(entry => [entry.id, entry]));
