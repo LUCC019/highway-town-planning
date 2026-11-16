@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "25d5fe0b-086f-432a-8e32-6c493e30ff12",
-  "builtAt": "2026-11-16T07:22:22.525Z",
+  "releaseId": "deda568b-6eb8-4bd9-b9fc-6f94c79ca445",
+  "builtAt": "2026-11-16T08:02:57.941Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -86,8 +86,8 @@
     }
   ],
   "embeddedImageFiles": 263,
-  "files": 813,
-  "totalBytes": 815421471,
+  "files": 814,
+  "totalBytes": 815668656,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -152,7 +152,7 @@
     "assets/motel-ui-20261015/image15.jpeg",
     "assets/motel-ui-20261015/image16.jpeg",
     "assets/motel-ui-20261015/image19.jpeg",
-    "assets/uploads/motel-summary-mindmap-events-20261026.png",
+    "assets/uploads/motel-summary-default-furniture-20261116.png",
     "assets/checkpoint-ui-refs/common-event.png",
     "assets/checkpoint-ui-refs/boss-event.png",
     "assets/checkpoint-ui-refs/special-promotion.png",
