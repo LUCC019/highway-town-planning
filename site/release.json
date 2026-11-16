@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "releaseId": "5ead43d9-5757-4dff-9091-bb702d3b3ba6",
-  "builtAt": "2026-11-16T09:57:07.899Z",
+  "releaseId": "9ee6a6f3-6f02-4354-9028-25b1f272b89d",
+  "builtAt": "2026-11-16T10:00:21.669Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
       "id": "65aaf269-0160-4152-9bed-990e97cf571e",
       "name": "达人秀（0.3）",
-      "nodes": 18
+      "nodes": 19
     },
     {
       "id": "d93f99a3-5d49-4947-9c5f-408f71dce72a",
@@ -85,9 +85,9 @@
       "nodes": 4
     }
   ],
-  "embeddedImageFiles": 266,
-  "files": 817,
-  "totalBytes": 816436712,
+  "embeddedImageFiles": 267,
+  "files": 818,
+  "totalBytes": 817676582,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -439,6 +439,7 @@
     "assets/embedded/f49f93acee4d36a309fb5c33db353eb87937c10595cd455fda96a437fc766d84.png",
     "assets/embedded/ef6309fd91a883f37c79f703c3765b3d8ee87d0967cdf86707332a7b8685d141.png",
     "assets/embedded/55fb4e035ecaa93a03eb4a946aee865d9db16d4c59df3f247a2b68c1f2d925d7.png",
+    "assets/embedded/4b7a9a35434ca4625e5424777a6ae8e552d71b00f4a4bbf0c0eb92456c4c2de1.png",
     "assets/embedded/879c1bf7c2e0391bb5b7ac042a822ab027a81d86f6c21526f318ef8c1fc7f18d.png",
     "assets/embedded/546f34403e0ea10e433a777fa2ec88ed0b4fb7d0ce575a85b273c4b9a733d0e6.png",
     "assets/embedded/0753ba1816527c8696b828e3db097c2fda892bb0c1a66a1894a1fc23dd4543ae.png",
