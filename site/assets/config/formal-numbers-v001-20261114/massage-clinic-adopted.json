@@ -1,0 +1,3254 @@
+{
+  "项目采用_ShopCfg": [
+    {
+      "Id": 1012,
+      "BaseEarnSpeed": 30,
+      "CostRate": 20480000,
+      "AppointParam": [
+        1,
+        50,
+        500,
+        1000
+      ],
+      "PosReward": null,
+      "PosSkill": null
+    }
+  ],
+  "项目采用_BuildingInfoCfg": [
+    {
+      "Id": 1012,
+      "MapId": 100,
+      "Type": 140,
+      "UnlockType": 1,
+      "name": "越野卡丁乐园",
+      "desc": "接待到店体验卡丁车的顾客，提供车辆、装备与场地服务。",
+      "Alwayshere": 0,
+      "MaximumCount": 0,
+      "CashProgressBarPos": [
+        -233,
+        826
+      ],
+      "EffectPos": [
+        38,
+        -53
+      ],
+      "EffectScale": [
+        150,
+        150
+      ],
+      "NameplatePos": [
+        0,
+        0
+      ],
+      "BtnPos": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "RefuseCustomer": null,
+      "TalkProb": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "Desc4": null,
+      "Desc5": null,
+      "Desc6": null
+    }
+  ],
+  "项目采用_BuildingLevelCfg": [
+    {
+      "Id": 1012000,
+      "BuildingId": 1012,
+      "Level": 0,
+      "lvName": "空房",
+      "Resource": "kart_building_0",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          13500,
+          0,
+          0
+        ]
+      ],
+      "Cost": "",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012001,
+      "BuildingId": 1012,
+      "Level": 1,
+      "lvName": "1星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          13500,
+          0,
+          0
+        ]
+      ],
+      "Cost": "100001|400000000000",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012002,
+      "BuildingId": 1012,
+      "Level": 2,
+      "lvName": "2星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|16",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          20000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012003,
+      "BuildingId": 1012,
+      "Level": 3,
+      "lvName": "3星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|39",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          40000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012004,
+      "BuildingId": 1012,
+      "Level": 4,
+      "lvName": "4星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|64",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          60000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012005,
+      "BuildingId": 1012,
+      "Level": 5,
+      "lvName": "5星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|112",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          100000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012006,
+      "BuildingId": 1012,
+      "Level": 6,
+      "lvName": "6星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|160",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          140000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012007,
+      "BuildingId": 1012,
+      "Level": 7,
+      "lvName": "7星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|224",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          190000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012008,
+      "BuildingId": 1012,
+      "Level": 8,
+      "lvName": "8星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|320",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          240000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012009,
+      "BuildingId": 1012,
+      "Level": 9,
+      "lvName": "9星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|500",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          290000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012010,
+      "BuildingId": 1012,
+      "Level": 10,
+      "lvName": "10星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|640",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          340000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012011,
+      "BuildingId": 1012,
+      "Level": 11,
+      "lvName": "11星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          400000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012012,
+      "BuildingId": 1012,
+      "Level": 12,
+      "lvName": "12星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|960",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          460000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012013,
+      "BuildingId": 1012,
+      "Level": 13,
+      "lvName": "13星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1280",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          520000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012014,
+      "BuildingId": 1012,
+      "Level": 14,
+      "lvName": "14星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          580000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012015,
+      "BuildingId": 1012,
+      "Level": 15,
+      "lvName": "15星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1920",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          640000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012016,
+      "BuildingId": 1012,
+      "Level": 16,
+      "lvName": "16星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2560",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          700000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012017,
+      "BuildingId": 1012,
+      "Level": 17,
+      "lvName": "17星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          760000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012018,
+      "BuildingId": 1012,
+      "Level": 18,
+      "lvName": "18星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3840",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          820000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012019,
+      "BuildingId": 1012,
+      "Level": 19,
+      "lvName": "19星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|4480",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          880000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012020,
+      "BuildingId": 1012,
+      "Level": 20,
+      "lvName": "20星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|5120",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          940000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1012021,
+      "BuildingId": 1012,
+      "Level": 21,
+      "lvName": "21星商铺",
+      "Resource": "kart_building_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|6400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1012,
+          1000000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    }
+  ],
+  "项目采用_ShopBusinessCfg": [
+    {
+      "Id": 12001,
+      "BuildingId": 1012,
+      "name": "接待前台",
+      "desc": "登记接待与离场交接",
+      "Appearance": 12010,
+      "Type": 0,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12002,
+      "BuildingId": 1012,
+      "name": "基础赛道",
+      "desc": "固定行驶演出路线、轮胎围挡与出入口",
+      "Appearance": 12011,
+      "Type": 0,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12003,
+      "BuildingId": 1012,
+      "name": "基础整备区",
+      "desc": "支持车辆出发、回场整备",
+      "Appearance": 12012,
+      "Type": 0,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12004,
+      "BuildingId": 1012,
+      "name": "基础等候区",
+      "desc": "简单座椅与观赛位置",
+      "Appearance": 12013,
+      "Type": 0,
+      "Sort": 4,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12005,
+      "BuildingId": 1012,
+      "name": "默认护具区",
+      "desc": "开业即支持基础头盔与装备取还；护具间拓展更新陈列和装备外观。",
+      "Appearance": 12014,
+      "Type": 0,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12006,
+      "BuildingId": 1012,
+      "name": "默认车身",
+      "desc": "开业默认车辆部件，无业务加成。",
+      "Appearance": 12015,
+      "Type": 0,
+      "Sort": 6,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12007,
+      "BuildingId": 1012,
+      "name": "默认轮胎",
+      "desc": "开业默认车辆部件，无业务加成。",
+      "Appearance": 12016,
+      "Type": 0,
+      "Sort": 7,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12008,
+      "BuildingId": 1012,
+      "name": "默认尾部动力组件",
+      "desc": "开业默认车辆部件，无业务加成。",
+      "Appearance": 12017,
+      "Type": 0,
+      "Sort": 8,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12101,
+      "BuildingId": 1012,
+      "name": "经典红车身",
+      "desc": "红色车身，第一圈从这里出发。",
+      "Appearance": 12310,
+      "Type": 1,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12102,
+      "BuildingId": 1012,
+      "name": "标准黑轮胎",
+      "desc": "简单耐看，陪你跑过每个弯道。",
+      "Appearance": 12311,
+      "Type": 1,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12103,
+      "BuildingId": 1012,
+      "name": "基础动力组件",
+      "desc": "尾部机器嗡嗡响，准备出发。",
+      "Appearance": 12312,
+      "Type": 1,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        800,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12104,
+      "BuildingId": 1012,
+      "name": "晴空蓝车身",
+      "desc": "蓝白配色，开出清爽的一圈。",
+      "Appearance": 12313,
+      "Type": 1,
+      "Sort": 4,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12105,
+      "BuildingId": 1012,
+      "name": "白字运动胎",
+      "desc": "白色胎字，转起来也醒目。",
+      "Appearance": 12314,
+      "Type": 1,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1500,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12106,
+      "BuildingId": 1012,
+      "name": "银壳动力组件",
+      "desc": "银色外壳，在阳光下闪一闪。",
+      "Appearance": 12315,
+      "Type": 1,
+      "Sort": 6,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12107,
+      "BuildingId": 1012,
+      "name": "柠檬黄车身",
+      "desc": "亮黄色，远远就能认出来。",
+      "Appearance": 12316,
+      "Type": 1,
+      "Sort": 7,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        4000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12108,
+      "BuildingId": 1012,
+      "name": "红圈宽轮胎",
+      "desc": "一圈红边，给车子添点精神。",
+      "Appearance": 12317,
+      "Type": 1,
+      "Sort": 8,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        5000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12109,
+      "BuildingId": 1012,
+      "name": "红罩动力组件",
+      "desc": "红色机罩，搭一台精神的小车。",
+      "Appearance": 12318,
+      "Type": 1,
+      "Sort": 9,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        6000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12110,
+      "BuildingId": 1012,
+      "name": "双座体验车身",
+      "desc": "并排坐好，一起享受这一圈。",
+      "Appearance": 12319,
+      "Type": 1,
+      "Sort": 10,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        7000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12111,
+      "BuildingId": 1012,
+      "name": "金色辐条轮胎",
+      "desc": "金色轮毂，让小车亮眼一点。",
+      "Appearance": 12320,
+      "Type": 1,
+      "Sort": 11,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        8000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12112,
+      "BuildingId": 1012,
+      "name": "护架动力组件",
+      "desc": "护架装齐，车尾也有硬朗模样。",
+      "Appearance": 12321,
+      "Type": 1,
+      "Sort": 12,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        9000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12113,
+      "BuildingId": 1012,
+      "name": "棋格赛车身",
+      "desc": "把终点旗的配色穿在车身上。",
+      "Appearance": 12322,
+      "Type": 1,
+      "Sort": 13,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        10000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12114,
+      "BuildingId": 1012,
+      "name": "双色竞速轮胎",
+      "desc": "黑银相间，转出自己的风格。",
+      "Appearance": 12323,
+      "Type": 1,
+      "Sort": 14,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        11000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12115,
+      "BuildingId": 1012,
+      "name": "镀铬动力组件",
+      "desc": "亮面机罩，把最后的细节装漂亮。",
+      "Appearance": 12324,
+      "Type": 1,
+      "Sort": 15,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        12000,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12201,
+      "BuildingId": 1012,
+      "name": "整备区升级",
+      "desc": "工具摆到手边，每次出发都利利索索。",
+      "Appearance": 12210,
+      "Type": 2,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        2,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12202,
+      "BuildingId": 1012,
+      "name": "护具间升级",
+      "desc": "头盔手套都有位置，换装也从容一点。",
+      "Appearance": 12211,
+      "Type": 2,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        3,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12203,
+      "BuildingId": 1012,
+      "name": "赛道路面翻新",
+      "desc": "旧路重新铺好，沿着弯道痛快跑一圈。",
+      "Appearance": 12212,
+      "Type": 2,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        5,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12204,
+      "BuildingId": 1012,
+      "name": "观赛休息区",
+      "desc": "有人跑圈，有人坐着加油，一样热闹。",
+      "Appearance": 12213,
+      "Type": 2,
+      "Sort": 4,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        7,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 12205,
+      "BuildingId": 1012,
+      "name": "园区灯光升级",
+      "desc": "灯亮起来，整片场地都精神了。",
+      "Appearance": 12214,
+      "Type": 2,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        9,
+        1012,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1012,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    }
+  ],
+  "项目采用_ShopAppearanceCfg": [
+    {
+      "Id": 12010,
+      "Group": 12010,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12010",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12011,
+      "Group": 12011,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12011",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12012,
+      "Group": 12012,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12012",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12013,
+      "Group": 12013,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12013",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12014,
+      "Group": 12014,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12014",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12210,
+      "Group": 12012,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12210",
+      "PreAppearance": 12012,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12211,
+      "Group": 12014,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12211",
+      "PreAppearance": 12014,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12212,
+      "Group": 12011,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12212",
+      "PreAppearance": 12011,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12213,
+      "Group": 12013,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12213",
+      "PreAppearance": 12013,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12214,
+      "Group": 12214,
+      "BuildingId": 1012,
+      "Type": 1,
+      "Resource": "kart_12214",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12310,
+      "Group": 12310,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_body_01",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12311,
+      "Group": 12311,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_wheel_01",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12312,
+      "Group": 12312,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_power_01",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12313,
+      "Group": 12313,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_body_02",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12314,
+      "Group": 12314,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_wheel_02",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12315,
+      "Group": 12315,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_power_02",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12316,
+      "Group": 12316,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_body_03",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12317,
+      "Group": 12317,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_wheel_03",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12318,
+      "Group": 12318,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_power_03",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12319,
+      "Group": 12319,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_body_04",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12320,
+      "Group": 12320,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_wheel_04",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12321,
+      "Group": 12321,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_power_04",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12322,
+      "Group": 12322,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_body_05",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12323,
+      "Group": 12323,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_wheel_05",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12324,
+      "Group": 12324,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_power_05",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12015,
+      "Group": 12015,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_body_default",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12016,
+      "Group": 12016,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_wheel_default",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    },
+    {
+      "Id": 12017,
+      "Group": 12017,
+      "BuildingId": 1012,
+      "Type": 3,
+      "Resource": "kart_power_default",
+      "PreAppearance": 0,
+      "Param": null,
+      "CanClick": 0,
+      "Customer": null
+    }
+  ],
+  "项目新增_KartPartCfg": [
+    {
+      "BusinessId": 12101,
+      "PartType": "body",
+      "SeatCount": 1
+    },
+    {
+      "BusinessId": 12102,
+      "PartType": "wheel",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12103,
+      "PartType": "power",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12104,
+      "PartType": "body",
+      "SeatCount": 1
+    },
+    {
+      "BusinessId": 12105,
+      "PartType": "wheel",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12106,
+      "PartType": "power",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12107,
+      "PartType": "body",
+      "SeatCount": 1
+    },
+    {
+      "BusinessId": 12108,
+      "PartType": "wheel",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12109,
+      "PartType": "power",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12110,
+      "PartType": "body",
+      "SeatCount": 2
+    },
+    {
+      "BusinessId": 12111,
+      "PartType": "wheel",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12112,
+      "PartType": "power",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12113,
+      "PartType": "body",
+      "SeatCount": 1
+    },
+    {
+      "BusinessId": 12114,
+      "PartType": "wheel",
+      "SeatCount": 0
+    },
+    {
+      "BusinessId": 12115,
+      "PartType": "power",
+      "SeatCount": 0
+    }
+  ],
+  "项目新增_KartAssemblyCfg": [
+    {
+      "BuildingId": 1012,
+      "DefaultBody": 12015,
+      "DefaultWheel": 12016,
+      "DefaultPower": 12017
+    }
+  ],
+  "数值来源_第11店_ShopCfg": [
+    {
+      "Id": 1011,
+      "BaseEarnSpeed": 26,
+      "CostRate": 10240000,
+      "AppointParam": [
+        1,
+        50,
+        500,
+        1000
+      ],
+      "PosReward": [
+        [
+          100005,
+          2
+        ],
+        [
+          1700001,
+          10
+        ],
+        [
+          100103,
+          10
+        ],
+        [
+          100027,
+          2
+        ]
+      ],
+      "PosSkill": 1040013
+    }
+  ],
+  "数值来源_第11店_ShopBusinessCfg": [
+    {
+      "Id": 11000,
+      "BuildingId": 1011,
+      "name": "前台",
+      "desc": "默认解锁",
+      "Appearance": 11251,
+      "Type": 0,
+      "Sort": 0,
+      "Param": null,
+      "unlockType": 0,
+      "UnlockParam": null,
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 11001,
+      "BuildingId": 1011,
+      "name": "前台店员",
+      "desc": "默认解锁",
+      "Appearance": 11011,
+      "Type": 0,
+      "Sort": 0,
+      "Param": null,
+      "unlockType": 0,
+      "UnlockParam": null,
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 11002,
+      "BuildingId": 1011,
+      "name": "睡眠区初始状态",
+      "desc": "默认解锁",
+      "Appearance": 11021,
+      "Type": 0,
+      "Sort": 0,
+      "Param": null,
+      "unlockType": 0,
+      "UnlockParam": null,
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 11003,
+      "BuildingId": 1011,
+      "name": "外卖区初始状态",
+      "desc": "默认解锁",
+      "Appearance": 11031,
+      "Type": 0,
+      "Sort": 0,
+      "Param": null,
+      "unlockType": 0,
+      "UnlockParam": null,
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 11004,
+      "BuildingId": 1011,
+      "name": "猫砂盆初始状态",
+      "desc": "默认解锁",
+      "Appearance": 11041,
+      "Type": 0,
+      "Sort": 0,
+      "Param": null,
+      "unlockType": 0,
+      "UnlockParam": null,
+      "EffectType": 0,
+      "EffectParam": null,
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": null,
+      "AnimationParam": null,
+      "CameraOffset": null
+    },
+    {
+      "Id": 11101,
+      "BuildingId": 1011,
+      "name": "添置桌椅",
+      "desc": "赐座！客官请上座，VIP专享板凳。",
+      "Appearance": 11061,
+      "Type": 1,
+      "Sort": 1,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_4",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          8000,
+          0,
+          0
+        ],
+        [
+          10000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11102,
+      "BuildingId": 1011,
+      "name": "猫碗与添饭员",
+      "desc": "御膳房开饭，专职太监伺候主子用膳！",
+      "Appearance": 11071,
+      "Type": 1,
+      "Sort": 2,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          8000,
+          0,
+          0
+        ],
+        [
+          8000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11103,
+      "BuildingId": 1011,
+      "name": "梳毛区",
+      "desc": "托尼老师在线理发，送主子盛世美颜。",
+      "Appearance": 11081,
+      "Type": 1,
+      "Sort": 3,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          10000,
+          0,
+          0
+        ],
+        [
+          10000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11104,
+      "BuildingId": 1011,
+      "name": "洗澡区",
+      "desc": "华清池沐浴更衣，出水芙蓉喵本喵。",
+      "Appearance": 11091,
+      "Type": 1,
+      "Sort": 4,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          10000,
+          0,
+          0
+        ],
+        [
+          10000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11105,
+      "BuildingId": 1011,
+      "name": "陪玩员",
+      "desc": "御用陪玩，花式整活，让主子开心就好。",
+      "Appearance": 11101,
+      "Type": 1,
+      "Sort": 5,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        1000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          10107600,
+          10167200
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11106,
+      "BuildingId": 1011,
+      "name": "展柜雅座",
+      "desc": "雅座添香，橱窗里的主子在线接客。",
+      "Appearance": 11111,
+      "Type": 1,
+      "Sort": 6,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        2000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_4",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          8000,
+          0,
+          0
+        ],
+        [
+          10000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11107,
+      "BuildingId": 1011,
+      "name": "零食柜",
+      "desc": "满汉全席小吃版，解馋必备百宝箱。",
+      "Appearance": 11121,
+      "Type": 1,
+      "Sort": 7,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        3000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_2",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          10000,
+          0,
+          0
+        ],
+        [
+          6000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11108,
+      "BuildingId": 1011,
+      "name": "猫爬架",
+      "desc": "欲穷千里目，更上一层楼，跑酷圣地。",
+      "Appearance": 11131,
+      "Type": 1,
+      "Sort": 8,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        4000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_gongju_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          8000,
+          0,
+          0
+        ],
+        [
+          8000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11109,
+      "BuildingId": 1011,
+      "name": "仓鼠飞轮",
+      "desc": "燃烧卡路里！风火轮上踩出无影脚。",
+      "Appearance": 11141,
+      "Type": 1,
+      "Sort": 9,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        5000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_2",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          10000,
+          0,
+          5000
+        ],
+        [
+          8000,
+          0,
+          5000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11110,
+      "BuildingId": 1011,
+      "name": "猫抓板",
+      "desc": "九阴白骨爪练功房，拯救家具大神器。",
+      "Appearance": 11151,
+      "Type": 1,
+      "Sort": 10,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        6000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_2",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          10000,
+          0,
+          0
+        ],
+        [
+          6000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11111,
+      "BuildingId": 1011,
+      "name": "逗猫棒区",
+      "desc": "降龙十八棒！舞动青春，快乐起飞。",
+      "Appearance": 11161,
+      "Type": 1,
+      "Sort": 11,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        7000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_gongju_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          8000,
+          0,
+          0
+        ],
+        [
+          10000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11112,
+      "BuildingId": 1011,
+      "name": "外卖区",
+      "desc": "八百里加急送达，干饭人的快乐驿站。",
+      "Appearance": 11032,
+      "Type": 1,
+      "Sort": 12,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        8000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_gongju_4",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          8000,
+          0,
+          0
+        ],
+        [
+          12000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11113,
+      "BuildingId": 1011,
+      "name": "自动喂食器",
+      "desc": "科技改变猫生，全自动御膳房发饭啦。",
+      "Appearance": 11072,
+      "Type": 1,
+      "Sort": 13,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        9000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_yanwu_3",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          8000,
+          0,
+          0
+        ],
+        [
+          8000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11114,
+      "BuildingId": 1011,
+      "name": "抽水马桶",
+      "desc": "告别茅厕！现代化出恭，一键冲走烦恼。",
+      "Appearance": 11042,
+      "Type": 1,
+      "Sort": 14,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        10000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_gongju_2",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          12000,
+          2000,
+          2000
+        ],
+        [
+          8000,
+          2000,
+          2000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11115,
+      "BuildingId": 1011,
+      "name": "豪华睡铺",
+      "desc": "升级龙榻！席梦思上做个千秋大梦。",
+      "Appearance": 11022,
+      "Type": 1,
+      "Sort": 15,
+      "Param": null,
+      "unlockType": 11003,
+      "UnlockParam": [
+        11000,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        1500,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_jianzao_gongju_4",
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          8000,
+          0,
+          0
+        ],
+        [
+          12000,
+          0,
+          0
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11201,
+      "BuildingId": 1011,
+      "name": "布偶",
+      "desc": "蓝眼小仙女，软萌会撒娇。肠胃如玻璃，铲屎费钞票。",
+      "Appearance": 11171,
+      "Type": 2,
+      "Sort": 16,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        2,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          10085000,
+          10175000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11202,
+      "BuildingId": 1011,
+      "name": "英短",
+      "desc": "圆脸像玉盘，干饭第一名。发腮胖嘟嘟，躺平不愿行。",
+      "Appearance": 11181,
+      "Type": 2,
+      "Sort": 17,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        3,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          10105000,
+          10170000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11203,
+      "BuildingId": 1011,
+      "name": "缅因",
+      "desc": "威风似猛虎，柔情大暖男。饭盆比锅大，破产也心甘。",
+      "Appearance": 11191,
+      "Type": 2,
+      "Sort": 18,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        5,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          10165000,
+          10150000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11204,
+      "BuildingId": 1011,
+      "name": "三花",
+      "desc": "身披三色衣，傲娇小公主。脾气猜不透，跑酷猛如虎。",
+      "Appearance": 11201,
+      "Type": 2,
+      "Sort": 19,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        7,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          10150000,
+          10157000
+        ]
+      ],
+      "CameraOffset": null
+    },
+    {
+      "Id": 11205,
+      "BuildingId": 1011,
+      "name": "招财猫",
+      "desc": "非陶亦非瓷，摇手讨鱼吃。财宝虽未到，钞票被吃去。",
+      "Appearance": 11211,
+      "Type": 2,
+      "Sort": 20,
+      "Param": null,
+      "unlockType": 11002,
+      "UnlockParam": [
+        9,
+        1011,
+        0,
+        0
+      ],
+      "EffectType": 101,
+      "EffectParam": [
+        1011,
+        2000,
+        0,
+        0
+      ],
+      "Desc1": null,
+      "Desc2": null,
+      "Desc3": null,
+      "AnimationName": [
+        "eff_pre_yewujiesuo"
+      ],
+      "AnimationParam": [
+        [
+          6000,
+          10150000,
+          10157000
+        ]
+      ],
+      "CameraOffset": null
+    }
+  ],
+  "数值来源_第11店_BuildingLevelCfg": [
+    {
+      "Id": 1011000,
+      "BuildingId": 1011,
+      "Level": 0,
+      "lvName": "空房",
+      "Resource": "100_1011_0",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          11000,
+          0,
+          0
+        ]
+      ],
+      "Cost": "",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011001,
+      "BuildingId": 1011,
+      "Level": 1,
+      "lvName": "1星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": [
+        10005
+      ],
+      "UnlockParam": [
+        [
+          0,
+          11000,
+          0,
+          0
+        ]
+      ],
+      "Cost": "100001|400000000000",
+      "EffectType": null,
+      "EffectParam": null,
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011002,
+      "BuildingId": 1011,
+      "Level": 2,
+      "lvName": "2星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|15",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          20000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011003,
+      "BuildingId": 1011,
+      "Level": 3,
+      "lvName": "3星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|36",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          40000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011004,
+      "BuildingId": 1011,
+      "Level": 4,
+      "lvName": "4星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|60",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          60000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011005,
+      "BuildingId": 1011,
+      "Level": 5,
+      "lvName": "5星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|105",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          100000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011006,
+      "BuildingId": 1011,
+      "Level": 6,
+      "lvName": "6星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|150",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          140000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011007,
+      "BuildingId": 1011,
+      "Level": 7,
+      "lvName": "7星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|210",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          190000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011008,
+      "BuildingId": 1011,
+      "Level": 8,
+      "lvName": "8星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|300",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          240000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011009,
+      "BuildingId": 1011,
+      "Level": 9,
+      "lvName": "9星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|450",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          290000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011010,
+      "BuildingId": 1011,
+      "Level": 10,
+      "lvName": "10星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          340000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011011,
+      "BuildingId": 1011,
+      "Level": 11,
+      "lvName": "11星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|750",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          400000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011012,
+      "BuildingId": 1011,
+      "Level": 12,
+      "lvName": "12星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|900",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          460000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011013,
+      "BuildingId": 1011,
+      "Level": 13,
+      "lvName": "13星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          520000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011014,
+      "BuildingId": 1011,
+      "Level": 14,
+      "lvName": "14星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1500",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          580000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011015,
+      "BuildingId": 1011,
+      "Level": 15,
+      "lvName": "15星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|1800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          640000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011016,
+      "BuildingId": 1011,
+      "Level": 16,
+      "lvName": "16星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|2400",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          700000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011017,
+      "BuildingId": 1011,
+      "Level": 17,
+      "lvName": "17星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          760000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011018,
+      "BuildingId": 1011,
+      "Level": 18,
+      "lvName": "18星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|3600",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          820000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011019,
+      "BuildingId": 1011,
+      "Level": 19,
+      "lvName": "19星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|4200",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          880000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011020,
+      "BuildingId": 1011,
+      "Level": 20,
+      "lvName": "20星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|4800",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          940000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    },
+    {
+      "Id": 1011021,
+      "BuildingId": 1011,
+      "Level": 21,
+      "lvName": "21星商铺",
+      "Resource": "100_1011_1",
+      "UnlockType": null,
+      "UnlockParam": null,
+      "Cost": "100005|6000",
+      "EffectType": [
+        101
+      ],
+      "EffectParam": [
+        [
+          1011,
+          1000000,
+          0,
+          0
+        ]
+      ],
+      "Reward": null,
+      "FeatureEffect": null
+    }
+  ]
+}

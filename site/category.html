@@ -215,14 +215,14 @@
             <p class="eyebrow">${escapeHtml(group.kicker)}</p>
             <h1>${escapeHtml(group.title)}</h1>
             <p>${escapeHtml(group.summary)}</p>
-            <div class="page-meta"><span class="meta-chip">${modules.length} 个独立分页</span><span class="meta-chip">${groupId === "story" ? "按章节快速翻阅" : "点击卡片进入详情"}</span></div>
+            <div class="page-meta"><span class="meta-chip">${modules.length} 个独立分页</span><span class="meta-chip">${groupId === "story" ? "按章节快速翻阅" : groupId === "shops" ? "通过左侧导航查看各店详情" : "点击卡片进入详情"}</span></div>
           </header>
           ${sceneOverview}
           ${shopFramework}
-          <section class="content-section${groupId === "story" ? " story-directory-section" : ""}">
+          ${groupId === "shops" ? "" : `<section class="content-section${groupId === "story" ? " story-directory-section" : ""}">
             <div class="section-head"><h2>${groupId === "story" ? "章节目录" : "模块入口"}</h2><p>${escapeHtml(group.examples)}</p></div>
             ${groupId === "story" ? storyDirectory : `<div class="module-grid">${renderModuleCards(groupId)}</div>`}
-          </section>
+          </section>`}
           <footer>当前位置：总览 / ${escapeHtml(group.title)}</footer>
         </article>`;
       mount(pageShell({ activeGroup: groupId, content }));

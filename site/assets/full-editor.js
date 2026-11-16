@@ -341,6 +341,16 @@ function updateToolbar() {
 }
 
 function syncEmbeddedMotelUi() {
+  for (const id of ["pet-care", "music-bar", "massage-clinic"]) {
+    const ui = state.shopUi[id];
+    if (!ui?.embedded || mode !== "edit") continue;
+    const key = "[data-shop-scene-ui-data]", page = `detail.html?id=${id}`;
+    const patches = state.working.pages[page] ||= {};
+    const saved = state.savedDraft.pages[page]?.[key];
+    if (!equal(ui.current, ui.savedDraft)) patches[key] = escapeHtml(JSON.stringify(ui.current));
+    else if (saved === undefined) delete patches[key];
+    else patches[key] = saved;
+  }
   const weeklyUi = state.shopUi["wealth-hall"];
   if (weeklyUi?.embedded && mode === "edit") {
     const key="[data-weekly-ui-data]",page="detail.html?id=wealth-hall";
@@ -379,6 +389,26 @@ function syncEmbeddedMotelUi() {
 }
 
 function prepareEmbeddedMotelUi(frameDocument) {
+  if (["pet-care", "music-bar", "massage-clinic"].includes(shopIdForPage())) {
+    const id = shopIdForPage(), key = "[data-shop-scene-ui-data]", page = `detail.html?id=${id}`;
+    const marker = frameDocument.querySelector(key);
+    if (!marker) { delete state.shopUi[id]; return; }
+    const existing = state.shopUi[id];
+    if (existing?.embedded && !equal(existing.current, existing.savedDraft)) return;
+    const current = JSON.parse(marker.textContent);
+    const decode = (registry, fallback) => {
+      try {
+        const patches = registry.pages[page] || {}, el = frameDocument.createElement("div");
+        if (patches[key] !== undefined) { el.innerHTML = patches[key]; return JSON.parse(el.textContent); }
+        el.innerHTML = patches['[data-shop-page-panel="interface"]'] || "";
+        return JSON.parse(el.querySelector(key).textContent);
+      } catch { return clone(fallback); }
+    };
+    const formal = decode(state.formal, {id, title:current.title, uiRules:[], uiScreens:[]});
+    const saved = decode(state.savedDraft, current);
+    state.shopUi[id] = {embedded:true, formal, current, savedDraft:saved, selectedId:1, selectedScreenId:"main", expandedPopupKey:"", expandedNestedPopupKey:"", undo:[], editBaseline:null, versions:[]};
+    return;
+  }
   if (shopIdForPage() === "wealth-hall") {
     const marker=frameDocument.querySelector("[data-weekly-ui-data]");
     let current;try {current=JSON.parse(marker?.textContent || "null");}catch {current=null;}
