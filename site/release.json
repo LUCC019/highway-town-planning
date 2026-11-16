@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "31e68cc0-f746-443d-958f-b3f149c01ebe",
-  "builtAt": "2026-11-16T07:13:33.885Z",
+  "releaseId": "25d5fe0b-086f-432a-8e32-6c493e30ff12",
+  "builtAt": "2026-11-16T07:22:22.525Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -87,7 +87,7 @@
   ],
   "embeddedImageFiles": 263,
   "files": 813,
-  "totalBytes": 815416732,
+  "totalBytes": 815421471,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -420,6 +420,7 @@
     "assets/talent-market-reference/03.png",
     "assets/talent-market-reference/11.png",
     "assets/talent-market-reference/10.png",
+    "assets/ui-supplement-20261021/cafe-main-user-20261109.png",
     "assets/embedded/879c1bf7c2e0391bb5b7ac042a822ab027a81d86f6c21526f318ef8c1fc7f18d.png",
     "assets/embedded/546f34403e0ea10e433a777fa2ec88ed0b4fb7d0ce575a85b273c4b9a733d0e6.png",
     "assets/embedded/0753ba1816527c8696b828e3db097c2fda892bb0c1a66a1894a1fc23dd4543ae.png",
