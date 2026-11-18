@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "140b615c-d8d9-47bd-a0fb-b016e9a36ac8",
-  "builtAt": "2026-11-17T12:28:12.653Z",
+  "releaseId": "c6491145-6769-4417-a8e1-d6734bfe344e",
+  "builtAt": "2026-11-18T03:06:57.343Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -40,6 +40,11 @@
       "nodes": 1
     },
     {
+      "id": "1cf02c4b-b0c6-40d1-bfc3-8171da2959e9",
+      "name": "旅馆系统（0.2）",
+      "nodes": 19
+    },
+    {
       "id": "checkpoints",
       "name": "市场调研（0.1）",
       "nodes": 14
@@ -53,11 +58,6 @@
       "id": "main-town",
       "name": "主城（0.1）",
       "nodes": 8
-    },
-    {
-      "id": "1cf02c4b-b0c6-40d1-bfc3-8171da2959e9",
-      "name": "旅馆系统（0.2）",
-      "nodes": 24
     },
     {
       "id": "talent-system",
@@ -86,8 +86,8 @@
     }
   ],
   "embeddedImageFiles": 267,
-  "files": 829,
-  "totalBytes": 824327689,
+  "files": 830,
+  "totalBytes": 825249529,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -101,10 +101,10 @@
     "flows/9e7c722c-6393-4d31-af13-d61314a20876.json",
     "flows/shop-system.json",
     "flows/64aa5a13-131f-4354-b3d2-19295b3b5470.json",
+    "flows/1cf02c4b-b0c6-40d1-bfc3-8171da2959e9.json",
     "flows/checkpoints.json",
     "flows/protagonists.json",
     "flows/main-town.json",
-    "flows/1cf02c4b-b0c6-40d1-bfc3-8171da2959e9.json",
     "flows/talent-system.json",
     "flows/8d29cc3f-caf6-42b0-9c49-0875c11e1bd3.json",
     "flows/convenience-store.json",
@@ -152,7 +152,7 @@
     "assets/motel-ui-20261015/image15.jpeg",
     "assets/motel-ui-20261015/image16.jpeg",
     "assets/motel-ui-20261015/image19.jpeg",
-    "assets/uploads/motel-system-mindmap-20261117-reviewed.png",
+    "assets/uploads/motel-system-mindmap-20261118.png",
     "assets/checkpoint-ui-refs/common-event.png",
     "assets/checkpoint-ui-refs/boss-event.png",
     "assets/checkpoint-ui-refs/special-promotion.png",
@@ -564,6 +564,11 @@
     "assets/embedded/3c15dd9dd42392246545c3bb9a3364388400fa6fa30e971206ad2c8fe943ffe1.png",
     "assets/embedded/f35595b51e99ea6b9136ed003f1194cfa79b2b8c5534e687ec6bac415d29d23c.png",
     "assets/embedded/ddfbc042ebbd82aba71a5a36ff05b86b6ce0aeee75bd9966a4f4b3a09c6d45c7.png",
+    "assets/embedded/122af890d7e43a23b82e9a3bd8a410d359ab60dc9445545db58cee32603fa1ac.png",
+    "assets/embedded/0c5425d29690a70d1d5bfa4e3e8a35a18abcf02292355f5c2dea4c7e6385dc0b.png",
+    "assets/embedded/aa67bdf8a3724a3a3c5fd87c85feb81adee21c06f4cfdd118ecdd01da9f261e2.png",
+    "assets/embedded/85edfb683167ccf59395bcf256704f089d4e2d9730464e66590e223d19d6cb9b.png",
+    "assets/embedded/7236b71e68b5b14ee3446f91887b9fb33214bf5c06af4e7146740aa501619c7f.png",
     "assets/embedded/d652808763dcef2150fc00eb9679666ebd33dc29e072c7ba1fc6d7c1a8cfb51d.png",
     "assets/embedded/32c8bee8195b57f10ac273c5260ebfea6cd407ae854f9a2cad2a2ae165d6809c.png",
     "assets/embedded/a9228ddc4d14afb8a42d83fb7bf7ea4780fde894fb1ba4d4d4dca35a6cc40ca6.png",
@@ -610,11 +615,6 @@
     "assets/embedded/7d28a7800c79fbf38bf8bdc1ff09a567852bd8d6bd4db7f40e42086ee693bc4c.png",
     "assets/embedded/2d9632c33bd7f93cab21804a17a1b2eaa0b29d37ea375946db38ef1c92da8237.png",
     "assets/embedded/23bb89985ff861a8adb9259e0df415c2f11219fdb6bd10f2369ed7c6fc0592d2.png",
-    "assets/embedded/122af890d7e43a23b82e9a3bd8a410d359ab60dc9445545db58cee32603fa1ac.png",
-    "assets/embedded/0c5425d29690a70d1d5bfa4e3e8a35a18abcf02292355f5c2dea4c7e6385dc0b.png",
-    "assets/embedded/aa67bdf8a3724a3a3c5fd87c85feb81adee21c06f4cfdd118ecdd01da9f261e2.png",
-    "assets/embedded/85edfb683167ccf59395bcf256704f089d4e2d9730464e66590e223d19d6cb9b.png",
-    "assets/embedded/7236b71e68b5b14ee3446f91887b9fb33214bf5c06af4e7146740aa501619c7f.png",
     "assets/embedded/e01d48301a0e6cf2b76ad5d1f3a87bfc9088b4f11b76de88c3c4b0780cf32f69.jpg",
     "assets/embedded/3ef28078985caf2d2d096b57d7b705712e6243e17e1df55e2faa04236c250214.png",
     "assets/embedded/ffbabb0ac6f7ac41f12ab1321e209e7413fd54d1bcb7602e0496f9b99f11e670.png",
