@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "releaseId": "277327fe-39e3-4590-94ce-37df1bf07bb7",
-  "builtAt": "2026-11-20T09:50:55.009Z",
+  "releaseId": "fa9a3a80-ba63-4c00-b58a-abb12a4b5d41",
+  "builtAt": "2026-11-20T10:12:35.261Z",
   "mode": "published-read-only",
   "publishedFlowSystems": [
     {
@@ -86,8 +86,8 @@
     }
   ],
   "embeddedImageFiles": 270,
-  "files": 835,
-  "totalBytes": 828619230,
+  "files": 839,
+  "totalBytes": 833847091,
   "dataChecks": [
     "catalog.json",
     "full-formal.json",
@@ -181,12 +181,16 @@
     "assets/uploads/shop-ui-20261110-clothing-main.png",
     "assets/wealth-hall-ui/00.png",
     "assets/wealth-hall-ui/rules-reference-20261117.png",
+    "assets/wealth-hall-ui/cover-tiers-20261120.png",
+    "assets/wealth-hall-ui/benefit-result-20261120.png",
     "assets/wealth-hall-ui/04.png",
     "assets/wealth-hall-ui/01.png",
     "assets/wealth-hall-ui/02.png",
     "assets/wealth-hall-ui/records-20261117.png",
     "assets/wealth-hall-ui/thumbs-result-20261117.png",
     "assets/wealth-hall-ui/liked-20261117.png",
+    "assets/wealth-hall-ui/people-right-arrow-20261120.png",
+    "assets/wealth-hall-ui/people-left-arrow-20261120.png",
     "assets/wealth-hall-ui/05.png",
     "assets/wealth-hall-ui/06.png",
     "assets/wealth-hall-ui/07.png",
@@ -321,6 +325,8 @@
     "assets/talent-reference/promotion-locked-20261022.png",
     "assets/talent-reference/promotion-ready-20261022.png",
     "assets/talent-reference/promotion-success-20261022.png",
+    "assets/talent-reference/claw-20261119/select.png",
+    "assets/talent-reference/claw-20261119/replace.png",
     "assets/uploads/1790680923516-bb4e5e54.png",
     "assets/uploads/1790680868203-650d6190.png",
     "assets/talent-reference/06.jpeg",
