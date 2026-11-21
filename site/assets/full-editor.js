@@ -4,7 +4,7 @@ import { mountOnlineReaderStatus, startOnlineReaderSync, onlineReaderPage } from
 
 const app = document.querySelector("#full-editor-app");
 const mode = document.body.dataset.editorMode === "reader" ? "reader" : "edit";
-const READER_LOCKED_GROUP_IDS = new Set(["story"]);
+const READER_STORY_OVERVIEW_PAGE = "detail.html?id=narrative-mainline";
 const state = {
   catalog: null,
   formal: { pages: {} },
@@ -194,8 +194,8 @@ function findTitle(page) {
 function isReaderLockedPage(page) {
   if (mode !== "reader") return false;
   return state.catalog.groups.some((group) =>
-    READER_LOCKED_GROUP_IDS.has(group.id)
-      && (group.page === page || group.items.some((item) => item.page === page))
+    group.id === "story"
+      && (group.page === page || group.items.some((item) => item.page === page && page !== READER_STORY_OVERVIEW_PAGE))
   );
 }
 
@@ -239,6 +239,12 @@ function beginNavigationEdit(button) {
   input.select();
 }
 
+function hiddenStoryChapterInNavigation(group, item) {
+  if (group.id !== "story") return false;
+  const chapter = /^story-chapter-(\d+)$/.exec(item.id);
+  return chapter && Number(chapter[1]) >= 1 && Number(chapter[1]) <= 30;
+}
+
 function renderCatalog(filter = "") {
   const query = filter.trim().toLowerCase();
   const nav = document.querySelector("#full-page-nav");
@@ -269,24 +275,15 @@ function renderCatalog(filter = "") {
     const afterGroup = group.id === "characters" ? standaloneNav : "";
     const groupTitle = navigationTitle(`group:${group.id}`, group.title);
     const groupMatches = !query || groupTitle.toLowerCase().includes(query);
-    const items = group.items.filter((item) => groupMatches || navigationTitle(`item:${item.id}`, item.id === "doll-house" ? "幸运抓抓系统" : item.title).toLowerCase().includes(query));
+    const items = group.items.filter((item) => !hiddenStoryChapterInNavigation(group, item)
+      && (groupMatches || navigationTitle(`item:${item.id}`, item.id === "doll-house" ? "幸运抓抓系统" : item.title).toLowerCase().includes(query)));
     if (!groupMatches && !items.length) return afterGroup;
-    const readerLocked = mode === "reader" && READER_LOCKED_GROUP_IDS.has(group.id);
-    if (readerLocked) {
-      return `
-        <section class="full-page-group is-reader-locked" data-group="${escapeHtml(group.id)}">
-          <div class="full-page-group-heading">
-            <button type="button" class="full-page-link is-category is-locked" disabled aria-label="${escapeHtml(groupTitle)}暂不开放">
-              <span>${escapeHtml(groupTitle)}</span><small>暂不开放&nbsp; 🔒</small>
-            </button>
-          </div>
-        </section>${afterGroup}`;
-    }
     const collapsed = !query && state.collapsedGroups.has(group.id);
+    const groupPage = mode === "reader" && group.id === "story" ? READER_STORY_OVERVIEW_PAGE : group.page;
     return `
       <section class="full-page-group" data-group="${escapeHtml(group.id)}">
         <div class="full-page-group-heading${mode === "edit" ? " is-editable" : ""}">
-          <button type="button" class="full-page-link is-category" data-page="${escapeHtml(group.page)}">
+          <button type="button" class="full-page-link is-category" data-page="${escapeHtml(groupPage)}">
             <span>${escapeHtml(groupTitle)}</span><small>${items.length} 页</small>
           </button>
           ${navigationEditButton(`group:${group.id}`, groupTitle)}
@@ -973,7 +970,8 @@ function navigate(page, framePage = page) {
   const flowWindow = document.querySelector("#planning-frame")?.contentWindow;
   if (flowWindow?.interfaceFlowCanLeave && !flowWindow.interfaceFlowCanLeave()) return;
   page = normalizeCatalogPage(page);
-  if (!allCatalogEntries().some((entry) => entry.page === page) || isReaderLockedPage(page)) page = state.catalog.overview.page;
+  if (isReaderLockedPage(page)) page = READER_STORY_OVERVIEW_PAGE;
+  else if (!allCatalogEntries().some((entry) => entry.page === page)) page = state.catalog.overview.page;
   if (normalizeCatalogPage(framePage) !== page) framePage = page;
   state.currentPage = page;
   state.currentFramePage = framePage;
@@ -1292,9 +1290,9 @@ try {
   applyShopCatalogDraft(state.catalog, mode);
   const requestedFramePage = new URLSearchParams(location.search).get("page");
   const requestedPage = normalizeCatalogPage(requestedFramePage);
-  state.currentPage = allCatalogEntries().some((entry) => entry.page === requestedPage) && !isReaderLockedPage(requestedPage)
-    ? requestedPage
-    : state.catalog.overview.page;
+  state.currentPage = isReaderLockedPage(requestedPage)
+    ? READER_STORY_OVERVIEW_PAGE
+    : allCatalogEntries().some((entry) => entry.page === requestedPage) ? requestedPage : state.catalog.overview.page;
   state.currentFramePage = state.currentPage === requestedPage ? (requestedFramePage || requestedPage) : state.currentPage;
   state.currentTitle = findTitle(state.currentPage);
   mountShell();
